@@ -39,7 +39,6 @@ private:
 	int status;
 	static int counter;
 	power_enum power;
-	command_t cmd;
 	void parse( char* args, int length = 0 );
 	devices getDevice( char* device );
 public:
@@ -51,6 +50,7 @@ public:
 	char* dispatch();
 	const char* version();
 	int getStatus() { return (status); }
+	void setStatus( int s ) { status = s; }
 	void disconnect();
 	char* sendFeedback( char *buf );
 	int isPowerOn() { return( power == ON ); }

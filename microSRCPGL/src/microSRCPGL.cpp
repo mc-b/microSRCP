@@ -32,6 +32,7 @@
 #include <Streaming.h>
 #include <srcp/SRCPCommand.h>
 #include <srcp/SRCPDeviceManager.h>
+#include <srcp/SRCPServerSerial.h>
 #include <dev/GASignal.h>
 #include <dev/GAServo.h>
 #include <dev/GLMotoMamaAnalog.h>
@@ -39,6 +40,8 @@
 
 // Globaler Command Buffer
 srcp::command_t global_cmd;
+// SRCP I/O Server
+srcp::SRCPServerSerial server;
 
 void setup()
 {
@@ -48,8 +51,10 @@ void setup()
 	Serial3 << "debug ready ..." << endl;
 #endif
 	// SRCP Kommunikation oeffnen
-	//SRCPServer.begin( mac, ip, localPort );
-	//Serial << "Server listen " << ip << "." << localPort << endl;
+	server.begin( 115200 );
+#if	( DEBUG_SCOPE > 1 )
+	Serial3 << "Server listen " << endl;
+#endif
 
 	// Geraete initialisieren, je nach Board und Verwendung
 	DeviceManager.addAccessoire( new dev::GASignal( 1, 4, 5 ) ); // Signal mit Addr 1 und 2 Led an Pin 4 und 5
@@ -61,19 +66,19 @@ void setup()
 	//DeviceManager.addDevice( new dev::GLMotoMamaAnalog( 1, 10,  8,  9 ) ); // Moto Mama Shield, Pin 10 Geschwindigkeit, 8 Vor-, 9 Rueckwaerts - nur Mega
 #endif
 	//DeviceManager.addDevice( new dev::GLMotoMamaAnalog( 2, 11, 12, 13 ) );
-	Serial << "Devices ready" << endl;
+
+#if	( DEBUG_SCOPE > 1 )
+	Serial3 << "Devices ready" << endl;
+#endif
 }
 
 void loop()
 {
-	DeviceManager.setGA( 1, 0, 1, 0 );
-	DeviceManager.setGA( 2, 0, 0, 0 );
-	delay( 1000 );
-	DeviceManager.setGA( 1, 0, 0, 0 );
-	DeviceManager.setGA( 2, 0, 1, 0 );
-	delay( 1000 );
+	// Host Meldungen verarbeiten
+	server.dispatch();
 
-
+	// Refresh der Sensoren bzw. Abfragen ob Aenderungen stattgefunden haben
+	DeviceManager.refresh();
 }
 
 

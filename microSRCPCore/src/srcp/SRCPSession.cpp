@@ -43,27 +43,27 @@ SRCPSession::SRCPSession()
 
 char* SRCPSession::dispatch()
 {
-	switch (cmd.cmd)
+	switch (global_cmd.cmd)
 	{
 		case GO:
 			power = ON;
 			return	( Messages.go( counter++ ));
 		case GET:
-			switch (cmd.device)
+			switch (global_cmd.device)
 			{
 				case SM:
-					int rc = DeviceManager.getSM( cmd.bus, cmd.addr, cmd.values[0], cmd.values[1] );
+					int rc = DeviceManager.getSM( global_cmd.bus, global_cmd.addr, global_cmd.values[0], global_cmd.values[1] );
 					if	( rc == -1 )
 						return	( Messages.error( 421 ) );
-					return	( Messages.info( cmd.bus, cmd.addr, cmd.values[0], rc ));
+					return	( Messages.info( global_cmd.bus, global_cmd.addr, global_cmd.values[0], rc ));
 			}
 
 			return (Messages.ok());
 		case SET:
-			switch (cmd.device)
+			switch (global_cmd.device)
 			{
 				case POWER:
-					power = (power_enum) cmd.values[0];
+					power = (power_enum) global_cmd.values[0];
 					DeviceManager.setPower( power );
 					return (Messages.ok());
 
@@ -71,15 +71,15 @@ char* SRCPSession::dispatch()
 					return (Messages.ok());
 
 				case GA:
-					cmd.values[0] = DeviceManager.setGA( cmd.addr, cmd.values[0], cmd.values[1], cmd.values[2] );
+					global_cmd.values[0] = DeviceManager.setGA( global_cmd.addr, global_cmd.values[0], global_cmd.values[1], global_cmd.values[2] );
 					return (Messages.ok());
 
 				case GL:
-					cmd.values[0] = DeviceManager.setGL( cmd.addr, cmd.values[0], cmd.values[1], cmd.values[2], cmd.values );
+					global_cmd.values[0] = DeviceManager.setGL( global_cmd.addr, global_cmd.values[0], global_cmd.values[1], global_cmd.values[2], global_cmd.values );
 					return (Messages.ok());
 
 				case SM:
-					DeviceManager.setSM( cmd.bus, cmd.addr, cmd.values[0], cmd.values[1], cmd.values[2] );
+					DeviceManager.setSM( global_cmd.bus, global_cmd.addr, global_cmd.values[0], global_cmd.values[1], global_cmd.values[2] );
 					return (Messages.ok());
 
 				default:
@@ -87,7 +87,7 @@ char* SRCPSession::dispatch()
 			}
 			break;
 		case CONNECTIONMODE:
-			status = cmd.values[0];
+			status = global_cmd.values[0];
 			return	( Messages.ok202() );
 
 		case PROTOCOL:

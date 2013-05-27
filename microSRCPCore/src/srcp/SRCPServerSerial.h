@@ -1,5 +1,6 @@
 /*
-	SRCPParser - Parst ASCII SRCP Messages
+	SRCPServerSerial - SRCP Server welche Meldungen mittels
+	der Seriellen Schnittstellen empfaengt und sendet.
 
 	Siehe auch: http://srcpd.sourceforge.net/srcp/
 
@@ -21,24 +22,25 @@
 
  */
 
-#ifndef SRCPPARSER_H_
-#define SRCPPARSER_H_
+#ifndef SRCPSERVERSERIAL_H_
+#define SRCPSERVERSERIAL_H_
 
-#include "SRCPFeedback.h"
-#include "SRCPGenericAccessoire.h"
-#include "SRCPGenericLoco.h"
-#include "SRCPCommand.h"
+#include <Arduino.h>
+#include "SRCPSession.h"
+#include "SRCPParser.h"
 
 namespace srcp
 {
 
-class SRCPParser
+class SRCPServerSerial
 {
 private:
-	devices getDevice( char* device );
+	SRCPSession* session;
+	SRCPParser* parser;
 public:
-	void parse( char* args );
+    void begin(unsigned long speed );
+    int dispatch(void);
 };
 
 } /* namespace srcp */
-#endif /* SRCPPARSER_H_ */
+#endif /* SRCPSERVERSERIAL_H_ */

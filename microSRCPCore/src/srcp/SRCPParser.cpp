@@ -26,7 +26,10 @@
 namespace srcp
 {
 
-void SRCPParser::parse( char* args, int length )
+/**
+ * Parst den I/O Buffer und stellt das Ergebniss in globaler cmd Struct ab.
+ */
+void SRCPParser::parse( char* args )
 {
 	char d[10];
 	memset( global_cmd.values, 0, sizeof(global_cmd.values) );
