@@ -39,9 +39,9 @@ private:
 	SRCPFeedback *firstFB;
 public:
 	SRCPDeviceManager();
-	void addDevice( SRCPGenericAccessoire* device ) { firstGA->setNextElement(this->firstGA); this->firstGA = firstGA; }
-	void addDevice( SRCPGenericLoco* device ) { firstGL->setNextElement(this->firstGL); this->firstGL = firstGL; }
-	void addDevice( SRCPDevice* device ) { firstFB->setNextElement(this->firstFB); this->firstFB = firstFB; }
+	void addAccessoire( SRCPGenericAccessoire* device ) { device->setNextElement(this->firstGA); this->firstGA = device; }
+	void addLoco( SRCPGenericLoco* device ) { device->setNextElement(this->firstGL); this->firstGL = device; }
+	void addFeedback( SRCPFeedback* device ) { device->setNextElement(this->firstFB); this->firstFB = device; }
 
 	int setGA( int addr, int port, int value, int delay );
 	int setGL( int addr, int drivemode, int v, int v_max, int fn[] );

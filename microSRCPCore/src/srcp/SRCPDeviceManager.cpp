@@ -24,6 +24,10 @@
 
 #include "SRCPGenericAccessoire.h"
 #include "SRCPDevice.h"
+#if	( DEBUG_SCOPE > 1 )
+#include <HardwareSerial.h>
+#include <Streaming.h>
+#endif
 
 namespace srcp
 {
@@ -39,6 +43,10 @@ int SRCPDeviceManager::setGA( int addr, int port, int value, int delay )
 {
 	SRCPGenericAccessoire* next = (srcp::SRCPGenericAccessoire*) 0;
 	int rc = 200;
+
+#if	( DEBUG_SCOPE > 1 )
+	Serial3 << "set" + addr << " " << (int) firstGA << endl;
+#endif
 
 	for	( next = firstGA; next != (srcp::SRCPGenericAccessoire*) 0; next = next->nextElement() )
 	{
