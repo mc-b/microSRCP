@@ -31,7 +31,8 @@
 #include <Streaming.h>
 #include <srcp/SRCPCommand.h>
 #include <srcp/SRCPDeviceManager.h>
-#include <srcp/SRCPServerSerial.h>
+//#include <srcp/SRCPServerSerial.h>
+#include <srcp/SRCPEthernetServer.h>
 #include <dev/GALed.h>
 #include <dev/GAServo.h>
 #include <dev/GLMotoMamaAnalog.h>
@@ -40,7 +41,12 @@
 // Globaler Command Buffer
 srcp::command_t global_cmd;
 // SRCP I/O Server
-srcp::SRCPServerSerial server;
+//srcp::SRCPServerSerial server;
+srcp::SRCPEthernetServer server;
+// Enter a MAC address and IP address for your controller below.
+// The IP address will be dependent on your local network:
+byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+IPAddress ip( 192, 168, 178, 241 );
 
 void setup()
 {
@@ -50,7 +56,9 @@ void setup()
 	Serial3 << "debug ready ..." << endl;
 #endif
 	// SRCP Kommunikation oeffnen
-	server.begin( 115200 );
+	//server.begin( 115200 );
+	server.begin( mac, ip, 4303 );
+
 #if	( DEBUG_SCOPE > 1 )
 	Serial3 << "Server listen " << endl;
 #endif
@@ -64,9 +72,9 @@ void setup()
 	DeviceManager.addAccessoire( new dev::GAServo( 4, 3, 60, 90 ) );
 	DeviceManager.addFeedback( new dev::FBSwitchSensor( 1, A0, A5 ) ); // Sensoren, jeweils in Gruppen von 8 (auch wenn nicht 8 Pins belegt)
 #if ( __AVR_ATmega1280__ || __AVR_ATmega2560__ )
-	DeviceManager.addLoco( new dev::GLMotoMamaAnalog( 1, 10,  8,  9 ) ); // Moto Mama Shield, Pin 10 Geschwindigkeit, 8 Vor-, 9 Rueckwaerts - nur Mega
+	//DeviceManager.addLoco( new dev::GLMotoMamaAnalog( 1, 10,  8,  9 ) ); // Moto Mama Shield, Pin 10 Geschwindigkeit, 8 Vor-, 9 Rueckwaerts - nur Mega
 #endif
-	DeviceManager.addLoco( new dev::GLMotoMamaAnalog( 2, 11, 12, 13 ) );
+	//DeviceManager.addLoco( new dev::GLMotoMamaAnalog( 2, 11, 12, 13 ) );
 
 #if	( DEBUG_SCOPE > 1 )
 	Serial3 << "Devices ready" << endl;
