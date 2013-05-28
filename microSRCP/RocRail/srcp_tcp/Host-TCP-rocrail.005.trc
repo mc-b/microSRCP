@@ -1,0 +1,340 @@
+--------------------------------------------------
+20130528.181833.160 r9999I tick0027 OSystem  0112 Ticker thread has started.
+                                            lll   
+                                        iii lll   
+                                            lll   
+ rrrrrr   ooooo   ccccc rrrrrr   aaaaaa iii lll   
+ rrr rrr ooo ooo ccc    rrr rrr aaa aaa iii lll   
+ rrr     ooo ooo ccc    rrr     aaa aaa iii lll   
+ rrr      ooooo   ccccc rrr      aaaaaa iii  lll  
+--------------------------------------------------
+ TM and Copyright 2002-2013 Rob Versluis.
+ All Rights Reserved.
+   r.j.versluis@rocrail.net
+   http://www.rocrail.net
+ License: GNU GPL V3
+   http://www.gnu.org/licenses/gpl-3.0-standalone.html
+--------------------------------------------------
+ Rocrail 5315
+ Build: May 28 2013 09:04:40
+ librocs 2.0-0 build May 28 2013 09:04:19
+ processid = 548
+       mac = 0000000000000000
+--------------------------------------------------
+20130528.181833.175 r9999I main     OSystem  0575 expdate = 24-02-2014
+The license expires in 272 days.
+20130528.181833.175 r9999I main     OApp     0879 dpIID = []
+20130528.181833.175 r9999I main     OApp     0880 ptIID = []
+20130528.181833.175 r9999I main     OApp     0881 svIID = []
+20130528.181833.175 r9999I main     OApp     0882 lcIID = []
+20130528.181833.175 r9999I main     OModel   0415 parsePlan file: plan.xml
+20130528.181833.175 r9999I main     OAnalyse 7747 MRD[100] ExtChk: basic[1]c[0] block[1]c[0] route[1]c[0] action[1]c[0]
+20130528.181833.175 r9999I main     OAnalyse 5964 checking plan health...
+20130528.181833.191 r9999I main     OAnalyse 2553 mod x: 0 y: 0 
+20130528.181833.191 r9999I main     OAnalyse 6235 Starting zlevel check
+20130528.181833.191 r9999I main     OAnalyse 2297 zlevel check: 32 items
+20130528.181833.191 r9999I main     OAnalyse 6256 INFO: object [tk] with id [tk20130303203454076] at [26,5,0] is the most far away object in the plan
+20130528.181833.191 r9999I main     OAnalyse 6267 INFO: analyzer: max connector distance is 26 (def/min=10)
+20130528.181833.191 r9999I main     OAnalyse 6268 INFO: analyzer: max z-level is 0
+20130528.181833.191 r9999I main     OAnalyse 6282 Plan is healthy
+20130528.181833.191 r9999I main     OAnalyse 0183 cleaning up the ANALYSER...
+20130528.181833.191 r9999I main     OAnalyse 0250 ANALYSER is cleaned up
+20130528.181833.191 r9999I main     OModel   0479 parsePlan title: New Plan
+20130528.181833.191 r9999I main     OModel   3121 init clearingMaps...
+20130528.181833.191 r9999I main     OModel   3146 init creatingMaps...
+20130528.181833.191 r9999I main     OModel   3150 init creatingFbAddrMap...
+20130528.181833.207 r9999I main     OModel   2242 createFbAddrMap: size=3.
+20130528.181833.207 r9999I main     OLoc     3138 no restore wanted: reset speed for loco [Stromkreis 1]
+20130528.181833.207 r9999I main     OLoc     3142 no restore wanted: reset functions for loco [Stromkreis 1]
+20130528.181833.222 r9999I main     OLib     0049 rocs_lib_load OK [.\./lcdriver.dll]
+20130528.181833.222 r9999I main     OLib     0063 rocs_lib_getProc OK [.\./lcdriver.dll:rocGetLcDrInt]
+20130528.181833.238 r9999I 00000944 OLcDrive 0598 LcDriver 2.0.0 loaded for Stromkreis 1
+20130528.181833.238 r9999I main     OLoc     3156 loco [Stromkreis 1] enterside=[+]
+20130528.181833.253 r9999I tick01A4 OSystem  0112 Ticker thread has started.
+20130528.181833.253 r9999I main     OLoc     3138 no restore wanted: reset speed for loco [Stromkreis 2]
+20130528.181833.269 r9999I main     OLoc     3142 no restore wanted: reset functions for loco [Stromkreis 2]
+20130528.181833.269 r9999I main     OLib     0049 rocs_lib_load OK [.\./lcdriver.dll]
+20130528.181833.285 r9999I main     OLib     0063 rocs_lib_getProc OK [.\./lcdriver.dll:rocGetLcDrInt]
+20130528.181833.285 r9999I 00000944 OLcDrive 0598 LcDriver 2.0.0 loaded for Stromkreis 2
+20130528.181833.285 r9999I main     OLoc     3156 loco [Stromkreis 2] enterside=[+]
+20130528.181833.300 r9999I main     OModel   3173 init creatingFbAddrMap...
+20130528.181833.300 r9999I main     OModel   2264 createSwAddrMap: size=1.
+20130528.181833.316 r9999I main     OModel   2285 createCoAddrMap: size=0.
+20130528.181833.316 r9999I main     OModel   5097 loading occupancy file [occ.xml]
+20130528.181833.316 r9999I main     OModel   5152 restore loco placing for [Stromkreis 2]
+20130528.181833.331 r9999I main     OModel   5161 set enterside to [min] for [Stromkreis 2]
+20130528.181833.331 r9999I main     OModel   5166 set placing to [reverse] for [Stromkreis 2]
+20130528.181833.347 r9999I main     OModel   5196 block [Block 1]
+20130528.181833.347 r9999I main     OModel   5196 block [Block 2]
+20130528.181833.347 r9999I main     OModel   5196 block [Block 3]
+20130528.181833.363 r9999I main     OModel   3178 init blocks...
+20130528.181833.363 r9999I main     OBlock   2078 init block Block 1
+20130528.181833.363 r9999I main     OBlock   2078 init block Block 2
+20130528.181833.394 r9999I main     OBlock   2078 init block Block 3
+20130528.181833.394 r9999I main     OSerial  0093 Opening serial[COM1]  [return code=2] [2] [No such file or directory]
+20130528.181833.394 r9999I main     OSerial  0054 Serial[COM1] closed.
+20130528.181833.409 r9999I main     OSerial  0093 Opening serial[COM2]  [return code=2] [2] [No such file or directory]
+20130528.181833.425 r9999I main     OSerial  0054 Serial[COM2] closed.
+20130528.181833.425 r9999I main     OSerial  0093 Opening serial[COM3]  [return code=2] [2] [No such file or directory]
+20130528.181833.441 r9999I main     OSerial  0054 Serial[COM3] closed.
+20130528.181833.441 r9999I main     OSerial  0093 Opening serial[COM4]  [return code=2] [2] [No such file or directory]
+20130528.181833.441 r9999I main     OSerial  0054 Serial[COM4] closed.
+20130528.181833.456 r9999I main     OSerial  0093 Opening serial[COM5]  [return code=2] [2] [No such file or directory]
+20130528.181833.472 r9999I main     OSerial  0054 Serial[COM5] closed.
+20130528.181833.597 r9999I main     OSerial  0093 Opening serial[COM6]  [return code=0] [0] [OK]
+20130528.181833.612 r9999I main     OSerial  0114 blocking[1] directIO[0]
+20130528.181833.659 r9999I main     OSerial  0054 Serial[COM6] closed.
+20130528.181833.675 r9999I main     OSerial  0093 Opening serial[COM7]  [return code=0] [0] [OK]
+20130528.181833.690 r9999I main     OSerial  0114 blocking[1] directIO[0]
+20130528.181833.690 r9999I main     OSerial  0054 Serial[COM7] closed.
+20130528.181833.706 r9999I main     OSerial  0093 Opening serial[COM8]  [return code=0] [0] [OK]
+20130528.181833.706 r9999I main     OSerial  0114 blocking[1] directIO[0]
+20130528.181834.721 r9999I main     OSerial  0054 Serial[COM8] closed.
+20130528.181834.721 r9999I main     OSerial  0093 Opening serial[COM9]  [return code=2] [2] [No such file or directory]
+20130528.181834.721 r9999I main     OSerial  0054 Serial[COM9] closed.
+20130528.181834.737 r9999I main     OControl 1530 devices: "COM6,COM7,COM8"
+20130528.181834.737 r9999I main     OControl 1180 initDigInts lib="srcp" idd="GA01"
+20130528.181834.737 r9999I main     OLib     0049 rocs_lib_load OK [.\srcp.dll]
+20130528.181834.753 r9999I main     OLib     0063 rocs_lib_getProc OK [.\srcp.dll:rocGetDigInt]
+20130528.181834.753 r9999I 00000944 OSRCP    1059 ----------------------------------------
+20130528.181834.768 r9999I Stromkre OLoc     1415 Runner for "Stromkreis 1" started.
+20130528.181834.768 r9999I 00000944 OSRCP    1060 SRCP 2.0.0
+20130528.181834.768 r9999I 00000944 OSRCP    1061   iid       : GA01
+20130528.181834.768 r9999I 00000944 OSRCP    1062   sublib    : tcp
+20130528.181834.784 r9999I 00000944 OSRCP    0036   host      : 192.168.178.241
+20130528.181834.784 r9999I 00000944 OSRCP    0037   port      : 4303
+20130528.181834.784 r9999I 00000944 OSRCP    1089 ----------------------------------------
+20130528.181834.799 r9999I main     OControl 1249 initDigInts OK
+20130528.181834.799 r9999I info01DE OSRCP    0784 info reader started
+20130528.181834.815 r9999I main     OPowerMa 0481 Power Manager instantiated.
+20130528.181834.815 r9999I Stromkre OLoc     1415 Runner for "Stromkreis 2" started.
+20130528.181834.815 r9999I main     OControl 0179 Init shortcut sensor...
+20130528.181834.815 r9999I checker  OControl 1477 Checker started.
+20130528.181834.815 r9999I clocktic OControl 1400 ClockTicker started.
+20130528.181834.846 r9999I main     OClntCon 0600 ClientConnection started on port 8051.
+20130528.181834.846 r9999I broadcas OClntCon 0490 Broadcaster started.
+20130528.181834.846 r9999I cconmngr OClntCon 0375 Manager started.
+20130528.181834.862 r9999I main     OModel   1791 Checking all Loco's for V=0...
+20130528.181834.877 r9999c info01DE OSRCP    0045 Connecting info port 192.168.178.241:4303...
+20130528.181834.893 r9999I main     OModel   2912 init Track Driver blocks...
+20130528.181834.893 r9999c info01DE OSRCP    0052 info port connected
+20130528.181834.893 r9999I main     OModel   0640 updateFB
+20130528.181834.893 r9999I main     OModel   0626 add bus 0, 0...
+20130528.181834.909 r9999I 00000944 OSRCP    0097 Connecting to SRCP server 192.168.178.241:4303
+20130528.181834.909 r9999I 00000944 OSRCP    0104 Handshaking
+20130528.181834.924 r9999I 00000944 OSRCP    0118 Response from server: srcpd V1.0; SRCP 0.8.2 
+20130528.181834.940 r9999c info01DE OSRCP    0627 Info Connected
+20130528.181834.940 r9999c info01DE OSRCP    0633 srcpd V1.0; SRCP 0.8.2 
+20130528.181834.955 r9999c info01DE OSRCP    0641 SET PROTOCOL SRCP 0.8 
+20130528.181834.924 r9999I 00000944 OSRCP    0120 Server response for protocol 0.8 ok.
+20130528.181834.955 r9999c info01DE OSRCP    0657 SET CONNECTIONMODE SRCP INFO 
+20130528.181834.971 r9999I 00000944 OSRCP    0128 Handshake completed.
+20130528.181834.971 r9999I 00000944 OSRCP    0575 reconnected
+20130528.181834.971 r9999c 00000944 OSRCP    0197 command written: SET PROTOCOL SRCP 0.8 
+20130528.181834.018 r9999c info01DE OSRCP    0673 GO 
+20130528.181834.096 r9999c 00000944 OSRCP    0210 srcp response: 8858 201 OK PROTOCOL SRCP 
+20130528.181834.096 r9999c 00000944 OSRCP    0197 command written: SET CONNECTIONMODE SRCP COMMAND 
+20130528.181834.143 r9999I info01DE OSRCP    0790 info reader: connected
+20130528.181834.205 r9999c 00000944 OSRCP    0210 srcp response: 8980 202 OK 
+20130528.181834.205 r9999c 00000944 OSRCP    0197 command written: GO 
+20130528.181834.252 r9999c 00000944 OSRCP    0210 srcp response: 9017 200 OK GO 2 
+20130528.181834.252 r9999I 00000944 OSRCP    0998 init server...
+20130528.181834.252 r9999c 00000944 OSRCP    0197 command written: GET 1 POWER 
+20130528.181834.299 r9999c 00000944 OSRCP    0210 srcp response: 9068 100 INFO 0 POWER 0 0 
+20130528.181834.314 r9999I 00000944 OSRCP    0169 Handshake completed.
+20130528.181834.314 r9999I 00000944 OSRCP    0580 node=fbinfo cmd=fbmods
+20130528.181835.845 r9999I clocktic OControl 1455 new clock event 18:18.35
+20130528.181835.860 r9999I 00000C4C OSRCP    0580 node=clock cmd=set
+20130528.181900.867 r9999I clocktic OControl 1455 new clock event 18:19.00
+20130528.181900.867 r9999I 00000C4C OSRCP    0580 node=clock cmd=sync
+20130528.181904.017 r9999I info01DE OSRCP    0812 inforeader: [38808 100 INFO 0 FB 1 1 ]
+20130528.181904.017 r9999c info01DE OSRCP    0951 sensor 1 = 1
+20130528.181905.766 r9999I info01DE OSRCP    0812 inforeader: [39562 100 INFO 0 FB 1 0 ]
+20130528.181905.766 r9999c info01DE OSRCP    0951 sensor 1 = 0
+20130528.181907.527 r9999I info01DE OSRCP    0812 inforeader: [42324 100 INFO 0 FB 2 1 ]
+20130528.181907.527 r9999c info01DE OSRCP    0951 sensor 2 = 1
+20130528.181907.542 r9999W 00000A00 OBlock   0472 locId not set in block Block 2
+20130528.181908.026 r9999I info01DE OSRCP    0812 inforeader: [42828 100 INFO 0 FB 2 0 ]
+20130528.181908.042 r9999c info01DE OSRCP    0951 sensor 2 = 0
+20130528.181917.136 r9999I cconmngr OClntCon 0395 client connect count: 1
+20130528.181917.136 r9999I cmdr01D9 OClntCon 0215 cmdReader started for:127.0.0.1.
+20130528.181917.136 r9999I infw01D9 OClntCon 0109 infoWriter started for:127.0.0.1.
+20130528.181918.135 r9999I cmdr01D9 OClntCon 0271 monitoring for client is on
+20130528.181918.135 r9999I cmdr01D9 OControl 0845 command from [rocview,178051252,376]
+20130528.181918.135 r9999I cmdr01D9 OSystem  0575 expdate = 24-02-2014
+20130528.181918.135 r9999I cmdr01D9 OModel   2034 valid donation key: 
+20130528.181918.369 r9999I cmdr01D9 OModel   2100 Sending 0 fstats to client...
+20130528.181921.333 r9999I cmdr01D9 OSignal  1177 setting signal S2 to red
+20130528.181921.333 r9999I cmdr01D9 OSignal  0900 2 aspects processing for signal [S2][red]...
+20130528.181921.333 r9999I 0000072C OSRCP    0580 node=co cmd=off
+20130528.181921.333 r9999c 0000072C OSRCP    0197 command written: GET 7 GA 3 0 
+20130528.181921.333 r9999c 0000072C OSRCP    0210 srcp response: 56129 200 OK 
+20130528.181921.333 r9999c 0000072C OSRCP    0197 command written: INIT 7 GA 3 P 
+20130528.181921.364 r9999c 0000072C OSRCP    0210 srcp response: 56135 200 OK 
+20130528.181921.364 r9999c 0000072C OSRCP    0197 command written: GET 7 GA 3 0 
+20130528.181921.411 r9999c 0000072C OSRCP    0210 srcp response: 56181 200 OK 
+20130528.181921.411 r9999I 0000072C OSRCP    0584 translation = SET 7 GA 3 0 1 -1
+...
+20130528.181921.411 r9999c 0000072C OSRCP    0197 command written: SET 7 GA 3 0 1 -1 
+20130528.181921.458 r9999c 0000072C OSRCP    0210 srcp response: 56236 200 OK 
+20130528.181921.458 r9999I 0000072C OSRCP    0580 node=co cmd=off
+20130528.181921.458 r9999c 0000072C OSRCP    0197 command written: GET 7 GA 4 0 
+20130528.181921.504 r9999c 0000072C OSRCP    0210 srcp response: 56283 200 OK 
+20130528.181921.504 r9999c 0000072C OSRCP    0197 command written: INIT 7 GA 4 P 
+20130528.181921.567 r9999c 0000072C OSRCP    0210 srcp response: 56331 200 OK 
+20130528.181921.567 r9999c 0000072C OSRCP    0197 command written: GET 7 GA 4 0 
+20130528.181921.614 r9999c 0000072C OSRCP    0210 srcp response: 56379 200 OK 
+20130528.181921.614 r9999I 0000072C OSRCP    0584 translation = SET 7 GA 4 0 1 -1
+...
+20130528.181921.614 r9999c 0000072C OSRCP    0197 command written: SET 7 GA 4 0 1 -1 
+20130528.181921.660 r9999c 0000072C OSRCP    0210 srcp response: 56433 200 OK 
+20130528.181921.660 r9999I 0000072C OSRCP    0580 node=co cmd=on
+20130528.181921.660 r9999I 0000072C OSRCP    0584 translation = SET 7 GA 3 0 0 -1
+...
+20130528.181921.660 r9999c 0000072C OSRCP    0197 command written: SET 7 GA 3 0 0 -1 
+20130528.181922.723 r9999c 0000072C OSRCP    0210 srcp response: 56485 200 OK 
+20130528.181922.565 r9999I cmdr01D9 OSignal  1177 setting signal S2 to green
+20130528.181922.565 r9999I cmdr01D9 OSignal  0900 2 aspects processing for signal [S2][green]...
+20130528.181922.565 r9999I 0000072C OSRCP    0580 node=co cmd=off
+20130528.181922.565 r9999I 0000072C OSRCP    0584 translation = SET 7 GA 3 0 1 -1
+...
+20130528.181922.565 r9999c 0000072C OSRCP    0197 command written: SET 7 GA 3 0 1 -1 
+20130528.181922.565 r9999c 0000072C OSRCP    0210 srcp response: 57363 200 OK 
+20130528.181922.565 r9999I 0000072C OSRCP    0580 node=co cmd=off
+20130528.181922.565 r9999I 0000072C OSRCP    0584 translation = SET 7 GA 4 0 1 -1
+...
+20130528.181922.565 r9999c 0000072C OSRCP    0197 command written: SET 7 GA 4 0 1 -1 
+20130528.181922.612 r9999c 0000072C OSRCP    0210 srcp response: 57377 200 OK 
+20130528.181922.612 r9999I 0000072C OSRCP    0580 node=co cmd=on
+20130528.181922.612 r9999I 0000072C OSRCP    0584 translation = SET 7 GA 4 0 0 -1
+...
+20130528.181922.612 r9999c 0000072C OSRCP    0197 command written: SET 7 GA 4 0 0 -1 
+20130528.181922.659 r9999c 0000072C OSRCP    0210 srcp response: 57430 200 OK 
+20130528.181925.921 r9999I cmdr01D9 OSignal  1177 setting signal S1 to green
+20130528.181925.921 r9999I cmdr01D9 OSignal  0900 2 aspects processing for signal [S1][green]...
+20130528.181925.921 r9999I 0000072C OSRCP    0580 node=co cmd=off
+20130528.181925.921 r9999c 0000072C OSRCP    0197 command written: GET 5 GA 1 0 
+20130528.181925.936 r9999c 0000072C OSRCP    0210 srcp response: 59728 200 OK 
+20130528.181925.936 r9999c 0000072C OSRCP    0197 command written: INIT 5 GA 1 M 
+20130528.181925.968 r9999c 0000072C OSRCP    0210 srcp response: 59735 200 OK 
+20130528.181925.968 r9999c 0000072C OSRCP    0197 command written: GET 5 GA 1 0 
+20130528.181925.014 r9999c 0000072C OSRCP    0210 srcp response: 59782 200 OK 
+20130528.181925.014 r9999I 0000072C OSRCP    0584 translation = SET 5 GA 1 0 1 -1
+...
+20130528.181925.030 r9999c 0000072C OSRCP    0197 command written: SET 5 GA 1 0 1 -1 
+20130528.181925.061 r9999c 0000072C OSRCP    0210 srcp response: 59835 200 OK 
+20130528.181925.061 r9999I 0000072C OSRCP    0580 node=co cmd=off
+20130528.181925.061 r9999c 0000072C OSRCP    0197 command written: GET 5 GA 2 0 
+20130528.181925.108 r9999c 0000072C OSRCP    0210 srcp response: 59882 200 OK 
+20130528.181925.108 r9999c 0000072C OSRCP    0197 command written: INIT 5 GA 2 M 
+20130528.181925.155 r9999c 0000072C OSRCP    0210 srcp response: 59931 200 OK 
+20130528.181925.155 r9999c 0000072C OSRCP    0197 command written: GET 5 GA 2 0 
+20130528.181925.202 r9999c 0000072C OSRCP    0210 srcp response: 59979 200 OK 
+20130528.181925.202 r9999I 0000072C OSRCP    0584 translation = SET 5 GA 2 0 1 -1
+...
+20130528.181925.202 r9999c 0000072C OSRCP    0197 command written: SET 5 GA 2 0 1 -1 
+20130528.181925.264 r9999c 0000072C OSRCP    0210 srcp response: 60033 200 OK 
+20130528.181925.264 r9999I 0000072C OSRCP    0580 node=co cmd=on
+20130528.181925.264 r9999I 0000072C OSRCP    0584 translation = SET 5 GA 2 0 0 -1
+...
+20130528.181925.264 r9999c 0000072C OSRCP    0197 command written: SET 5 GA 2 0 0 -1 
+20130528.181925.311 r9999c 0000072C OSRCP    0210 srcp response: 60086 200 OK 
+20130528.181926.982 r9999I cmdr01D9 OSignal  1177 setting signal S1 to red
+20130528.181926.982 r9999I cmdr01D9 OSignal  0900 2 aspects processing for signal [S1][red]...
+20130528.181926.982 r9999I 0000072C OSRCP    0580 node=co cmd=off
+20130528.181926.982 r9999I 0000072C OSRCP    0584 translation = SET 5 GA 1 0 1 -1
+...
+20130528.181926.982 r9999c 0000072C OSRCP    0197 command written: SET 5 GA 1 0 1 -1 
+20130528.181926.982 r9999c 0000072C OSRCP    0210 srcp response: 60779 200 OK 
+20130528.181926.982 r9999I 0000072C OSRCP    0580 node=co cmd=off
+20130528.181926.982 r9999I 0000072C OSRCP    0584 translation = SET 5 GA 2 0 1 -1
+...
+20130528.181926.982 r9999c 0000072C OSRCP    0197 command written: SET 5 GA 2 0 1 -1 
+20130528.181926.028 r9999c 0000072C OSRCP    0210 srcp response: 60793 200 OK 
+20130528.181926.028 r9999I 0000072C OSRCP    0580 node=co cmd=on
+20130528.181926.028 r9999I 0000072C OSRCP    0584 translation = SET 5 GA 1 0 0 -1
+...
+20130528.181926.028 r9999c 0000072C OSRCP    0197 command written: SET 5 GA 1 0 0 -1 
+20130528.181926.075 r9999c 0000072C OSRCP    0210 srcp response: 60847 200 OK 
+20130528.181927.996 r9999I cmdr01D9 OSignal  1177 setting signal S1 to green
+20130528.181927.996 r9999I cmdr01D9 OSignal  0900 2 aspects processing for signal [S1][green]...
+20130528.181927.996 r9999I 0000072C OSRCP    0580 node=co cmd=off
+20130528.181927.996 r9999I 0000072C OSRCP    0584 translation = SET 5 GA 1 0 1 -1
+...
+20130528.181927.996 r9999c 0000072C OSRCP    0197 command written: SET 5 GA 1 0 1 -1 
+20130528.181927.011 r9999c 0000072C OSRCP    0210 srcp response: 61803 200 OK 
+20130528.181927.011 r9999I 0000072C OSRCP    0580 node=co cmd=off
+20130528.181927.011 r9999I 0000072C OSRCP    0584 translation = SET 5 GA 2 0 1 -1
+...
+20130528.181927.011 r9999c 0000072C OSRCP    0197 command written: SET 5 GA 2 0 1 -1 
+20130528.181927.042 r9999c 0000072C OSRCP    0210 srcp response: 61817 200 OK 
+20130528.181927.042 r9999I 0000072C OSRCP    0580 node=co cmd=on
+20130528.181927.042 r9999I 0000072C OSRCP    0584 translation = SET 5 GA 2 0 0 -1
+...
+20130528.181927.042 r9999c 0000072C OSRCP    0197 command written: SET 5 GA 2 0 0 -1 
+20130528.181927.105 r9999c 0000072C OSRCP    0210 srcp response: 61871 200 OK 
+20130528.181928.337 r9999I cmdr01D9 OSignal  1177 setting signal S1 to red
+20130528.181928.337 r9999I cmdr01D9 OSignal  0900 2 aspects processing for signal [S1][red]...
+20130528.181928.337 r9999I 0000072C OSRCP    0580 node=co cmd=off
+20130528.181928.337 r9999I 0000072C OSRCP    0584 translation = SET 5 GA 1 0 1 -1
+...
+20130528.181928.353 r9999c 0000072C OSRCP    0197 command written: SET 5 GA 1 0 1 -1 
+20130528.181928.353 r9999c 0000072C OSRCP    0210 srcp response: 63148 200 OK 
+20130528.181928.353 r9999I 0000072C OSRCP    0580 node=co cmd=off
+20130528.181928.353 r9999I 0000072C OSRCP    0584 translation = SET 5 GA 2 0 1 -1
+...
+20130528.181928.353 r9999c 0000072C OSRCP    0197 command written: SET 5 GA 2 0 1 -1 
+20130528.181928.384 r9999c 0000072C OSRCP    0210 srcp response: 63162 200 OK 
+20130528.181928.384 r9999I 0000072C OSRCP    0580 node=co cmd=on
+20130528.181928.400 r9999I 0000072C OSRCP    0584 translation = SET 5 GA 1 0 0 -1
+...
+20130528.181928.400 r9999c 0000072C OSRCP    0197 command written: SET 5 GA 1 0 0 -1 
+20130528.181928.446 r9999c 0000072C OSRCP    0210 srcp response: 63214 200 OK 
+20130528.181930.897 r9999I cmdr01D9 OSignal  1177 setting signal S1 to green
+20130528.181930.897 r9999I cmdr01D9 OSignal  0900 2 aspects processing for signal [S1][green]...
+20130528.181930.897 r9999I 0000072C OSRCP    0580 node=co cmd=off
+20130528.181930.897 r9999I 0000072C OSRCP    0584 translation = SET 5 GA 1 0 1 -1
+...
+20130528.181930.913 r9999c 0000072C OSRCP    0197 command written: SET 5 GA 1 0 1 -1 
+20130528.181930.913 r9999c 0000072C OSRCP    0210 srcp response: 64706 200 OK 
+20130528.181930.913 r9999I 0000072C OSRCP    0580 node=co cmd=off
+20130528.181930.913 r9999I 0000072C OSRCP    0584 translation = SET 5 GA 2 0 1 -1
+...
+20130528.181930.913 r9999c 0000072C OSRCP    0197 command written: SET 5 GA 2 0 1 -1 
+20130528.181930.960 r9999c 0000072C OSRCP    0210 srcp response: 64720 200 OK 
+20130528.181930.960 r9999I 0000072C OSRCP    0580 node=co cmd=on
+20130528.181930.960 r9999I 0000072C OSRCP    0584 translation = SET 5 GA 2 0 0 -1
+...
+20130528.181930.960 r9999c 0000072C OSRCP    0197 command written: SET 5 GA 2 0 0 -1 
+20130528.181930.006 r9999c 0000072C OSRCP    0210 srcp response: 64774 200 OK 
+20130528.181937.715 r9999I main     OApp     0539 Shutdown requested.
+20130528.181937.730 r9999I main     OApp     1065 SHUTDOWN
+20130528.181937.730 r9999I 00000944 OSRCP    0580 node=sys cmd=shutdown
+20130528.181937.746 r9999I main     OModel   1913 informing 2 listeners of a system event...
+20130528.181937.746 r9999I main     OApp     1074 Informing clients...
+20130528.181937.761 r9999I cmdr01D9 OSocket  0571 Other side has closed connection.
+20130528.181937.761 r9999I cmdr01D9 OClntCon 0363 Server ended.
+20130528.181937.761 r9999I infw01D9 OClntCon 0177 InfoService ended.
+20130528.181937.949 r9999I main     OApp     1086 Informing model...
+20130528.181937.964 r9999I main     OModel   2290 Saving plan [plan.xml]...
+20130528.181937.964 r9999I main     OModel   2328 Serialized Plan=15356
+20130528.181937.964 r9999I main     OModel   0302 backup plan.xml to backup\20130528181937964-plan.xml
+20130528.181937.980 r9999I main     OModel   0333 15356 bytes saved in plan.xml.
+20130528.181937.980 r9999I main     OModel   2333 Plan Saved.
+20130528.181937.995 r9999I main     OModel   5063 writing occupancy file [occ.xml]
+20130528.181937.995 r9999I main     OApp     1102 Informing all threads...
+20130528.181937.995 r9999I main     OApp     1105 Shutting down...
+20130528.181937.995 r9999I main     OApp     1113 Thread[0] <clockticker> still active.
+20130528.181937.011 r9999I main     OApp     1113 Thread[1] <broadcast> still active.
+20130528.181937.011 r9999I main     OApp     1113 Thread[2] <Stromkreis 1> still active.
+20130528.181937.011 r9999I main     OApp     1113 Thread[3] <Stromkreis 2> still active.
+20130528.181937.027 r9999I main     OApp     1113 Thread[4] <checker> still active.
+20130528.181937.027 r9999I main     OApp     1113 Thread[5] <cconmngr> still active.
+20130528.181937.027 r9999I main     OApp     1113 Thread[6] <tick002739BC> still active.
+20130528.181937.042 r9999I main     OApp     1015 backing up rocrail.ini to rocrail.ini.bak...
+20130528.181937.042 r9999I main     OApp     1045 saving ini rocrail.ini...
+20130528.181937.042 r9999I main     OHttp    0351 Shutting down HTTP...
+20130528.181937.058 r9999I main     OApp     1122 Informing controller...
+20130528.181937.058 r9999I main     OControl 1265 Shutting down...
+20130528.181937.058 r9999I main     OControl 1270 Informing interfaces...
+20130528.181937.167 r9999I main     OApp     1132 Exit.
