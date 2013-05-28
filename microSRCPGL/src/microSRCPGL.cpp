@@ -53,14 +53,14 @@ void setup()
 #if	( DEBUG_SCOPE > 1 )
 	// Start each software serial port
 	Serial3.begin( 9600 );
-	Serial3 << "debug ready ..." << endl;
+	Serial3.println ( "debug ready ..." );
 #endif
 	// SRCP Kommunikation oeffnen
 	//server.begin( 115200 );
 	server.begin( mac, ip, 4303 );
 
 #if	( DEBUG_SCOPE > 1 )
-	Serial3 << "Server listen " << endl;
+	Serial3.println ( "Server listen " );
 #endif
 
 	// Geraete initialisieren, je nach Board und Verwendung
@@ -77,7 +77,7 @@ void setup()
 	//DeviceManager.addLoco( new dev::GLMotoMamaAnalog( 2, 11, 12, 13 ) );
 
 #if	( DEBUG_SCOPE > 1 )
-	Serial3 << "Devices ready" << endl;
+	Serial3.println ( "Devices ready" );
 #endif
 }
 

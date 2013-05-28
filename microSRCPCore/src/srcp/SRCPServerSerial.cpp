@@ -40,7 +40,8 @@ unsigned long lasts = millis();
 void SRCPServerSerial::begin(unsigned long speed)
 {
 #if	( DEBUG_SCOPE > 1 )
-	Serial3 << "open port 1: " << speed << endl;
+	Serial3.print( "open port 1: " );
+	Serial3.println( speed );
 #endif
 	Serial.begin( speed );
 
@@ -68,14 +69,14 @@ int SRCPServerSerial::dispatch(void)
 			return	( 0 );
 		}*/
 		// Info Server
-/*		if	( session->getStatus() != srcp::UNDEFINED && session->isPowerOn() )
+		if	( session->getStatus() != srcp::UNDEFINED && session->isPowerOn() )
 		{
-			if	( last+5000 < millis() )
+			if	( lasts+250 < millis() )
 			{
 				session->infoFeedback( &Serial );
-				last = millis();
+				lasts = millis();
 			}
-		}*/
+		}
 		return	( 0 );
 	}
 
@@ -104,7 +105,10 @@ int SRCPServerSerial::dispatch(void)
 	buf[count] = '\0';
 
 #if	( DEBUG_SCOPE > 0 )
-	Serial3 << "data : " << session->getStatus() << ", " << buf << endl;
+	Serial3.print("recv: ");
+	Serial3.print( session->getStatus( ));
+	Serial3.print( ", " );
+	Serial3.println( buf );
 #endif
 
 	// ASCII SRCP Commands parsen und abstellen in global_cmd
@@ -113,7 +117,11 @@ int SRCPServerSerial::dispatch(void)
 	char* rc = session->dispatch();
 
 #if	( DEBUG_SCOPE > 0 )
-	Serial3 << "rc   : " << session->getStatus() << ", " << rc << '\r';
+	Serial3.print("send: ");
+	Serial3.print( session->getStatus( ));
+	Serial3.print( ", " );
+	Serial3.print( rc );
+	Serial3.print( '\r' );
 #endif
 
 	// Rueckmeldung an Host

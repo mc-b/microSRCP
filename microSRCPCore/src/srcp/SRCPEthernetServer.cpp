@@ -18,9 +18,6 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include <Arduino.h>
-#include <HardwareSerial.h>
-#include <Streaming.h>
 #include <Ethernet.h>
 #include "SRCPEthernetServer.h"
 
@@ -28,7 +25,7 @@ namespace srcp
 {
 char command[64];
 int pos = 0;
-long lasts = millis();
+long last = millis();
 
 void SRCPEthernetServer::begin( byte* mac, IPAddress ip, unsigned int port )
 {
@@ -59,9 +56,11 @@ int SRCPEthernetServer::dispatch( srcp::SRCPSession* session, lan::EthernetSocke
 		if	( session->getStatus() == srcp::UNDEFINED )
 		{
 #if	( DEBUG_SCOPE > 0 )
-			Serial << "conn : " << session->getStatus() << endl;
+			Serial3.print( "conn : " );
+			Serial3.println( session->getStatus() );
 #endif
 			socket->print( session->version() );
+			session->setStatus( srcp::HANDSHAKE );
 		}
 
 		// verbunden - Daten empfangen
@@ -79,13 +78,20 @@ int SRCPEthernetServer::dispatch( srcp::SRCPSession* session, lan::EthernetSocke
 			command[pos] = '\0';
 
 #if	( DEBUG_SCOPE > 0 )
-			Serial << "data : " << session->getStatus() << ", " << command << endl;
+			Serial3.print("recv: ");
+			Serial3.print( session->getStatus( ));
+			Serial3.print( ", " );
+			Serial3.println( command );
 #endif
 			parser->parse( command );
 			char* rc = session->dispatch();
 
 #if	( DEBUG_SCOPE > 0 )
-			Serial << "rc   : " << session->getStatus() << ", " << rc << '\r';
+			Serial3.print("send: ");
+			Serial3.print( session->getStatus( ));
+			Serial3.print( ", " );
+			Serial3.print( rc );
+			Serial3.print( '\r' );
 #endif
 			socket->print( rc );
 			pos = 0;
@@ -98,10 +104,10 @@ int SRCPEthernetServer::dispatch( srcp::SRCPSession* session, lan::EthernetSocke
 			// evtl. FB Module refreshen - auch wenn noch nicht gesendet wird.
 			DeviceManager.refresh();
 
-			if	( lasts+250 < millis() )
+			if	( last+250 < millis() )
 			{
 				session->infoFeedback( socket );
-				lasts = millis();
+				last = millis();
 			}
 		}
 	}
@@ -110,7 +116,7 @@ int SRCPEthernetServer::dispatch( srcp::SRCPSession* session, lan::EthernetSocke
 		if	( session->getStatus() != srcp::UNDEFINED )
 		{
 #if	( DEBUG_SCOPE > 0 )
-			Serial << "disconnect" << endl;
+			Serial3.println( "disconnect" );
 #endif
 			session->disconnect();
 			socket->stop();

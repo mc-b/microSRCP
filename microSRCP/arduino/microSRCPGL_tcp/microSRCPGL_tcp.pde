@@ -28,6 +28,8 @@
 
 // Debugging > 0 == ON
 #define DEBUG_SCOPE 2
+// Fuer TCP ist Serial frei fuer Debugging Output
+#define Serial3 Serial
 
 #include <Arduino.h>
 #include <HardwareSerial.h>
@@ -69,12 +71,13 @@
 // Globaler Command Buffer
 srcp::command_t global_cmd;
 // SRCP I/O Server
-srcp::SRCPServerSerial server;
-//srcp::SRCPEthernetServer server;
+//srcp::SRCPServerSerial server;
+srcp::SRCPEthernetServer server;
 // Enter a MAC address and IP address for your controller below.
 // The IP address will be dependent on your local network:
-//byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
-//IPAddress ip( 192, 168, 178, 241 );
+byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+IPAddress ip( 192, 168, 178, 241 );
+
 
 void setup()
 {
@@ -84,8 +87,8 @@ void setup()
 	Serial3.println( "debug ready ..." );
 #endif
 	// SRCP Kommunikation oeffnen
-	server.begin( 115200 );
-	//server.begin( mac, ip, 4303 );
+	//server.begin( 115200 );
+	server.begin( mac, ip, 4303 );
 
 #if	( DEBUG_SCOPE > 1 )
 	Serial3.println( "Server listen " );

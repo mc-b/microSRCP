@@ -22,8 +22,6 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include <stdio.h>
-#include <Streaming.h>
 #include "SRCPSession.h"
 #include "SRCPMessages.h"
 
@@ -119,7 +117,11 @@ void SRCPSession::infoFeedback( Print* out )
 		{
 			char* m = Messages.info( 0, "FB", fb[i].pin, fb[i].value );
 #if	( DEBUG_SCOPE > 1 )
-			Serial3 << "send : " << getStatus() << ", " << m << '\r';
+			Serial3.print("send: ");
+			Serial3.print( getStatus( ));
+			Serial3.print( ", " );
+			Serial3.print( m );
+			Serial3.print( '\r' );
 #endif
 			out->print( m );
 		}
