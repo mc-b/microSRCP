@@ -28,7 +28,7 @@ namespace srcp
 {
 char command[64];
 int pos = 0;
-long last = millis();
+long lasts = millis();
 
 void SRCPEthernetServer::begin( byte* mac, IPAddress ip, unsigned int port )
 {
@@ -98,10 +98,10 @@ int SRCPEthernetServer::dispatch( srcp::SRCPSession* session, lan::EthernetSocke
 			// evtl. FB Module refreshen - auch wenn noch nicht gesendet wird.
 			DeviceManager.refresh();
 
-			if	( last+250 < millis() )
+			if	( lasts+250 < millis() )
 			{
 				session->infoFeedback( socket );
-				last = millis();
+				lasts = millis();
 			}
 		}
 	}

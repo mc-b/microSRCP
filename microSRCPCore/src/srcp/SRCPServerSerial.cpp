@@ -31,7 +31,7 @@ namespace srcp
 
 // Input Buffer
 char buf[64];
-unsigned long last = millis();
+unsigned long lasts = millis();
 
 /**
  * Oeffnet den Seriallen Port mit speed, 8 bit, No Parity und 1 Stop Bit.

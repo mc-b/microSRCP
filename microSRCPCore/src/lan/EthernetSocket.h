@@ -41,7 +41,7 @@ class EthernetSocket : public Print
 {
 private:
 	int port;
-	SOCKET sock;
+	uint8_t sock;
 public:
 	EthernetSocket( int port );
 	void begin();
