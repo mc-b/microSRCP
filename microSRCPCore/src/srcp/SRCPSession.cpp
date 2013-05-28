@@ -23,6 +23,7 @@
  */
 
 #include <stdio.h>
+#include <Streaming.h>
 #include "SRCPSession.h"
 #include "SRCPMessages.h"
 
@@ -52,12 +53,15 @@ char* SRCPSession::dispatch()
 			switch (global_cmd.device)
 			{
 				case SM:
+				{
 					int rc = DeviceManager.getSM( global_cmd.bus, global_cmd.addr, global_cmd.values[0], global_cmd.values[1] );
 					if	( rc == -1 )
 						return	( Messages.error( 421 ) );
 					return	( Messages.info( global_cmd.bus, global_cmd.addr, global_cmd.values[0], rc ));
+				}
+				case POWER:
+					return	( Messages.info( 0, "POWER", 0, power ));
 			}
-
 			return (Messages.ok());
 		case SET:
 			switch (global_cmd.device)
@@ -108,18 +112,18 @@ const char* SRCPSession::version()
 
 void SRCPSession::infoFeedback( Print* out )
 {
-/*	for	( SRCPFeedback* e = manager->firstFeedbackElement(); e != 0; e = e->nextElement() )
+	for	( SRCPFeedback* next = DeviceManager.firstFeedbackElement(); next != (srcp::SRCPFeedback*) 0; next = next->nextElement() )
 	{
-		e->info( 0, &fb[0] );
+		next->info( 0, &fb[0] );
 		for	( int i = 0; fb[i].pin != 0; i++ )
 		{
 			char* m = Messages.info( 0, "FB", fb[i].pin, fb[i].value );
-#if	( DEBUG_SCOPE > 0 )
-			Serial << "send : " << getStatus() << ", " << m << '\r';
+#if	( DEBUG_SCOPE > 1 )
+			Serial3 << "send : " << getStatus() << ", " << m << '\r';
 #endif
-			out->println( m );
+			out->print( m );
 		}
-	}*/
+	}
 }
 
 void SRCPSession::disconnect()

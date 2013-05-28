@@ -42,6 +42,8 @@ public:
 	void addAccessoire( SRCPGenericAccessoire* device ) { device->setNextElement(this->firstGA); this->firstGA = device; }
 	void addLoco( SRCPGenericLoco* device ) { device->setNextElement(this->firstGL); this->firstGL = device; }
 	void addFeedback( SRCPFeedback* device ) { device->setNextElement(this->firstFB); this->firstFB = device; }
+	// unschoen, braucht es aber fuer SRCPSession
+	SRCPFeedback* firstFeedbackElement() { return ( firstFB ); }
 
 	int setGA( int addr, int port, int value, int delay );
 	int setGL( int addr, int drivemode, int v, int v_max, int fn[] );

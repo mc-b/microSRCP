@@ -3,7 +3,6 @@
 
 	Bestehend aus:
 	- Arduino Board mit min. ATmega328P - http://www.arduino.cc
-	- Ethernet Shield
 	- Motor Shield - http://arduino.cc/en/Main/ArduinoMotorShield oder
 	http://www.nkcelectronics.com/freeduino-arduino-motor-control-shield-kit.html
 
@@ -33,7 +32,7 @@
 #include <srcp/SRCPCommand.h>
 #include <srcp/SRCPDeviceManager.h>
 #include <srcp/SRCPServerSerial.h>
-#include <dev/GASignal.h>
+#include <dev/GALed.h>
 #include <dev/GAServo.h>
 #include <dev/GLMotoMamaAnalog.h>
 #include <dev/FBSwitchSensor.h>
@@ -57,15 +56,17 @@ void setup()
 #endif
 
 	// Geraete initialisieren, je nach Board und Verwendung
-	DeviceManager.addAccessoire( new dev::GASignal( 1, 4, 5 ) ); // Signal mit Addr 1 und 2 Led an Pin 4 und 5
-	DeviceManager.addAccessoire( new dev::GASignal( 2, 6, 7 ) );
+	DeviceManager.addAccessoire( new dev::GALed( 1, 4, LOW ) ); 	// 2 Signale mit 2 LED an Ports 4 - 7.
+	DeviceManager.addAccessoire( new dev::GALed( 2, 5, HIGH ) );
+	DeviceManager.addAccessoire( new dev::GALed( 3, 6, LOW ) );
+	DeviceManager.addAccessoire( new dev::GALed( 4, 7, HIGH ) );
 	DeviceManager.addAccessoire( new dev::GAServo( 3, 2, 60, 90 ) ); // Servo mit Addr 3 an Pin 2, min. Stellung 60, max. Stellung 90 von 180.
 	DeviceManager.addAccessoire( new dev::GAServo( 4, 3, 60, 90 ) );
-	DeviceManager.addFeedback( new dev::FBSwitchSensor( 1, A0, A5 ) ); // im Moment wird nur 1 FBSwitchSensor mit max. 8 Meldern unterstuetzt!
+	DeviceManager.addFeedback( new dev::FBSwitchSensor( 1, A0, A5 ) ); // Sensoren, jeweils in Gruppen von 8 (auch wenn nicht 8 Pins belegt)
 #if ( __AVR_ATmega1280__ || __AVR_ATmega2560__ )
-	//DeviceManager.addDevice( new dev::GLMotoMamaAnalog( 1, 10,  8,  9 ) ); // Moto Mama Shield, Pin 10 Geschwindigkeit, 8 Vor-, 9 Rueckwaerts - nur Mega
+	DeviceManager.addLoco( new dev::GLMotoMamaAnalog( 1, 10,  8,  9 ) ); // Moto Mama Shield, Pin 10 Geschwindigkeit, 8 Vor-, 9 Rueckwaerts - nur Mega
 #endif
-	//DeviceManager.addDevice( new dev::GLMotoMamaAnalog( 2, 11, 12, 13 ) );
+	DeviceManager.addLoco( new dev::GLMotoMamaAnalog( 2, 11, 12, 13 ) );
 
 #if	( DEBUG_SCOPE > 1 )
 	Serial3 << "Devices ready" << endl;

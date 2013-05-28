@@ -31,6 +31,7 @@ namespace srcp
 
 // Input Buffer
 char buf[64];
+unsigned long last = millis();
 
 /**
  * Oeffnet den Seriallen Port mit speed, 8 bit, No Parity und 1 Stop Bit.
@@ -56,8 +57,8 @@ int SRCPServerSerial::dispatch(void)
 	// keine Daten vorhanden - exit
 	if	( ! Serial.available() )
 	{
-		// noch nicht verbunden - zuerst Versioninfo senden
-/*		if	( session->getStatus() == srcp::UNDEFINED )
+/*		// noch nicht verbunden - zuerst Versioninfo senden
+		if	( session->getStatus() == srcp::UNDEFINED )
 		{
 #if	( DEBUG_SCOPE > 0 )
 			Serial3 << "conn : " << session->getStatus() << endl;
@@ -65,6 +66,15 @@ int SRCPServerSerial::dispatch(void)
 			Serial.print( Messages.version()  );
 			delay( 1000 );
 			return	( 0 );
+		}*/
+		// Info Server
+/*		if	( session->getStatus() != srcp::UNDEFINED && session->isPowerOn() )
+		{
+			if	( last+5000 < millis() )
+			{
+				session->infoFeedback( &Serial );
+				last = millis();
+			}
 		}*/
 		return	( 0 );
 	}
@@ -97,14 +107,18 @@ int SRCPServerSerial::dispatch(void)
 	Serial3 << "data : " << session->getStatus() << ", " << buf << endl;
 #endif
 
+	// ASCII SRCP Commands parsen und abstellen in global_cmd
 	parser->parse( buf );
+	// SRCP Commands verarbeiten, in rc steht die SRCP Rueckmeldung
 	char* rc = session->dispatch();
 
 #if	( DEBUG_SCOPE > 0 )
 	Serial3 << "rc   : " << session->getStatus() << ", " << rc << '\r';
 #endif
 
-	Serial.println( rc );
+	// Rueckmeldung an Host
+	Serial.print( rc );
+
 	return	( 1 );
 }
 

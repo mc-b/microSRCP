@@ -44,6 +44,7 @@ private:
 public:
 	FBSwitchSensor( int addr, uint8_t startPin, uint8_t endPin );
 	void refresh();
+	int info( int addr, srcp::feedback fb[] );
 };
 
 }

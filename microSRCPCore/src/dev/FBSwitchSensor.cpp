@@ -50,14 +50,32 @@ void FBSwitchSensor::refresh( )
 	{
 		int v = digitalRead( i ) == 0;
 		if	( v )
-		{
 			bitSet( sensor, i - startPin );
-/*
-#if	( DEBUG_SCOPE > 1 )
-			Serial3 << "Sensor changed " << sensor << endl;
-#endif
-*/
-		}
 	}
 }
+
+int FBSwitchSensor::info( int addr, srcp::feedback fb[] )
+{
+	refresh();
+
+	memset( fb, 0, 9 );
+
+	int pos = 0;
+	for	( int i = 0; i < 8; i++ )
+	{
+		fb[pos].pin = i + this->addr;
+		fb[pos].value = bitRead(sensor, i);
+/*
+#if	( DEBUG_SCOPE > 1 )
+		Serial3 << "sensor " << fb[pos].pin << ":" << fb[pos].value << endl;
+#endif
+*/
+		pos++;
+	}
+
+	oldSensor = sensor;
+	sensor = 0;
+	return	( 0 );
+}
+
 }

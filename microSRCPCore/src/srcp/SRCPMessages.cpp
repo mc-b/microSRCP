@@ -39,6 +39,7 @@ char VERSION[] = "srcpd V1.0; SRCP 0.8.2\n";
 const char INFO[] = "%ld 100 INFO %d %s %d %d\n";
 const char INFO_SM[] = "%ld 100 INFO %d SM %d GET %d %d\n";
 const char OK[] = "%ld %d OK\n";
+const char OK201[] = "%ld %d OK PROTOCOL SRCP\n";
 const char GO[] = "%ld 200 OK GO %d\n";
 const char ERROR[] = "%ld %d ERROR\n";
 
@@ -83,7 +84,7 @@ char* SRCPMessages::ok()
 }
 char* SRCPMessages::ok201()
 {
-	sprintf(buf, OK, millis(), 201 );
+	sprintf(buf, OK201, millis(), 201 );
 	return (buf);
 }
 char* SRCPMessages::ok202()
