@@ -1,0 +1,173 @@
+--------------------------------------------------
+                                            lll   
+                                        iii lll   
+                                            lll   
+ rrrrrr   ooooo   ccccc rrrrrr   aaaaaa iii lll   
+ rrr rrr ooo ooo ccc    rrr rrr aaa aaa iii lll   
+ rrr     ooo ooo ccc    rrr     aaa aaa iii lll   
+ rrr      ooooo   ccccc rrr      aaaaaa iii  lll  
+--------------------------------------------------
+ TM and Copyright 2002-2013 Rob Versluis.
+ All Rights Reserved.
+   r.j.versluis@rocrail.net
+   http://www.rocrail.net
+ License: GNU GPL V3
+   http://www.gnu.org/licenses/gpl-3.0-standalone.html
+--------------------------------------------------
+ Rocrail 5315
+ Build: May 28 2013 09:04:40
+ librocs 2.0-0 build May 28 2013 09:04:19
+ processid = 3164
+       mac = 0000000000000000
+--------------------------------------------------
+20130528.184703.931 r9999I main     OSystem  0575 expdate = 24-02-2014
+The license expires in 272 days.
+20130528.184703.931 r9999I main     OApp     0879 dpIID = []
+20130528.184703.931 r9999I main     OApp     0880 ptIID = []
+20130528.184703.931 r9999I main     OApp     0881 svIID = []
+20130528.184703.931 r9999I main     OApp     0882 lcIID = []
+20130528.184703.931 r9999I main     OModel   0415 parsePlan file: plan.xml
+20130528.184703.946 r9999I main     OAnalyse 7747 MRD[100] ExtChk: basic[1]c[0] block[1]c[0] route[1]c[0] action[1]c[0]
+20130528.184703.946 r9999I main     OAnalyse 5964 checking plan health...
+20130528.184703.946 r9999I main     OAnalyse 2553 mod x: 0 y: 0 
+20130528.184703.946 r9999I main     OAnalyse 6235 Starting zlevel check
+20130528.184703.946 r9999I main     OAnalyse 2297 zlevel check: 32 items
+20130528.184703.946 r9999I main     OAnalyse 6256 INFO: object [tk] with id [tk20130303203454076] at [26,5,0] is the most far away object in the plan
+20130528.184703.946 r9999I main     OAnalyse 6267 INFO: analyzer: max connector distance is 26 (def/min=10)
+20130528.184703.946 r9999I main     OAnalyse 6268 INFO: analyzer: max z-level is 0
+20130528.184703.946 r9999I main     OAnalyse 6282 Plan is healthy
+20130528.184703.946 r9999I main     OAnalyse 0183 cleaning up the ANALYSER...
+20130528.184703.946 r9999I main     OAnalyse 0250 ANALYSER is cleaned up
+20130528.184703.946 r9999I main     OModel   0479 parsePlan title: New Plan
+20130528.184703.962 r9999I main     OModel   3121 init clearingMaps...
+20130528.184703.962 r9999I main     OModel   3146 init creatingMaps...
+20130528.184703.962 r9999I main     OModel   3150 init creatingFbAddrMap...
+20130528.184703.962 r9999I main     OModel   2242 createFbAddrMap: size=3.
+20130528.184703.962 r9999I main     OLoc     3138 no restore wanted: reset speed for loco [Stromkreis 1]
+20130528.184703.977 r9999I main     OLoc     3142 no restore wanted: reset functions for loco [Stromkreis 1]
+20130528.184703.977 r9999I main     OLib     0049 rocs_lib_load OK [.\./lcdriver.dll]
+20130528.184703.993 r9999I main     OLib     0063 rocs_lib_getProc OK [.\./lcdriver.dll:rocGetLcDrInt]
+20130528.184703.009 r9999I 00000E38 OLcDrive 0598 LcDriver 2.0.0 loaded for Stromkreis 1
+20130528.184703.009 r9999I tick01E9 OSystem  0112 Ticker thread has started.
+20130528.184703.009 r9999I main     OLoc     3156 loco [Stromkreis 1] enterside=[+]
+20130528.184703.024 r9999I main     OLoc     3138 no restore wanted: reset speed for loco [Stromkreis 2]
+20130528.184703.024 r9999I main     OLoc     3142 no restore wanted: reset functions for loco [Stromkreis 2]
+20130528.184703.040 r9999I main     OLib     0049 rocs_lib_load OK [.\./lcdriver.dll]
+20130528.184703.055 r9999I main     OLib     0063 rocs_lib_getProc OK [.\./lcdriver.dll:rocGetLcDrInt]
+20130528.184703.071 r9999I 00000E38 OLcDrive 0598 LcDriver 2.0.0 loaded for Stromkreis 2
+20130528.184703.071 r9999I main     OLoc     3156 loco [Stromkreis 2] enterside=[+]
+20130528.184703.087 r9999I main     OModel   3173 init creatingFbAddrMap...
+20130528.184703.087 r9999I main     OModel   2264 createSwAddrMap: size=1.
+20130528.184703.102 r9999I main     OModel   2285 createCoAddrMap: size=0.
+20130528.184703.118 r9999I main     OModel   5097 loading occupancy file [occ.xml]
+20130528.184703.118 r9999I main     OModel   3178 init blocks...
+20130528.184703.133 r9999I main     OBlock   2078 init block Block 1
+20130528.184703.133 r9999I main     OBlock   2078 init block Block 2
+20130528.184703.149 r9999I main     OBlock   2078 init block Block 3
+20130528.184703.165 r9999I main     OSerial  0093 Opening serial[COM1]  [return code=2] [2] [No such file or directory]
+20130528.184703.165 r9999I main     OSerial  0054 Serial[COM1] closed.
+20130528.184703.180 r9999I main     OSerial  0093 Opening serial[COM2]  [return code=2] [2] [No such file or directory]
+20130528.184703.180 r9999I main     OSerial  0054 Serial[COM2] closed.
+20130528.184703.196 r9999I main     OSerial  0093 Opening serial[COM3]  [return code=2] [2] [No such file or directory]
+20130528.184703.196 r9999I main     OSerial  0054 Serial[COM3] closed.
+20130528.184703.196 r9999I main     OSerial  0093 Opening serial[COM4]  [return code=2] [2] [No such file or directory]
+20130528.184703.211 r9999I main     OSerial  0054 Serial[COM4] closed.
+20130528.184703.211 r9999I main     OSerial  0093 Opening serial[COM5]  [return code=2] [2] [No such file or directory]
+20130528.184703.243 r9999I main     OSerial  0054 Serial[COM5] closed.
+20130528.184703.367 r9999I main     OSerial  0093 Opening serial[COM6]  [return code=0] [0] [OK]
+20130528.184703.367 r9999I main     OSerial  0114 blocking[1] directIO[0]
+20130528.184703.430 r9999I main     OSerial  0054 Serial[COM6] closed.
+20130528.184703.445 r9999I main     OSerial  0093 Opening serial[COM7]  [return code=0] [0] [OK]
+20130528.184703.461 r9999I main     OSerial  0114 blocking[1] directIO[0]
+20130528.184703.461 r9999I main     OSerial  0054 Serial[COM7] closed.
+20130528.184703.477 r9999I main     OSerial  0093 Opening serial[COM8]  [return code=0] [0] [OK]
+20130528.184703.477 r9999I main     OSerial  0114 blocking[1] directIO[0]
+20130528.184703.492 r9999I main     OSerial  0054 Serial[COM8] closed.
+20130528.184703.492 r9999I main     OSerial  0093 Opening serial[COM9]  [return code=2] [2] [No such file or directory]
+20130528.184703.508 r9999I main     OSerial  0054 Serial[COM9] closed.
+20130528.184703.508 r9999I main     OControl 1530 devices: "COM6,COM7,COM8"
+20130528.184703.508 r9999I main     OControl 1180 initDigInts lib="srcp" idd="GA01"
+20130528.184703.523 r9999I main     OLib     0049 rocs_lib_load OK [.\srcp.dll]
+20130528.184703.523 r9999I Stromkre OLoc     1415 Runner for "Stromkreis 1" started.
+20130528.184703.539 r9999I main     OLib     0063 rocs_lib_getProc OK [.\srcp.dll:rocGetDigInt]
+20130528.184703.539 r9999I 00000E38 OSRCP    1059 ----------------------------------------
+20130528.184703.539 r9999I 00000E38 OSRCP    1060 SRCP 2.0.0
+20130528.184703.555 r9999I 00000E38 OSRCP    1061   iid       : GA01
+20130528.184703.570 r9999I 00000E38 OSRCP    1062   sublib    : serial
+20130528.184703.570 r9999I 00000E38 OSRCP    0036   device    : com35
+20130528.184703.570 r9999I 00000E38 OSRCP    1089 ----------------------------------------
+20130528.184703.586 r9999I main     OControl 1249 initDigInts OK
+20130528.184703.586 r9999I Stromkre OLoc     1415 Runner for "Stromkreis 2" started.
+20130528.184703.586 r9999I info01E8 OSRCP    0784 info reader started
+20130528.184703.601 r9999I info01E8 OSRCP    0055 connecting to [com35]
+20130528.184703.617 r9999I main     OPowerMa 0481 Power Manager instantiated.
+20130528.184703.617 r9999I main     OControl 0179 Init shortcut sensor...
+20130528.184703.617 r9999I clocktic OControl 1400 ClockTicker started.
+20130528.184703.617 r9999I checker  OControl 1477 Checker started.
+20130528.184703.648 r9999I main     OClntCon 0600 ClientConnection started on port 8051.
+20130528.184703.648 r9999I broadcas OClntCon 0490 Broadcaster started.
+20130528.184703.648 r9999I cconmngr OClntCon 0375 Manager started.
+20130528.184703.664 r9999I main     OModel   1791 Checking all Loco's for V=0...
+20130528.184703.679 r9999I info01E8 OSerial  0093 Opening serial[com35]  [return code=0] [0] [OK]
+20130528.184703.679 r9999I info01E8 OSerial  0114 blocking[1] directIO[0]
+20130528.184703.679 r9999I main     OModel   2912 init Track Driver blocks...
+20130528.184703.695 r9999I main     OModel   0640 updateFB
+20130528.184703.711 r9999I main     OModel   0626 add bus 0, 0...
+20130528.184704.711 r9999I 00000E38 OSRCP    0575 reconnected
+20130528.184704.647 r9999I clocktic OControl 1455 new clock event 18:47.04
+20130528.184704.662 r9999I 000004A4 OSRCP    0575 reconnected
+20130528.184707.595 r9999E info01E8 OSerial  0408 Timeout on serial read[com35] 0 of 1 read.[rc=0] tries=3
+20130528.184707.611 r9999E info01E8 OSRCP    0974 Try to reconnect...
+20130528.184707.611 r9999I info01E8 OSRCP    0072 disconnecting from [com35]
+20130528.184707.704 r9999E 00000E38 OMutex   0096 Error on mutex trywait. [0] [OK]
+20130528.184707.704 r9999E 000004A4 OMutex   0096 Error on mutex trywait. [0] [OK]
+20130528.184708.704 r9999W 00000E38 OSerial  0337 Serial[com35] 0 of 32 sent.[rc=6]
+20130528.184708.720 r9999W 00000E38 OSerial  0337 Serial[com35] 0 of 3 sent.[rc=6]
+20130528.184708.736 r9999W 000004A4 OSerial  0337 Serial[com35] 0 of 32 sent.[rc=6]
+20130528.184708.736 r9999I 00000E38 OSRCP    0998 init server...
+20130528.184708.736 r9999W 00000E38 OSerial  0337 Serial[com35] 0 of 12 sent.[rc=6]
+20130528.184708.751 r9999I info01E8 OSerial  0054 Serial[com35] closed.
+20130528.184708.751 r9999W 00000E38 OSerial  0337 Serial[com35] 0 of 13 sent.[rc=6]
+20130528.184708.751 r9999I 00000E38 OSRCP    0169 Handshake completed.
+20130528.184708.767 r9999I 00000E38 OSRCP    0580 node=fbinfo cmd=fbmods
+20130528.184708.782 r9999I info01E8 OSRCP    0072 disconnecting from [com35]
+20130528.184708.798 r9999I 000004A4 OSRCP    0998 init server...
+20130528.184708.798 r9999I 000004A4 OSRCP    0169 Handshake completed.
+20130528.184708.814 r9999I 000004A4 OSRCP    0580 node=clock cmd=set
+20130528.184709.796 r9999W info01E8 OSRCP    0793 info reader: error connecting
+20130528.184710.795 r9999W info01E8 OSRCP    0793 info reader: error connecting
+20130528.184711.809 r9999W info01E8 OSRCP    0793 info reader: error connecting
+20130528.184712.807 r9999W info01E8 OSRCP    0793 info reader: error connecting
+20130528.184713.821 r9999W info01E8 OSRCP    0793 info reader: error connecting
+20130528.184714.820 r9999W info01E8 OSRCP    0793 info reader: error connecting
+20130528.184715.834 r9999W info01E8 OSRCP    0793 info reader: error connecting
+20130528.184716.832 r9999W info01E8 OSRCP    0793 info reader: error connecting
+20130528.184716.612 r9999I main     OApp     0539 Shutdown requested.
+20130528.184716.628 r9999I main     OApp     1065 SHUTDOWN
+20130528.184716.643 r9999I 00000E38 OSRCP    0580 node=sys cmd=shutdown
+20130528.184716.643 r9999I main     OModel   1913 informing 2 listeners of a system event...
+20130528.184716.659 r9999I main     OApp     1074 Informing clients...
+20130528.184717.846 r9999W info01E8 OSRCP    0793 info reader: error connecting
+20130528.184717.862 r9999I main     OApp     1086 Informing model...
+20130528.184717.877 r9999I main     OModel   2290 Saving plan [plan.xml]...
+20130528.184717.893 r9999I main     OModel   2328 Serialized Plan=15356
+20130528.184717.893 r9999I main     OModel   0302 backup plan.xml to backup\20130528184717893-plan.xml
+20130528.184717.908 r9999I main     OModel   0333 15356 bytes saved in plan.xml.
+20130528.184717.908 r9999I main     OModel   2333 Plan Saved.
+20130528.184717.924 r9999I main     OModel   5063 writing occupancy file [occ.xml]
+20130528.184717.924 r9999I main     OApp     1102 Informing all threads...
+20130528.184717.940 r9999I main     OApp     1105 Shutting down...
+20130528.184717.940 r9999I main     OApp     1113 Thread[0] <clockticker> still active.
+20130528.184717.940 r9999I main     OApp     1113 Thread[1] <broadcast> still active.
+20130528.184717.955 r9999I main     OApp     1113 Thread[2] <Stromkreis 1> still active.
+20130528.184717.955 r9999I main     OApp     1113 Thread[3] <Stromkreis 2> still active.
+20130528.184717.971 r9999I main     OApp     1113 Thread[4] <checker> still active.
+20130528.184717.971 r9999I main     OApp     1113 Thread[5] <tick007439BC> still active.
+20130528.184717.971 r9999I main     OApp     1113 Thread[6] <cconmngr> still active.
+20130528.184717.986 r9999I main     OApp     1015 backing up rocrail.ini to rocrail.ini.bak...
+20130528.184717.986 r9999I main     OApp     1045 saving ini rocrail.ini...
+20130528.184717.002 r9999I main     OHttp    0351 Shutting down HTTP...
+20130528.184717.002 r9999I main     OApp     1122 Informing controller...
+20130528.184717.018 r9999I main     OControl 1265 Shutting down...
+20130528.184717.018 r9999I main     OControl 1270 Informing interfaces...
+20130528.184717.127 r9999I main     OApp     1132 Exit.

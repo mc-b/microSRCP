@@ -1,0 +1,91 @@
+debug ready ...
+Server listen 
+Devices ready
+conn : 0
+conn : 0
+recv: 1, SET PROTOCOL SRCP 0.8
+send: 1, 8758 201 OK PROTOCOL SRCP
+recv: 1, SET CONNECTIONMODE SRCP INFO
+send: 3, 8802 202 OK
+recv: 1, SET PROTOCOL SRCP 0.8
+send: 1, 8858 201 OK PROTOCOL SRCP
+recv: 3, GO
+send: 3, 8908 200 OK GO 1
+recv: 1, SET CONNECTIONMODE SRCP COMMAND
+send: 2, 8980 202 OK
+recv: 2, GO
+send: 2, 9017 200 OK GO 2
+recv: 2, GET 1 POWER
+send: 2, 9068 100 INFO 0 POWER 0 0
+send: 3, 38808 100 INFO 0 FB 1 1
+send: 3, 39562 100 INFO 0 FB 1 0
+send: 3, 42324 100 INFO 0 FB 2 1
+send: 3, 42828 100 INFO 0 FB 2 0
+recv: 2, GET 7 GA 3 0
+send: 2, 56129 200 OK
+recv: 2, INIT 7 GA 3 P
+send: 2, 56135 200 OK
+recv: 2, GET 7 GA 3 0
+send: 2, 56181 200 OK
+recv: 2, SET 7 GA 3 0 1 -1
+send: 2, 56236 200 OK
+recv: 2, GET 7 GA 4 0
+send: 2, 56283 200 OK
+recv: 2, INIT 7 GA 4 P
+send: 2, 56331 200 OK
+recv: 2, GET 7 GA 4 0
+send: 2, 56379 200 OK
+recv: 2, SET 7 GA 4 0 1 -1
+send: 2, 56433 200 OK
+recv: 2, SET 7 GA 3 0 0 -1
+send: 2, 56485 200 OK
+recv: 2, SET 7 GA 3 0 1 -1
+send: 2, 57363 200 OK
+recv: 2, SET 7 GA 4 0 1 -1
+send: 2, 57377 200 OK
+recv: 2, SET 7 GA 4 0 0 -1
+send: 2, 57430 200 OK
+recv: 2, GET 5 GA 1 0
+send: 2, 59728 200 OK
+recv: 2, INIT 5 GA 1 M
+send: 2, 59735 200 OK
+recv: 2, GET 5 GA 1 0
+send: 2, 59782 200 OK
+recv: 2, SET 5 GA 1 0 1 -1
+send: 2, 59835 200 OK
+recv: 2, GET 5 GA 2 0
+send: 2, 59882 200 OK
+recv: 2, INIT 5 GA 2 M
+send: 2, 59931 200 OK
+recv: 2, GET 5 GA 2 0
+send: 2, 59979 200 OK
+recv: 2, SET 5 GA 2 0 1 -1
+send: 2, 60033 200 OK
+recv: 2, SET 5 GA 2 0 0 -1
+send: 2, 60086 200 OK
+recv: 2, SET 5 GA 1 0 1 -1
+send: 2, 60779 200 OK
+recv: 2, SET 5 GA 2 0 1 -1
+send: 2, 60793 200 OK
+recv: 2, SET 5 GA 1 0 0 -1
+send: 2, 60847 200 OK
+recv: 2, SET 5 GA 1 0 1 -1
+send: 2, 61803 200 OK
+recv: 2, SET 5 GA 2 0 1 -1
+send: 2, 61817 200 OK
+recv: 2, SET 5 GA 2 0 0 -1
+send: 2, 61871 200 OK
+recv: 2, SET 5 GA 1 0 1 -1
+send: 2, 63148 200 OK
+recv: 2, SET 5 GA 2 0 1 -1
+send: 2, 63162 200 OK
+recv: 2, SET 5 GA 1 0 0 -1
+send: 2, 63214 200 OK
+recv: 2, SET 5 GA 1 0 1 -1
+send: 2, 64706 200 OK
+recv: 2, SET 5 GA 2 0 1 -1
+send: 2, 64720 200 OK
+recv: 2, SET 5 GA 2 0 0 -1
+send: 2, 64774 200 OK
+disconnect
+disconnect

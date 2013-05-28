@@ -1,0 +1,44 @@
+============== Manuelle Versuche mittels der Seriellen Konsole ==========
+debug ready ...
+open port 1: 115200
+Server listen
+Devices ready
+recv: 1, SET PROTOCOL SRCP 0.8
+send: 1, 43741 201 OK PROTOCOL SRCP
+recv: 1, SET CONNECTIONMODE SRCP INFO
+send: 3, 56542 202 OK
+recv: 3, SET PROTOCOL SRCP 0.8
+send: 3, 66940 201 OK PROTOCOL SRCP
+recv: 3, GO
+send: 3, 89058 200 OK GO 1
+recv: 3, SET CONNECTIONMODE SRCP COMMAND
+send: 2, 100468 202 OK
+recv: 2, GO
+send: 2, 114073 200 OK GO 2
+recv: 2, GET 1 POWER
+send: 2, 124290 100 INFO 0 POWER 0 0
+send: 2, 132987 100 INFO 0 FB 1 1
+send: 2, 133741 100 INFO 0 FB 1 0
+send: 2, 137006 100 INFO 0 FB 4 1
+send: 2, 137510 100 INFO 0 FB 4 0
+recv: 2, GET 7 GA 3 0
+send: 2, 149032 200 OK
+recv: 2, INIT 7 GA 3 P
+send: 2, 158240 200 OK
+recv: 2, GET 7 GA 3 0
+send: 2, 169048 200 OK
+recv: 2, SET 7 GA 3 0 1 -1
+send: 2, 181152 200 OK
+recv: 2, SET 7 GA 3 0 0 -1
+send: 2, 191280 200 OK
+
+=== Log mit RocRail ===
+
+debug ready ...
+open port 1: 115200
+Server listen
+Devices ready
+recv: 1, SET PROTOCOL SRCP 0.8
+send: 1, 3003 201 OK PROTOCOL SRCP
+recv: 1, SET PROTOCOL SRCP 0.8
+send: 1, 3039 201 OK PROTOCOL SRCP
