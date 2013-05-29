@@ -74,6 +74,7 @@ int SRCPServerSerial::dispatch(void)
 			if	( lasts+250 < millis() )
 			{
 				session->infoFeedback( &Serial );
+				Serial.flush();
 				lasts = millis();
 			}
 		}
@@ -125,7 +126,8 @@ int SRCPServerSerial::dispatch(void)
 #endif
 
 	// Rueckmeldung an Host
-	Serial.print( rc );
+	Serial.write( rc );
+	Serial.flush();
 
 	return	( 1 );
 }
