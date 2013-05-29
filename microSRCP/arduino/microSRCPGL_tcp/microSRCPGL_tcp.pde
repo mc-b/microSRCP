@@ -99,8 +99,8 @@ void setup()
 	DeviceManager.addAccessoire( new dev::GALed( 2, 5, HIGH ) );
 	DeviceManager.addAccessoire( new dev::GALed( 3, 6, LOW ) );
 	DeviceManager.addAccessoire( new dev::GALed( 4, 7, HIGH ) );
-	DeviceManager.addAccessoire( new dev::GAServo( 3, 2, 60, 90 ) ); // Servo mit Addr 3 an Pin 2, min. Stellung 60, max. Stellung 90 von 180.
-	DeviceManager.addAccessoire( new dev::GAServo( 4, 3, 60, 90 ) );
+	DeviceManager.addAccessoire( new dev::GAServo( 5, 2, 60, 90 ) ); // Servo mit Addr 3 an Pin 2, min. Stellung 60, max. Stellung 90 von 180.
+	DeviceManager.addAccessoire( new dev::GAServo( 6, 3, 60, 90 ) );
 	DeviceManager.addFeedback( new dev::FBSwitchSensor( 1, A0, A5 ) ); // Sensoren, jeweils in Gruppen von 8 (auch wenn nicht 8 Pins belegt)
 #if ( __AVR_ATmega1280__ || __AVR_ATmega2560__ )
 	//DeviceManager.addLoco( new dev::GLMotoMamaAnalog( 1, 10,  8,  9 ) ); // Moto Mama Shield, Pin 10 Geschwindigkeit, 8 Vor-, 9 Rueckwaerts - nur Mega
