@@ -14,160 +14,490 @@
  License: GNU GPL V3
    http://www.gnu.org/licenses/gpl-3.0-standalone.html
 --------------------------------------------------
- Rocrail 5315
- Build: May 28 2013 09:04:40
- librocs 2.0-0 build May 28 2013 09:04:19
- processid = 3164
-       mac = 0000000000000000
+ Rocrail 5323
+ Build: May 29 2013 11:25:41
+ librocs 2.0-0 build May 29 2013 11:25:20
+ processid = 2428
+       mac = 003005A6B6A90000
 --------------------------------------------------
-20130528.184703.931 r9999I main     OSystem  0575 expdate = 24-02-2014
-The license expires in 272 days.
-20130528.184703.931 r9999I main     OApp     0879 dpIID = []
-20130528.184703.931 r9999I main     OApp     0880 ptIID = []
-20130528.184703.931 r9999I main     OApp     0881 svIID = []
-20130528.184703.931 r9999I main     OApp     0882 lcIID = []
-20130528.184703.931 r9999I main     OModel   0415 parsePlan file: plan.xml
-20130528.184703.946 r9999I main     OAnalyse 7747 MRD[100] ExtChk: basic[1]c[0] block[1]c[0] route[1]c[0] action[1]c[0]
-20130528.184703.946 r9999I main     OAnalyse 5964 checking plan health...
-20130528.184703.946 r9999I main     OAnalyse 2553 mod x: 0 y: 0 
-20130528.184703.946 r9999I main     OAnalyse 6235 Starting zlevel check
-20130528.184703.946 r9999I main     OAnalyse 2297 zlevel check: 32 items
-20130528.184703.946 r9999I main     OAnalyse 6256 INFO: object [tk] with id [tk20130303203454076] at [26,5,0] is the most far away object in the plan
-20130528.184703.946 r9999I main     OAnalyse 6267 INFO: analyzer: max connector distance is 26 (def/min=10)
-20130528.184703.946 r9999I main     OAnalyse 6268 INFO: analyzer: max z-level is 0
-20130528.184703.946 r9999I main     OAnalyse 6282 Plan is healthy
-20130528.184703.946 r9999I main     OAnalyse 0183 cleaning up the ANALYSER...
-20130528.184703.946 r9999I main     OAnalyse 0250 ANALYSER is cleaned up
-20130528.184703.946 r9999I main     OModel   0479 parsePlan title: New Plan
-20130528.184703.962 r9999I main     OModel   3121 init clearingMaps...
-20130528.184703.962 r9999I main     OModel   3146 init creatingMaps...
-20130528.184703.962 r9999I main     OModel   3150 init creatingFbAddrMap...
-20130528.184703.962 r9999I main     OModel   2242 createFbAddrMap: size=3.
-20130528.184703.962 r9999I main     OLoc     3138 no restore wanted: reset speed for loco [Stromkreis 1]
-20130528.184703.977 r9999I main     OLoc     3142 no restore wanted: reset functions for loco [Stromkreis 1]
-20130528.184703.977 r9999I main     OLib     0049 rocs_lib_load OK [.\./lcdriver.dll]
-20130528.184703.993 r9999I main     OLib     0063 rocs_lib_getProc OK [.\./lcdriver.dll:rocGetLcDrInt]
-20130528.184703.009 r9999I 00000E38 OLcDrive 0598 LcDriver 2.0.0 loaded for Stromkreis 1
-20130528.184703.009 r9999I tick01E9 OSystem  0112 Ticker thread has started.
-20130528.184703.009 r9999I main     OLoc     3156 loco [Stromkreis 1] enterside=[+]
-20130528.184703.024 r9999I main     OLoc     3138 no restore wanted: reset speed for loco [Stromkreis 2]
-20130528.184703.024 r9999I main     OLoc     3142 no restore wanted: reset functions for loco [Stromkreis 2]
-20130528.184703.040 r9999I main     OLib     0049 rocs_lib_load OK [.\./lcdriver.dll]
-20130528.184703.055 r9999I main     OLib     0063 rocs_lib_getProc OK [.\./lcdriver.dll:rocGetLcDrInt]
-20130528.184703.071 r9999I 00000E38 OLcDrive 0598 LcDriver 2.0.0 loaded for Stromkreis 2
-20130528.184703.071 r9999I main     OLoc     3156 loco [Stromkreis 2] enterside=[+]
-20130528.184703.087 r9999I main     OModel   3173 init creatingFbAddrMap...
-20130528.184703.087 r9999I main     OModel   2264 createSwAddrMap: size=1.
-20130528.184703.102 r9999I main     OModel   2285 createCoAddrMap: size=0.
-20130528.184703.118 r9999I main     OModel   5097 loading occupancy file [occ.xml]
-20130528.184703.118 r9999I main     OModel   3178 init blocks...
-20130528.184703.133 r9999I main     OBlock   2078 init block Block 1
-20130528.184703.133 r9999I main     OBlock   2078 init block Block 2
-20130528.184703.149 r9999I main     OBlock   2078 init block Block 3
-20130528.184703.165 r9999I main     OSerial  0093 Opening serial[COM1]  [return code=2] [2] [No such file or directory]
-20130528.184703.165 r9999I main     OSerial  0054 Serial[COM1] closed.
-20130528.184703.180 r9999I main     OSerial  0093 Opening serial[COM2]  [return code=2] [2] [No such file or directory]
-20130528.184703.180 r9999I main     OSerial  0054 Serial[COM2] closed.
-20130528.184703.196 r9999I main     OSerial  0093 Opening serial[COM3]  [return code=2] [2] [No such file or directory]
-20130528.184703.196 r9999I main     OSerial  0054 Serial[COM3] closed.
-20130528.184703.196 r9999I main     OSerial  0093 Opening serial[COM4]  [return code=2] [2] [No such file or directory]
-20130528.184703.211 r9999I main     OSerial  0054 Serial[COM4] closed.
-20130528.184703.211 r9999I main     OSerial  0093 Opening serial[COM5]  [return code=2] [2] [No such file or directory]
-20130528.184703.243 r9999I main     OSerial  0054 Serial[COM5] closed.
-20130528.184703.367 r9999I main     OSerial  0093 Opening serial[COM6]  [return code=0] [0] [OK]
-20130528.184703.367 r9999I main     OSerial  0114 blocking[1] directIO[0]
-20130528.184703.430 r9999I main     OSerial  0054 Serial[COM6] closed.
-20130528.184703.445 r9999I main     OSerial  0093 Opening serial[COM7]  [return code=0] [0] [OK]
-20130528.184703.461 r9999I main     OSerial  0114 blocking[1] directIO[0]
-20130528.184703.461 r9999I main     OSerial  0054 Serial[COM7] closed.
-20130528.184703.477 r9999I main     OSerial  0093 Opening serial[COM8]  [return code=0] [0] [OK]
-20130528.184703.477 r9999I main     OSerial  0114 blocking[1] directIO[0]
-20130528.184703.492 r9999I main     OSerial  0054 Serial[COM8] closed.
-20130528.184703.492 r9999I main     OSerial  0093 Opening serial[COM9]  [return code=2] [2] [No such file or directory]
-20130528.184703.508 r9999I main     OSerial  0054 Serial[COM9] closed.
-20130528.184703.508 r9999I main     OControl 1530 devices: "COM6,COM7,COM8"
-20130528.184703.508 r9999I main     OControl 1180 initDigInts lib="srcp" idd="GA01"
-20130528.184703.523 r9999I main     OLib     0049 rocs_lib_load OK [.\srcp.dll]
-20130528.184703.523 r9999I Stromkre OLoc     1415 Runner for "Stromkreis 1" started.
-20130528.184703.539 r9999I main     OLib     0063 rocs_lib_getProc OK [.\srcp.dll:rocGetDigInt]
-20130528.184703.539 r9999I 00000E38 OSRCP    1059 ----------------------------------------
-20130528.184703.539 r9999I 00000E38 OSRCP    1060 SRCP 2.0.0
-20130528.184703.555 r9999I 00000E38 OSRCP    1061   iid       : GA01
-20130528.184703.570 r9999I 00000E38 OSRCP    1062   sublib    : serial
-20130528.184703.570 r9999I 00000E38 OSRCP    0036   device    : com35
-20130528.184703.570 r9999I 00000E38 OSRCP    1089 ----------------------------------------
-20130528.184703.586 r9999I main     OControl 1249 initDigInts OK
-20130528.184703.586 r9999I Stromkre OLoc     1415 Runner for "Stromkreis 2" started.
-20130528.184703.586 r9999I info01E8 OSRCP    0784 info reader started
-20130528.184703.601 r9999I info01E8 OSRCP    0055 connecting to [com35]
-20130528.184703.617 r9999I main     OPowerMa 0481 Power Manager instantiated.
-20130528.184703.617 r9999I main     OControl 0179 Init shortcut sensor...
-20130528.184703.617 r9999I clocktic OControl 1400 ClockTicker started.
-20130528.184703.617 r9999I checker  OControl 1477 Checker started.
-20130528.184703.648 r9999I main     OClntCon 0600 ClientConnection started on port 8051.
-20130528.184703.648 r9999I broadcas OClntCon 0490 Broadcaster started.
-20130528.184703.648 r9999I cconmngr OClntCon 0375 Manager started.
-20130528.184703.664 r9999I main     OModel   1791 Checking all Loco's for V=0...
-20130528.184703.679 r9999I info01E8 OSerial  0093 Opening serial[com35]  [return code=0] [0] [OK]
-20130528.184703.679 r9999I info01E8 OSerial  0114 blocking[1] directIO[0]
-20130528.184703.679 r9999I main     OModel   2912 init Track Driver blocks...
-20130528.184703.695 r9999I main     OModel   0640 updateFB
-20130528.184703.711 r9999I main     OModel   0626 add bus 0, 0...
-20130528.184704.711 r9999I 00000E38 OSRCP    0575 reconnected
-20130528.184704.647 r9999I clocktic OControl 1455 new clock event 18:47.04
-20130528.184704.662 r9999I 000004A4 OSRCP    0575 reconnected
-20130528.184707.595 r9999E info01E8 OSerial  0408 Timeout on serial read[com35] 0 of 1 read.[rc=0] tries=3
-20130528.184707.611 r9999E info01E8 OSRCP    0974 Try to reconnect...
-20130528.184707.611 r9999I info01E8 OSRCP    0072 disconnecting from [com35]
-20130528.184707.704 r9999E 00000E38 OMutex   0096 Error on mutex trywait. [0] [OK]
-20130528.184707.704 r9999E 000004A4 OMutex   0096 Error on mutex trywait. [0] [OK]
-20130528.184708.704 r9999W 00000E38 OSerial  0337 Serial[com35] 0 of 32 sent.[rc=6]
-20130528.184708.720 r9999W 00000E38 OSerial  0337 Serial[com35] 0 of 3 sent.[rc=6]
-20130528.184708.736 r9999W 000004A4 OSerial  0337 Serial[com35] 0 of 32 sent.[rc=6]
-20130528.184708.736 r9999I 00000E38 OSRCP    0998 init server...
-20130528.184708.736 r9999W 00000E38 OSerial  0337 Serial[com35] 0 of 12 sent.[rc=6]
-20130528.184708.751 r9999I info01E8 OSerial  0054 Serial[com35] closed.
-20130528.184708.751 r9999W 00000E38 OSerial  0337 Serial[com35] 0 of 13 sent.[rc=6]
-20130528.184708.751 r9999I 00000E38 OSRCP    0169 Handshake completed.
-20130528.184708.767 r9999I 00000E38 OSRCP    0580 node=fbinfo cmd=fbmods
-20130528.184708.782 r9999I info01E8 OSRCP    0072 disconnecting from [com35]
-20130528.184708.798 r9999I 000004A4 OSRCP    0998 init server...
-20130528.184708.798 r9999I 000004A4 OSRCP    0169 Handshake completed.
-20130528.184708.814 r9999I 000004A4 OSRCP    0580 node=clock cmd=set
-20130528.184709.796 r9999W info01E8 OSRCP    0793 info reader: error connecting
-20130528.184710.795 r9999W info01E8 OSRCP    0793 info reader: error connecting
-20130528.184711.809 r9999W info01E8 OSRCP    0793 info reader: error connecting
-20130528.184712.807 r9999W info01E8 OSRCP    0793 info reader: error connecting
-20130528.184713.821 r9999W info01E8 OSRCP    0793 info reader: error connecting
-20130528.184714.820 r9999W info01E8 OSRCP    0793 info reader: error connecting
-20130528.184715.834 r9999W info01E8 OSRCP    0793 info reader: error connecting
-20130528.184716.832 r9999W info01E8 OSRCP    0793 info reader: error connecting
-20130528.184716.612 r9999I main     OApp     0539 Shutdown requested.
-20130528.184716.628 r9999I main     OApp     1065 SHUTDOWN
-20130528.184716.643 r9999I 00000E38 OSRCP    0580 node=sys cmd=shutdown
-20130528.184716.643 r9999I main     OModel   1913 informing 2 listeners of a system event...
-20130528.184716.659 r9999I main     OApp     1074 Informing clients...
-20130528.184717.846 r9999W info01E8 OSRCP    0793 info reader: error connecting
-20130528.184717.862 r9999I main     OApp     1086 Informing model...
-20130528.184717.877 r9999I main     OModel   2290 Saving plan [plan.xml]...
-20130528.184717.893 r9999I main     OModel   2328 Serialized Plan=15356
-20130528.184717.893 r9999I main     OModel   0302 backup plan.xml to backup\20130528184717893-plan.xml
-20130528.184717.908 r9999I main     OModel   0333 15356 bytes saved in plan.xml.
-20130528.184717.908 r9999I main     OModel   2333 Plan Saved.
-20130528.184717.924 r9999I main     OModel   5063 writing occupancy file [occ.xml]
-20130528.184717.924 r9999I main     OApp     1102 Informing all threads...
-20130528.184717.940 r9999I main     OApp     1105 Shutting down...
-20130528.184717.940 r9999I main     OApp     1113 Thread[0] <clockticker> still active.
-20130528.184717.940 r9999I main     OApp     1113 Thread[1] <broadcast> still active.
-20130528.184717.955 r9999I main     OApp     1113 Thread[2] <Stromkreis 1> still active.
-20130528.184717.955 r9999I main     OApp     1113 Thread[3] <Stromkreis 2> still active.
-20130528.184717.971 r9999I main     OApp     1113 Thread[4] <checker> still active.
-20130528.184717.971 r9999I main     OApp     1113 Thread[5] <tick007439BC> still active.
-20130528.184717.971 r9999I main     OApp     1113 Thread[6] <cconmngr> still active.
-20130528.184717.986 r9999I main     OApp     1015 backing up rocrail.ini to rocrail.ini.bak...
-20130528.184717.986 r9999I main     OApp     1045 saving ini rocrail.ini...
-20130528.184717.002 r9999I main     OHttp    0351 Shutting down HTTP...
-20130528.184717.002 r9999I main     OApp     1122 Informing controller...
-20130528.184717.018 r9999I main     OControl 1265 Shutting down...
-20130528.184717.018 r9999I main     OControl 1270 Informing interfaces...
-20130528.184717.127 r9999I main     OApp     1132 Exit.
+20130529.161923.093 r9999I main     OSystem  0556 no key
+*******************************************************************
+* Rocrail runs entirely on volunteer labor.                       *
+* However, Rocrail also needs contributions of money.             *
+* Your continued support is vital for keeping Rocrail available.  *
+* If you already did donate you can ask a key: donate@rocrail.net *
+*******************************************************************
+20130529.161923.093 r9999I main     OApp     0879 dpIID = []
+20130529.161923.093 r9999I main     OApp     0880 ptIID = []
+20130529.161923.109 r9999I main     OApp     0881 svIID = []
+20130529.161923.109 r9999I main     OApp     0882 lcIID = []
+20130529.161923.109 r9999I main     OModel   0415 parsePlan file: plan.xml
+20130529.161923.109 r9999I main     OAnalyse 7747 MRD[100] ExtChk: basic[1]c[0] block[1]c[0] route[1]c[0] action[1]c[0]
+20130529.161923.109 r9999I main     OAnalyse 5964 checking plan health...
+20130529.161923.109 r9999B main     OAnalyse 5930 __addMissingLevelItems: adding node[autogen-[Block 3+]-[Block 1-]] xyz[0-0-0] lvl[0]
+20130529.161923.109 r9999B main     OAnalyse 5930 __addMissingLevelItems: adding node[autogen-[Block 1-]-[Block 2+]] xyz[0-0-0] lvl[0]
+20130529.161923.109 r9999B main     OAnalyse 5930 __addMissingLevelItems: adding node[autogen-[Block 1-]-[Block 3+]] xyz[0-0-0] lvl[0]
+20130529.161923.109 r9999B main     OAnalyse 5930 __addMissingLevelItems: adding node[autogen-[Block 2+]-[Block 1-]] xyz[0-0-0] lvl[0]
+20130529.161923.109 r9999I main     OAnalyse 2553 mod x: 0 y: 0 
+20130529.161923.125 r9999I main     OAnalyse 6235 Starting zlevel check
+20130529.161923.125 r9999I main     OAnalyse 2297 zlevel check: 32 items
+20130529.161923.125 r9999I main     OAnalyse 6256 INFO: object [tk] with id [tk20130303203454076] at [26,5,0] is the most far away object in the plan
+20130529.161923.125 r9999I main     OAnalyse 6267 INFO: analyzer: max connector distance is 26 (def/min=10)
+20130529.161923.125 r9999I main     OAnalyse 6268 INFO: analyzer: max z-level is 0
+20130529.161923.125 r9999I main     OAnalyse 6282 Plan is healthy
+20130529.161923.125 r9999I main     OAnalyse 0183 cleaning up the ANALYSER...
+20130529.161923.125 r9999I main     OAnalyse 0250 ANALYSER is cleaned up
+20130529.161923.125 r9999I main     OModel   0479 parsePlan title: New Plan
+20130529.161923.140 r9999I main     OModel   3121 init clearingMaps...
+20130529.161923.140 r9999I main     OModel   3146 init creatingMaps...
+20130529.161923.140 r9999I main     OModel   3150 init creatingFbAddrMap...
+20130529.161923.140 r9999I main     OModel   2242 createFbAddrMap: size=3.
+20130529.161923.140 r9999I main     OLoc     3138 no restore wanted: reset speed for loco [Stromkreis 1]
+20130529.161923.140 r9999I main     OLoc     3142 no restore wanted: reset functions for loco [Stromkreis 1]
+20130529.161923.140 r9999I main     OLib     0049 rocs_lib_load OK [.\./lcdriver.dll]
+20130529.161923.140 r9999I main     OLib     0063 rocs_lib_getProc OK [.\./lcdriver.dll:rocGetLcDrInt]
+20130529.161923.140 r9999I 0000063C OLcDrive 0598 LcDriver 2.0.0 loaded for Stromkreis 1
+20130529.161923.140 r9999I tick00E4 OSystem  0112 Ticker thread has started.
+20130529.161923.140 r9999I main     OLoc     3156 loco [Stromkreis 1] enterside=[+]
+20130529.161923.156 r9999I main     OLoc     3138 no restore wanted: reset speed for loco [Stromkreis 2]
+20130529.161923.156 r9999I main     OLoc     3142 no restore wanted: reset functions for loco [Stromkreis 2]
+20130529.161923.156 r9999I main     OLib     0049 rocs_lib_load OK [.\./lcdriver.dll]
+20130529.161923.156 r9999I main     OLib     0063 rocs_lib_getProc OK [.\./lcdriver.dll:rocGetLcDrInt]
+20130529.161923.156 r9999I 0000063C OLcDrive 0598 LcDriver 2.0.0 loaded for Stromkreis 2
+20130529.161923.156 r9999I main     OLoc     3156 loco [Stromkreis 2] enterside=[+]
+20130529.161923.156 r9999I main     OModel   3173 init creatingFbAddrMap...
+20130529.161923.156 r9999I main     OModel   2264 createSwAddrMap: size=1.
+20130529.161923.156 r9999I main     OModel   2285 createCoAddrMap: size=0.
+20130529.161923.156 r9999I main     OModel   5097 loading occupancy file [occ.xml]
+20130529.161923.156 r9999I main     OModel   3178 init blocks...
+20130529.161923.171 r9999I main     OBlock   2078 init block Block 1
+20130529.161923.171 r9999I main     OBlock   2078 init block Block 2
+20130529.161923.171 r9999I main     OBlock   2078 init block Block 3
+20130529.161923.171 r9999I main     OSerial  0093 Opening serial[COM1]  [return code=0] [0] [OK]
+20130529.161923.171 r9999I main     OSerial  0114 blocking[1] directIO[0]
+20130529.161923.250 r9999I main     OSerial  0054 Serial[COM1] closed.
+20130529.161923.250 r9999I main     OSerial  0093 Opening serial[COM2]  [return code=0] [0] [OK]
+20130529.161923.250 r9999I main     OSerial  0114 blocking[1] directIO[0]
+20130529.161923.328 r9999I main     OSerial  0054 Serial[COM2] closed.
+20130529.161923.328 r9999I main     OSerial  0093 Opening serial[COM3]  [return code=2] [2] [No such file or directory]
+20130529.161923.328 r9999I main     OSerial  0054 Serial[COM3] closed.
+20130529.161923.328 r9999I main     OSerial  0093 Opening serial[COM4]  [return code=2] [2] [No such file or directory]
+20130529.161923.328 r9999I main     OSerial  0054 Serial[COM4] closed.
+20130529.161923.328 r9999I main     OSerial  0093 Opening serial[COM5]  [return code=2] [2] [No such file or directory]
+20130529.161923.328 r9999I main     OSerial  0054 Serial[COM5] closed.
+20130529.161923.328 r9999I main     OSerial  0093 Opening serial[COM6]  [return code=2] [2] [No such file or directory]
+20130529.161923.328 r9999I main     OSerial  0054 Serial[COM6] closed.
+20130529.161923.328 r9999I main     OSerial  0093 Opening serial[COM7]  [return code=2] [2] [No such file or directory]
+20130529.161923.328 r9999I main     OSerial  0054 Serial[COM7] closed.
+20130529.161923.328 r9999I main     OSerial  0093 Opening serial[COM8]  [return code=2] [2] [No such file or directory]
+20130529.161923.343 r9999I main     OSerial  0054 Serial[COM8] closed.
+20130529.161923.343 r9999I main     OSerial  0093 Opening serial[COM9]  [return code=2] [2] [No such file or directory]
+20130529.161923.343 r9999I main     OSerial  0054 Serial[COM9] closed.
+20130529.161923.343 r9999I main     OControl 1530 devices: "COM1,COM2"
+20130529.161923.343 r9999I main     OControl 1180 initDigInts lib="srcp" idd="GA01"
+20130529.161923.343 r9999I main     OLib     0049 rocs_lib_load OK [.\srcp.dll]
+20130529.161923.343 r9999I main     OLib     0063 rocs_lib_getProc OK [.\srcp.dll:rocGetDigInt]
+20130529.161923.343 r9999I 0000063C OSRCP    1058 ----------------------------------------
+20130529.161923.343 r9999I 0000063C OSRCP    1059 SRCP 2.0.0
+20130529.161923.343 r9999I 0000063C OSRCP    1060   iid       : GA01
+20130529.161923.343 r9999I 0000063C OSRCP    1061   sublib    : serial
+20130529.161923.343 r9999I 0000063C OSRCP    0036   device    : com10
+20130529.161923.359 r9999I 0000063C OSRCP    1088 ----------------------------------------
+20130529.161923.359 r9999I main     OControl 1249 initDigInts OK
+20130529.161923.359 r9999I info00F3 OSRCP    0781 info reader started
+20130529.161923.359 r9999I main     OPowerMa 0481 Power Manager instantiated.
+20130529.161923.359 r9999I info00F3 OSRCP    0055 connecting to [com10]
+20130529.161923.359 r9999I main     OControl 0179 Init shortcut sensor...
+20130529.161923.359 r9999I checker  OControl 1477 Checker started.
+20130529.161923.359 r9999I clocktic OControl 1400 ClockTicker started.
+20130529.161923.359 r9999I main     OClntCon 0600 ClientConnection started on port 8051.
+20130529.161923.359 r9999I broadcas OClntCon 0490 Broadcaster started.
+20130529.161923.359 r9999I cconmngr OClntCon 0375 Manager started.
+20130529.161923.375 r9999I main     OModel   1791 Checking all Loco's for V=0...
+20130529.161923.406 r9999I main     OModel   2912 init Track Driver blocks...
+20130529.161923.406 r9999I main     OModel   0640 updateFB
+20130529.161923.406 r9999I main     OModel   0626 add bus 0, 0...
+20130529.161923.406 r9999I 0000063C OSRCP    0055 connecting to [com10]
+20130529.161923.406 r9999I 0000063C OSerial  0093 Opening serial[com10]  [return code=5] [5] [I/O error]
+20130529.161923.406 r9999I 0000063C OSerial  0054 Serial[com10] closed.
+20130529.161923.406 r9999I 0000063C OSRCP    0580 node=fbinfo cmd=fbmods
+20130529.161923.406 r9999B main     OApp     0969 memory allocations old=0 new=16917
+20130529.161923.406 r9999I info00F3 OSerial  0093 Opening serial[com10]  [return code=0] [0] [OK]
+20130529.161923.406 r9999I info00F3 OSerial  0114 blocking[1] directIO[0]
+20130529.161923.656 r9999I Stromkre OLoc     1415 Runner for "Stromkreis 2" started.
+20130529.161923.656 r9999I Stromkre OLoc     1415 Runner for "Stromkreis 1" started.
+20130529.161924.359 r9999I clocktic OControl 1455 new clock event 16:19.24
+20130529.161924.359 r9999I 00000A70 OSRCP    0575 reconnected
+20130529.161924.359 r9999c 00000A70 OSRCP    0133 srcp response: 15762 201 OK PROTOCOL SRCP 
+20130529.161924.375 r9999c 00000A70 OSRCP    0133 srcp response:  
+20130529.161924.453 r9999c 00000A70 OSRCP    0133 srcp response: 15809 202 OK 
+20130529.161924.453 r9999I 00000A70 OSRCP    0997 init server...
+20130529.161924.453 r9999I info00F3 OSRCP    0809 inforeader: [ ]
+20130529.161924.484 r9999c 00000A70 OSRCP    0133 srcp response: 15847 200 OK GO 1 
+20130529.161924.484 r9999I info00F3 OSRCP    0809 inforeader: [ ]
+20130529.161924.546 r9999c 00000A70 OSRCP    0133 srcp response: 15899 100 INFO 0 POWER 0 0 
+20130529.161924.546 r9999I 00000A70 OSRCP    0169 Handshake completed.
+20130529.161924.546 r9999I info00F3 OSRCP    0809 inforeader: [ ]
+20130529.161924.546 r9999I 00000A70 OSRCP    0580 node=clock cmd=set
+20130529.161924.609 r9999I info00F3 OSRCP    0809 inforeader: [15961 200 OK ]
+20130529.161924.625 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161933.421 r9999I cconmngr OClntCon 0395 client connect count: 1
+20130529.161933.437 r9999I cmdr00E3 OClntCon 0215 cmdReader started for:127.0.0.1.
+20130529.161933.437 r9999I infw00E3 OClntCon 0109 infoWriter started for:127.0.0.1.
+20130529.161934.437 r9999I cmdr00E3 OClntCon 0271 monitoring for client is on
+20130529.161934.437 r9999I cmdr00E3 OControl 0845 command from [rocview,144040948,3956]
+20130529.161934.437 r9999I cmdr00E3 OSystem  0556 no key
+20130529.161934.437 r9999I cmdr00E3 OModel   2038 no valid donation key found
+20130529.161935.703 r9999I cmdr00E3 OModel   2100 Sending 0 fstats to client...
+20130529.161936.531 r9999I cmdr00E3 OSignal  1177 setting signal S1 to green
+20130529.161936.531 r9999I cmdr00E3 OSignal  0900 2 aspects processing for signal [S1][green]...
+20130529.161936.531 r9999I 00000F7C OSRCP    0575 reconnected
+20130529.161936.546 r9999c 00000F7C OSRCP    0133 srcp response: 27936 201 OK PROTOCOL SRCP 
+20130529.161936.546 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161936.625 r9999c 00000F7C OSRCP    0133 srcp response: 27984 202 OK 
+20130529.161936.625 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161936.656 r9999c 00000F7C OSRCP    0133 srcp response: 28023 200 OK GO 2 
+20130529.161936.656 r9999I 00000F7C OSRCP    0997 init server...
+20130529.161936.656 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161937.718 r9999c 00000F7C OSRCP    0133 srcp response: 28073 100 INFO 0 POWER 0 0 
+20130529.161937.718 r9999I 00000F7C OSRCP    0169 Handshake completed.
+20130529.161937.718 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161937.718 r9999I 00000F7C OSRCP    0580 node=co cmd=off
+20130529.161937.765 r9999c 00000F7C OSRCP    0133 srcp response: 28136 200 OK 
+20130529.161937.765 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161937.812 r9999c 00000F7C OSRCP    0133 srcp response: 28185 200 OK 
+20130529.161937.812 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161937.859 r9999c 00000F7C OSRCP    0133 srcp response: 28233 200 OK 
+20130529.161937.859 r9999I 00000F7C OSRCP    0584 translation = SET 5 GA 1 0 1 -1
+...
+20130529.161937.859 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161937.921 r9999c 00000F7C OSRCP    0133 srcp response: 28286 200 OK 
+20130529.161937.921 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161937.921 r9999I 00000F7C OSRCP    0575 reconnected
+20130529.161937.984 r9999c 00000F7C OSRCP    0133 srcp response: 28343 201 OK PROTOCOL SRCP 
+20130529.161937.984 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161937.046 r9999c 00000F7C OSRCP    0133 srcp response: 28425 202 OK 
+20130529.161937.046 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161937.093 r9999c 00000F7C OSRCP    0133 srcp response: 28463 200 OK GO 3 
+20130529.161937.093 r9999I 00000F7C OSRCP    0997 init server...
+20130529.161937.093 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161937.156 r9999c 00000F7C OSRCP    0133 srcp response: 28515 100 INFO 0 POWER 0 0 
+20130529.161937.156 r9999I 00000F7C OSRCP    0169 Handshake completed.
+20130529.161937.156 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161937.156 r9999I 00000F7C OSRCP    0580 node=co cmd=off
+20130529.161937.203 r9999c 00000F7C OSRCP    0133 srcp response: 28577 200 OK 
+20130529.161937.203 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161937.265 r9999c 00000F7C OSRCP    0133 srcp response: 28625 200 OK 
+20130529.161937.265 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161937.312 r9999c 00000F7C OSRCP    0133 srcp response: 28674 200 OK 
+20130529.161937.312 r9999I 00000F7C OSRCP    0584 translation = SET 5 GA 2 0 1 -1
+...
+20130529.161937.312 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161937.359 r9999c 00000F7C OSRCP    0133 srcp response: 28728 200 OK 
+20130529.161937.359 r9999I 00000F7C OSRCP    0575 reconnected
+20130529.161937.359 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161937.437 r9999c 00000F7C OSRCP    0133 srcp response: 28784 201 OK PROTOCOL SRCP 
+20130529.161937.437 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161937.500 r9999c 00000F7C OSRCP    0133 srcp response: 28866 202 OK 
+20130529.161937.500 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161937.546 r9999c 00000F7C OSRCP    0133 srcp response: 28904 200 OK GO 4 
+20130529.161937.546 r9999I 00000F7C OSRCP    0997 init server...
+20130529.161937.546 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161937.593 r9999c 00000F7C OSRCP    0133 srcp response: 28956 100 INFO 0 POWER 0 0 
+20130529.161937.593 r9999I 00000F7C OSRCP    0169 Handshake completed.
+20130529.161937.593 r9999I 00000F7C OSRCP    0580 node=co cmd=on
+20130529.161937.593 r9999I 00000F7C OSRCP    0584 translation = SET 5 GA 2 0 0 -1
+...
+20130529.161937.609 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161937.656 r9999c 00000F7C OSRCP    0133 srcp response: 29024 200 OK 
+20130529.161937.656 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161938.484 r9999I cmdr00E3 OSignal  1177 setting signal S1 to red
+20130529.161938.484 r9999I cmdr00E3 OSignal  0900 2 aspects processing for signal [S1][red]...
+20130529.161938.484 r9999I 00000F7C OSRCP    0575 reconnected
+20130529.161938.500 r9999c 00000F7C OSRCP    0133 srcp response: 29888 201 OK PROTOCOL SRCP 
+20130529.161938.500 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161938.562 r9999c 00000F7C OSRCP    0133 srcp response: 29936 202 OK 
+20130529.161938.562 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161938.609 r9999c 00000F7C OSRCP    0133 srcp response: 29974 200 OK GO 5 
+20130529.161938.609 r9999I 00000F7C OSRCP    0997 init server...
+20130529.161938.609 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161939.671 r9999c 00000F7C OSRCP    0133 srcp response: 30025 100 INFO 0 POWER 0 0 
+20130529.161939.671 r9999I 00000F7C OSRCP    0169 Handshake completed.
+20130529.161939.671 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161939.671 r9999I 00000F7C OSRCP    0580 node=co cmd=off
+20130529.161939.671 r9999I 00000F7C OSRCP    0584 translation = SET 5 GA 1 0 1 -1
+...
+20130529.161939.734 r9999c 00000F7C OSRCP    0133 srcp response: 30094 200 OK 
+20130529.161939.734 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161939.734 r9999I 00000F7C OSRCP    0575 reconnected
+20130529.161939.796 r9999c 00000F7C OSRCP    0133 srcp response: 30150 201 OK PROTOCOL SRCP 
+20130529.161939.796 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161939.859 r9999c 00000F7C OSRCP    0133 srcp response: 30232 202 OK 
+20130529.161939.859 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161939.906 r9999c 00000F7C OSRCP    0133 srcp response: 30270 200 OK GO 6 
+20130529.161939.906 r9999I 00000F7C OSRCP    0997 init server...
+20130529.161939.906 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161939.968 r9999c 00000F7C OSRCP    0133 srcp response: 30322 100 INFO 0 POWER 0 0 
+20130529.161939.968 r9999I 00000F7C OSRCP    0169 Handshake completed.
+20130529.161939.968 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161939.968 r9999I 00000F7C OSRCP    0580 node=co cmd=off
+20130529.161939.968 r9999I 00000F7C OSRCP    0584 translation = SET 5 GA 2 0 1 -1
+...
+20130529.161939.015 r9999c 00000F7C OSRCP    0133 srcp response: 30390 200 OK 
+20130529.161939.015 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161939.015 r9999I 00000F7C OSRCP    0575 reconnected
+20130529.161939.093 r9999c 00000F7C OSRCP    0133 srcp response: 30446 201 OK PROTOCOL SRCP 
+20130529.161939.093 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161939.156 r9999c 00000F7C OSRCP    0133 srcp response: 30529 202 OK 
+20130529.161939.156 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161939.203 r9999c 00000F7C OSRCP    0133 srcp response: 30566 200 OK GO 7 
+20130529.161939.203 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161939.203 r9999I 00000F7C OSRCP    0997 init server...
+20130529.161939.250 r9999c 00000F7C OSRCP    0133 srcp response: 30618 100 INFO 0 POWER 0 0 
+20130529.161939.250 r9999I 00000F7C OSRCP    0169 Handshake completed.
+20130529.161939.250 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161939.250 r9999I 00000F7C OSRCP    0580 node=co cmd=on
+20130529.161939.250 r9999I 00000F7C OSRCP    0584 translation = SET 5 GA 1 0 0 -1
+...
+20130529.161939.328 r9999c 00000F7C OSRCP    0133 srcp response: 30687 200 OK 
+20130529.161939.328 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161940.531 r9999I cmdr00E3 OSignal  1177 setting signal S1 to green
+20130529.161940.531 r9999I cmdr00E3 OSignal  0900 2 aspects processing for signal [S1][green]...
+20130529.161940.531 r9999I 00000F7C OSRCP    0575 reconnected
+20130529.161940.546 r9999c 00000F7C OSRCP    0133 srcp response: 31944 201 OK PROTOCOL SRCP 
+20130529.161940.546 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161940.609 r9999c 00000F7C OSRCP    0133 srcp response: 31991 202 OK 
+20130529.161940.625 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161941.671 r9999c 00000F7C OSRCP    0133 srcp response: 32029 200 OK GO 8 
+20130529.161941.671 r9999I 00000F7C OSRCP    0997 init server...
+20130529.161941.671 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161941.734 r9999c 00000F7C OSRCP    0133 srcp response: 32081 100 INFO 0 POWER 0 0 
+20130529.161941.734 r9999I 00000F7C OSRCP    0169 Handshake completed.
+20130529.161941.734 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161941.734 r9999I 00000F7C OSRCP    0580 node=co cmd=off
+20130529.161941.734 r9999I 00000F7C OSRCP    0584 translation = SET 5 GA 1 0 1 -1
+...
+20130529.161941.781 r9999c 00000F7C OSRCP    0133 srcp response: 32149 200 OK 
+20130529.161941.781 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161941.781 r9999I 00000F7C OSRCP    0575 reconnected
+20130529.161941.859 r9999c 00000F7C OSRCP    0133 srcp response: 32206 201 OK PROTOCOL SRCP 
+20130529.161941.859 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161941.921 r9999c 00000F7C OSRCP    0133 srcp response: 32288 202 OK 
+20130529.161941.921 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161941.968 r9999c 00000F7C OSRCP    0133 srcp response: 32325 200 OK GO 9 
+20130529.161941.968 r9999I 00000F7C OSRCP    0997 init server...
+20130529.161941.968 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161941.015 r9999c 00000F7C OSRCP    0133 srcp response: 32377 100 INFO 0 POWER 0 0 
+20130529.161941.015 r9999I 00000F7C OSRCP    0169 Handshake completed.
+20130529.161941.015 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161941.015 r9999I 00000F7C OSRCP    0580 node=co cmd=off
+20130529.161941.015 r9999I 00000F7C OSRCP    0584 translation = SET 5 GA 2 0 1 -1
+...
+20130529.161941.078 r9999c 00000F7C OSRCP    0133 srcp response: 32446 200 OK 
+20130529.161941.078 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161941.078 r9999I 00000F7C OSRCP    0575 reconnected
+20130529.161941.140 r9999c 00000F7C OSRCP    0133 srcp response: 32502 201 OK PROTOCOL SRCP 
+20130529.161941.140 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161941.203 r9999c 00000F7C OSRCP    0133 srcp response: 32584 202 OK 
+20130529.161941.203 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161941.250 r9999c 00000F7C OSRCP    0133 srcp response: 32622 200 OK GO 10 
+20130529.161941.250 r9999I 00000F7C OSRCP    0997 init server...
+20130529.161941.250 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161941.328 r9999c 00000F7C OSRCP    0133 srcp response: 32675 100 INFO 0 POWER 0 0 
+20130529.161941.328 r9999I 00000F7C OSRCP    0169 Handshake completed.
+20130529.161941.328 r9999I 00000F7C OSRCP    0580 node=co cmd=on
+20130529.161941.328 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161941.328 r9999I 00000F7C OSRCP    0584 translation = SET 5 GA 2 0 0 -1
+...
+20130529.161941.375 r9999c 00000F7C OSRCP    0133 srcp response: 32743 200 OK 
+20130529.161941.375 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161943.015 r9999I cmdr00E3 OSignal  1177 setting signal S2 to green
+20130529.161943.015 r9999I cmdr00E3 OSignal  0900 2 aspects processing for signal [S2][green]...
+20130529.161943.015 r9999I 00000F7C OSRCP    0575 reconnected
+20130529.161943.031 r9999c 00000F7C OSRCP    0133 srcp response: 34415 201 OK PROTOCOL SRCP 
+20130529.161943.031 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161943.093 r9999c 00000F7C OSRCP    0133 srcp response: 34463 202 OK 
+20130529.161943.093 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161943.140 r9999c 00000F7C OSRCP    0133 srcp response: 34500 200 OK GO 11 
+20130529.161943.140 r9999I 00000F7C OSRCP    0997 init server...
+20130529.161943.140 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161943.187 r9999c 00000F7C OSRCP    0133 srcp response: 34553 100 INFO 0 POWER 0 0 
+20130529.161943.187 r9999I 00000F7C OSRCP    0169 Handshake completed.
+20130529.161943.187 r9999I 00000F7C OSRCP    0580 node=co cmd=off
+20130529.161943.187 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161943.234 r9999c 00000F7C OSRCP    0133 srcp response: 34616 200 OK 
+20130529.161943.234 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161943.281 r9999c 00000F7C OSRCP    0133 srcp response: 34665 200 OK 
+20130529.161943.281 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161943.343 r9999c 00000F7C OSRCP    0133 srcp response: 34713 200 OK 
+20130529.161943.343 r9999I 00000F7C OSRCP    0584 translation = SET 7 GA 3 0 1 -1
+...
+20130529.161943.343 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161943.406 r9999c 00000F7C OSRCP    0133 srcp response: 34766 200 OK 
+20130529.161943.406 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161943.406 r9999I 00000F7C OSRCP    0575 reconnected
+20130529.161943.468 r9999c 00000F7C OSRCP    0133 srcp response: 34823 201 OK PROTOCOL SRCP 
+20130529.161943.468 r9999c 00000F7C OSRCP    0133 srcp response:  
+20130529.161943.531 r9999c 00000F7C OSRCP    0133 srcp response: 34905 202 OK 
+20130529.161943.531 r9999I 00000F7C OSRCP    0997 init server...
+20130529.161943.531 r9999c 00000F7C OSRCP    0133 srcp response:  
+20130529.161943.578 r9999c 00000F7C OSRCP    0133 srcp response: 34942 200 OK GO 12 
+20130529.161943.578 r9999I 00000F7C OSRCP    0169 Handshake completed.
+20130529.161943.578 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161943.578 r9999I 00000F7C OSRCP    0580 node=co cmd=off
+20130529.161943.640 r9999c 00000F7C OSRCP    0133 srcp response: 34996 100 INFO 0 POWER 0 0 
+20130529.161943.640 r9999I 00000F7C OSRCP    0584 translation = SET 7 GA 4 0 1 -1
+...
+20130529.161943.640 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161944.687 r9999c 00000F7C OSRCP    0133 srcp response: 35058 200 OK 
+20130529.161944.687 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161944.687 r9999I 00000F7C OSRCP    0575 reconnected
+20130529.161944.734 r9999c 00000F7C OSRCP    0133 srcp response: 35106 200 OK 
+20130529.161944.734 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161944.781 r9999c 00000F7C OSRCP    0133 srcp response: 35160 200 OK 
+20130529.161944.781 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161944.859 r9999c 00000F7C OSRCP    0133 srcp response: 35216 201 OK PROTOCOL SRCP 
+20130529.161944.859 r9999I 00000F7C OSRCP    0997 init server...
+20130529.161944.859 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161944.921 r9999c 00000F7C OSRCP    0133 srcp response: 35298 202 OK 
+20130529.161944.921 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161944.968 r9999c 00000F7C OSRCP    0133 srcp response: 35336 200 OK GO 13 
+20130529.161944.968 r9999I 00000F7C OSRCP    0169 Handshake completed.
+20130529.161944.984 r9999I 00000F7C OSRCP    0580 node=co cmd=on
+20130529.161944.984 r9999I 00000F7C OSRCP    0584 translation = SET 7 GA 4 0 0 -1
+...
+20130529.161944.984 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161944.046 r9999c 00000F7C OSRCP    0133 srcp response: 35389 100 INFO 0 POWER 0 0 
+20130529.161944.046 r9999I info00F3 OSRCP    0809 inforeader: [ 961 200 OK ]
+20130529.161944.109 r9999I info00F3 OSRCP    0809 inforeader: [35451 200 OK ]
+20130529.161944.125 r9999I info00F3 OSRCP    0809 inforeader: [ 451 200 OK ]
+20130529.161944.156 r9999I info00F3 OSRCP    0809 inforeader: [35505 200 OK ]
+20130529.161944.171 r9999I info00F3 OSRCP    0809 inforeader: [ 505 200 OK ]
+20130529.161948.906 r9999I info00F3 OSRCP    0809 inforeader: [39294 100 INFO 0 FB 1 1 ]
+20130529.161948.906 r0000B info00F3 (null)   *trace dump( 0x018EFAE8: length=24 )
+    offset:   00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F |ASCII...........|
+    --------------------------------------------------------- |----------------|
+    00000000: 33 39 32 39 34 20 31 30 30 20 49 4E 46 4F 20 30 |39294 100 INFO 0|
+    00000010: 20 46 42 20 31 20 31 20                         | FB 1 1         |
+20130529.161948.906 r9999c info00F3 OSRCP    0948 sensor 1 = 1
+20130529.161948.921 r9999I info00F3 OSRCP    0809 inforeader: [ 294 100 INFO 0 FB 1 1 ]
+20130529.161948.921 r0000B info00F3 (null)   *trace dump( 0x018EFAE8: length=24 )
+    offset:   00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F |ASCII...........|
+    --------------------------------------------------------- |----------------|
+    00000000: 0D 20 32 39 34 20 31 30 30 20 49 4E 46 4F 20 30 |. 294 100 INFO 0|
+    00000010: 20 46 42 20 31 20 31 20                         | FB 1 1         |
+20130529.161948.921 r9999c info00F3 OSRCP    0948 sensor 1 = 1
+20130529.161949.671 r9999I info00F3 OSRCP    0809 inforeader: [40049 100 INFO 0 FB 1 0 ]
+20130529.161949.671 r0000B info00F3 (null)   *trace dump( 0x018EFAE8: length=24 )
+    offset:   00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F |ASCII...........|
+    --------------------------------------------------------- |----------------|
+    00000000: 34 30 30 34 39 20 31 30 30 20 49 4E 46 4F 20 30 |40049 100 INFO 0|
+    00000010: 20 46 42 20 31 20 30 20                         | FB 1 0         |
+20130529.161949.671 r9999c info00F3 OSRCP    0948 sensor 1 = 0
+20130529.161949.687 r9999I info00F3 OSRCP    0809 inforeader: [ 049 100 INFO 0 FB 1 0 ]
+20130529.161949.687 r0000B info00F3 (null)   *trace dump( 0x018EFAE8: length=24 )
+    offset:   00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F |ASCII...........|
+    --------------------------------------------------------- |----------------|
+    00000000: 0D 20 30 34 39 20 31 30 30 20 49 4E 46 4F 20 30 |. 049 100 INFO 0|
+    00000010: 20 46 42 20 31 20 30 20                         | FB 1 0         |
+20130529.161949.687 r9999c info00F3 OSRCP    0948 sensor 1 = 0
+20130529.162000.546 r9999I clocktic OControl 1455 new clock event 16:20.00
+20130529.162000.546 r9999I 00000A70 OSRCP    0575 reconnected
+20130529.162000.562 r9999c 00000A70 OSRCP    0133 srcp response: 51945 201 OK PROTOCOL SRCP 
+20130529.162000.562 r9999I info00F3 OSRCP    0809 inforeader: [ 049 100 INFO 0 FB 1 0 ]
+20130529.162000.562 r0000B info00F3 (null)   *trace dump( 0x018EFAE8: length=24 )
+    offset:   00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F |ASCII...........|
+    --------------------------------------------------------- |----------------|
+    00000000: 0D 20 30 34 39 20 31 30 30 20 49 4E 46 4F 20 30 |. 049 100 INFO 0|
+    00000010: 20 46 42 20 31 20 30 20                         | FB 1 0         |
+20130529.162000.562 r9999c info00F3 OSRCP    0948 sensor 1 = 0
+20130529.162000.625 r9999c 00000A70 OSRCP    0133 srcp response: 51992 202 OK 
+20130529.162000.625 r9999I info00F3 OSRCP    0809 inforeader: [ 049 100 INFO 0 FB 1 0 ]
+20130529.162000.625 r0000B info00F3 (null)   *trace dump( 0x018EFAE8: length=24 )
+    offset:   00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F |ASCII...........|
+    --------------------------------------------------------- |----------------|
+    00000000: 0D 20 30 34 39 20 31 30 30 20 49 4E 46 4F 20 30 |. 049 100 INFO 0|
+    00000010: 20 46 42 20 31 20 30 20                         | FB 1 0         |
+20130529.162000.625 r9999c info00F3 OSRCP    0948 sensor 1 = 0
+20130529.162001.671 r9999c 00000A70 OSRCP    0133 srcp response: 52031 200 OK GO 14 
+20130529.162001.671 r9999I 00000A70 OSRCP    0997 init server...
+20130529.162001.671 r9999I info00F3 OSRCP    0809 inforeader: [ 049 100 INFO 0 FB 1 0 ]
+20130529.162001.671 r0000B info00F3 (null)   *trace dump( 0x018EFAE8: length=24 )
+    offset:   00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F |ASCII...........|
+    --------------------------------------------------------- |----------------|
+    00000000: 0D 20 30 34 39 20 31 30 30 20 49 4E 46 4F 20 30 |. 049 100 INFO 0|
+    00000010: 20 46 42 20 31 20 30 20                         | FB 1 0         |
+20130529.162001.671 r9999c info00F3 OSRCP    0948 sensor 1 = 0
+20130529.162001.718 r9999c 00000A70 OSRCP    0133 srcp response: 52082 100 INFO 0 POWER 0 0 
+20130529.162001.718 r9999I 00000A70 OSRCP    0169 Handshake completed.
+20130529.162001.718 r9999I info00F3 OSRCP    0809 inforeader: [ 049 100 INFO 0 FB 1 0 ]
+20130529.162001.718 r9999I 00000A70 OSRCP    0580 node=clock cmd=sync
+20130529.162001.718 r0000B info00F3 (null)   *trace dump( 0x018EFAE8: length=24 )
+    offset:   00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F |ASCII...........|
+    --------------------------------------------------------- |----------------|
+    00000000: 0D 20 30 34 39 20 31 30 30 20 49 4E 46 4F 20 30 |. 049 100 INFO 0|
+    00000010: 20 46 42 20 31 20 30 20                         | FB 1 0         |
+20130529.162001.718 r9999c info00F3 OSRCP    0948 sensor 1 = 0
+20130529.162009.765 r9999I main     OApp     0539 Shutdown requested.
+20130529.162009.765 r9999I main     OApp     1065 SHUTDOWN
+20130529.162009.765 r9999I 0000063C OSRCP    0575 reconnected
+20130529.162009.781 r9999c 0000063C OSRCP    0133 srcp response: 60178 201 OK PROTOCOL SRCP 
+20130529.162009.781 r9999c 0000063C OSRCP    0133 srcp response:  
+20130529.162009.859 r9999c 0000063C OSRCP    0133 srcp response: 60226 202 OK 
+20130529.162009.859 r9999I 0000063C OSRCP    0997 init server...
+20130529.162009.859 r9999I info00F3 OSRCP    0809 inforeader: [ 049 100 INFO 0 FB 1 0 ]
+20130529.162009.875 r0000B info00F3 (null)   *trace dump( 0x018EFAE8: length=24 )
+    offset:   00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F |ASCII...........|
+    --------------------------------------------------------- |----------------|
+    00000000: 0D 20 30 34 39 20 31 30 30 20 49 4E 46 4F 20 30 |. 049 100 INFO 0|
+    00000010: 20 46 42 20 31 20 30 20                         | FB 1 0         |
+20130529.162009.875 r9999c info00F3 OSRCP    0948 sensor 1 = 0
+20130529.162009.890 r9999c 0000063C OSRCP    0133 srcp response: 60263 200 OK GO 15 
+20130529.162009.890 r9999I info00F3 OSRCP    0809 inforeader: [ 049 100 INFO 0 FB 1 0 ]
+20130529.162009.906 r0000B info00F3 (null)   *trace dump( 0x018EFAE8: length=24 )
+    offset:   00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F |ASCII...........|
+    --------------------------------------------------------- |----------------|
+    00000000: 0D 20 30 34 39 20 31 30 30 20 49 4E 46 4F 20 30 |. 049 100 INFO 0|
+    00000010: 20 46 42 20 31 20 30 20                         | FB 1 0         |
+20130529.162009.906 r9999c info00F3 OSRCP    0948 sensor 1 = 0
+20130529.162009.953 r9999c 0000063C OSRCP    0133 srcp response: 60316 100 INFO 0 POWER 0 0 
+20130529.162009.968 r9999I 0000063C OSRCP    0169 Handshake completed.
+20130529.162009.968 r9999I info00F3 OSRCP    0809 inforeader: [ 049 100 INFO 0 FB 1 0 ]
+20130529.162009.968 r9999I 0000063C OSRCP    0580 node=sys cmd=shutdown
+20130529.162009.968 r9999I main     OModel   1913 informing 2 listeners of a system event...
+20130529.162009.968 r0000B info00F3 (null)   *trace dump( 0x018EFAE8: length=24 )
+    offset:   00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F |ASCII...........|
+    --------------------------------------------------------- |----------------|
+20130529.162009.968 r9999I main     OApp     1074 Informing clients...
+    00000000: 0D 20 30 34 39 20 31 30 30 20 49 4E 46 4F 20 30 |. 049 100 INFO 0|
+    00000010: 20 46 42 20 31 20 30 20                         | FB 1 0         |
+20130529.162009.984 r9999c info00F3 OSRCP    0948 sensor 1 = 0
+20130529.162009.984 r9999I cmdr00E3 OSocket  0571 Other side has closed connection.
+20130529.162009.984 r9999I cmdr00E3 OClntCon 0363 Server ended.
+20130529.162009.000 r9999I infw00E3 OClntCon 0177 InfoService ended.
+20130529.162009.031 r9999I info00F3 OSRCP    0809 inforeader: [60379 200 OK O 0 FB 1 0 ]
+20130529.162009.046 r9999I info00F3 OSRCP    0809 inforeader: [ 379 200 OK O 0 FB 1 0 ]
+20130529.162009.203 r9999I main     OApp     1086 Informing model...
+20130529.162009.203 r9999I main     OModel   2290 Saving plan [plan.xml]...
+20130529.162009.203 r9999I main     OModel   2328 Serialized Plan=15358
+20130529.162009.203 r9999I main     OModel   0302 backup plan.xml to backup\20130529162009203-plan.xml
+20130529.162009.203 r9999I main     OModel   0333 15358 bytes saved in plan.xml.
+20130529.162009.203 r9999I main     OModel   2333 Plan Saved.
+20130529.162009.203 r9999I main     OModel   5063 writing occupancy file [occ.xml]
+20130529.162009.218 r9999I main     OApp     1102 Informing all threads...
+20130529.162009.218 r9999I main     OApp     1105 Shutting down...
+20130529.162009.218 r9999I main     OApp     1113 Thread[0] <clockticker> still active.
+20130529.162009.218 r9999I main     OApp     1113 Thread[1] <tick003E4E14> still active.
+20130529.162009.218 r9999I main     OApp     1113 Thread[2] <broadcast> still active.
+20130529.162009.218 r9999I main     OApp     1113 Thread[3] <Stromkreis 1> still active.
+20130529.162009.218 r9999I main     OApp     1113 Thread[4] <Stromkreis 2> still active.
+20130529.162009.218 r9999I main     OApp     1113 Thread[5] <checker> still active.
+20130529.162009.218 r9999I main     OApp     1113 Thread[6] <cconmngr> still active.
+20130529.162009.218 r9999I main     OApp     1015 backing up rocrail.ini to rocrail.ini.bak...
+20130529.162009.234 r9999I main     OApp     1045 saving ini rocrail.ini...
+20130529.162009.234 r9999I main     OHttp    0351 Shutting down HTTP...
+20130529.162009.234 r9999I main     OApp     1122 Informing controller...
+20130529.162009.234 r9999I main     OControl 1265 Shutting down...
+20130529.162009.234 r9999I main     OControl 1270 Informing interfaces...
+20130529.162009.250 r9999c info00F3 OSRCP    0988 Info reader ended
+20130529.162009.343 r9999I main     OApp     1132 Exit.

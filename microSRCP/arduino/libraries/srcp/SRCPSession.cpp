@@ -128,7 +128,8 @@ void SRCPSession::infoFeedback( Print* out )
 			Serial3.print( m );
 			Serial3.print( '\r' );
 #endif
-			out->print( m );
+			// Rueckmeldung an Host, mit \r\n aber ohne flush()!
+			out->println( m );
 		}
 	}
 }

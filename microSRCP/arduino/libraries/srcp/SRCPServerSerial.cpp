@@ -63,23 +63,12 @@ int SRCPServerSerial::dispatch(void)
 	// keine Daten vorhanden - exit
 	if	( ! Serial.available() )
 	{
-/*		// noch nicht verbunden - zuerst Versioninfo senden
-		if	( session->getStatus() == srcp::UNDEFINED )
-		{
-#if	( DEBUG_SCOPE > 0 )
-			Serial3 << "conn : " << session->getStatus() << endl;
-#endif
-			Serial.print( Messages.version()  );
-			delay( 1000 );
-			return	( 0 );
-		}*/
 		// Info Server
 		if	( session->getStatus() != srcp::UNDEFINED && session->isPowerOn() )
 		{
 			if	( lasts+250 < millis() )
 			{
 				session->infoFeedback( &Serial );
-				Serial.flush();
 				lasts = millis();
 			}
 		}
@@ -130,9 +119,8 @@ int SRCPServerSerial::dispatch(void)
 	Serial3.print( '\r' );
 #endif
 
-	// Rueckmeldung an Host
-	Serial.write( rc );
-	Serial.flush();
+	// Rueckmeldung an Host, mit \r\n aber ohne flush()!
+	Serial.println( rc );
 
 	return	( 1 );
 }
