@@ -110,8 +110,7 @@ int SRCPServerSerial::dispatch(void)
 	Serial3.print("send: ");
 	Serial3.print( session->getStatus( ));
 	Serial3.print( ", " );
-	Serial3.print( rc );
-	Serial3.print( '\r' );
+	Serial3.println( rc );
 #endif
 
 	// Rueckmeldung an Host, mit \r\n aber ohne flush()!

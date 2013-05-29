@@ -22,7 +22,7 @@
 #include "SRCPEthernetServer.h"
 
 // Debugging > 0 == ON
-#define DEBUG_SCOPE 2
+//#define DEBUG_SCOPE 2
 // Fuer TCP ist Serial frei fuer Debugging Output
 //#define Serial3 Serial
 

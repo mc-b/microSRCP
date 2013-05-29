@@ -25,11 +25,6 @@
 #include "SRCPSession.h"
 #include "SRCPMessages.h"
 
-// Debugging > 0 == ON
-#define DEBUG_SCOPE 2
-// Fuer TCP ist Serial frei fuer Debugging Output
-//#define Serial3 Serial
-
 namespace srcp
 {
 
@@ -125,8 +120,7 @@ void SRCPSession::infoFeedback( Print* out )
 			Serial3.print("send: ");
 			Serial3.print( getStatus( ));
 			Serial3.print( ", " );
-			Serial3.print( m );
-			Serial3.print( '\r' );
+			Serial3.println( m );
 #endif
 			// Rueckmeldung an Host, mit \r\n aber ohne flush()!
 			out->println( m );
