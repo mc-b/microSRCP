@@ -40,7 +40,7 @@ GALed::GALed( int addr, uint8_t pin, uint8_t value )
 
 int GALed::set( int addr, int port, int value, int delay )
 {
-	if	( value == 0 )
+	if	( value == 1 )
 		digitalWrite( pin, HIGH );
 	else
 		digitalWrite( pin, LOW );

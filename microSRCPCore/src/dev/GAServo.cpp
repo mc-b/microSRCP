@@ -39,7 +39,7 @@ GAServo::GAServo( int addr, uint8_t pin, uint8_t min, uint8_t max )
 
 int GAServo::set( int addr, int port, int value, int delay )
 {
-	if	( port == 0 )
+	if	( value == 0 )
 		servo->write( min );
 	else
 		servo->write( max );
