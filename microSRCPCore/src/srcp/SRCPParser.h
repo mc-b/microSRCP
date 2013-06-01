@@ -37,7 +37,7 @@ class SRCPParser
 private:
 	devices getDevice( char* device );
 public:
-	void parse( char* args );
+	void parse( command_t& cmd, char* args );
 };
 
 } /* namespace srcp */

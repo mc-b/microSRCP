@@ -37,9 +37,14 @@ class SRCPServerSerial
 private:
 	SRCPSession* session;
 	SRCPParser* parser;
+	srcp::command_t cmd;
 public:
     void begin(unsigned long speed );
-    int dispatch(void);
+    command_t* dispatch(void);
+    // sendet direkt an die COMMAND Session
+    void sendCommand( char* message ) { Serial.println( message ); }
+    // sendet direkt an die INFO Session
+    void sendInfo( char* message )  { Serial.println( message ); }
 };
 
 } /* namespace srcp */

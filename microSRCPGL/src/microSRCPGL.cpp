@@ -38,8 +38,6 @@
 #include <dev/GLMotoMamaAnalog.h>
 #include <dev/FBSwitchSensor.h>
 
-// Globaler Command Buffer
-srcp::command_t global_cmd;
 // SRCP I/O Server
 srcp::SRCPServerSerial server;
 //srcp::SRCPEthernetServer server;
@@ -89,7 +87,3 @@ void loop()
 	// Refresh der Sensoren bzw. Abfragen ob Aenderungen stattgefunden haben
 	DeviceManager.refresh();
 }
-
-
-
-

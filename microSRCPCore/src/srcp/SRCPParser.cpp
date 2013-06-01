@@ -29,84 +29,84 @@ namespace srcp
 /**
  * Parst den I/O Buffer und stellt das Ergebniss in globaler cmd Struct ab.
  */
-void SRCPParser::parse( char* args )
+void SRCPParser::parse( command_t& cmd, char* args )
 {
 	char d[10];
-	memset( global_cmd.values, 0, sizeof(global_cmd.values) );
+	memset( cmd.values, 0, sizeof(cmd.values) );
 
-	global_cmd.cmd = UNKNOWN;
-	global_cmd.device = NA;
-	global_cmd.args[0] = '\0';
+	cmd.cmd = UNKNOWN;
+	cmd.device = NA;
+	cmd.args[0] = '\0';
 
 	if (strncasecmp(args, "SET CONNECTIONMODE SRCP", 23) == 0  )
 	{
-		global_cmd.cmd = CONNECTIONMODE;
-		global_cmd.values[0] = COMMAND;
+		cmd.cmd = CONNECTIONMODE;
+		cmd.values[0] = COMMAND;
 		strcpy( d, args+24 );
 		if	( strncasecmp(d, "INFO", 4) == 0 )
-			global_cmd.values[0] = INFO;
+			cmd.values[0] = INFO;
 	}
 	else if ( strncasecmp( args, "SET PROTOCOL SRCP", 17) == 0 )
 	{
-		global_cmd.cmd = PROTOCOL;
-		strcpy( global_cmd.args, args+18 );
+		cmd.cmd = PROTOCOL;
+		strcpy( cmd.args, args+18 );
 	}
 	else if (strncasecmp(args, "SET", 3) == 0)
 	{
 		// GL hat max. 12 (15 - 3) Funktionen, siehe SRCP_MAX_ARGS
-		global_cmd.cmd = SET;
+		cmd.cmd = SET;
 		// Bus, Devices, Adresse sind immer vorhanden.
-		sscanf( args, "%*s %d %s %d", &global_cmd.bus, d, &global_cmd.addr );
-		global_cmd.device = getDevice( d );
+		sscanf( args, "%*s %d %s %d", &cmd.bus, d, &cmd.addr );
+		cmd.device = getDevice( d );
 
-		switch	( global_cmd.device )
+		switch	( cmd.device )
 		{
 			case	POWER:
-				sscanf( args,  "%*s %*d %*s %s", global_cmd.args );
-				if	( strncasecmp( global_cmd.args, "ON", 2) == 0 )
-					global_cmd.values[0] = ON;
+				sscanf( args,  "%*s %*d %*s %s", cmd.args );
+				if	( strncasecmp( cmd.args, "ON", 2) == 0 )
+					cmd.values[0] = ON;
 				else
-					global_cmd.values[0] = OFF;
+					cmd.values[0] = OFF;
 				break;
 
 			case	SM:
-				sscanf( args, "%*s %*d %*s %*d %s %d %d", d, &global_cmd.values[1], &global_cmd.values[2] );
-				global_cmd.values[0] = getDevice( d );		// Device an welche der SM Befehle geschickt wird.
+				sscanf( args, "%*s %*d %*s %*d %s %d %d", d, &cmd.values[1], &cmd.values[2] );
+				cmd.values[0] = getDevice( d );		// Device an welche der SM Befehle geschickt wird.
 				break;
 
 			// GL, GA
 			default:
-				sscanf( args, "%*s %*d %*s %*d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d", &global_cmd.values[0], &global_cmd.values[1], &global_cmd.values[2],
-						&global_cmd.values[3], &global_cmd.values[4], &global_cmd.values[5], &global_cmd.values[6], &global_cmd.values[7], &global_cmd.values[8], &global_cmd.values[9],
-						&global_cmd.values[10], &global_cmd.values[11], &global_cmd.values[12], &global_cmd.values[13], &global_cmd.values[14] );
+				sscanf( args, "%*s %*d %*s %*d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d", &cmd.values[0], &cmd.values[1], &cmd.values[2],
+						&cmd.values[3], &cmd.values[4], &cmd.values[5], &cmd.values[6], &cmd.values[7], &cmd.values[8], &cmd.values[9],
+						&cmd.values[10], &cmd.values[11], &cmd.values[12], &cmd.values[13], &cmd.values[14] );
 				break;
 		}
 	}
 	else if (strncasecmp(args, "GET", 3) == 0)
 	{
-		global_cmd.cmd = GET;
+		cmd.cmd = GET;
 		// Bus, Devices, Adresse sind immer vorhanden.
-		sscanf( args, "%*s %d %s %d", &global_cmd.bus, d, &global_cmd.addr );
-		global_cmd.device = getDevice( d );
+		sscanf( args, "%*s %d %s %d", &cmd.bus, d, &cmd.addr );
+		cmd.device = getDevice( d );
 
-		switch	( global_cmd.device )
+		switch	( cmd.device )
 		{
 			case SM:
-				sscanf( args, "%*s %*d %*s %*d %s %d", d, &global_cmd.values[1] );
-				global_cmd.values[0] = getDevice( d ); // betrifft Device bzw. SM Befehl fuer Device
+				sscanf( args, "%*s %*d %*s %*d %s %d", d, &cmd.values[1] );
+				cmd.values[0] = getDevice( d ); // betrifft Device bzw. SM Befehl fuer Device
 				break;
 		}
 	}
 	else if (strncasecmp(args, "WAIT", 4) == 0)
-		global_cmd.cmd = WAIT;
+		cmd.cmd = WAIT;
 	else if (strncasecmp(args, "INIT", 4) == 0)
-		global_cmd.cmd = INIT;
+		cmd.cmd = INIT;
 	else if (strncasecmp(args, "TERM", 4) == 0)
-		global_cmd.cmd = TERM;
+		cmd.cmd = TERM;
 	else if (strncasecmp(args, "GO", 2) == 0)
-		global_cmd.cmd = GO;
+		cmd.cmd = GO;
 	else
-		global_cmd.cmd = UNKNOWN;
+		cmd.cmd = UNKNOWN;
 }
 
 devices SRCPParser::getDevice( char* device )

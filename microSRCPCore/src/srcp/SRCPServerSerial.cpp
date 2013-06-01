@@ -53,7 +53,7 @@ void SRCPServerSerial::begin(unsigned long speed)
  * Prueft ob Daten am Seriellen Port anliegt und wenn ja werden diese
  * Verarbeitet.
  */
-int SRCPServerSerial::dispatch(void)
+command_t* SRCPServerSerial::dispatch(void)
 {
 	// keine Daten vorhanden - exit
 	if	( ! Serial.available() )
@@ -101,10 +101,10 @@ int SRCPServerSerial::dispatch(void)
 	Serial3.println( buf );
 #endif
 
-	// ASCII SRCP Commands parsen und abstellen in global_cmd
-	parser->parse( buf );
+	// ASCII SRCP Commands parsen und abstellen in cmd
+	parser->parse( cmd, buf );
 	// SRCP Commands verarbeiten, in rc steht die SRCP Rueckmeldung
-	char* rc = session->dispatch();
+	char* rc = session->dispatch( cmd );
 
 #if	( DEBUG_SCOPE > 0 )
 	Serial3.print("send: ");
@@ -116,7 +116,7 @@ int SRCPServerSerial::dispatch(void)
 	// Rueckmeldung an Host, mit \r\n aber ohne flush()!
 	Serial.println( rc );
 
-	return	( 1 );
+	return	( &cmd );
 }
 
 } /* namespace srcp */

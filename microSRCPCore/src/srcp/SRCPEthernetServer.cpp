@@ -83,8 +83,8 @@ int SRCPEthernetServer::dispatch( srcp::SRCPSession* session, lan::EthernetSocke
 			Serial3.print( ", " );
 			Serial3.println( command );
 #endif
-			parser->parse( command );
-			char* rc = session->dispatch();
+			parser->parse( cmd, command );
+			char* rc = session->dispatch( cmd );
 
 #if	( DEBUG_SCOPE > 0 )
 			Serial3.print("send: ");
