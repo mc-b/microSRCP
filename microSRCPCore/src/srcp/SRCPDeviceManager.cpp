@@ -88,6 +88,57 @@ void SRCPDeviceManager::refresh()
 			next->refresh();
 }
 
+int SRCPDeviceManager::getDescription( int bus, int addr, int device, int rc[] )
+{
+	if	( addr == 0 && bus == 0 && device == LAN  )
+	{
+		rc[0] = 0;
+		rc[1] = 0;
+		for	( SRCPFeedback* n = firstFB; n != 0; n = n->nextElement() )
+		{
+			// das 1. Mal
+			if	( rc[0] == 0 )
+			{
+				rc[0] = n->getStartAddr();
+				rc[1] = n->getEndAddr();
+				continue;
+			}
+			rc[0] = (n->getStartAddr() < rc[0]) ? n->getStartAddr() : rc[0];
+			rc[1] = (n->getEndAddr()   > rc[1]) ? n->getEndAddr()   : rc[1];
+		}
+		rc[2] = 0;
+		rc[3] = 0;
+		for	( SRCPGenericAccessoire* n = firstGA; n != 0; n = n->nextElement() )
+		{
+			// das 1. Mal
+			if	( rc[2] == 0 )
+			{
+				rc[2] = n->getStartAddr();
+				rc[3] = n->getEndAddr();
+				continue;
+			}
+			rc[2] = (n->getStartAddr() < rc[2]) ? n->getStartAddr() : rc[2];
+			rc[3] = (n->getEndAddr()   > rc[3]) ? n->getEndAddr()   : rc[3];
+		}
+		rc[4] = 0;
+		rc[5] = 0;
+		for	( SRCPGenericLoco* n = firstGL; n != 0; n = n->nextElement() )
+		{
+			// das 1. Mal
+			if	( rc[4] == 0 )
+			{
+				rc[4] = n->getStartAddr();
+				rc[5] = n->getEndAddr();
+				continue;
+			}
+			rc[4] = (n->getStartAddr() < rc[4]) ? n->getStartAddr() : rc[4];
+			rc[5] = (n->getEndAddr()   > rc[5]) ? n->getEndAddr()   : rc[5];
+		}
+	}
+	// 3 x 2 Integer
+	return	( 12 );
+}
+
 } /* namespace srcp */
 
 /** Globaler Device Manager */

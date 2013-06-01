@@ -53,7 +53,7 @@ public:
 	void setPower( int on );
 	int setSM( int bus, int addr, int device, int cv, int value ) { return( 200 ); };
 	int getSM( int bus, int addr, int device, int cv ) { return( 200 ); };
-	int getDescription( int bus, int addr, int device, int rc[] ) { return( 200 ); };
+	int getDescription( int bus, int addr, int device, int rc[] );
 };
 } /* namespace srcp */
 
