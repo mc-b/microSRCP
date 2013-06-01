@@ -27,6 +27,7 @@
  */
 
 #include <Arduino.h>
+#include <Streaming.h>
 #include "I2CServer.h"
 #include "../srcp/SRCPDeviceManager.h"
 
@@ -59,24 +60,21 @@ void I2CServer::slaveTxEvent()
 
 	if	( len > 0 )
 	{
-/*
 #if	( DEBUG_SCOPE > 2 )
 		Serial << "send " << WireServer.cmd.cmd << ", addr " << WireServer.cmd.addr << ", dev " << WireServer.cmd.device
 				<< ", rc " << (int) WireServer.cmd.args[0] << endl;
 #endif
-*/
 		twi_transmit( (uint8_t*) WireServer.cmd.args, len );
 	}
 }
 
-void I2CServer::begin( int id, int version, int addr )
+void I2CServer::begin( int addr )
 {
-	this->addr = addr;
 	// initialize the wire device and register event
 	twi_init();
 	twi_attachSlaveRxEvent( I2CServer::slaveRxEvent );
 	twi_attachSlaveTxEvent( I2CServer::slaveTxEvent );
-	twi_setAddress( this->addr );
+	twi_setAddress( addr );
 }
 
 void I2CServer::dispatch(uint8_t* args, int size )
@@ -90,11 +88,9 @@ void I2CServer::dispatch(uint8_t* args, int size )
 		for ( int i = 4; i < size; i++ )
 			cmd.values[i - 4] = (int) ((args[i]));
 
-/*
 #if	( DEBUG_SCOPE > 2 )
 	Serial << "recv " << cmd.cmd << ", addr " << cmd.addr << ", dev " << cmd.device << endl;
 #endif
-*/
 
 	switch (cmd.cmd)
 	{
@@ -144,12 +140,10 @@ int I2CServer::dispatchTx()
 				case srcp::DESCRIPTION:
 				{
 					int size = DeviceManager.getDescription( cmd.values[0], cmd.addr, cmd.values[1], cmd.values );
-/*
 #if	( DEBUG_SCOPE > 2 )
 	Serial << "description: fb " << cmd.values[0] << "-" << cmd.values[1] << ", ga " << cmd.values[2]
 	       << "-" << cmd.values[3] << ", gl " << cmd.values[4] << "-" << cmd.values[5] << endl;
 #endif
-*/
 					return	( size );
 				}
 				default:
@@ -159,11 +153,6 @@ int I2CServer::dispatchTx()
 			break;
 	}
 	return	( 0 );
-}
-
-void I2CServer::run()
-{
-	//manager->refresh();
 }
 
 }

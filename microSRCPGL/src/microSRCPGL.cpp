@@ -33,6 +33,8 @@
 #include <srcp/SRCPDeviceManager.h>
 #include <srcp/SRCPServerSerial.h>
 #include <srcp/SRCPEthernetServer.h>
+#include <i2c/I2CDeviceManager.h>
+#include <i2c/I2CUtil.h>
 #include <dev/GALed.h>
 #include <dev/GAServo.h>
 #include <dev/GLMotoMamaAnalog.h>
@@ -54,10 +56,30 @@ srcp::SRCPEthernetServer server;
 // The IP address will be dependent on your local network:
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 IPAddress ip( 192, 168, 178, 241 );
+#elif  ( SRCP_PROTOCOL == SRCP_I2C )
+	// initialize I2C - Master braucht keine Adresse, muss als erstes erfolgen
+	// sonst kann der I2C Bus nicht durchsucht werden.
+	i2c::I2CServer server;
 #else
-#error "Fehler: kein Prokotoll definiert"
+#error "kein Prokotoll definiert"
 #endif
 
+//////////////////////////////////////////////////////////////////////////////////////////
+// Konfiguration Board
+#define BOARD_STANDARD		200
+#define BOARD_I2C_MASTER 	201
+
+#define BOARD 	BOARD_STANDARD
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// Konfiguration I2C
+#define I2C_ADDR		1
+#define I2C_ENABLED		1
+
+/**
+ *
+ * Initialisierung - Protokoll, Geraete etc.
+ */
 void setup()
 {
 #if	( DEBUG_SCOPE > 1 )
@@ -71,12 +93,17 @@ void setup()
 	server.begin( 115200 );
 #elif ( SRCP_PROTOCOL == SRCP_ETHERNET )
 	server.begin( mac, ip, 4303 );
+#elif  ( SRCP_PROTOCOL == SRCP_I2C )
+	// initialize I2C - Master braucht keine Adresse, muss als erstes erfolgen
+	// sonst kann der I2C Bus nicht durchsucht werden.
+	server.begin( I2C_ADDR );
 #endif
 
 #if	( DEBUG_SCOPE > 1 )
 	Serial3.println ( "Server listen " );
 #endif
 
+#if	( BOARD == BOARD_STANDARD )
 	// Geraete initialisieren, je nach Board und Verwendung
 	DeviceManager.addAccessoire( new dev::GALed( 1, 4, LOW ) ); 	// 2 Signale mit 2 LED an Ports 4 - 7.
 	DeviceManager.addAccessoire( new dev::GALed( 2, 5, HIGH ) );
@@ -84,17 +111,25 @@ void setup()
 	DeviceManager.addAccessoire( new dev::GALed( 4, 7, HIGH ) );
 	DeviceManager.addAccessoire( new dev::GAServo( 3, 2, 60, 90 ) ); // Servo mit Addr 3 an Pin 2, min. Stellung 60, max. Stellung 90 von 180.
 	DeviceManager.addAccessoire( new dev::GAServo( 4, 3, 60, 90 ) );
-	DeviceManager.addFeedback( new dev::FBSwitchSensor( 1, A0, A5 ) ); // Sensoren, jeweils in Gruppen von 8 (auch wenn nicht 8 Pins belegt)
+	DeviceManager.addFeedback( new dev::FBSwitchSensor( 1, A0, A3 ) ); // Sensoren, jeweils in Gruppen von 8 (auch wenn nicht 8 Pins belegt). A4+A5 = I2C Bus
 #if ( __AVR_ATmega1280__ || __AVR_ATmega2560__ )
 	//DeviceManager.addLoco( new dev::GLMotoMamaAnalog( 1, 10,  8,  9 ) ); // Moto Mama Shield, Pin 10 Geschwindigkeit, 8 Vor-, 9 Rueckwaerts - nur Mega
 #endif
 	//DeviceManager.addLoco( new dev::GLMotoMamaAnalog( 2, 11, 12, 13 ) );
+#endif
+
+#if	( SRCP_PROTOCOL != SRCP_I2C && I2C_ENABLED )
+	i2c::I2CDeviceManager::begin( 9, 9, 8, 8 );		// weitere Boards am I2C Bus, beginnend mit Adresse 9. Jedes Board bekommt 8 Adressen
+#endif
 
 #if	( DEBUG_SCOPE > 1 )
 	Serial3.println ( "Devices ready" );
 #endif
 }
 
+/**
+ * Endlosloop
+ */
 void loop()
 {
 	// Host Meldungen verarbeiten

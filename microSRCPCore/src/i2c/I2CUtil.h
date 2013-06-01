@@ -25,7 +25,14 @@
 #ifndef I2CUTIL_H_
 #define I2CUTIL_H_
 
-#include <inttypes.h>
+#include <Arduino.h>
+
+extern "C" {
+  #include <stdlib.h>
+  #include <string.h>
+  #include <inttypes.h>
+  #include "twi.h"
+}
 
 namespace i2c
 {
