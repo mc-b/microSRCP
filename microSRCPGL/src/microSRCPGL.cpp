@@ -77,7 +77,6 @@ IPAddress ip( 192, 168, 178, 241 );
 #define I2C_ENABLED		1
 
 /**
- *
  * Initialisierung - Protokoll, Geraete etc.
  */
 void setup()
