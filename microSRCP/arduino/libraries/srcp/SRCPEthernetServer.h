@@ -38,6 +38,7 @@ private:
 	lan::EthernetSocket* infoSocket;
 	srcp::SRCPSession* commandSession;
 	srcp::SRCPSession* infoSession;
+	srcp::command_t cmd;
 	// ASCII SRCP Parser
 	SRCPParser* parser;
 	int status;

@@ -65,7 +65,4 @@ namespace srcp
 	enum power_enum { ON, OFF };
 }
 
-// Muss im main() definiert werden, fuer alle anderen extern
-extern srcp::command_t global_cmd;
-
 #endif /* SRCPCOMMAND_H_ */

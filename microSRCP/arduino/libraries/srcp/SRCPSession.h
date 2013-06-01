@@ -47,7 +47,7 @@ public:
 	void setConnectionMode( char* mode );
 	int Go();
 	int connect();
-	char* dispatch();
+	char* dispatch( command_t& cmd );
 	const char* version();
 	int getStatus() { return (status); }
 	void setStatus( int s ) { status = s; }

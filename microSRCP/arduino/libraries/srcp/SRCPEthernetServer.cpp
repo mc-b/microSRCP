@@ -21,11 +21,6 @@
 #include <Ethernet.h>
 #include "SRCPEthernetServer.h"
 
-// Debugging > 0 == ON
-//#define DEBUG_SCOPE 2
-// Fuer TCP ist Serial frei fuer Debugging Output
-//#define Serial3 Serial
-
 namespace srcp
 {
 char command[64];
@@ -88,8 +83,8 @@ int SRCPEthernetServer::dispatch( srcp::SRCPSession* session, lan::EthernetSocke
 			Serial3.print( ", " );
 			Serial3.println( command );
 #endif
-			parser->parse( command );
-			char* rc = session->dispatch();
+			parser->parse( cmd, command );
+			char* rc = session->dispatch( cmd );
 
 #if	( DEBUG_SCOPE > 0 )
 			Serial3.print("send: ");

@@ -68,8 +68,6 @@
 #include <GLArduinoMotor.h>
 #include <GLMotoMamaAnalog.h>
 
-// Globaler Command Buffer
-srcp::command_t global_cmd;
 // SRCP I/O Server
 //srcp::SRCPServerSerial server;
 srcp::SRCPEthernetServer server;
@@ -105,7 +103,7 @@ void setup()
 #if ( __AVR_ATmega1280__ || __AVR_ATmega2560__ )
 	//DeviceManager.addLoco( new dev::GLMotoMamaAnalog( 1, 10,  8,  9 ) ); // Moto Mama Shield, Pin 10 Geschwindigkeit, 8 Vor-, 9 Rueckwaerts - nur Mega
 #endif
-	//DeviceManager.addLoco( new dev::GLMotoMamaAnalog( 2, 11, 12, 13 ) );
+	DeviceManager.addLoco( new dev::GLMotoMamaAnalog( 2, 11, 12, 13 ) );
 
 #if	( DEBUG_SCOPE > 1 )
 	Serial3.println ( "Devices ready" );
