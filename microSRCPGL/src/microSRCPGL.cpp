@@ -38,13 +38,25 @@
 #include <dev/GLMotoMamaAnalog.h>
 #include <dev/FBSwitchSensor.h>
 
+//////////////////////////////////////////////////////////////////////////////////////////
+// Konfiguration Protokoll
+#define SRCP_ETHERNET	100
+#define SRCP_SERIAL		101
+#define SRCP_I2C		102
+#define SRCP_PROTOCOL	SRCP_SERIAL
+
+#if	( SRCP_PROTOCOL == SRCP_SERIAL )
 // SRCP I/O Server
 srcp::SRCPServerSerial server;
-//srcp::SRCPEthernetServer server;
+#elif ( SRCP_PROTOCOL == SRCP_ETHERNET )
+srcp::SRCPEthernetServer server;
 // Enter a MAC address and IP address for your controller below.
 // The IP address will be dependent on your local network:
-//byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
-//IPAddress ip( 192, 168, 178, 241 );
+byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+IPAddress ip( 192, 168, 178, 241 );
+#else
+#error "Fehler: kein Prokotoll definiert"
+#endif
 
 void setup()
 {
@@ -53,9 +65,13 @@ void setup()
 	Serial3.begin( 9600 );
 	Serial3.println ( "debug ready ..." );
 #endif
+
 	// SRCP Kommunikation oeffnen
+#if	( SRCP_PROTOCOL == SRCP_SERIAL )
 	server.begin( 115200 );
-	//server.begin( mac, ip, 4303 );
+#elif ( SRCP_PROTOCOL == SRCP_ETHERNET )
+	server.begin( mac, ip, 4303 );
+#endif
 
 #if	( DEBUG_SCOPE > 1 )
 	Serial3.println ( "Server listen " );
