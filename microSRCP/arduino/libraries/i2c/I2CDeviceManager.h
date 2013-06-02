@@ -29,6 +29,11 @@ class I2CDeviceManager
 {
 public:
 	static void begin( int startFB = 1, int startGA = 1, int reservedFB = 8, int reservedGA = 8 );
+	static int setSM( int remoteAddr, int bus, int addr, int device, int cv, int value );
+	static int getSM( int remoteAddr, int bus, int addr, int device, int cv );
+	static int getDescription( int remoteAddr, int bus, int addr, int device, uint8_t* rc );
+	static int read( int addr, uint8_t *buf, int size );
+	static int write( int addr, uint8_t *buf, int size );
 
 };
 

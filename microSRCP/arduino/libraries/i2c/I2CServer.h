@@ -38,12 +38,12 @@ namespace i2c
 class I2CServer
 {
 private:
-	srcp::command_t cmd;
-	void dispatch(uint8_t* args, int size );
-	int dispatchTx();
-	static void slaveRxEvent(uint8_t* rxBuf, int size);
+	static void onReceive( srcp::command_t& cmd );
+	static int onRequest( srcp::command_t& cmd );
+	static void slaveRxEvent( int size );
 	static void slaveTxEvent();
 public:
+
 	void begin( int addr = 1 );
 	// ohne Funktion, send/receive erfolgt via Events
 	void dispatch() {};
