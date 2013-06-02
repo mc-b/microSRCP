@@ -34,7 +34,6 @@
 #include <srcp/SRCPServerSerial.h>
 #include <srcp/SRCPEthernetServer.h>
 #include <i2c/I2CDeviceManager.h>
-#include <i2c/I2CUtil.h>
 #include <dev/GALed.h>
 #include <dev/GAServo.h>
 #include <dev/GLMotoMamaAnalog.h>
@@ -57,9 +56,8 @@ srcp::SRCPEthernetServer server;
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 IPAddress ip( 192, 168, 178, 241 );
 #elif  ( SRCP_PROTOCOL == SRCP_I2C )
-	// initialize I2C - Master braucht keine Adresse, muss als erstes erfolgen
-	// sonst kann der I2C Bus nicht durchsucht werden.
-	i2c::I2CServer server;
+// SRCP I2C - Slave
+i2c::I2CServer server = WireServer;
 #else
 #error "kein Prokotoll definiert"
 #endif
@@ -87,21 +85,6 @@ void setup()
 	Serial3.println ( "debug ready ..." );
 #endif
 
-	// SRCP Kommunikation oeffnen
-#if	( SRCP_PROTOCOL == SRCP_SERIAL )
-	server.begin( 115200 );
-#elif ( SRCP_PROTOCOL == SRCP_ETHERNET )
-	server.begin( mac, ip, 4303 );
-#elif  ( SRCP_PROTOCOL == SRCP_I2C )
-	// initialize I2C - Master braucht keine Adresse, muss als erstes erfolgen
-	// sonst kann der I2C Bus nicht durchsucht werden.
-	server.begin( I2C_ADDR );
-#endif
-
-#if	( DEBUG_SCOPE > 1 )
-	Serial3.println ( "Server listen " );
-#endif
-
 #if	( BOARD == BOARD_STANDARD )
 	// Geraete initialisieren, je nach Board und Verwendung
 	DeviceManager.addAccessoire( new dev::GALed( 1, 4, LOW ) ); 	// 2 Signale mit 2 LED an Ports 4 - 7.
@@ -114,15 +97,30 @@ void setup()
 #if ( __AVR_ATmega1280__ || __AVR_ATmega2560__ )
 	//DeviceManager.addLoco( new dev::GLMotoMamaAnalog( 1, 10,  8,  9 ) ); // Moto Mama Shield, Pin 10 Geschwindigkeit, 8 Vor-, 9 Rueckwaerts - nur Mega
 #endif
-	//DeviceManager.addLoco( new dev::GLMotoMamaAnalog( 2, 11, 12, 13 ) );
+	DeviceManager.addLoco( new dev::GLMotoMamaAnalog( 2, 11, 12, 13 ) );
 #endif
 
 #if	( SRCP_PROTOCOL != SRCP_I2C && I2C_ENABLED )
+	// initialize I2C - Master braucht keine Adresse
 	i2c::I2CDeviceManager::begin( 9, 9, 8, 8 );		// weitere Boards am I2C Bus, beginnend mit Adresse 9. Jedes Board bekommt 8 Adressen
 #endif
 
 #if	( DEBUG_SCOPE > 1 )
 	Serial3.println ( "Devices ready" );
+#endif
+
+	// SRCP Kommunikation oeffnen
+#if	( SRCP_PROTOCOL == SRCP_SERIAL )
+	server.begin( 115200 );
+#elif ( SRCP_PROTOCOL == SRCP_ETHERNET )
+	server.begin( mac, ip, 4303 );
+#elif  ( SRCP_PROTOCOL == SRCP_I2C )
+	// initialize I2C - Slave
+	server.begin( I2C_ADDR );
+#endif
+
+#if	( DEBUG_SCOPE > 1 )
+	Serial3.println ( "Server listen " );
 #endif
 }
 

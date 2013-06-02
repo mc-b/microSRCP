@@ -21,7 +21,7 @@
 
 
 #include "I2CFBMaster.h"
-#include "I2CUtil.h"
+#include "I2CDeviceManager.h"
 
 namespace i2c
 {
@@ -42,11 +42,11 @@ int I2CFBMaster::info( int addr, srcp::feedback fb[] )
 	int a = this->addr;
 	memcpy( &buf[2], &a, 2 );
 
-	int rc = I2CUtil::write( this->addr, buf, sizeof(buf) );
+	int rc = I2CDeviceManager::write( this->addr, buf, sizeof(buf) );
 	if	( rc != 200 )
 		return	( rc );
 
-	rc = I2CUtil::read( this->addr, buf, 1 );
+	rc = I2CDeviceManager::read( this->addr, buf, 1 );
 	if	( rc != 200 )
 		return	( rc );
 

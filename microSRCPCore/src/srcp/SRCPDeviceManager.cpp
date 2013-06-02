@@ -94,45 +94,48 @@ int SRCPDeviceManager::getDescription( int bus, int addr, int device, int rc[] )
 	{
 		rc[0] = 0;
 		rc[1] = 0;
-		for	( SRCPFeedback* n = firstFB; n != 0; n = n->nextElement() )
+		SRCPFeedback* fb = (srcp::SRCPFeedback*) 0;
+		for	( fb = firstFB; fb != (srcp::SRCPFeedback*) 0; fb = fb->nextElement() )
 		{
 			// das 1. Mal
 			if	( rc[0] == 0 )
 			{
-				rc[0] = n->getStartAddr();
-				rc[1] = n->getEndAddr();
+				rc[0] = fb->getStartAddr();
+				rc[1] = fb->getEndAddr();
 				continue;
 			}
-			rc[0] = (n->getStartAddr() < rc[0]) ? n->getStartAddr() : rc[0];
-			rc[1] = (n->getEndAddr()   > rc[1]) ? n->getEndAddr()   : rc[1];
+			rc[0] = (fb->getStartAddr() < rc[0]) ? fb->getStartAddr() : rc[0];
+			rc[1] = (fb->getEndAddr()   > rc[1]) ? fb->getEndAddr()   : rc[1];
 		}
 		rc[2] = 0;
 		rc[3] = 0;
-		for	( SRCPGenericAccessoire* n = firstGA; n != 0; n = n->nextElement() )
+		SRCPGenericAccessoire* ga = (srcp::SRCPGenericAccessoire*) 0;
+		for	( ga = firstGA; ga != (srcp::SRCPGenericAccessoire*) 0; ga = ga->nextElement() )
 		{
 			// das 1. Mal
 			if	( rc[2] == 0 )
 			{
-				rc[2] = n->getStartAddr();
-				rc[3] = n->getEndAddr();
+				rc[2] = ga->getStartAddr();
+				rc[3] = ga->getEndAddr();
 				continue;
 			}
-			rc[2] = (n->getStartAddr() < rc[2]) ? n->getStartAddr() : rc[2];
-			rc[3] = (n->getEndAddr()   > rc[3]) ? n->getEndAddr()   : rc[3];
+			rc[2] = (ga->getStartAddr() < rc[2]) ? ga->getStartAddr() : rc[2];
+			rc[3] = (ga->getEndAddr()   > rc[3]) ? ga->getEndAddr()   : rc[3];
 		}
 		rc[4] = 0;
 		rc[5] = 0;
-		for	( SRCPGenericLoco* n = firstGL; n != 0; n = n->nextElement() )
+		SRCPGenericLoco* gl = (srcp::SRCPGenericLoco*) 0;
+		for	( gl = firstGL; gl != (srcp::SRCPGenericLoco*) 0; gl = gl->nextElement() )
 		{
 			// das 1. Mal
 			if	( rc[4] == 0 )
 			{
-				rc[4] = n->getStartAddr();
-				rc[5] = n->getEndAddr();
+				rc[4] = gl->getStartAddr();
+				rc[5] = gl->getEndAddr();
 				continue;
 			}
-			rc[4] = (n->getStartAddr() < rc[4]) ? n->getStartAddr() : rc[4];
-			rc[5] = (n->getEndAddr()   > rc[5]) ? n->getEndAddr()   : rc[5];
+			rc[4] = (gl->getStartAddr() < rc[4]) ? gl->getStartAddr() : rc[4];
+			rc[5] = (gl->getEndAddr()   > rc[5]) ? gl->getEndAddr()   : rc[5];
 		}
 	}
 	// 3 x 2 Integer

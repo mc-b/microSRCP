@@ -20,7 +20,7 @@
  */
 
 #include "I2CGAMaster.h"
-#include "I2CUtil.h"
+#include "I2CDeviceManager.h"
 
 namespace i2c
 {
@@ -43,7 +43,7 @@ int I2CGAMaster::set( int addr, int port, int value, int delay )
 	buf[5] = value;
 	buf[6] = delay;
 
-	return	( I2CUtil::write( this->addr, buf, sizeof(buf) ) );
+	return	( I2CDeviceManager::write( this->addr, buf, sizeof(buf) ) );
 }
 
 void I2CGAMaster::setPower( int on )
@@ -53,17 +53,17 @@ void I2CGAMaster::setPower( int on )
 	buf[1] = srcp::SET;
 	memcpy( &buf[2], &on, 2 );
 
-	I2CUtil::write( this->addr, buf, sizeof(buf) );
+	I2CDeviceManager::write( this->addr, buf, sizeof(buf) );
 }
 
 int I2CGAMaster::setSM( int bus, int addr, int device, int cv, int value )
 {
-	return	( I2CUtil::setSM( this->addr, bus, addr, device, cv, value ) );
+	return	( I2CDeviceManager::setSM( this->addr, bus, addr, device, cv, value ) );
 }
 
 int I2CGAMaster::getSM( int bus, int addr, int device, int cv )
 {
-	return	( I2CUtil::getSM( this->addr, bus, addr, device, cv ) );
+	return	( I2CDeviceManager::getSM( this->addr, bus, addr, device, cv ) );
 }
 
 }

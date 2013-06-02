@@ -28,13 +28,10 @@
 
 #include <Arduino.h>
 #include <Streaming.h>
+#include <Wire.h>
 #include "I2CServer.h"
 #include "../srcp/SRCPDeviceManager.h"
 
-extern "C"
-{
-#include <twi.h>
-}
 
 // Preinstantiate Objects //////////////////////////////////////////////////////
 
@@ -42,13 +39,45 @@ i2c::I2CServer WireServer = i2c::I2CServer();
 
 namespace i2c
 {
+// Global Commando Buffer, sonst ist keine Uebergabe moeglich.
+srcp::command_t global_cmd;
 
 /**
  * Empfange Daten von I2C Master - Abhandlung SRCP SET fuer alle anderen nur abstellen der Argumente
  */
-void I2CServer::slaveRxEvent( uint8_t* rxBuf, int size )
+void I2CServer::slaveRxEvent( int size )
 {
-	WireServer.dispatch( rxBuf, size );
+	memset( global_cmd.values, 0, sizeof(global_cmd.values) );
+
+	if	( size >= 4 )
+	{
+		global_cmd.device 	= (srcp::devices) Wire.read();
+		global_cmd.cmd 	= (srcp::commands) Wire.read();
+		char buf[2];
+		Wire.readBytes( buf, 2 );
+		memcpy( &global_cmd.addr, buf, 2 );
+	}
+	else
+		for	( int i = 0; i < size; i++ )
+		{
+			int d = Wire.read();
+#if	( DEBUG_SCOPE > 2 )
+	Serial3 << "unknown: " << d << endl;
+#endif
+			return;
+		}
+
+	for	( int i = 4; i < size; i++ )
+		global_cmd.args[i-4] = Wire.read();
+
+
+#if	( DEBUG_SCOPE > 2 )
+	Serial3 << "revc: " << global_cmd.cmd << ", addr " << global_cmd.addr << ", dev " << global_cmd.device << ", size " << size << endl;
+#endif
+	onReceive( global_cmd );
+#if	( DEBUG_SCOPE > 2 )
+	Serial3 << "revc exit" << endl;
+#endif
 }
 
 /**
@@ -56,42 +85,42 @@ void I2CServer::slaveRxEvent( uint8_t* rxBuf, int size )
  */
 void I2CServer::slaveTxEvent()
 {
-	int len = WireServer.dispatchTx();
+#if	( DEBUG_SCOPE > 2 )
+		Serial3 << "send: ";
+#endif
+
+	int len = onRequest( global_cmd );
 
 	if	( len > 0 )
 	{
 #if	( DEBUG_SCOPE > 2 )
-		Serial << "send " << WireServer.cmd.cmd << ", addr " << WireServer.cmd.addr << ", dev " << WireServer.cmd.device
-				<< ", rc " << (int) WireServer.cmd.args[0] << endl;
+		Serial3 << global_cmd.cmd << ", addr " << global_cmd.addr << ", dev " << global_cmd.device << ",size " << len;
+		for	( int i = 0; i < len; i++ )
+			Serial3 << ":" << (int) global_cmd.args[i];
+		Serial3.println();
 #endif
-		twi_transmit( (uint8_t*) WireServer.cmd.args, len );
+		Wire.write( (uint8_t*) global_cmd.args, len );
 	}
+	// Error
+	else
+	{
+		Serial3.println( "error");
+		Wire.write( -1 );
+	}
+
 }
 
 void I2CServer::begin( int addr )
 {
 	// initialize the wire device and register event
-	twi_init();
-	twi_attachSlaveRxEvent( I2CServer::slaveRxEvent );
-	twi_attachSlaveTxEvent( I2CServer::slaveTxEvent );
-	twi_setAddress( addr );
+	Wire.onReceive( I2CServer::slaveRxEvent );
+	Wire.onRequest( I2CServer::slaveTxEvent );
+
+	Wire.begin( addr );
 }
 
-void I2CServer::dispatch(uint8_t* args, int size )
+void I2CServer::onReceive( srcp::command_t& cmd )
 {
-	cmd.device = (srcp::devices) ((args[0]));
-	cmd.cmd = (srcp::commands) ((args[1]));
-	memcpy( &cmd.addr, &args[2], 2 );
-
-	// FB und Power Devices haben keine Argumente
-	if ( cmd.device != srcp::FB && cmd.device != srcp::POWER )
-		for ( int i = 4; i < size; i++ )
-			cmd.values[i - 4] = (int) ((args[i]));
-
-#if	( DEBUG_SCOPE > 2 )
-	Serial << "recv " << cmd.cmd << ", addr " << cmd.addr << ", dev " << cmd.device << endl;
-#endif
-
 	switch (cmd.cmd)
 	{
 		case srcp::SET:
@@ -122,8 +151,10 @@ void I2CServer::dispatch(uint8_t* args, int size )
 	}
 }
 
-int I2CServer::dispatchTx()
+int I2CServer::onRequest( srcp::command_t& cmd )
 {
+	Serial3 << "onRequest " << cmd.device << " " << cmd.cmd << endl;
+
 	switch (cmd.cmd)
 	{
 		case srcp::GET:
@@ -140,8 +171,8 @@ int I2CServer::dispatchTx()
 				case srcp::DESCRIPTION:
 				{
 					int size = DeviceManager.getDescription( cmd.values[0], cmd.addr, cmd.values[1], cmd.values );
-#if	( DEBUG_SCOPE > 2 )
-	Serial << "description: fb " << cmd.values[0] << "-" << cmd.values[1] << ", ga " << cmd.values[2]
+#if	( DEBUG_SCOPE > 10 )
+	Serial3 << "description: fb " << cmd.values[0] << "-" << cmd.values[1] << ", ga " << cmd.values[2]
 	       << "-" << cmd.values[3] << ", gl " << cmd.values[4] << "-" << cmd.values[5] << endl;
 #endif
 					return	( size );
@@ -152,7 +183,7 @@ int I2CServer::dispatchTx()
 		default:
 			break;
 	}
-	return	( 0 );
+	return	( 1 );
 }
 
 }
