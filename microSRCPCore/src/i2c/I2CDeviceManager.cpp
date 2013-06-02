@@ -143,7 +143,7 @@ int I2CDeviceManager::getSM( int remoteAddr, int bus, int addr, int device, int 
 
 int I2CDeviceManager::getDescription( int remoteAddr, int bus, int addr, int device, uint8_t* rc )
 {
-	uint8_t buf[12];
+	uint8_t buf[6];
 	buf[0] = srcp::DESCRIPTION;
 	buf[1] = srcp::GET;
 	int a = 0;

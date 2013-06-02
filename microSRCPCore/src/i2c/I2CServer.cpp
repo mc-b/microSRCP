@@ -6,8 +6,8 @@
 
 	Im Sketch als WireServer ansprechbar.
 
-	Beispiel fuer eine Implementation sie SRCPGASlave oder
-	SRCPGLSave.
+	ACHTUNG: lange Debuggingausgaben in den Events koennen
+	den gesamten Arduino blockieren!!!
 
 	Copyright (c) 2010 Marcel Bernet.  All right reserved.
 
@@ -75,9 +75,6 @@ void I2CServer::slaveRxEvent( int size )
 	Serial3 << "revc: " << global_cmd.cmd << ", addr " << global_cmd.addr << ", dev " << global_cmd.device << ", size " << size << endl;
 #endif
 	onReceive( global_cmd );
-#if	( DEBUG_SCOPE > 2 )
-	Serial3 << "revc exit" << endl;
-#endif
 }
 
 /**
@@ -93,7 +90,7 @@ void I2CServer::slaveTxEvent()
 
 	if	( len > 0 )
 	{
-#if	( DEBUG_SCOPE > 2 )
+#if	( DEBUG_SCOPE > 10 )
 		Serial3 << global_cmd.cmd << ", addr " << global_cmd.addr << ", dev " << global_cmd.device << ",size " << len;
 		for	( int i = 0; i < len; i++ )
 			Serial3 << ":" << (int) global_cmd.args[i];
@@ -104,7 +101,9 @@ void I2CServer::slaveTxEvent()
 	// Error
 	else
 	{
+#if	( DEBUG_SCOPE > 2 )
 		Serial3.println( "error");
+#endif
 		Wire.write( -1 );
 	}
 
@@ -153,8 +152,6 @@ void I2CServer::onReceive( srcp::command_t& cmd )
 
 int I2CServer::onRequest( srcp::command_t& cmd )
 {
-	Serial3 << "onRequest " << cmd.device << " " << cmd.cmd << endl;
-
 	switch (cmd.cmd)
 	{
 		case srcp::GET:
@@ -171,10 +168,11 @@ int I2CServer::onRequest( srcp::command_t& cmd )
 				case srcp::DESCRIPTION:
 				{
 					int size = DeviceManager.getDescription( cmd.values[0], cmd.addr, cmd.values[1], cmd.values );
-#if	( DEBUG_SCOPE > 10 )
-	Serial3 << "description: fb " << cmd.values[0] << "-" << cmd.values[1] << ", ga " << cmd.values[2]
+#if	( DEBUG_SCOPE > 2 )
+	Serial3 << "desc: fb " << cmd.values[0] << "-" << cmd.values[1] << ", ga " << cmd.values[2]
 	       << "-" << cmd.values[3] << ", gl " << cmd.values[4] << "-" << cmd.values[5] << endl;
 #endif
+					//size = 5;
 					return	( size );
 				}
 				default:
