@@ -19,27 +19,25 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef GAOPENDCC_H_
-#define GAOPENDCC_H_
-
-#include "../srcp/SRCPGenericAccessoire.h"
+#include "GAOpenDCC.h"
 
 namespace dcc
 {
 
-class GAOpenDCC : public srcp::SRCPGenericAccessoire
+GAOpenDCC::GAOpenDCC( int startAddr, int endAddr )
 {
-private:
-	int startAddr;
-	int endAddr;
-public:
-	GAOpenDCC( int startAddr, int endAddr );
-	int set( int addr, int port, int value, int delay );
-	int checkAddr( int addr ) { return ( addr >= startAddr && addr <= endAddr); }
-	int	getStartAddr() { return( this->startAddr ); };
-	int getEndAddr() { return( this->endAddr ); }
-};
-
+	this->startAddr = startAddr;
+	this->endAddr = endAddr;
 }
 
-#endif /* GAOPENDCC_H_ */
+int GAOpenDCC::set( int addr, int port, int value, int delay )
+{
+	// TODO wie ist es mit an und Abschalten des Powers?
+/*	do_accessory( addr, 0, 0 );
+	do_accessory( addr, 1, 0 );
+	do_accessory( addr, port, 1 );*/
+
+	return	( 200 );
+}
+
+}
