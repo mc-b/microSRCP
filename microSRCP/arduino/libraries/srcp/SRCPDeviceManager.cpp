@@ -88,6 +88,60 @@ void SRCPDeviceManager::refresh()
 			next->refresh();
 }
 
+int SRCPDeviceManager::getDescription( int bus, int addr, int device, int rc[] )
+{
+	if	( addr == 0 && bus == 0 && device == LAN )
+	{
+		rc[0] = 0;
+		rc[1] = 0;
+		SRCPFeedback* fb = (srcp::SRCPFeedback*) 0;
+		for	( fb = firstFB; fb != (srcp::SRCPFeedback*) 0; fb = fb->nextElement() )
+		{
+			// das 1. Mal
+			if	( rc[0] == 0 )
+			{
+				rc[0] = fb->getStartAddr();
+				rc[1] = fb->getEndAddr();
+				continue;
+			}
+			rc[0] = (fb->getStartAddr() < rc[0]) ? fb->getStartAddr() : rc[0];
+			rc[1] = (fb->getEndAddr()   > rc[1]) ? fb->getEndAddr()   : rc[1];
+		}
+		rc[2] = 0;
+		rc[3] = 0;
+		SRCPGenericAccessoire* ga = (srcp::SRCPGenericAccessoire*) 0;
+		for	( ga = firstGA; ga != (srcp::SRCPGenericAccessoire*) 0; ga = ga->nextElement() )
+		{
+			// das 1. Mal
+			if	( rc[2] == 0 )
+			{
+				rc[2] = ga->getStartAddr();
+				rc[3] = ga->getEndAddr();
+				continue;
+			}
+			rc[2] = (ga->getStartAddr() < rc[2]) ? ga->getStartAddr() : rc[2];
+			rc[3] = (ga->getEndAddr()   > rc[3]) ? ga->getEndAddr()   : rc[3];
+		}
+		rc[4] = 0;
+		rc[5] = 0;
+		SRCPGenericLoco* gl = (srcp::SRCPGenericLoco*) 0;
+		for	( gl = firstGL; gl != (srcp::SRCPGenericLoco*) 0; gl = gl->nextElement() )
+		{
+			// das 1. Mal
+			if	( rc[4] == 0 )
+			{
+				rc[4] = gl->getStartAddr();
+				rc[5] = gl->getEndAddr();
+				continue;
+			}
+			rc[4] = (gl->getStartAddr() < rc[4]) ? gl->getStartAddr() : rc[4];
+			rc[5] = (gl->getEndAddr()   > rc[5]) ? gl->getEndAddr()   : rc[5];
+		}
+	}
+	// 3 x 2 Integer
+	return	( 12 );
+}
+
 } /* namespace srcp */
 
 /** Globaler Device Manager */

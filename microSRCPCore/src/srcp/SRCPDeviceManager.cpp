@@ -90,7 +90,7 @@ void SRCPDeviceManager::refresh()
 
 int SRCPDeviceManager::getDescription( int bus, int addr, int device, int rc[] )
 {
-	if	( addr == 0 && bus == 0 && device == LAN  )
+	if	( addr == 0 && bus == 0 && device == LAN )
 	{
 		rc[0] = 0;
 		rc[1] = 0;

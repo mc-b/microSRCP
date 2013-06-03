@@ -34,7 +34,7 @@ namespace i2c
 
 #define CV_BOARD 		2
 
-void I2CDeviceManager::begin( int startFB, int startGA, int reservedFB, int reservedGA )
+void I2CDeviceManager::begin()
 {
 	// I2C Master
 	Wire.begin();
@@ -49,58 +49,36 @@ void I2CDeviceManager::begin( int startFB, int startGA, int reservedFB, int rese
 	Serial3.println( "search I2C bus" );
 #endif
 
+	// es werden max. 10 I2C Adressen unterstuetzt, sonst wird das ganze zu langsam. Weitere Boards via USB anschliessen!!!
 	for	( int i = 1; i < 10; i++ )
 	{
 		int board = getSM( i, 0, 0, srcp::CV, CV_BOARD );
 		// kein I2C Board auf dieser Adresse vorhanden?
 		if	( board == -1 || board == 255 )
-		{
-			// Platzhalter 8 Adressen freihalten
-			startFB += reservedFB;
-			startGA += reservedGA;
 			continue;
-		}
 
-		// Liefert die von/bis von FB, GA, GL
+		// Liefert die Adressen von/bis von FB, GA, GL
 		int rc = getDescription( i, 0, 0, srcp::LAN, buf.byte );
 		if	( rc == -1 )
 			continue;
 
 #if	( DEBUG_SCOPE > 0 )
-			Serial3 << "I2C addr:id: " << i << ":" << board << ", fb: " << startFB << " " << buf.values[0] << "-" << buf.values[1] <<
-					", ga: " << startGA << " " << buf.values[2] << "-" << buf.values[3] <<
+			Serial3 << "I2C addr:id: " << i << ":" <<
+					", fb: " << buf.values[0] << "-" << buf.values[1] <<
+					", ga: " << buf.values[2] << "-" << buf.values[3] <<
 					", gl: " << buf.values[4] << "-" << buf.values[5] << endl;
 #endif
-		// Board benutzt fixe Adressierung, z.B. DCC Board
-		if	( board )
-		{
-			// GA Geraete vorhanden
-			if	( buf.values[2] > 0 && buf.values[3] > 0 )
-				DeviceManager.addAccessoire( new I2CGAMaster( buf.values[2], buf.values[3], i ) );
+		// FB Geraete vorhanden
+		if	( buf.values[0] > 0 && buf.values[1] > 0 )
+			DeviceManager.addFeedback( new I2CFBMaster( buf.values[0], buf.values[1], i) );
 
-			// GL Geraete vorhanden
-			if	( buf.values[4] > 0 && buf.values[5] > 0 )
-				DeviceManager.addLoco( new I2CGLMaster( buf.values[4], buf.values[5], i ) );
-		}
-		// Standard I2C Board schaltet die Adresse pro Board um reservedXX weiter
-		else
-		{
-			// FB Geraete vorhanden
-			if	( buf.values[0] > 0 && buf.values[1] > 0 )
-			{
-				DeviceManager.addFeedback( new I2CFBMaster( startFB + buf.values[0], startFB + buf.values[1], i) );
-				startFB += reservedFB;
-			}
-			// GA Geraete vorhanden
-			if	( buf.values[2] > 0 && buf.values[3] > 0 )
-			{
-				DeviceManager.addAccessoire( new I2CGAMaster( startGA + buf.values[2], startGA + buf.values[3], i ) );
-				startGA += reservedGA;
-			}
-			// GL (analoge) Geraete vorhanden
-			if	( buf.values[4] > 0 && buf.values[5] > 0 )
-				DeviceManager.addLoco( new I2CGLMaster( buf.values[4], buf.values[5], i ) );
-		}
+		// GA Geraete vorhanden
+		if	( buf.values[2] > 0 && buf.values[3] > 0 )
+			DeviceManager.addAccessoire( new I2CGAMaster( buf.values[2], buf.values[3], i ) );
+
+		// GL Geraete vorhanden
+		if	( buf.values[4] > 0 && buf.values[5] > 0 )
+			DeviceManager.addLoco( new I2CGLMaster( buf.values[4], buf.values[5], i ) );
 	}
 }
 

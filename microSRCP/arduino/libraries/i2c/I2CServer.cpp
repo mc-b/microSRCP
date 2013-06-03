@@ -47,7 +47,9 @@ srcp::command_t global_cmd;
  */
 void I2CServer::slaveRxEvent( int size )
 {
+	// CMD Struktur loeschen bzw. alle Werte welchen nicht immer gesetzt werden (z.B. Bus welche nicht uebertragen wird)
 	memset( global_cmd.values, 0, sizeof(global_cmd.values) );
+	global_cmd.bus = 0;
 
 	if	( size >= 4 )
 	{
@@ -67,12 +69,16 @@ void I2CServer::slaveRxEvent( int size )
 			return;
 		}
 
+	// Restliche Parameter abstellen, falls vorhanden
 	for	( int i = 4; i < size; i++ )
-		global_cmd.args[i-4] = Wire.read();
+		global_cmd.values[i-4] = Wire.read();
 
 
 #if	( DEBUG_SCOPE > 2 )
-	Serial3 << "revc: " << global_cmd.cmd << ", addr " << global_cmd.addr << ", dev " << global_cmd.device << ", size " << size << endl;
+	Serial3 << "recv: " << global_cmd.cmd << ":" << global_cmd.bus << ":" << global_cmd.device << ":" << global_cmd.addr << " ";
+	for	( int i = 0; i < SRCP_MAX_ARGS; i++ )
+		Serial3 << ":" << global_cmd.values[i];
+	Serial3.println();
 #endif
 	onReceive( global_cmd );
 }
@@ -90,7 +96,7 @@ void I2CServer::slaveTxEvent()
 
 	if	( len > 0 )
 	{
-#if	( DEBUG_SCOPE > 10 )
+#if	( DEBUG_SCOPE > 2 )
 		Serial3 << global_cmd.cmd << ", addr " << global_cmd.addr << ", dev " << global_cmd.device << ",size " << len;
 		for	( int i = 0; i < len; i++ )
 			Serial3 << ":" << (int) global_cmd.args[i];
@@ -166,15 +172,7 @@ int I2CServer::onRequest( srcp::command_t& cmd )
 					return ( 1 );
 
 				case srcp::DESCRIPTION:
-				{
-					int size = DeviceManager.getDescription( cmd.values[0], cmd.addr, cmd.values[1], cmd.values );
-#if	( DEBUG_SCOPE > 2 )
-	Serial3 << "desc: fb " << cmd.values[0] << "-" << cmd.values[1] << ", ga " << cmd.values[2]
-	       << "-" << cmd.values[3] << ", gl " << cmd.values[4] << "-" << cmd.values[5] << endl;
-#endif
-					//size = 5;
-					return	( size );
-				}
+					return	( DeviceManager.getDescription( cmd.values[0], cmd.addr, cmd.values[1], cmd.values ) );
 				default:
 					break;
 			}

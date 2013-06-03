@@ -106,9 +106,10 @@ i2c::I2CServer server = WireServer;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // Konfiguration I2C
-#define I2C_ADDR		1
+#define I2C_ADDR		1	// Eigene I2C Adresse - muss pro I2C Board angepasst werden!
+#define I2C_OFFSET		8	// Offset, d.h. wieviele Adressen pro Board reserviert werden
 #define I2C_ENABLED		1
-
+#define ADDR(x)			((I2C_ADDR * I2C_OFFSET) + x)	// Berechnung effektive Adresse
 /**
  * Initialisierung - Protokoll, Geraete etc.
  */
@@ -122,26 +123,29 @@ void setup()
 
 #if	( BOARD == BOARD_STANDARD )
 	// Geraete initialisieren, je nach Board und Verwendung
-	DeviceManager.addAccessoire( new dev::GALed( 1, 4, LOW ) ); 	// 2 Signale mit 2 LED an Ports 4 - 7.
-	DeviceManager.addAccessoire( new dev::GALed( 2, 5, HIGH ) );
-	DeviceManager.addAccessoire( new dev::GALed( 3, 6, LOW ) );
-	DeviceManager.addAccessoire( new dev::GALed( 4, 7, HIGH ) );
-	DeviceManager.addAccessoire( new dev::GAServo( 3, 2, 60, 90 ) ); // Servo mit Addr 3 an Pin 2, min. Stellung 60, max. Stellung 90 von 180.
-	DeviceManager.addAccessoire( new dev::GAServo( 4, 3, 60, 90 ) );
-	DeviceManager.addFeedback( new dev::FBSwitchSensor( 1, A0, A3 ) ); // Sensoren, jeweils in Gruppen von 8 (auch wenn nicht 8 Pins belegt). A4+A5 = I2C Bus
+	DeviceManager.addAccessoire( new dev::GALed( ADDR(1), 4, LOW ) ); 	// 2 Signale mit 2 LED an Ports 4 - 7.
+	DeviceManager.addAccessoire( new dev::GALed( ADDR(2), 5, HIGH ) );
+	DeviceManager.addAccessoire( new dev::GALed( ADDR(3), 6, LOW ) );
+	DeviceManager.addAccessoire( new dev::GALed( ADDR(4), 7, HIGH ) );
+	DeviceManager.addAccessoire( new dev::GAServo( ADDR(3), 2, 60, 90 ) ); // Servo mit Addr 3 an Pin 2, min. Stellung 60, max. Stellung 90 von 180.
+	DeviceManager.addAccessoire( new dev::GAServo( ADDR(4), 3, 60, 90 ) );
+	DeviceManager.addFeedback( new dev::FBSwitchSensor( ADDR(1), A0, A3 ) ); // Sensoren, jeweils in Gruppen von 8 (auch wenn nicht 8 Pins belegt). A4+A5 = I2C Bus
 #if ( __AVR_ATmega1280__ || __AVR_ATmega2560__ )
-	DeviceManager.addLoco( new dev::GLMotoMamaAnalog( 1, 10,  8,  9 ) ); // Moto Mama Shield, Pin 10 Geschwindigkeit, 8 Vor-, 9 Rueckwaerts - nur Mega
+	DeviceManager.addLoco( new dev::GLMotoMamaAnalog( ADDR(1), 10,  8,  9 ) ); // Moto Mama Shield, Pin 10 Geschwindigkeit, 8 Vor-, 9 Rueckwaerts - nur Mega
 #endif
-	DeviceManager.addLoco( new dev::GLMotoMamaAnalog( 2, 11, 12, 13 ) );
+	DeviceManager.addLoco( new dev::GLMotoMamaAnalog( ADDR(2), 11, 12, 13 ) );
 #endif
 
 #if	( SRCP_PROTOCOL != SRCP_I2C && I2C_ENABLED )
 	// initialize I2C - Master braucht keine Adresse
-	i2c::I2CDeviceManager::begin( 9, 9, 8, 8 );		// weitere Boards am I2C Bus, beginnend mit Adresse 9. Jedes Board bekommt 8 Adressen
+	i2c::I2CDeviceManager::begin();		// weitere Boards am I2C Bus, beginnend mit Adressen (I2C_ADDR * I2C_OFFSET) + x).
 #endif
 
 #if	( DEBUG_SCOPE > 1 )
-	Serial3.println ( "Devices ready" );
+	int values[6];
+	DeviceManager.getDescription( 0, 0, srcp::LAN, values );
+	Serial3 << "Devices: fb " << values[0] << "-" << values[1] << ", ga " << values[2]
+	       << "-" << values[3] << ", gl " << values[4] << "-" << values[5] << endl;
 #endif
 
 	// SRCP Kommunikation oeffnen
