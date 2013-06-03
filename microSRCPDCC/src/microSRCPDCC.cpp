@@ -3,6 +3,8 @@
 
 	ACHTUNG: Alpha Version es gehen nur Loks bis Addr 99.
 
+	Fuer weitere Details siehe https://github.com/mc-b/microSRCP/wiki
+
 	Wer eine komplette DCC Zentrale sucht, sei auf http://www.fichtelbahn.de
 	und http://www.opendcc.de verwiesen.
 
