@@ -1,16 +1,10 @@
-
 /*
-	microGL - USB Board um 2 analoge Stromkreise zu regeln.
+	microSRCPGL - Arduino Standardboard fungiert als Slave zur
+	Zentrale und wir mittels I2C Bus an diese angeschlossen.
 
-	Bestehend aus:
-	- Arduino Board mit min. ATmega328P - http://www.arduino.cc
-	- Motor Shield - http://arduino.cc/en/Main/ArduinoMotorShield oder
-	http://www.nkcelectronics.com/freeduino-arduino-motor-control-shield-kit.html
+	Fuer weitere Details siehe https://github.com/mc-b/microSRCP/wiki
 
-	Die Kommunikation mit dem Host (z.B. PC mit RocRail) findet mittels dem
-	SRCP (http://http://srcpd.sourceforge.net/srcp/) Protokoll statt.
-
-	Copyright (c) 2013 Marcel Bernet.  All right reserved.
+	Copyright (c) 2010 - 2013 Marcel Bernet.  All right reserved.
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
@@ -107,7 +101,7 @@ i2c::I2CServer server = WireServer;
 //////////////////////////////////////////////////////////////////////////////////////////
 // Konfiguration I2C
 #define I2C_ADDR		1	// Eigene I2C Adresse - muss pro I2C Board angepasst werden!
-#define I2C_OFFSET		8	// Offset, d.h. wieviele Adressen pro Board reserviert werden
+#define I2C_OFFSET		16	// Offset, d.h. wieviele Adressen pro Board reserviert werden
 #define I2C_ENABLED		1
 #define ADDR(x)			((I2C_ADDR * I2C_OFFSET) + x)	// Berechnung effektive Adresse
 /**
@@ -123,15 +117,16 @@ void setup()
 
 #if	( BOARD == BOARD_STANDARD )
 	// Geraete initialisieren, je nach Board und Verwendung
-	DeviceManager.addAccessoire( new dev::GALed( ADDR(1), 4, LOW ) ); 	// 2 Signale mit 2 LED an Ports 4 - 7.
+	DeviceManager.addAccessoire( new dev::GALed( ADDR(1), 4, LOW ) ); 			// 2 Signale mit 2 LED an Ports 4 - 7.
 	DeviceManager.addAccessoire( new dev::GALed( ADDR(2), 5, HIGH ) );
 	DeviceManager.addAccessoire( new dev::GALed( ADDR(3), 6, LOW ) );
 	DeviceManager.addAccessoire( new dev::GALed( ADDR(4), 7, HIGH ) );
-	DeviceManager.addAccessoire( new dev::GAServo( ADDR(3), 2, 60, 90 ) ); // Servo mit Addr 3 an Pin 2, min. Stellung 60, max. Stellung 90 von 180.
+	DeviceManager.addAccessoire( new dev::GAServo( ADDR(3), 2, 60, 90 ) ); 		// Servo mit Addr 3 an Pin 2, min. Stellung 60, max. Stellung 90 von 180.
 	DeviceManager.addAccessoire( new dev::GAServo( ADDR(4), 3, 60, 90 ) );
-	DeviceManager.addFeedback( new dev::FBSwitchSensor( ADDR(1), A0, A3 ) ); // Sensoren, jeweils in Gruppen von 8 (auch wenn nicht 8 Pins belegt). A4+A5 = I2C Bus
+	DeviceManager.addFeedback( new dev::FBSwitchSensor( ADDR(1), A0, A3 ) ); 	// Sensoren, jeweils in Gruppen von 8 (auch wenn nicht 8 Pins belegt). A4+A5 = I2C Bus
 #if ( __AVR_ATmega1280__ || __AVR_ATmega2560__ )
-	DeviceManager.addLoco( new dev::GLMotoMamaAnalog( ADDR(1), 10,  8,  9 ) ); // Moto Mama Shield, Pin 10 Geschwindigkeit, 8 Vor-, 9 Rueckwaerts - nur Mega
+	DeviceManager.addFeedback( new dev::FBSwitchSensor( ADDR(9), A8, A15 ) ); 	// Sensoren, Mega 8 zusaetzlich
+	DeviceManager.addLoco( new dev::GLMotoMamaAnalog( ADDR(1), 10,  8,  9 ) ); 	// Moto Mama Shield, Pin 10 Geschwindigkeit, 8 Vor-, 9 Rueckwaerts - nur Mega
 #endif
 	DeviceManager.addLoco( new dev::GLMotoMamaAnalog( ADDR(2), 11, 12, 13 ) );
 #endif

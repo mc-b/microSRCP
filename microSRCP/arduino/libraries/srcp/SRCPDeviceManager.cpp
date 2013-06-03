@@ -88,6 +88,18 @@ void SRCPDeviceManager::refresh()
 			next->refresh();
 }
 
+int SRCPDeviceManager::getFB( int addr )
+{
+	SRCPFeedback* fb = (srcp::SRCPFeedback*) 0;
+	for	( fb = firstFB; fb != (srcp::SRCPFeedback*) 0; fb = fb->nextElement() )
+	{
+		if	( fb->checkAddr( addr ) == 0 )
+			continue;
+		return	( fb->get( addr ) );
+	}
+	return	( 0 );
+}
+
 int SRCPDeviceManager::getDescription( int bus, int addr, int device, int rc[] )
 {
 	if	( addr == 0 && bus == 0 && device == LAN )

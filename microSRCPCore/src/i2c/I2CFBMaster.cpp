@@ -39,8 +39,7 @@ int I2CFBMaster::info( int addr, srcp::feedback fb[] )
 
 	buf[0] = srcp::FB;
 	buf[1] = srcp::GET;
-	int a = this->addr;
-	memcpy( &buf[2], &a, 2 );
+	memcpy( &buf[2], &startAddr, 2 );
 
 	int rc = I2CDeviceManager::write( this->addr, buf, sizeof(buf) );
 	if	( rc != 200 )

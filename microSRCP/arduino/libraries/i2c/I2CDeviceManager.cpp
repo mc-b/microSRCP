@@ -32,8 +32,6 @@
 namespace i2c
 {
 
-#define CV_BOARD 		2
-
 void I2CDeviceManager::begin()
 {
 	// I2C Master
@@ -52,7 +50,7 @@ void I2CDeviceManager::begin()
 	// es werden max. 10 I2C Adressen unterstuetzt, sonst wird das ganze zu langsam. Weitere Boards via USB anschliessen!!!
 	for	( int i = 1; i < 10; i++ )
 	{
-		int board = getSM( i, 0, 0, srcp::CV, CV_BOARD );
+		int board = getSM( i, 0, 0, srcp::CV, 0 );
 		// kein I2C Board auf dieser Adresse vorhanden?
 		if	( board == -1 || board == 255 )
 			continue;
@@ -70,7 +68,11 @@ void I2CDeviceManager::begin()
 #endif
 		// FB Geraete vorhanden
 		if	( buf.values[0] > 0 && buf.values[1] > 0 )
-			DeviceManager.addFeedback( new I2CFBMaster( buf.values[0], buf.values[1], i) );
+		{
+			// pro 8 Sensoren ein Feedbackmodul erstellen
+			for	( int s = buf.values[0]; s < buf.values[1]; s += 8 )
+				DeviceManager.addFeedback( new I2CFBMaster( s, s+8, i) );
+		}
 
 		// GA Geraete vorhanden
 		if	( buf.values[2] > 0 && buf.values[3] > 0 )

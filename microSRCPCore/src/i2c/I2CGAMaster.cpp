@@ -37,8 +37,7 @@ int I2CGAMaster::set( int addr, int port, int value, int delay )
 	uint8_t buf[7];
 	buf[0] = srcp::GA;
 	buf[1] = srcp::SET;
-	int a = addr - startAddr + 1;
-	memcpy( &buf[2], &a, 2 );
+	memcpy( &buf[2], &addr, 2 );
 	buf[4] = port;
 	buf[5] = value;
 	buf[6] = delay;

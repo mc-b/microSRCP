@@ -49,7 +49,7 @@ public:
 	int setGL( int addr, int drivemode, int v, int v_max, int fn[] );
 
 	void refresh();
-	int getFB( int addr ) { return( 200 ); };
+	int getFB( int addr );
 	void setPower( int on );
 	int setSM( int bus, int addr, int device, int cv, int value ) { return( 200 ); };
 	int getSM( int bus, int addr, int device, int cv ) { return( 200 ); };
