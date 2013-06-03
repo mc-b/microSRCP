@@ -59,7 +59,7 @@ int SRCPEthernetServer::dispatch( srcp::SRCPSession* session, lan::EthernetSocke
 			Serial3.print( "conn : " );
 			Serial3.println( session->getStatus() );
 #endif
-			socket->print( session->version() );
+			socket->println( session->version() );
 			session->setStatus( srcp::HANDSHAKE );
 		}
 
@@ -91,9 +91,9 @@ int SRCPEthernetServer::dispatch( srcp::SRCPSession* session, lan::EthernetSocke
 			Serial3.print( session->getStatus( ));
 			Serial3.print( ", " );
 			Serial3.print( rc );
-			Serial3.print( '\r' );
+			Serial3.println();
 #endif
-			socket->print( rc );
+			socket->println( rc );
 			pos = 0;
 			break;
 		}
@@ -104,7 +104,7 @@ int SRCPEthernetServer::dispatch( srcp::SRCPSession* session, lan::EthernetSocke
 			// evtl. FB Module refreshen - auch wenn noch nicht gesendet wird.
 			DeviceManager.refresh();
 
-			if	( last+250 < millis() )
+			if	( last+500 < millis() )
 			{
 				session->infoFeedback( socket );
 				last = millis();
