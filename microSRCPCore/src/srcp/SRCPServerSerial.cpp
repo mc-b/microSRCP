@@ -61,7 +61,7 @@ command_t* SRCPServerSerial::dispatch(void)
 		// Info Server
 		if	( session->getStatus() != srcp::UNDEFINED && session->isPowerOn() )
 		{
-			if	( lasts+250 < millis() )
+			if	( lasts+500 < millis() )
 			{
 				session->infoFeedback( &Serial );
 				lasts = millis();
