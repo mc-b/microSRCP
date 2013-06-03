@@ -1,3 +1,5 @@
+
+
 /*
 	microSRCPDCC - USB Board welches DCC Signale erzeugt.
 
@@ -72,9 +74,9 @@
 #include <GLArduinoMotor.h>
 #include <GLMotoMamaAnalog.h>
 
-#include "GAOpenDCC.h"
-#include "GLOpenDCC.h"
-#include "DCCGenerator.h"
+#include <GAOpenDCC.h>
+#include <GLOpenDCC.h>
+#include <DCCGenerator.h>
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // Konfiguration Protokoll
