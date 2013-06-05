@@ -4,6 +4,10 @@
 
 	Copyright (c) 2010 Marcel Bernet.  All right reserved.
 
+	Der Code wurde ermoeglicht durch das OpenDCC Projekt und
+	die Zurverfuegungstellung der Sourcen von Wolfgang Kufer.
+	Besten Dank!
+
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
 	as published by the Free Software Foundation; either version 2
@@ -23,10 +27,9 @@
 #define GLOPENDCC_H_
 
 #include <Arduino.h>
-#include <SoftwareSerial.h>
 #include <srcp/SRCPGenericLoco.h>
 
-namespace dcc
+namespace odcc
 {
 
 class GLOpenDCC : public srcp::SRCPGenericLoco
@@ -41,9 +44,6 @@ public:
 	void setPower( int on );
 	int	getStartAddr() { return( this->startAddr ); };
 	int getEndAddr() { return( this->endAddr ); }
-	int setSM( int bus, int addr, int device, int cv, int value );
-	int getSM( int bus, int addr, int device, int cv );
-
 };
 
 }

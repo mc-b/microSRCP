@@ -1,6 +1,6 @@
 /*
-	GAOpenDCC - Steuerung von Zubehoer wie Weichen, Signale
-	anhand des DCC Signals.
+	parser - enum als XXX_parser.h welche nicht mehr
+	benoetigt wird.
 
 	Copyright (c) 2010 Marcel Bernet.  All right reserved.
 
@@ -19,27 +19,19 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef GAOPENDCC_H_
-#define GAOPENDCC_H_
+#ifndef PARSER_H_
+#define PARSER_H_
 
-#include <srcp/SRCPGenericAccessoire.h>
+extern t_opendcc_state opendcc_state;            // this is the current state of the box
 
-namespace dcc
-{
+// -------- broadcast messages
+typedef enum {ALL_OFF,        // Nothalt
+              ALL_ON,         // ein
+		      ALL_LOCO_OFF,   // speed 0
+		      PROGMODE}       // Programmiermode
+			  t_BC_message;
 
-class GAOpenDCC : public srcp::SRCPGenericAccessoire
-{
-private:
-	int startAddr;
-	int endAddr;
-public:
-	GAOpenDCC( int startAddr, int endAddr );
-	int set( int addr, int port, int value, int delay );
-	int checkAddr( int addr ) { return ( addr >= startAddr && addr <= endAddr); }
-	int	getStartAddr() { return( this->startAddr ); };
-	int getEndAddr() { return( this->endAddr ); }
-};
+// FIXME unsigned char programmer_busy(void);
 
-}
 
-#endif /* GAOPENDCC_H_ */
+#endif /* PARSER_H_ */

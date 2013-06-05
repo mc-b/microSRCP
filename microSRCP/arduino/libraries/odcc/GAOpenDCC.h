@@ -1,8 +1,12 @@
 /*
-	GLOpenDCC - Steuerung von Lokomotiven
+	GAOpenDCC - Steuerung von Zubehoer wie Weichen, Signale
 	anhand des DCC Signals.
 
 	Copyright (c) 2010 Marcel Bernet.  All right reserved.
+
+	Der Code wurde ermoeglicht durch das OpenDCC Projekt und
+	die Zurverfuegungstellung der Sourcen von Wolfgang Kufer.
+	Besten Dank!
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
@@ -19,33 +23,27 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef GLOPENDCC_H_
-#define GLOPENDCC_H_
+#ifndef GAOPENDCC_H_
+#define GAOPENDCC_H_
 
-#include <Arduino.h>
-#include <SoftwareSerial.h>
-#include <srcp/SRCPGenericLoco.h>
+#include "../srcp/SRCPGenericAccessoire.h"
 
-namespace dcc
+namespace odcc
 {
 
-class GLOpenDCC : public srcp::SRCPGenericLoco
+class GAOpenDCC : public srcp::SRCPGenericAccessoire
 {
 private:
 	int startAddr;
 	int endAddr;
 public:
-	GLOpenDCC( int startAddr, int endAddr );
-	int set( int addr, int drivemode, int v, int v_max, int fn[] );
+	GAOpenDCC( int startAddr, int endAddr );
+	int set( int addr, int port, int value, int delay );
 	int checkAddr( int addr ) { return ( addr >= startAddr && addr <= endAddr); }
-	void setPower( int on );
 	int	getStartAddr() { return( this->startAddr ); };
 	int getEndAddr() { return( this->endAddr ); }
-	int setSM( int bus, int addr, int device, int cv, int value );
-	int getSM( int bus, int addr, int device, int cv );
-
 };
 
 }
 
-#endif /* GLOPENDCC_H_ */
+#endif /* GAOPENDCC_H_ */
