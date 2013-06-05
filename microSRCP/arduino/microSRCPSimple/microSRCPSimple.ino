@@ -30,6 +30,7 @@
 #include <SRCPCommand.h>
 #include <SRCPMessages.h>
 #include <SRCPParser.h>
+#include <Servo.h>
 
 #define  DEBUG_SCOPE  0
 
@@ -41,6 +42,8 @@ char buf[64];
 srcp::SRCPParser parser;
 // Anzahl Session bzw. GO
 int counter = 0;
+// Servo auf Adresse 3
+Servo s3;
 
 /**
  * Initialisierung - Protokoll, Geraete etc.
@@ -54,6 +57,13 @@ void setup()
 	Serial3.begin( 9600 );
 	Serial3.println ( "debug ready ..." );
 #endif
+
+	// Geraete initialisieren
+	pinMode( 4, OUTPUT );		// Signal 1
+	pinMode( 5, OUTPUT );
+	pinMode( 6, OUTPUT );		// Signal 2
+	pinMode( 7, OUTPUT );
+	s3.attach( 3 );				// Servo an Pin 3 mit Adresse 3
 }
 
 /**
@@ -101,11 +111,22 @@ char* dispatch()
 	switch ( cmd.cmd )
 	{
 		case srcp::GO:
-			return( srcp::Messages.go( counter++ ) );
+			return( srcp::Messages.go( ++counter ) );
 		case srcp::SET:
 			switch ( cmd.device )
 			{
 				case srcp::GA:
+					if	( cmd.addr == 1 )
+						digitalWrite( 4 + cmd.values[0], cmd.values[1] );	// Pin + Port auf Value setzen
+					else if ( cmd.addr == 2 )
+						digitalWrite( 6 + cmd.values[0], cmd.values[1] );
+					else if ( cmd.addr == 3 )								// Servo laut Value setzen
+					{
+						if	( cmd.values[1] )
+							s3.write( 60 );
+						else
+							s3.write( 120 );
+					}
 					return( srcp::Messages.ok() );
 				case srcp::GL:
 					return( srcp::Messages.ok() );
