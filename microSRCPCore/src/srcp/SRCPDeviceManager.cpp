@@ -86,6 +86,14 @@ void SRCPDeviceManager::refresh()
 {
 	for	( SRCPFeedback* next = firstFB; next != (srcp::SRCPFeedback*) 0; next = next->nextElement() )
 			next->refresh();
+	SRCPGenericAccessoire* ga = (srcp::SRCPGenericAccessoire*) 0;
+	for	( ga = firstGA; ga != (srcp::SRCPGenericAccessoire*) 0; ga = ga->nextElement() )
+		ga->refresh();
+
+	SRCPGenericLoco* gl = (srcp::SRCPGenericLoco*) 0;
+	for	( gl = firstGL; gl != (srcp::SRCPGenericLoco*) 0; gl = gl->nextElement() )
+		gl->refresh();
+
 }
 
 int SRCPDeviceManager::getFB( int addr )

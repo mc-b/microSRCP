@@ -36,6 +36,7 @@ private:
 public:
 	SRCPGenericAccessoire* nextElement() { return ( next ); }
 	void setNextElement( SRCPGenericAccessoire* next ) { this->next = next; }
+	virtual void refresh() {};
 
 	// Setzen von Geraete Eigenschaften
 	virtual int get( int addr, int port ) { return ( 423 ); }
