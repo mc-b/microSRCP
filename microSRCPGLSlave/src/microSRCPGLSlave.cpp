@@ -30,7 +30,7 @@
 #include <srcp/SRCPEthernetServer.h>
 #include <i2c/I2CDeviceManager.h>
 #include <i2c/I2CServer.h>
-#include <dev/GALed.h>
+#include <dev/GASignal.h>
 #include <dev/GAServo.h>
 #include <dev/GLMotoMamaAnalog.h>
 #include <dev/FBSwitchSensor.h>
@@ -84,10 +84,8 @@ void setup()
 
 #if	( BOARD == BOARD_STANDARD )
 	// Geraete initialisieren, je nach Board und Verwendung
-	DeviceManager.addAccessoire( new dev::GALed( ADDR(1), 4, LOW ) ); 			// 2 Signale mit 2 LED an Ports 4 - 7.
-	DeviceManager.addAccessoire( new dev::GALed( ADDR(2), 5, HIGH ) );
-	DeviceManager.addAccessoire( new dev::GALed( ADDR(3), 6, LOW ) );
-	DeviceManager.addAccessoire( new dev::GALed( ADDR(4), 7, HIGH ) );
+	DeviceManager.addAccessoire( new dev::GASignal( ADDR(1), 4, 5 ) ); 			// 2 Signale mit 2 LED an Ports 4 - 7.
+	DeviceManager.addAccessoire( new dev::GASignal( ADDR(2), 6, 7 ) );
 	DeviceManager.addAccessoire( new dev::GAServo( ADDR(3), 2, 60, 90 ) ); 		// Servo mit Addr 3 an Pin 2, min. Stellung 60, max. Stellung 90 von 180.
 	DeviceManager.addAccessoire( new dev::GAServo( ADDR(4), 3, 60, 90 ) );
 	DeviceManager.addFeedback( new dev::FBSwitchSensor( ADDR(1), A0, A3 ) ); 	// Sensoren, jeweils in Gruppen von 8 (auch wenn nicht 8 Pins belegt). A4+A5 = I2C Bus

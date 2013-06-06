@@ -6,6 +6,10 @@
 
 	Dadurch leuchtet die LED wenn der Pin auf GND geschaltet wird.
 
+	Ein Signal hat eine Adresse und mittels den Ports werden die
+	verschiedenen Led's angesteuert. Die Ports werden von 0
+	an adressiert, d.h. Port 0 = StartPin, Port 1 = 2. Led etc.
+
 	Copyright (c) 2010 Marcel Bernet.  All right reserved.
 
 	This program is free software; you can redistribute it and/or
@@ -29,31 +33,29 @@
 namespace dev
 {
 
-GASignal::GASignal( int addr, uint8_t red, uint8_t green )
+GASignal::GASignal( int addr, uint8_t start, uint8_t end )
 {
 	this->addr = addr;
-	this->greenPin = green;
-	this->redPin = red;
+	startPin = start;
+	endPin = end;
 
-	pinMode( greenPin, OUTPUT );
-	pinMode( redPin, OUTPUT );
+	for	( int i = startPin; i <= endPin; i++ )
+		pinMode( i, OUTPUT );
 
-	digitalWrite( redPin, HIGH );
-	digitalWrite( greenPin, LOW );
+	digitalWrite( startPin, HIGH );
+	digitalWrite( endPin, LOW );
 }
 
 int GASignal::set( int addr, int port, int value, int delay )
 {
+	int pin = startPin + port;
+	if	( pin > endPin )
+		pin = endPin;
+
 	if	( value == 0 )
-	{
-		digitalWrite( redPin, HIGH );
-		digitalWrite( greenPin, LOW );
-	}
+		digitalWrite( pin, LOW );
 	else
-	{
-		digitalWrite( redPin, LOW );
-		digitalWrite( greenPin, HIGH );
-	}
+		digitalWrite( pin, HIGH );
 
 	return	( 200 );
 }
