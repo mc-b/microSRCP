@@ -22,7 +22,7 @@
  */
 
 // Debugging > 0 == ON
-#define DEBUG_SCOPE 0
+#define DEBUG_SCOPE 2
 
 #include <Arduino.h>
 #include <HardwareSerial.h>
@@ -62,7 +62,7 @@
 #include <FBSwitchSensor.h>
 #include <GASignal.h>
 #include <GAPWMServo.h>
-#include <GAServo.h>
+#include <GASlowServo.h>
 #include <GASignal.h>
 #include <GLAnalog293.h>
 #include <GLArduinoMotor.h>
@@ -120,8 +120,8 @@ void setup()
 	// Geraete initialisieren, je nach Board und Verwendung
 	DeviceManager.addAccessoire( new dev::GASignal( ADDR(1), 4, 5 ) ); 			// 2 Signale mit 2 LED an Ports 4 - 7.
 	DeviceManager.addAccessoire( new dev::GASignal( ADDR(2), 6, 7 ) );
-	DeviceManager.addAccessoire( new dev::GAServo( ADDR(3), 2, 60, 90 ) ); 		// Servo mit Addr 3 an Pin 2, min. Stellung 60, max. Stellung 90 von 180.
-	DeviceManager.addAccessoire( new dev::GAServo( ADDR(4), 3, 60, 90 ) );
+	DeviceManager.addAccessoire( new dev::GASlowServo( ADDR(3), 2, 30, 120, 1, 50 ) ); 	// Servo mit Addr 3 an Pin 2, min. Stellung 30, max. Stellung 120 von 180.
+	DeviceManager.addAccessoire( new dev::GASlowServo( ADDR(4), 3, 30, 120 ) );
 	DeviceManager.addFeedback( new dev::FBSwitchSensor( ADDR(1), A0, A3 ) ); 	// Sensoren, jeweils in Gruppen von 8 (auch wenn nicht 8 Pins belegt). A4+A5 = I2C Bus
 #if ( __AVR_ATmega1280__ || __AVR_ATmega2560__ )
 	DeviceManager.addFeedback( new dev::FBSwitchSensor( ADDR(9), A8, A15 ) ); 	// Sensoren, Mega 8 zusaetzlich
@@ -135,7 +135,7 @@ void setup()
 	i2c::I2CDeviceManager::begin();		// weitere Boards am I2C Bus, beginnend mit Adressen (I2C_ADDR * I2C_OFFSET) + x).
 #endif
 
-#if	( DEBUG_SCOPE > 1 )
+#if	( DEBUG_SCOPE > 10 )
 	int values[6];
 	DeviceManager.getDescription( 0, 0, srcp::LAN, values );
 	Serial3 << "Devices: fb " << values[0] << "-" << values[1] << ", ga " << values[2]
@@ -153,7 +153,8 @@ void setup()
 #endif
 
 #if	( DEBUG_SCOPE > 1 )
-	Serial3.println ( "Server listen " );
+	Serial3.print ( "Server listen " );
+	Serial3.println();
 #endif
 }
 
