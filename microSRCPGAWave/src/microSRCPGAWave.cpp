@@ -1,8 +1,8 @@
 /*
-	microSRCPGL - Arduino Standardboard fungiert als Zentrale
-	fuer eine Modelleisenbahn.
+	microSRCPGL - Arduino Wave mit Adafruit Wave Shield
 
 	Fuer weitere Details siehe https://github.com/mc-b/microSRCP/wiki
+	und http://www.ladyada.net/make/waveshield/
 
 	Copyright (c) 2010 - 2013 Marcel Bernet.  All right reserved.
 
@@ -29,17 +29,15 @@
 #include <srcp/SRCPServerSerial.h>
 #include <srcp/SRCPEthernetServer.h>
 #include <i2c/I2CDeviceManager.h>
-#include <dev/GALed.h>
-#include <dev/GAServo.h>
-#include <dev/GLMotoMamaAnalog.h>
-#include <dev/FBSwitchSensor.h>
+#include <i2c/I2CServer.h>
+#include "wav/GAWave.h"
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // Konfiguration Protokoll
 #define SRCP_ETHERNET	100
 #define SRCP_SERIAL		101
 #define SRCP_I2C		102
-#define SRCP_PROTOCOL	SRCP_SERIAL
+#define SRCP_PROTOCOL	SRCP_I2C
 
 #if	( SRCP_PROTOCOL == SRCP_SERIAL )
 // SRCP I/O Server
@@ -61,16 +59,16 @@ i2c::I2CServer server = WireServer;
 // Konfiguration Board
 #define BOARD_STANDARD		200
 #define BOARD_I2C_MASTER 	201
+#define BOARD_WAVE_SHIELD	209
 
-#define BOARD 	BOARD_STANDARD
+#define BOARD 	BOARD_WAVE_SHIELD
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // Konfiguration I2C
-#define I2C_ADDR		0	// Eigene I2C Adresse - muss pro I2C Board angepasst werden! - Master = 0
+#define I2C_ADDR		9	// Eigene I2C Adresse - muss pro I2C Board angepasst werden!
 #define I2C_OFFSET		16	// Offset, d.h. wieviele Adressen pro Board reserviert werden
-#define I2C_ENABLED		1
+#define I2C_ENABLED		0
 #define ADDR(x)			((I2C_ADDR * I2C_OFFSET) + x)	// Berechnung effektive Adresse
-
 /**
  * Initialisierung - Protokoll, Geraete etc.
  */
@@ -78,16 +76,14 @@ void setup()
 {
 #if	( DEBUG_SCOPE > 1 )
 	// Start each software serial port
-	Serial3.begin( 9600 );
-	Serial3.println ( "debug ready ..." );
+	Serial.begin( 9600 );
+	Serial.println ( "debug ready ..." );
 #endif
 
 #if	( BOARD == BOARD_STANDARD )
 	// Geraete initialisieren, je nach Board und Verwendung
-	DeviceManager.addAccessoire( new dev::GALed( ADDR(1), 4, LOW ) ); 			// 2 Signale mit 2 LED an Ports 4 - 7.
-	DeviceManager.addAccessoire( new dev::GALed( ADDR(2), 5, HIGH ) );
-	DeviceManager.addAccessoire( new dev::GALed( ADDR(3), 6, LOW ) );
-	DeviceManager.addAccessoire( new dev::GALed( ADDR(4), 7, HIGH ) );
+	DeviceManager.addAccessoire( new dev::GASignal( ADDR(1), 4, 5 ) ); 			// 2 Signale mit 2 LED an Ports 4 - 7.
+	DeviceManager.addAccessoire( new dev::GASignal( ADDR(2), 6, 7 ) );
 	DeviceManager.addAccessoire( new dev::GAServo( ADDR(3), 2, 60, 90 ) ); 		// Servo mit Addr 3 an Pin 2, min. Stellung 60, max. Stellung 90 von 180.
 	DeviceManager.addAccessoire( new dev::GAServo( ADDR(4), 3, 60, 90 ) );
 	DeviceManager.addFeedback( new dev::FBSwitchSensor( ADDR(1), A0, A3 ) ); 	// Sensoren, jeweils in Gruppen von 8 (auch wenn nicht 8 Pins belegt). A4+A5 = I2C Bus
@@ -96,6 +92,9 @@ void setup()
 	DeviceManager.addLoco( new dev::GLMotoMamaAnalog( ADDR(1), 10,  8,  9 ) ); 	// Moto Mama Shield, Pin 10 Geschwindigkeit, 8 Vor-, 9 Rueckwaerts - nur Mega
 #endif
 	DeviceManager.addLoco( new dev::GLMotoMamaAnalog( ADDR(2), 11, 12, 13 ) );
+#elif ( BOARD == BOARD_WAVE_SHIELD )
+	DeviceManager.addAccessoire( new wav::GAWave( ADDR(1), "GLA1") );
+	DeviceManager.addAccessoire( new wav::GAWave( ADDR(2), "GLA2") );
 #endif
 
 #if	( SRCP_PROTOCOL != SRCP_I2C && I2C_ENABLED )
@@ -106,7 +105,7 @@ void setup()
 #if	( DEBUG_SCOPE > 1 )
 	int values[6];
 	DeviceManager.getDescription( 0, 0, srcp::LAN, values );
-	Serial3 << "Devices: fb " << values[0] << "-" << values[1] << ", ga " << values[2]
+	Serial << "Devices: fb " << values[0] << "-" << values[1] << ", ga " << values[2]
 	       << "-" << values[3] << ", gl " << values[4] << "-" << values[5] << endl;
 #endif
 
@@ -117,11 +116,11 @@ void setup()
 	server.begin( mac, ip, 4303 );
 #elif  ( SRCP_PROTOCOL == SRCP_I2C )
 	// initialize I2C - Slave
-	server.begin( I2C_ADDR );
+	WireServer.begin( I2C_ADDR );
 #endif
 
 #if	( DEBUG_SCOPE > 1 )
-	Serial3.println ( "Server listen " );
+	Serial.println ( "Server listen " );
 #endif
 }
 
@@ -136,6 +135,6 @@ void loop()
 	// Refresh der Sensoren bzw. Abfragen ob Aenderungen stattgefunden haben
 	DeviceManager.refresh();
 
-	// weniger Stress auf dem I2C Bus
-	delay( 100 );
+  	// Sound abspielen, welche mit setSound eingetragen wurden.
+	WaveDevManager.play();
 }
