@@ -26,13 +26,8 @@
 #include "WaveDeviceManager.h"
 #include "GAWave.h"
 
-// Debugging > 0 == ON
-#define DEBUG_SCOPE 2
-
 namespace wav
 {
-
-#define	error(x)	{ Serial.println( x ); return; }
 
 // Preinstantiate Objects //////////////////////////////////////////////////////
 

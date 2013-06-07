@@ -27,7 +27,7 @@
 #include "WaveDeviceManager.h"
 
 // Debugging > 0 == ON
-#define DEBUG_SCOPE 2
+#define DEBUG_SCOPE 0
 
 namespace wav
 {
