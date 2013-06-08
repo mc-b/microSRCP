@@ -10,6 +10,10 @@
 			<triggers>clean,full,incremental,</triggers>
 			<arguments>
 				<dictionary>
+					<key>?children?</key>
+					<value>?name?=outputEntries\|?children?=?name?=entry\\\\\\\|\\\|?name?=entry\\\\\\\|\\\|\||</value>
+				</dictionary>
+				<dictionary>
 					<key>?name?</key>
 					<value></value>
 				</dictionary>
@@ -81,4 +85,26 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 		<nature>de.innot.avreclipse.core.avrnature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/dev</name>
+			<type>2</type>
+			<location>D:/Sourcen/git/microSRCP/microSRCP/arduino/libraries/dev</location>
+		</link>
+        <link>
+            <name>src/i2c</name>
+            <type>2</type>
+            <location>D:/Sourcen/git/microSRCP/microSRCP/arduino/libraries/i2c</location>
+        </link>
+        <link>
+            <name>src/lan</name>
+            <type>2</type>
+            <location>D:/Sourcen/git/microSRCP/microSRCP/arduino/libraries/lan</location>
+        </link>
+        <link>
+            <name>src/srcp</name>
+            <type>2</type>
+            <location>D:/Sourcen/git/microSRCP/microSRCP/arduino/libraries/srcp</location>
+        </link>                		
+	</linkedResources>
 </projectDescription>

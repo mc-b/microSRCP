@@ -42,6 +42,8 @@ extern "C"
 }
 #include "GLOpenDCC.h"
 #include <srcp/SRCPSession.h>
+#include <HardwareSerial.h>
+#include <Streaming.h>
 
 namespace odcc
 {

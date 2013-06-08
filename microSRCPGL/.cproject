@@ -36,7 +36,7 @@
 								<option id="de.innot.avreclipse.compiler.option.incpath.2050961714" name="Include Paths (-I)" superClass="de.innot.avreclipse.compiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/arduinoCore/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/arduinoCore/include/mega}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/microSRCPCore/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/microSRCP/arduino/libraries}&quot;"/>
 								</option>
 								<option id="de.innot.avreclipse.compiler.option.def.53577565" name="Define Syms (-D)" superClass="de.innot.avreclipse.compiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="DEBUG_SCOPE=3"/>
@@ -49,7 +49,7 @@
 								<option id="de.innot.avreclipse.cppcompiler.option.incpath.639712374" name="Include Paths (-I)" superClass="de.innot.avreclipse.cppcompiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/arduinoCore/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/arduinoCore/include/mega}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/microSRCPCore/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/microSRCP/arduino/libraries}&quot;"/>
 								</option>
 								<option id="de.innot.avreclipse.cppcompiler.option.def.865187681" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="DEBUG_SCOPE=3"/>
@@ -122,7 +122,7 @@
 								<option id="de.innot.avreclipse.compiler.option.incpath.496865009" name="Include Paths (-I)" superClass="de.innot.avreclipse.compiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/arduinoCore/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/arduinoCore/include/standard}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/microSRCPCore/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/microSRCP/arduino/libraries}&quot;"/>
 								</option>
 								<option id="de.innot.avreclipse.compiler.option.def.1081543820" name="Define Syms (-D)" superClass="de.innot.avreclipse.compiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="DEBUG_SCOPE=0"/>
@@ -135,7 +135,7 @@
 								<option id="de.innot.avreclipse.cppcompiler.option.incpath.1644389174" name="Include Paths (-I)" superClass="de.innot.avreclipse.cppcompiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/arduinoCore/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/arduinoCore/include/standard}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/microSRCPCore/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/microSRCP/arduino/libraries}&quot;"/>
 								</option>
 								<option id="de.innot.avreclipse.cppcompiler.option.def.1753454315" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="DEBUG_SCOPE=0"/>
@@ -183,23 +183,23 @@
 	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="de.innot.avreclipse.configuration.app.release.1338155817.1313313189;de.innot.avreclipse.configuration.app.release.1338155817.1313313189.;de.innot.avreclipse.tool.compiler.winavr.app.release.1617154648;de.innot.avreclipse.compiler.winavr.input.1768351121">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="de.innot.avreclipse.core.AVRGCCManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="de.innot.avreclipse.configuration.app.release.1338155817;de.innot.avreclipse.configuration.app.release.1338155817.;de.innot.avreclipse.tool.cppcompiler.app.release.91782652;de.innot.avreclipse.cppcompiler.input.1831827162">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="de.innot.avreclipse.core.AVRGCCManagedMakePerProjectProfileCPP"/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="de.innot.avreclipse.configuration.app.release.1338155817;de.innot.avreclipse.configuration.app.release.1338155817.;de.innot.avreclipse.tool.compiler.winavr.app.release.1102192201;de.innot.avreclipse.compiler.winavr.input.218806123">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="de.innot.avreclipse.core.AVRGCCManagedMakePerProjectProfileC"/>
 		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="de.innot.avreclipse.configuration.app.release.1338155817.1313313189;de.innot.avreclipse.configuration.app.release.1338155817.1313313189.;de.innot.avreclipse.tool.cppcompiler.app.release.1131110593;de.innot.avreclipse.cppcompiler.input.8496459">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="de.innot.avreclipse.core.AVRGCCManagedMakePerProjectProfileCPP"/>
+		<scannerConfigBuildInfo instanceId="de.innot.avreclipse.configuration.app.release.1338155817.1313313189.284217253;de.innot.avreclipse.configuration.app.release.1338155817.1313313189.284217253.;de.innot.avreclipse.tool.compiler.winavr.app.release.223715510;de.innot.avreclipse.compiler.winavr.input.1346794432">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="de.innot.avreclipse.core.AVRGCCManagedMakePerProjectProfileC"/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="de.innot.avreclipse.configuration.app.release.1338155817.1313313189.284217253;de.innot.avreclipse.configuration.app.release.1338155817.1313313189.284217253.;de.innot.avreclipse.tool.cppcompiler.app.release.503115613;de.innot.avreclipse.cppcompiler.input.1037763767">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="de.innot.avreclipse.core.AVRGCCManagedMakePerProjectProfileCPP"/>
 		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="de.innot.avreclipse.configuration.app.release.1338155817.1313313189.284217253;de.innot.avreclipse.configuration.app.release.1338155817.1313313189.284217253.;de.innot.avreclipse.tool.compiler.winavr.app.release.223715510;de.innot.avreclipse.compiler.winavr.input.1346794432">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="de.innot.avreclipse.core.AVRGCCManagedMakePerProjectProfileC"/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="de.innot.avreclipse.configuration.app.release.1338155817.1313313189;de.innot.avreclipse.configuration.app.release.1338155817.1313313189.;de.innot.avreclipse.tool.compiler.winavr.app.release.1617154648;de.innot.avreclipse.compiler.winavr.input.1768351121">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="de.innot.avreclipse.core.AVRGCCManagedMakePerProjectProfileC"/>
+		<scannerConfigBuildInfo instanceId="de.innot.avreclipse.configuration.app.release.1338155817.1313313189;de.innot.avreclipse.configuration.app.release.1338155817.1313313189.;de.innot.avreclipse.tool.cppcompiler.app.release.1131110593;de.innot.avreclipse.cppcompiler.input.8496459">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="de.innot.avreclipse.core.AVRGCCManagedMakePerProjectProfileCPP"/>
 		</scannerConfigBuildInfo>
 	</storageModule>
 </cproject>

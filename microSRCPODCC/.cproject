@@ -36,7 +36,7 @@
 								<option id="de.innot.avreclipse.compiler.option.incpath.2050961714" name="Include Paths (-I)" superClass="de.innot.avreclipse.compiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/arduinoCore/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/arduinoCore/include/mega}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/microSRCPCore/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/microSRCP/arduino/libraries}&quot;"/>
 								</option>
 								<option id="de.innot.avreclipse.compiler.option.def.53577565" name="Define Syms (-D)" superClass="de.innot.avreclipse.compiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="DEBUG_SCOPE=3"/>
@@ -49,7 +49,7 @@
 								<option id="de.innot.avreclipse.cppcompiler.option.incpath.639712374" name="Include Paths (-I)" superClass="de.innot.avreclipse.cppcompiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/arduinoCore/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/arduinoCore/include/mega}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/microSRCPCore/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/microSRCP/arduino/libraries}&quot;"/>
 								</option>
 								<option id="de.innot.avreclipse.cppcompiler.option.def.865187681" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="DEBUG_SCOPE=3"/>
@@ -122,7 +122,7 @@
 								<option id="de.innot.avreclipse.compiler.option.incpath.496865009" name="Include Paths (-I)" superClass="de.innot.avreclipse.compiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/arduinoCore/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/arduinoCore/include/standard}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/microSRCPCore/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/microSRCP/arduino/libraries}&quot;"/>
 								</option>
 								<option id="de.innot.avreclipse.compiler.option.def.1081543820" name="Define Syms (-D)" superClass="de.innot.avreclipse.compiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="DEBUG_SCOPE=0"/>
@@ -135,7 +135,7 @@
 								<option id="de.innot.avreclipse.cppcompiler.option.incpath.1644389174" name="Include Paths (-I)" superClass="de.innot.avreclipse.cppcompiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/arduinoCore/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/arduinoCore/include/standard}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/microSRCPCore/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/microSRCP/arduino/libraries}&quot;"/>
 								</option>
 								<option id="de.innot.avreclipse.cppcompiler.option.def.1753454315" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="DEBUG_SCOPE=0"/>
