@@ -36,9 +36,13 @@ GASlowServo::GASlowServo( int addr, uint8_t pin, uint8_t min, uint8_t max, uint8
 	this->delay = delay;
 
 	servo = new Servo();
+
+	// Trick - setzt den Servo auf die min Position
+	pos = min;
+	current = min + step;
+	last = millis() + delay;
 	servo->attach( pin );
 	servo->write( min );
-	current = pos = min;
 }
 
 int GASlowServo::set( int addr, int port, int value, int delay )
@@ -47,11 +51,14 @@ int GASlowServo::set( int addr, int port, int value, int delay )
 	{
 		pos = min;
 		last = millis();
+		servo->attach( pin );
+
 	}
 	else
 	{
 		pos = max;
 		last = millis();
+		servo->attach( pin );
 	}
 	return	( 200 );
 }
@@ -73,7 +80,12 @@ void GASlowServo::refresh()
 			current = (current > max) ? max : current;
 			servo->write( current );
 		}
-		// else current == pos - keine Aktion
+		// else current == pos
+		else
+		{
+			if	( servo->attached() )
+				servo->detach();
+		}
 	}
 }
 
