@@ -1,5 +1,6 @@
 /*
-	GABlinkLed - blinkende Led
+	GABlinkLed2 - 2 LED's geschaltet gegen GND mit Implementierter
+	Wechselblinker-Schaltung.
 
 	In RocRail als Signal eintragen und bei Schnittstelle Weiche
 	aktivieren. Das Geraet muss mit Adresse und Port = 0
@@ -23,32 +24,36 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include "GABlinkLed.h"
+#include "GABlinkLed2.h"
 #include <Streaming.h>
 
 namespace dev
 {
 
-GABlinkLed::GABlinkLed( int addr, uint8_t pin, int delay )
+GABlinkLed2::GABlinkLed2( int addr, uint8_t pin1, uint8_t pin2, int delay )
 {
 	this->addr = addr;
-	this->pin = pin;
+	this->pin1 = pin1;
+	this->pin2 = pin2;
 	this->delay = delay;
 
-	pinMode( this->pin, OUTPUT );
-	digitalWrite( this->pin, LOW );
+	pinMode( this->pin1, OUTPUT );
+	digitalWrite( this->pin1, LOW );
+	pinMode( this->pin2, OUTPUT );
+	digitalWrite( this->pin2, LOW );
 	on = false;
 	value = 0;
 	last = millis();
 }
 
-int GABlinkLed::set( int addr, int port, int value, int delay )
+int GABlinkLed2::set( int addr, int port, int value, int delay )
 {
 	this->value = port;
 
 	if	( this->value == 0 )
 	{
-		digitalWrite( this->pin, LOW );
+		digitalWrite( this->pin1, LOW );
+		digitalWrite( this->pin2, LOW );
 		on = false;
 	}
 	else
@@ -57,7 +62,7 @@ int GABlinkLed::set( int addr, int port, int value, int delay )
 	return	( 200 );
 }
 
-void GABlinkLed::refresh()
+void GABlinkLed2::refresh()
 {
 	if	( value )
 	{
@@ -65,12 +70,14 @@ void GABlinkLed::refresh()
 		{
 			if	( on )
 			{
-				digitalWrite( this->pin, LOW );
+				digitalWrite( this->pin1, LOW );
+				digitalWrite( this->pin2, HIGH );
 				on = false;
 			}
 			else
 			{
-				digitalWrite( this->pin, HIGH );
+				digitalWrite( this->pin1, HIGH );
+				digitalWrite( this->pin2, LOW );
 				on = true;
 			}
 			last = millis();

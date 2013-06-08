@@ -1,9 +1,6 @@
 /*
-	GABlinkLed - einfache LED geschaltet gegen GND.
-
-	Mehrere LED ergeben ein Signal. Das entspricht besser der
-	Logik von RocRail, wo jeder Signalausgang einzeln geschaltet
-	wird.
+	GABlinkLed2 - 2 LED's geschaltet gegen GND mit Implementierter
+	Wechselblinker-Schaltung.
 
 	In RocRail als Signal eintragen und bei Schnittstelle Weiche
 	aktivieren. Das Geraet muss mit Adresse und Port = 0
@@ -27,8 +24,8 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef GABLINKLED_H_
-#define GABLINKLED_H_
+#ifndef GABLINKLED2_H_
+#define GABLINKLED2_H_
 
 #include <inttypes.h>
 #include <Arduino.h>
@@ -37,17 +34,18 @@
 namespace dev
 {
 
-class GABlinkLed: public srcp::SRCPGenericAccessoire
+class GABlinkLed2: public srcp::SRCPGenericAccessoire
 {
 private:
-	uint8_t pin;
+	uint8_t pin1;
+	uint8_t pin2;
 	uint8_t on;					// aktueller Zustand
 	uint8_t value;
 	int delay;
 	unsigned long last;
 public:
 	// Adresse, Pin, Pause zwischen dem Blinken
-	GABlinkLed( int addr, uint8_t pin, int delay );
+	GABlinkLed2( int addr, uint8_t pin1, uint8_t pin2, int delay );
 	int get( int addr, int port ) { return ( 200 ); }
 	int set( int addr, int port, int value, int delay );
 	void refresh();
@@ -55,4 +53,4 @@ public:
 
 }
 
-#endif /* GABLINKLED_H_ */
+#endif /* GABLINKLED2_H_ */

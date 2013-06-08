@@ -1,6 +1,7 @@
 /*
 	microSRCPGL - Arduino Standardboard fungiert als Zentrale
-	fuer eine Modelleisenbahn.
+	fuer eine Modelleisenbahn. Der Verbindung zum PC erfolgt
+	mittels USB Kabel.
 
 	Fuer weitere Details siehe https://github.com/mc-b/microSRCP/wiki
 
@@ -21,26 +22,47 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
+//////////////////////////////////////////////////////////////////////////////////////////
+// Konfiguration Protokoll
+#define SRCP_ETHERNET	100
+#define SRCP_SERIAL		101
+
+#define SRCP_I2C		102
+
+#define SRCP_PROTOCOL	SRCP_SERIAL
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// Konfiguration Board
+#define BOARD_STANDARD		200
+#define BOARD_I2C_MASTER 	201
+
+#define BOARD 	BOARD_STANDARD
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// Konfiguration I2C
+#define I2C_ADDR		0	// Eigene I2C Adresse - muss pro I2C Board angepasst werden! - Master = 0
+#define I2C_OFFSET		16	// Offset, d.h. wieviele Adressen pro Board reserviert werden
+#define I2C_ENABLED		1
+#define ADDR(x)			((I2C_ADDR * I2C_OFFSET) + x)	// Berechnung effektive Adresse
+
 #include <Arduino.h>
 #include <HardwareSerial.h>
 #include <Streaming.h>
 #include <srcp/SRCPCommand.h>
 #include <srcp/SRCPDeviceManager.h>
+#if	( SRCP_PROTOCOL == SRCP_SERIAL )
 #include <srcp/SRCPServerSerial.h>
+#endif
+#if ( SRCP_PROTOCOL == SRCP_ETHERNET )
 #include <srcp/SRCPEthernetServer.h>
+#endif
 #include <i2c/I2CDeviceManager.h>
 #include <dev/GASignal.h>
 #include <dev/GAServo.h>
 #include <dev/GASlowServo.h>
+#include <dev/GABlinkLed2.h>
 #include <dev/GLMotoMamaAnalog.h>
 #include <dev/FBSwitchSensor.h>
-
-//////////////////////////////////////////////////////////////////////////////////////////
-// Konfiguration Protokoll
-#define SRCP_ETHERNET	100
-#define SRCP_SERIAL		101
-#define SRCP_I2C		102
-#define SRCP_PROTOCOL	SRCP_SERIAL
 
 #if	( SRCP_PROTOCOL == SRCP_SERIAL )
 // SRCP I/O Server
@@ -58,20 +80,6 @@ i2c::I2CServer server = WireServer;
 #error "kein Prokotoll definiert"
 #endif
 
-//////////////////////////////////////////////////////////////////////////////////////////
-// Konfiguration Board
-#define BOARD_STANDARD		200
-#define BOARD_I2C_MASTER 	201
-
-#define BOARD 	BOARD_STANDARD
-
-//////////////////////////////////////////////////////////////////////////////////////////
-// Konfiguration I2C
-#define I2C_ADDR		0	// Eigene I2C Adresse - muss pro I2C Board angepasst werden! - Master = 0
-#define I2C_OFFSET		16	// Offset, d.h. wieviele Adressen pro Board reserviert werden
-#define I2C_ENABLED		1
-#define ADDR(x)			((I2C_ADDR * I2C_OFFSET) + x)	// Berechnung effektive Adresse
-
 /**
  * Initialisierung - Protokoll, Geraete etc.
  */
@@ -87,8 +95,9 @@ void setup()
 	// Geraete initialisieren, je nach Board und Verwendung
 	DeviceManager.addAccessoire( new dev::GASignal( ADDR(1), 4, 5 ) ); 			// 2 Signale mit 2 LED an Ports 4 - 7.
 	DeviceManager.addAccessoire( new dev::GASignal( ADDR(2), 6, 7 ) );
-	DeviceManager.addAccessoire( new dev::GASlowServo( ADDR(3), 2, 60, 90, 1, 50 ) );  	// Servo mit Addr 3 an Pin 2, min. Stellung 60, max. Stellung 90 von 180
-	DeviceManager.addAccessoire( new dev::GASlowServo( ADDR(4), 3, 60, 90 ) );			// und Weiterschalten um 1ne Position alle 50 Millisekunden
+	//DeviceManager.addAccessoire( new dev::GABlinkLed2( ADDR(1), 4, 5, 1000 )); // Wechselblinklicht an Pin 4 und 5, alle 100 Millis wird gewechselt.
+	DeviceManager.addAccessoire( new dev::GASlowServo( ADDR(3), 2, 60, 90, 1, 5 ) );  	// Servo mit Addr 3 an Pin 2, min. Stellung 60, max. Stellung 90 von 180
+	DeviceManager.addAccessoire( new dev::GASlowServo( ADDR(4), 3, 60, 90 ) );			// und Weiterschalten um 1ne Position alle 5 Millisekunden
 	DeviceManager.addFeedback( new dev::FBSwitchSensor( ADDR(1), A0, A3 ) ); 	// Sensoren, jeweils in Gruppen von 8 (auch wenn nicht 8 Pins belegt). A4+A5 = I2C Bus
 #if ( __AVR_ATmega1280__ || __AVR_ATmega2560__ )
 	DeviceManager.addFeedback( new dev::FBSwitchSensor( ADDR(9), A8, A15 ) ); 	// Sensoren, Mega 8 zusaetzlich
