@@ -168,7 +168,4 @@ void loop()
 
 	// Refresh der Sensoren bzw. Abfragen ob Aenderungen stattgefunden haben
 	DeviceManager.refresh();
-
-	// weniger Stress auf dem I2C Bus
-	delay( 100 );
 }

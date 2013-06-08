@@ -93,9 +93,9 @@ void setup()
 
 #if	( BOARD == BOARD_STANDARD )
 	// Geraete initialisieren, je nach Board und Verwendung
-	DeviceManager.addAccessoire( new dev::GASignal( ADDR(1), 4, 5 ) ); 			// 2 Signale mit 2 LED an Ports 4 - 7.
+	//DeviceManager.addAccessoire( new dev::GASignal( ADDR(1), 4, 5 ) ); 			// 2 Signale mit 2 LED an Ports 4 - 7.
 	DeviceManager.addAccessoire( new dev::GASignal( ADDR(2), 6, 7 ) );
-	//DeviceManager.addAccessoire( new dev::GABlinkLed2( ADDR(1), 4, 5, 1000 )); // Wechselblinklicht an Pin 4 und 5, alle 100 Millis wird gewechselt.
+	DeviceManager.addAccessoire( new dev::GABlinkLed2( ADDR(1), 4, 5, 1000 )); // Wechselblinklicht an Pin 4 und 5, alle 100 Millis wird gewechselt.
 	DeviceManager.addAccessoire( new dev::GASlowServo( ADDR(3), 2, 60, 90, 1, 5 ) );  	// Servo mit Addr 3 an Pin 2, min. Stellung 60, max. Stellung 90 von 180
 	DeviceManager.addAccessoire( new dev::GASlowServo( ADDR(4), 3, 60, 90 ) );			// und Weiterschalten um 1ne Position alle 5 Millisekunden
 	DeviceManager.addFeedback( new dev::FBSwitchSensor( ADDR(1), A0, A3 ) ); 	// Sensoren, jeweils in Gruppen von 8 (auch wenn nicht 8 Pins belegt). A4+A5 = I2C Bus
@@ -143,7 +143,4 @@ void loop()
 
 	// Refresh der Sensoren bzw. Abfragen ob Aenderungen stattgefunden haben
 	DeviceManager.refresh();
-
-	// weniger Stress auf dem I2C Bus
-	delay( 100 );
 }
