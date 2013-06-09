@@ -1,6 +1,6 @@
 /*
-	microSRCPGL - Arduino Standardboard fungiert als Slave zur
-	Zentrale und wir mittels I2C Bus an diese angeschlossen.
+	microSRCPI2CSlave - Arduino Standardboard fungiert als Slave zur
+	(Arduino) Zentrale und wir mittels I2C Bus mit diesem Verbunden.
 
 	Fuer weitere Details siehe https://github.com/mc-b/microSRCP/wiki
 

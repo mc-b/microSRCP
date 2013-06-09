@@ -1,6 +1,6 @@
 /*
-	microSRCPGL - Arduino Standardboard fungiert als Zentrale
-	fuer eine Modelleisenbahn.
+	microSRCPServer - Arduino Standardboard fungiert als Zentrale
+	fuer eine Modelleisenbahn wird mittels USB Kabel an den PC angeschlossen
 
 	Fuer weitere Details siehe https://github.com/mc-b/microSRCP/wiki
 
