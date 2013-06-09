@@ -6,6 +6,10 @@
 
 	Dadurch leuchtet die LED wenn der Pin auf GND geschaltet wird.
 
+	Ein Signal hat eine Adresse und mittels den Ports werden die
+	verschiedenen Led's angesteuert. Die Ports werden von 0
+	an adressiert, d.h. Port 0 = StartPin, Port 1 = 2. Led etc.
+
 	Copyright (c) 2010 Marcel Bernet.  All right reserved.
 
 	This program is free software; you can redistribute it and/or
@@ -36,10 +40,10 @@ namespace dev
 class GASignal: public srcp::SRCPGenericAccessoire
 {
 private:
-	uint8_t redPin;
-	uint8_t greenPin;
+	uint8_t startPin;
+	uint8_t endPin;
 public:
-	GASignal( int addr, uint8_t red, uint8_t green );
+	GASignal( int addr, uint8_t start, uint8_t end );
 	int get( int addr, int port ) { return ( 200 ); }
 	int set( int addr, int port, int value, int delay );
 };
