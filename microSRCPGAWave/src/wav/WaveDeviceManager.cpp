@@ -21,8 +21,10 @@
  */
 
 #include <Arduino.h>
+#if	( DEBUG_SCOPE > 0 )
 #include <HardwareSerial.h>
 #include <Streaming.h>
+#endif
 #include "WaveDeviceManager.h"
 #include "GAWave.h"
 
