@@ -25,7 +25,6 @@
  */
 
 #include "GABlinkLed2.h"
-#include <Streaming.h>
 
 namespace dev
 {

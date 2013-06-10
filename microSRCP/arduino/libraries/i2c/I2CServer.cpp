@@ -27,7 +27,9 @@
  */
 
 #include <Arduino.h>
+#if	( DEBUG_SCOPE > 0 )
 #include <Streaming.h>
+#endif
 #include <Wire.h>
 #include "I2CServer.h"
 #include "../srcp/SRCPDeviceManager.h"

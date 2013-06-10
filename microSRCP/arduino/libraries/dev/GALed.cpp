@@ -23,7 +23,6 @@
  */
 
 #include "GALed.h"
-#include <Streaming.h>
 
 namespace dev
 {

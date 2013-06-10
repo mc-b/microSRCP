@@ -25,7 +25,9 @@
  */
 
 #include "FBSwitchSensor.h"
+#if	( DEBUG_SCOPE > 1 )
 #include <Streaming.h>
+#endif
 
 namespace dev
 {

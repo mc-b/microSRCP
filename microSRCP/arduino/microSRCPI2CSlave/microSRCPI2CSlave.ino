@@ -24,10 +24,38 @@
 // Debugging > 0 == ON
 #define DEBUG_SCOPE 0
 
+//////////////////////////////////////////////////////////////////////////////////////////
+// Konfiguration Protokoll
+#define SRCP_ETHERNET	100
+#define SRCP_SERIAL		101
+#define SRCP_I2C		102
+#define SRCP_PROTOCOL	SRCP_I2C
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// Konfiguration Board
+#define BOARD_STANDARD		200
+#define BOARD_I2C_MASTER 	201
+
+#define BOARD 	BOARD_STANDARD
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// Konfiguration I2C
+#define I2C_ADDR		1	// Eigene I2C Adresse - muss pro I2C Board angepasst werden!
+#define I2C_OFFSET		16	// Offset, d.h. wieviele Adressen pro Board reserviert werden
+#define I2C_ENABLED		1
+#define ADDR(x)			((I2C_ADDR * I2C_OFFSET) + x)	// Berechnung effektive Adresse
+
 #include <Arduino.h>
+#if	( DEBUG_SCOPE > 1 )
 #include <HardwareSerial.h>
 #include <Streaming.h>
+#endif
 
+#include <SRCPCommand.h>
+#include <SRCPDevice.h>
+#include <SRCPDeviceManager.h>
+
+#if ( SRCP_PROTOCOL == SRCP_ETHERNET )
 #include <SPI.h>
 #include <Dhcp.h>
 #include <Dns.h>
@@ -36,20 +64,19 @@
 #include <EthernetServer.h>
 #include <EthernetUdp.h>
 #include <util.h>
-
-#include <SRCPCommand.h>
-#include <SRCPDevice.h>
-#include <SRCPDeviceManager.h>
 #include <SRCPEthernetServer.h>
+#include <EthernetSocket.h>
+#endif
+
 #include <SRCPFeedback.h>
 #include <SRCPGenericAccessoire.h>
 #include <SRCPGenericLoco.h>
 #include <SRCPMessages.h>
 #include <SRCPParser.h>
+#if	( SRCP_PROTOCOL == SRCP_SERIAL )
 #include <SRCPServerSerial.h>
+#endif
 #include <SRCPSession.h>
-
-#include <EthernetSocket.h>
 
 #include <Wire.h>
 #include <I2CDeviceManager.h>
@@ -68,13 +95,6 @@
 #include <GLArduinoMotor.h>
 #include <GLMotoMamaAnalog.h>
 
-//////////////////////////////////////////////////////////////////////////////////////////
-// Konfiguration Protokoll
-#define SRCP_ETHERNET	100
-#define SRCP_SERIAL		101
-#define SRCP_I2C		102
-#define SRCP_PROTOCOL	SRCP_I2C
-
 #if	( SRCP_PROTOCOL == SRCP_SERIAL )
 // SRCP I/O Server
 srcp::SRCPServerSerial server;
@@ -91,19 +111,6 @@ i2c::I2CServer server = WireServer;
 #error "kein Prokotoll definiert"
 #endif
 
-//////////////////////////////////////////////////////////////////////////////////////////
-// Konfiguration Board
-#define BOARD_STANDARD		200
-#define BOARD_I2C_MASTER 	201
-
-#define BOARD 	BOARD_STANDARD
-
-//////////////////////////////////////////////////////////////////////////////////////////
-// Konfiguration I2C
-#define I2C_ADDR		1	// Eigene I2C Adresse - muss pro I2C Board angepasst werden!
-#define I2C_OFFSET		16	// Offset, d.h. wieviele Adressen pro Board reserviert werden
-#define I2C_ENABLED		1
-#define ADDR(x)			((I2C_ADDR * I2C_OFFSET) + x)	// Berechnung effektive Adresse
 /**
  * Initialisierung - Protokoll, Geraete etc.
  */
@@ -134,7 +141,7 @@ void setup()
 	i2c::I2CDeviceManager::begin();		// weitere Boards am I2C Bus, beginnend mit Adressen (I2C_ADDR * I2C_OFFSET) + x).
 #endif
 
-#if	( DEBUG_SCOPE > 1 )
+#if	( DEBUG_SCOPE > 2 )
 	int values[6];
 	DeviceManager.getDescription( 0, 0, srcp::LAN, values );
 	Serial3 << "Devices: fb " << values[0] << "-" << values[1] << ", ga " << values[2]

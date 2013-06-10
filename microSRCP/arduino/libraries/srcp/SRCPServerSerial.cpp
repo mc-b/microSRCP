@@ -23,7 +23,9 @@
  */
 
 #include "SRCPServerSerial.h"
+#if	( DEBUG_SCOPE > 0 )
 #include <Streaming.h>
+#endif
 #include "SRCPMessages.h"
 
 namespace srcp

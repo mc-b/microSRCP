@@ -20,8 +20,10 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
+#if	( DEBUG_SCOPE > 0 )
 #include <HardwareSerial.h>
 #include <Streaming.h>
+#endif
 #include <Wire.h>
 #include "I2CDeviceManager.h"
 #include "I2CFBMaster.h"
