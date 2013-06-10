@@ -29,15 +29,6 @@
 #include <HardwareSerial.h>
 #include <Streaming.h>
 
-#include <SPI.h>
-#include <Dhcp.h>
-#include <Dns.h>
-#include <Ethernet.h>
-#include <EthernetClient.h>
-#include <EthernetServer.h>
-#include <EthernetUdp.h>
-#include <util.h>
-
 extern "C"
 {
 #include <stdlib.h>
@@ -53,7 +44,6 @@ extern "C"
 #include "dccout.h"                // make dcc
 #include "organizer.h"             // manage commands
 }
-
 
 #include <SRCPCommand.h>
 #include <SRCPDevice.h>

@@ -27,7 +27,7 @@
 #include <srcp/SRCPCommand.h>
 #include <srcp/SRCPDeviceManager.h>
 #include <srcp/SRCPServerSerial.h>
-#include <srcp/SRCPEthernetServer.h>
+#include <lan/EthernetSRCPServer.h>
 #include <i2c/I2CDeviceManager.h>
 #include <i2c/I2CServer.h>
 #include "wav/GAWave.h"
@@ -43,7 +43,7 @@
 // SRCP I/O Server
 srcp::SRCPServerSerial server;
 #elif ( SRCP_PROTOCOL == SRCP_ETHERNET )
-srcp::SRCPEthernetServer server;
+lan::EthernetSRCPServer server;
 // Enter a MAC address and IP address for your controller below.
 // The IP address will be dependent on your local network:
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };

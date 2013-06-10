@@ -19,17 +19,17 @@
  */
 
 #include <Ethernet.h>
-#include "SRCPEthernetServer.h"
+#include "EthernetSRCPServer.h"
 
-namespace srcp
+namespace lan
 {
 char command[64];
 int pos = 0;
 long last = millis();
 
-void SRCPEthernetServer::begin( byte* mac, IPAddress ip, unsigned int port )
+void EthernetSRCPServer::begin( byte* mac, IPAddress ip, unsigned int port )
 {
-	parser = new SRCPParser();
+	parser = new srcp::SRCPParser();
 
 	commandSession = new srcp::SRCPSession();
 	infoSession = new srcp::SRCPSession();
@@ -41,14 +41,14 @@ void SRCPEthernetServer::begin( byte* mac, IPAddress ip, unsigned int port )
 	infoSocket->begin();
 }
 
-int SRCPEthernetServer::dispatch()
+int EthernetSRCPServer::dispatch()
 {
 	dispatch( commandSession, commandSocket );
 	dispatch( infoSession, infoSocket );
 	return	( 1 );
 }
 
-int SRCPEthernetServer::dispatch( srcp::SRCPSession* session, lan::EthernetSocket* socket )
+int EthernetSRCPServer::dispatch( srcp::SRCPSession* session, lan::EthernetSocket* socket )
 {
 	if ( socket->connected() )
 	{
@@ -126,4 +126,4 @@ int SRCPEthernetServer::dispatch( srcp::SRCPSession* session, lan::EthernetSocke
 	}
 }
 
-} /* namespace srcp */
+} /* namespace lan */

@@ -22,16 +22,16 @@
 #define SRCPETHERNETSERVER_H_
 
 #include <Arduino.h>
-#include "../lan/EthernetSocket.h"
-#include "SRCPCommand.h"
-#include "SRCPMessages.h"
-#include "SRCPParser.h"
-#include "SRCPSession.h"
+#include "EthernetSocket.h"
+#include "../srcp/SRCPCommand.h"
+#include "../srcp/SRCPMessages.h"
+#include "../srcp/SRCPParser.h"
+#include "../srcp/SRCPSession.h"
 
-namespace srcp
+namespace lan
 {
 
-class SRCPEthernetServer
+class EthernetSRCPServer
 {
 private:
 	lan::EthernetSocket* commandSocket;
@@ -40,7 +40,7 @@ private:
 	srcp::SRCPSession* infoSession;
 	srcp::command_t cmd;
 	// ASCII SRCP Parser
-	SRCPParser* parser;
+	srcp::SRCPParser* parser;
 	int status;
 	int dispatch( srcp::SRCPSession* session, lan::EthernetSocket* socket );
 public:
@@ -48,6 +48,6 @@ public:
 	int dispatch();
 };
 
-} /* namespace srcp */
+} /* namespace lan */
 
 #endif /* SRCPETHERNETSERVER_H_ */

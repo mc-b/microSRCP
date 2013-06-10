@@ -64,7 +64,7 @@
 #include <EthernetServer.h>
 #include <EthernetUdp.h>
 #include <util.h>
-#include <SRCPEthernetServer.h>
+#include <EthernetSRCPServer.h>
 #include <EthernetSocket.h>
 #endif
 
@@ -99,7 +99,7 @@
 // SRCP I/O Server
 srcp::SRCPServerSerial server;
 #elif ( SRCP_PROTOCOL == SRCP_ETHERNET )
-srcp::SRCPEthernetServer server;
+lan::EthernetSRCPServer server;
 // Enter a MAC address and IP address for your controller below.
 // The IP address will be dependent on your local network:
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };

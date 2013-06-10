@@ -27,19 +27,9 @@
 
 #include <Arduino.h>
 
-#include <SPI.h>
-#include <Dhcp.h>
-#include <Dns.h>
-#include <Ethernet.h>
-#include <EthernetClient.h>
-#include <EthernetServer.h>
-#include <EthernetUdp.h>
-#include <util.h>
-
 #include <SRCPCommand.h>
 #include <SRCPDevice.h>
 #include <SRCPDeviceManager.h>
-#include <SRCPEthernetServer.h>
 #include <SRCPFeedback.h>
 #include <SRCPGenericAccessoire.h>
 #include <SRCPGenericLoco.h>
@@ -48,7 +38,6 @@
 #include <SRCPServerSerial.h>
 #include <SRCPSession.h>
 
-#include <EthernetSocket.h>
 
 #include <Wire.h>
 #include <I2CDeviceManager.h>
