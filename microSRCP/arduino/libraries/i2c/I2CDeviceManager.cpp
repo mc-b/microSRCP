@@ -118,8 +118,8 @@ int I2CDeviceManager::getSM( int remoteAddr, int bus, int addr, int device, int 
 	buf[5] = device;
 	buf[6] = cv;
 
-	write	( remoteAddr, buf, sizeof(buf) );
-	read	( remoteAddr, buf, 1 );
+	write	( remoteAddr, buf, sizeof(buf), 100 );
+	read	( remoteAddr, buf, 1, 100 );
 	return	( buf[0] );
 }
 
@@ -137,13 +137,13 @@ int I2CDeviceManager::getDescription( int remoteAddr, int bus, int addr, int dev
 	buf[4] = bus;
 	buf[5] = device;
 
-	write	( remoteAddr, buf, sizeof(buf) );
-	return	( read	( remoteAddr, rc, 12 ) );
+	write	( remoteAddr, buf, sizeof(buf), 100 );
+	return	( read	( remoteAddr, rc, 12, 100 ) );
 }
 
-int I2CDeviceManager::write( int addr, uint8_t *buf, int size )
+int I2CDeviceManager::write( int addr, uint8_t *buf, int size, int wait )
 {
-#if	( DEBUG_SCOPE > 2 )
+#if	( DEBUG_SCOPE > 3 )
 		Serial3 << "send: " << addr;
 		for	( int i = 0; i < size; i++ )
 			Serial3 << ":" << buf[i];
@@ -153,7 +153,7 @@ int I2CDeviceManager::write( int addr, uint8_t *buf, int size )
 	Wire.beginTransmission( addr );
 	Wire.write( buf, size );
 	Wire.endTransmission();
-	delay( 100 );
+	delay( wait );
 
 	if	( Wire.getWriteError() )		// timeout!
 	{
@@ -163,16 +163,16 @@ int I2CDeviceManager::write( int addr, uint8_t *buf, int size )
 	return	( 200 );
 }
 
-int I2CDeviceManager::read( int addr, uint8_t *buf, int size )
+int I2CDeviceManager::read( int addr, uint8_t *buf, int size, int wait )
 {
 	Wire.requestFrom( addr, size );
 	memset( buf, -1, size );
 	int i = 0;
 	for	( ; i < size && Wire.available(); i++ )
 		buf[i] = Wire.read();
-	delay( 100 );
+	delay( wait );
 
-#if	( DEBUG_SCOPE > 2 )
+#if	( DEBUG_SCOPE > 3 )
 		Serial3 << "revc: " << addr << ", " << size << ":" << i << " ";
 		for	( int i = 0; i < size; i++ )
 			Serial3 << ":" << buf[i];
