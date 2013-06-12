@@ -1,5 +1,9 @@
 /*
-	I2CFBMaster - Hilfsklasse wandelt SRCP Befehle um nach I2C.
+	I2CFBProxy - Stellvertreter fuer Geraete in angeschlossenen
+	I2C Board's. Fuer den I2C Master sieht es aus, als ob die
+	Geraete lokal waren, alle get/set Befehle werden jedoch
+	via I2C Bus gesendet bzw. empfangen.
+
 	Dient zum Abfragen von Sensoren.
 
 	Copyright (c) 2010 Marcel Bernet.  All right reserved.
@@ -20,20 +24,20 @@
  */
 
 
-#include "I2CFBMaster.h"
+#include "I2CFBProxy.h"
 #include "I2CDeviceManager.h"
 
 namespace i2c
 {
 
-I2CFBMaster::I2CFBMaster( int startAddr, int endAddr, int remoteAddr )
+I2CFBProxy::I2CFBProxy( int startAddr, int endAddr, int remoteAddr )
 {
 	this->startAddr = startAddr;
 	this->endAddr = endAddr;
 	this->addr = remoteAddr;
 }
 
-int I2CFBMaster::info( int addr, srcp::feedback fb[] )
+int I2CFBProxy::info( int addr, srcp::feedback fb[] )
 {
 	uint8_t buf[4];
 

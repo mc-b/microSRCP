@@ -1,6 +1,10 @@
 /*
-	I2CFBMaster - Hilfsklasse wandelt SRCP Befehle um nach I2C.
-	Dient zum Abfragen von Sensoren.
+	I2CGAProxy - Stellvertreter fuer Geraete in angeschlossenen
+	I2C Board's. Fuer den I2C Master sieht es aus, als ob die
+	Geraete lokal waren, alle get/set Befehle werden jedoch
+	via I2C Bus gesendet bzw. empfangen.
+
+	Dient zum Schalten von Geraeten wie Servos, Lichtsignale ...
 
 	Copyright (c) 2010 Marcel Bernet.  All right reserved.
 
@@ -19,30 +23,32 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef I2CFBMASTER_H_
-#define I2CFBMASTER_H_
+#ifndef I2CGAPROXY_H_
+#define I2CGAPROXY_H_
 
 #include <Arduino.h>
 #include "../srcp/SRCPCommand.h"
-#include "../srcp/SRCPFeedback.h"
+#include "../srcp/SRCPGenericAccessoire.h"
 
 namespace i2c
 {
 
-class I2CFBMaster : public srcp::SRCPFeedback
+class I2CGAProxy :  public srcp::SRCPGenericAccessoire
 {
 private:
 	int startAddr;
 	int endAddr;
 public:
-	I2CFBMaster( int startAddr, int endAddr, int remoteAddr );
+	I2CGAProxy( int startAddr, int endAddr, int remoteAddr );
 	int checkAddr( int addr ) { return ( addr >= startAddr && addr <= endAddr); }
-	void refresh() { /* wird vom Slave erledigt */ }
-	int info( int addr, srcp::feedback fb[] );
+	int set( int addr, int port, int value, int delay  );
+	void setPower( int on );
+	int setSM( int bus, int addr, int device, int cv, int value );
+	int getSM( int bus, int addr, int device, int cv );
 	int	getStartAddr() { return( this->startAddr ); };
 	int getEndAddr() { return( this->endAddr ); }
 };
 
 }
 
-#endif /* I2CFBMASTER_H_ */
+#endif /* I2CGAPROXY_H_ */

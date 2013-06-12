@@ -1,5 +1,9 @@
 /*
-	I2CGAMaster - Hilfsklasse wandelt SRCP Befehle um nach I2C.
+	I2CGAProxy - Stellvertreter fuer Geraete in angeschlossenen
+	I2C Board's. Fuer den I2C Master sieht es aus, als ob die
+	Geraete lokal waren, alle get/set Befehle werden jedoch
+	via I2C Bus gesendet bzw. empfangen.
+
 	Dient zum Schalten von Geraeten wie Servos, Lichtsignale ...
 
 	Copyright (c) 2010 Marcel Bernet.  All right reserved.
@@ -19,20 +23,20 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include "I2CGAMaster.h"
+#include "I2CGAProxy.h"
 #include "I2CDeviceManager.h"
 
 namespace i2c
 {
 
-I2CGAMaster::I2CGAMaster( int startAddr, int endAddr, int remoteAddr )
+I2CGAProxy::I2CGAProxy( int startAddr, int endAddr, int remoteAddr )
 {
 	this->startAddr = startAddr;
 	this->endAddr = endAddr;
 	this->addr = remoteAddr;
 }
 
-int I2CGAMaster::set( int addr, int port, int value, int delay )
+int I2CGAProxy::set( int addr, int port, int value, int delay )
 {
 	uint8_t buf[7];
 	buf[0] = srcp::GA;
@@ -45,7 +49,7 @@ int I2CGAMaster::set( int addr, int port, int value, int delay )
 	return	( I2CDeviceManager::write( this->addr, buf, sizeof(buf) ) );
 }
 
-void I2CGAMaster::setPower( int on )
+void I2CGAProxy::setPower( int on )
 {
 	uint8_t buf[4];
 	buf[0] = srcp::POWER;
@@ -55,12 +59,12 @@ void I2CGAMaster::setPower( int on )
 	I2CDeviceManager::write( this->addr, buf, sizeof(buf) );
 }
 
-int I2CGAMaster::setSM( int bus, int addr, int device, int cv, int value )
+int I2CGAProxy::setSM( int bus, int addr, int device, int cv, int value )
 {
 	return	( I2CDeviceManager::setSM( this->addr, bus, addr, device, cv, value ) );
 }
 
-int I2CGAMaster::getSM( int bus, int addr, int device, int cv )
+int I2CGAProxy::getSM( int bus, int addr, int device, int cv )
 {
 	return	( I2CDeviceManager::getSM( this->addr, bus, addr, device, cv ) );
 }

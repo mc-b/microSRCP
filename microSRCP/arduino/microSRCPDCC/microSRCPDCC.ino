@@ -47,9 +47,9 @@
 
 #include <Wire.h>
 #include <I2CDeviceManager.h>
-#include <I2CFBMaster.h>
-#include <I2CGAMaster.h>
-#include <I2CGLMaster.h>
+#include <I2CFBProxy.h>
+#include <I2CGAProxy.h>
+#include <I2CGLProxy.h>
 #include <I2CServer.h>
 
 #include <Servo.h>

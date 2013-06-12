@@ -26,9 +26,9 @@
 #endif
 #include <Wire.h>
 #include "I2CDeviceManager.h"
-#include "I2CFBMaster.h"
-#include "I2CGAMaster.h"
-#include "I2CGLMaster.h"
+#include "I2CFBProxy.h"
+#include "I2CGAProxy.h"
+#include "I2CGLProxy.h"
 #include "../srcp/SRCPDeviceManager.h"
 
 namespace i2c
@@ -73,16 +73,16 @@ void I2CDeviceManager::begin()
 		{
 			// pro 8 Sensoren ein Feedbackmodul erstellen
 			for	( int s = buf.values[0]; s < buf.values[1]; s += 8 )
-				DeviceManager.addFeedback( new I2CFBMaster( s, s+8, i) );
+				DeviceManager.addFeedback( new I2CFBProxy( s, s+8, i) );
 		}
 
 		// GA Geraete vorhanden
 		if	( buf.values[2] > 0 && buf.values[3] > 0 )
-			DeviceManager.addAccessoire( new I2CGAMaster( buf.values[2], buf.values[3], i ) );
+			DeviceManager.addAccessoire( new I2CGAProxy( buf.values[2], buf.values[3], i ) );
 
 		// GL Geraete vorhanden
 		if	( buf.values[4] > 0 && buf.values[5] > 0 )
-			DeviceManager.addLoco( new I2CGLMaster( buf.values[4], buf.values[5], i ) );
+			DeviceManager.addLoco( new I2CGLProxy( buf.values[4], buf.values[5], i ) );
 	}
 }
 

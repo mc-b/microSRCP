@@ -1,5 +1,9 @@
 /*
-	I2CGLMaster - Hilfsklasse wandelt SRCP Befehle um nach I2C.
+	I2CGLProxy - Stellvertreter fuer Geraete in angeschlossenen
+	I2C Board's. Fuer den I2C Master sieht es aus, als ob die
+	Geraete lokal waren, alle get/set Befehle werden jedoch
+	via I2C Bus gesendet bzw. empfangen.
+
 	Dient zur Ansteuerung von Motorentreiber.
 
 	Copyright (c) 2010 Marcel Bernet.  All right reserved.
@@ -19,20 +23,20 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include "I2CGLMaster.h"
+#include "I2CGLProxy.h"
 #include "I2CDeviceManager.h"
 
 namespace i2c
 {
 
-I2CGLMaster::I2CGLMaster( int startAddr, int endAddr, int remoteAddr )
+I2CGLProxy::I2CGLProxy( int startAddr, int endAddr, int remoteAddr )
 {
 	this->startAddr = startAddr;
 	this->endAddr = endAddr;
 	this->addr = remoteAddr;
 }
 
-int I2CGLMaster::set( int addr, int drivemode, int v, int v_max, int fn[] )
+int I2CGLProxy::set( int addr, int drivemode, int v, int v_max, int fn[] )
 {
 	uint8_t buf[9];
 
@@ -54,7 +58,7 @@ int I2CGLMaster::set( int addr, int drivemode, int v, int v_max, int fn[] )
 	return	( I2CDeviceManager::write( this->addr, buf, sizeof(buf) ) );
 }
 
-void I2CGLMaster::setPower( int on )
+void I2CGLProxy::setPower( int on )
 {
 	uint8_t buf[4];
 	buf[0] = srcp::POWER;
@@ -64,12 +68,12 @@ void I2CGLMaster::setPower( int on )
 	I2CDeviceManager::write( this->addr, buf, sizeof(buf) );
 }
 
-int I2CGLMaster::setSM( int bus, int addr, int device, int cv, int value )
+int I2CGLProxy::setSM( int bus, int addr, int device, int cv, int value )
 {
 	return	( I2CDeviceManager::setSM( this->addr, bus, addr, device, cv, value ) );
 }
 
-int I2CGLMaster::getSM( int bus, int addr, int device, int cv )
+int I2CGLProxy::getSM( int bus, int addr, int device, int cv )
 {
 	return	( I2CDeviceManager::getSM( this->addr, bus, addr, device, cv ) );
 }

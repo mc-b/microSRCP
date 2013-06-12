@@ -1,5 +1,9 @@
 /*
-	I2CGLMaster - Hilfsklasse wandelt SRCP Befehle um nach I2C.
+	I2CGLProxy - Stellvertreter fuer Geraete in angeschlossenen
+	I2C Board's. Fuer den I2C Master sieht es aus, als ob die
+	Geraete lokal waren, alle get/set Befehle werden jedoch
+	via I2C Bus gesendet bzw. empfangen.
+
 	Dient zur Ansteuerung von Motorentreiber.
 
 	Copyright (c) 2010 Marcel Bernet.  All right reserved.
@@ -19,8 +23,8 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef I2CGLMASTER_H_
-#define I2CGLMASTER_H_
+#ifndef I2CGLPROXY_H_
+#define I2CGLPROXY_H_
 
 #include <Arduino.h>
 #include "../srcp/SRCPGenericLoco.h"
@@ -28,13 +32,13 @@
 namespace i2c
 {
 
-class I2CGLMaster : public srcp::SRCPGenericLoco
+class I2CGLProxy : public srcp::SRCPGenericLoco
 {
 private:
 	int startAddr;
 	int endAddr;
 public:
-	I2CGLMaster( int startAddr, int endAddr, int remoteAddr );
+	I2CGLProxy( int startAddr, int endAddr, int remoteAddr );
 	int checkAddr( int addr ) { return ( addr >= startAddr && addr <= endAddr); }
 	int set( int addr, int drivemode, int v, int v_max, int fn[] );
 	void setPower( int on );
@@ -46,4 +50,4 @@ public:
 
 }
 
-#endif /* I2CGLMASTER_H_ */
+#endif /* I2CGLPROXY_H_ */
