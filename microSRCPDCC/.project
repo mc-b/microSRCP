@@ -81,4 +81,21 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 		<nature>de.innot.avreclipse.core.avrnature</nature>
 	</natures>
+    <linkedResources>
+        <link>
+            <name>src/dcc</name>
+            <type>2</type>
+            <location>D:/Sourcen/git/microSRCP/microSRCP/arduino/libraries/dcc</location>
+        </link>
+        <link>
+            <name>src/dccgen</name>
+            <type>2</type>
+            <location>D:/Sourcen/git/microSRCP/microSRCP/arduino/libraries/dccgen</location>
+        </link>
+        <link>
+            <name>src/srcp</name>
+            <type>2</type>
+            <location>D:/Sourcen/git/microSRCP/microSRCP/arduino/libraries/srcp</location>
+        </link>                     
+    </linkedResources>	
 </projectDescription>
