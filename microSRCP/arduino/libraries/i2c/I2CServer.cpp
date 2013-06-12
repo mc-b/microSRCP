@@ -76,7 +76,7 @@ void I2CServer::slaveRxEvent( int size )
 		global_cmd.values[i-4] = Wire.read();
 
 
-#if	( DEBUG_SCOPE > 2 )
+#if	( DEBUG_SCOPE > 3 )
 	Serial3 << "recv: " << global_cmd.cmd << ":" << global_cmd.bus << ":" << global_cmd.device << ":" << global_cmd.addr << " ";
 	for	( int i = 0; i < SRCP_MAX_ARGS; i++ )
 		Serial3 << ":" << global_cmd.values[i];
@@ -90,7 +90,7 @@ void I2CServer::slaveRxEvent( int size )
  */
 void I2CServer::slaveTxEvent()
 {
-#if	( DEBUG_SCOPE > 2 )
+#if	( DEBUG_SCOPE > 3 )
 		Serial3 << "send: ";
 #endif
 
@@ -98,7 +98,7 @@ void I2CServer::slaveTxEvent()
 
 	if	( len > 0 )
 	{
-#if	( DEBUG_SCOPE > 2 )
+#if	( DEBUG_SCOPE > 3 )
 		Serial3 << global_cmd.cmd << ", addr " << global_cmd.addr << ", dev " << global_cmd.device << ",size " << len;
 		for	( int i = 0; i < len; i++ )
 			Serial3 << ":" << (int) global_cmd.args[i];
@@ -106,10 +106,10 @@ void I2CServer::slaveTxEvent()
 #endif
 		Wire.write( (uint8_t*) global_cmd.args, len );
 	}
-	// Error
+	// Error - kommt allerdings auch bei einen nur write auf den I2C Bus vom Master
 	else
 	{
-#if	( DEBUG_SCOPE > 2 )
+#if	( DEBUG_SCOPE > 3 )
 		Serial3.println( "error");
 #endif
 		Wire.write( -1 );
