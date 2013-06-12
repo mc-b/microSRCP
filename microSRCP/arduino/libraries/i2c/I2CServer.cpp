@@ -65,7 +65,7 @@ void I2CServer::slaveRxEvent( int size )
 		for	( int i = 0; i < size; i++ )
 		{
 			int d = Wire.read();
-#if	( DEBUG_SCOPE > 2 )
+#if	( DEBUG_SCOPE > 3 )
 	Serial3 << "unknown: " << d << endl;
 #endif
 			return;
@@ -106,7 +106,7 @@ void I2CServer::slaveTxEvent()
 #endif
 		Wire.write( (uint8_t*) global_cmd.args, len );
 	}
-	// Error - kommt allerdings auch bei einen nur write auf den I2C Bus vom Master
+	// Error
 	else
 	{
 #if	( DEBUG_SCOPE > 3 )
