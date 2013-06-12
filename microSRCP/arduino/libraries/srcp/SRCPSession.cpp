@@ -58,7 +58,7 @@ char* SRCPSession::dispatch( command_t& cmd )
 					return	( Messages.info( cmd.bus, cmd.addr, cmd.values[0], rc ));
 				}
 				case POWER:
-					return	( Messages.info( 0, "POWER", 0, power ));
+					return	( Messages.info( 0, "POWER", 0, DeviceManager.FreeRam() ));
 			}
 			return (Messages.ok());
 		case SET:
