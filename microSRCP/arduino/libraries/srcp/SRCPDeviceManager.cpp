@@ -162,8 +162,10 @@ int SRCPDeviceManager::getDescription( int bus, int addr, int device, int rc[] )
 	return	( 12 );
 }
 
+} /* namespace srcp */
+
 /** Return the number of bytes currently free in RAM. */
-int SRCPDeviceManager::FreeRam( void )
+int freeRAM( void )
 {
 	extern int __bss_end;
 	extern int *__brkval;
@@ -180,8 +182,6 @@ int SRCPDeviceManager::FreeRam( void )
 	}
 	return free_memory;
 }
-
-} /* namespace srcp */
 
 /** Globaler Device Manager */
 srcp::SRCPDeviceManager DeviceManager = srcp::SRCPDeviceManager();
