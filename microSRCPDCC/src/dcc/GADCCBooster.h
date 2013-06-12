@@ -1,5 +1,5 @@
 /*
-	GAOpenDCC - Steuerung von Zubehoer wie Weichen, Signale
+	GADCCBooster - Steuerung von Zubehoer wie Weichen, Signale
 	anhand des DCC Signals.
 
 	Copyright (c) 2010 Marcel Bernet.  All right reserved.
@@ -19,21 +19,21 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef GAOPENDCC_H_
-#define GAOPENDCC_H_
+#ifndef GADCCBOOSTER_H_
+#define GADCCBOOSTER_H_
 
-#include "../srcp/SRCPGenericAccessoire.h"
+#include <srcp/SRCPGenericAccessoire.h>
 
 namespace dcc
 {
 
-class GAOpenDCC : public srcp::SRCPGenericAccessoire
+class GADCCBooster : public srcp::SRCPGenericAccessoire
 {
 private:
 	int startAddr;
 	int endAddr;
 public:
-	GAOpenDCC( int startAddr, int endAddr );
+	GADCCBooster( int startAddr, int endAddr );
 	int set( int addr, int port, int value, int delay );
 	int checkAddr( int addr ) { return ( addr >= startAddr && addr <= endAddr); }
 	int	getStartAddr() { return( this->startAddr ); };
@@ -42,4 +42,4 @@ public:
 
 }
 
-#endif /* GAOPENDCC_H_ */
+#endif /* GADCCBOOSTER_H_ */

@@ -1,5 +1,5 @@
 /*
-	GLOpenDCC - Steuerung von Lokomotiven
+	GLDCCBooster - Steuerung von Lokomotiven
 	anhand des DCC Signals.
 
 	Copyright (c) 2010 Marcel Bernet.  All right reserved.
@@ -19,21 +19,23 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include "GLOpenDCC.h"
 #include <Arduino.h>
+#include "GLDCCBooster.h"
 #include "../dccgen/DCCGenerator.h"
+#if	( DEBUG_SCOPE > 10 )
 #include <Streaming.h>
+#endif
 
 namespace dcc
 {
 
-GLOpenDCC::GLOpenDCC( int startAddr, int endAddr )
+GLDCCBooster::GLDCCBooster( int startAddr, int endAddr )
 {
 	this->startAddr = startAddr;
 	this->endAddr = endAddr;
 }
 
-int GLOpenDCC::set( int addr, int drivemode, int v, int v_max, int fn[] )
+int GLDCCBooster::set( int addr, int drivemode, int v, int v_max, int fn[] )
 {
 	// es sind nur Fahrstufen 0 - 127 moeglich, groessere Geschwindkeiten werden halbiert.
 /*	if	( v_max > 127 )
@@ -54,11 +56,11 @@ int GLOpenDCC::set( int addr, int drivemode, int v, int v_max, int fn[] )
 	return	( 200 );
 }
 
-void GLOpenDCC::setPower( int on )
+void GLDCCBooster::setPower( int on )
 {
 }
 
-int GLOpenDCC::setSM( int bus, int addr, int device, int cv, int value )
+int GLDCCBooster::setSM( int bus, int addr, int device, int cv, int value )
 {
 #if	( DEBUG_SCOPE > 10 )
 	Serial3 << "write CV: " << (int) addr << " " << (int) cv << " " << (int) value << endl;
@@ -68,7 +70,7 @@ int GLOpenDCC::setSM( int bus, int addr, int device, int cv, int value )
 	return( 200 );
 }
 
-int GLOpenDCC::getSM( int bus, int addr, int device, int cv )
+int GLDCCBooster::getSM( int bus, int addr, int device, int cv )
 {
 	return( 200 );
 }

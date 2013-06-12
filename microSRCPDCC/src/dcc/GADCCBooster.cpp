@@ -1,5 +1,5 @@
 /*
-	GLOpenDCC - Steuerung von Lokomotiven
+	GADCCBooster - Steuerung von Zubehoer wie Weichen, Signale
 	anhand des DCC Signals.
 
 	Copyright (c) 2010 Marcel Bernet.  All right reserved.
@@ -19,33 +19,25 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef GLOPENDCC_H_
-#define GLOPENDCC_H_
-
-#include <Arduino.h>
-#include <SoftwareSerial.h>
-#include "../srcp/SRCPGenericLoco.h"
+#include "GADCCBooster.h"
 
 namespace dcc
 {
 
-class GLOpenDCC : public srcp::SRCPGenericLoco
+GADCCBooster::GADCCBooster( int startAddr, int endAddr )
 {
-private:
-	int startAddr;
-	int endAddr;
-public:
-	GLOpenDCC( int startAddr, int endAddr );
-	int set( int addr, int drivemode, int v, int v_max, int fn[] );
-	int checkAddr( int addr ) { return ( addr >= startAddr && addr <= endAddr); }
-	void setPower( int on );
-	int	getStartAddr() { return( this->startAddr ); };
-	int getEndAddr() { return( this->endAddr ); }
-	int setSM( int bus, int addr, int device, int cv, int value );
-	int getSM( int bus, int addr, int device, int cv );
-
-};
-
+	this->startAddr = startAddr;
+	this->endAddr = endAddr;
 }
 
-#endif /* GLOPENDCC_H_ */
+int GADCCBooster::set( int addr, int port, int value, int delay )
+{
+	// TODO wie ist es mit an und Abschalten des Powers?
+/*	do_accessory( addr, 0, 0 );
+	do_accessory( addr, 1, 0 );
+	do_accessory( addr, port, 1 );*/
+
+	return	( 200 );
+}
+
+}

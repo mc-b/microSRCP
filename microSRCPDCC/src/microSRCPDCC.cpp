@@ -33,8 +33,8 @@
 #include <srcp/SRCPServerSerial.h>
 #include <i2c/I2CDeviceManager.h>
 
-#include "dcc/GAOpenDCC.h"
-#include "dcc/GLOpenDCC.h"
+#include "dcc/GADCCBooster.h"
+#include "dcc/GLDCCBooster.h"
 #include "dccgen/DCCGenerator.h"
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -73,8 +73,8 @@ void setup()
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Definition der lokalen Geraete
-	DeviceManager.addAccessoire( new dcc::GAOpenDCC( 1, 2048 ) ); // Weichen, Signale Adressen 1 - 2048 abhandeln
-	DeviceManager.addLoco( new dcc::GLOpenDCC( 1, 4096 ) ); // Loks mit Adresessen 1 - 4096 abhandeln
+	DeviceManager.addAccessoire( new dcc::GADCCBooster( 1, 2048 ) ); // Weichen, Signale Adressen 1 - 2048 abhandeln
+	DeviceManager.addLoco( new dcc::GLDCCBooster( 1, 4096 ) ); // Loks mit Adressen 1 - 4096 abhandeln
 
 #if	( DEBUG_SCOPE > 10 )
 	int values[6];

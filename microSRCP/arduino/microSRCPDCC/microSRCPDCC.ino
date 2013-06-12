@@ -62,8 +62,8 @@
 #include <GLArduinoMotor.h>
 #include <GLMotoMamaAnalog.h>
 
-#include <GAOpenDCC.h>
-#include <GLOpenDCC.h>
+#include <GADCCBooster.h>
+#include <GLDCCBooster.h>
 #include <DCCGenerator.h>
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -102,8 +102,8 @@ void setup()
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Definition der lokalen Geraete
-	DeviceManager.addAccessoire( new dcc::GAOpenDCC( 1, 2048 ) ); // Weichen, Signale Adressen 1 - 2048 abhandeln
-	DeviceManager.addLoco( new dcc::GLOpenDCC( 1, 4096 ) ); // Loks mit Adresessen 1 - 4096 abhandeln
+	DeviceManager.addAccessoire( new dcc::GADCCBooster( 1, 2048 ) ); // Weichen, Signale Adressen 1 - 2048 abhandeln
+	DeviceManager.addLoco( new dcc::GLDCCBooster( 1, 4096 ) ); // Loks mit Adressen 1 - 4096 abhandeln
 
 #if	( DEBUG_SCOPE > 10 )
 	int values[6];

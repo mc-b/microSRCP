@@ -1,5 +1,5 @@
 /*
-	GLOpenDCC - Steuerung von Lokomotiven
+	GLDCCBooster - Steuerung von Lokomotiven
 	anhand des DCC Signals.
 
 	Copyright (c) 2010 Marcel Bernet.  All right reserved.
@@ -19,23 +19,21 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef GLOPENDCC_H_
-#define GLOPENDCC_H_
+#ifndef GLDCCBOOSTER_H_
+#define GLDCCBOOSTER_H_
 
-#include <Arduino.h>
-#include <SoftwareSerial.h>
-#include <srcp/SRCPGenericLoco.h>
+#include "../srcp/SRCPGenericLoco.h"
 
 namespace dcc
 {
 
-class GLOpenDCC : public srcp::SRCPGenericLoco
+class GLDCCBooster : public srcp::SRCPGenericLoco
 {
 private:
 	int startAddr;
 	int endAddr;
 public:
-	GLOpenDCC( int startAddr, int endAddr );
+	GLDCCBooster( int startAddr, int endAddr );
 	int set( int addr, int drivemode, int v, int v_max, int fn[] );
 	int checkAddr( int addr ) { return ( addr >= startAddr && addr <= endAddr); }
 	void setPower( int on );
@@ -48,4 +46,4 @@ public:
 
 }
 
-#endif /* GLOPENDCC_H_ */
+#endif /* GLDCCBOOSTER_H_ */
