@@ -41,7 +41,9 @@ extern "C"
 #include "organizer.h"             // manage commands
 }
 #include "GLOpenDCC.h"
-#include <srcp/SRCPSession.h>
+#if	( DEBUG_SCOPE > 1 )
+#include <Streaming.h>
+#endif
 
 namespace odcc
 {
@@ -66,7 +68,7 @@ int GLOpenDCC::set( int addr, int drivemode, int v, int v_max, int fn[] )
 		v |= 0x80;
 
 #if	( DEBUG_SCOPE > 1 )
-	Serial << "setGL addr=" << addr << ", v=" << v << endl;
+	Serial3 << "setGL addr=" << addr << ", v=" << v << endl;
 #endif
 
 	int f = bitRead( fn[3], 0 );
