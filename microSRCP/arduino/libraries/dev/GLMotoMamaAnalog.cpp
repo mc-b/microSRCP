@@ -1,11 +1,14 @@
 /*
-	GLMotoMamaAnalog - Sehr einfacher Motorentreiber fuer MotoMama Shield
-	verwendet die Pins 8 - 13.
+	GLMotoMamaAnalog - Motorenansteuerung fuer Shields mit
+	getrennten Richtungspins, z.B. MotoMama
 
-	ACHTUNG: das die Arduino alle PWM Register neu initialisiert
-	kann dieser Treiber bei AtMega328P nur an Pin 11 - 13 verwendet werden.
+	Beispiel fuer ein Board:
+	http://blog.iteadstudio.com/ln298-h-bridge-moto-driver-shield-motomama/
 
-	Copyright (c) 2013 Marcel Bernet.  All right reserved.
+	ACHTUNG: beim AtMega328 kann der 1. Kanal (Pin 8 - 11) nicht zusammen
+	mit Servo's verwendet werden.
+
+	Copyright (c) 2010 - 2013 Marcel Bernet.  All right reserved.
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License

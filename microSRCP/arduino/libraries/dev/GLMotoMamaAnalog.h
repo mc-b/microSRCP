@@ -1,16 +1,14 @@
 /*
-	GLAnalog293 - Sehr einfacher Motorentreiber kann an jedem
-	PWM Ausgang mit einem Nachgeschalteten L283D o.ae.
-	verwendet werden.
-	Motor ist wegen dem PWM relativ laut, sollte nicht verwendet werden.
+	GLMotoMamaAnalog - Motorenansteuerung fuer Shields mit
+	getrennten Richtungspins, z.B. MotoMama
 
 	Beispiel fuer ein Board:
-	http://www.rn-wissen.de/index.php/RN-Control
+	http://blog.iteadstudio.com/ln298-h-bridge-moto-driver-shield-motomama/
 
-	ACHTUNG: das die Arduino alle PWM Register neu initialisiert
-	kann dieser Treiber nicht mit Servos zusammen verwendet werden.
+	ACHTUNG: beim AtMega328 kann der 1. Kanal (Pin 8 - 11) nicht zusammen
+	mit Servo's verwendet werden.
 
-	Copyright (c) 2010 Marcel Bernet.  All right reserved.
+	Copyright (c) 2010 - 2013 Marcel Bernet.  All right reserved.
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License

@@ -1,15 +1,14 @@
 /*
-	GLArduinoMotor - Motorentreiber fuer das Original Arduino
-	Motortreiber Board.
+	GLArduinoMotor - Motorentreiber fuer untenstehende Shields
 
 	Shield:
-	http://arduino.cc/en/Main/ArduinoMotorShield oder
+	http://arduino.cc/en/Main/ArduinoMotorShieldR3 oder
 	http://www.nkcelectronics.com/freeduino-arduino-motor-control-shield-kit.html
 
-	ACHTUNG: das Arduino alle PWM Register neu initialisiert
-	kann dieser Treiber nicht mit Servos zusammen verwendet werden.
+	ACHTUNG: je nach Pinbelegug des Shields (9 und 10 sind problematisch)
+	kann der Code nicht zusammen mit Servo's verwendet werden.
 
-	Copyright (c) 2010 Marcel Bernet.  All right reserved.
+	Copyright (c) 2010 - 2013 Marcel Bernet.  All right reserved.
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
@@ -39,7 +38,6 @@ class GLArduinoMotor : public srcp::SRCPGenericLoco
 private:
 	uint8_t pin;
 	uint8_t dir;
-	void setPwmFrequency( int pin, int divisor );
 public:
 	GLArduinoMotor( int addr, uint8_t pin, uint8_t dir );
 	int set( int addr, int drivemode, int v, int v_max, int fn[] );

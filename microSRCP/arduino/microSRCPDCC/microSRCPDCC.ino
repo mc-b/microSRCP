@@ -58,7 +58,6 @@
 #include <GAPWMServo.h>
 #include <GAServo.h>
 #include <GASignal.h>
-#include <GLAnalog293.h>
 #include <GLArduinoMotor.h>
 #include <GLMotoMamaAnalog.h>
 
