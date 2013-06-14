@@ -16,7 +16,7 @@ Kurzinstallation:
 - PC und Aurduino mittels USB Kabel verbinden, das Betriebssystem richtet eine neue Serielle Schnittstelle ein (bei Problemen siehe www.arduino.cc)
 - Unter Tools -> entsprechendes Board und Serielle Schnittstelle einstellen
 - Compilieren und Uploaden des Sketches...
-- RocRail starten und unter -> RocRail Eigenschaften neue srcp Zentrale mit Sub Bibliothek RS232 und gleicher Serieller Schnittstelle wie bei der Arduino Entwcklungsumgebung einrichten
+- RocRail starten und unter -> RocRail Eigenschaften neue srcp Zentrale mit Sub Bibliothek RS232 und gleicher Serieller Schnittstelle wie bei der Arduino Entwicklungsumgebung einrichten
 
 Welche Arduino Boards und Shields benötigt werden steht in den entsprechenden Sketches. 
 
