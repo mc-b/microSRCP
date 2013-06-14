@@ -31,6 +31,8 @@
 #define SRCP_I2C		102
 #define SRCP_PROTOCOL	SRCP_SERIAL
 
+#define SENSOR_POLLING	500			// Intervall in welcher Sensor Aenderungen an die Zentrale gemeldet werden
+
 //////////////////////////////////////////////////////////////////////////////////////////
 // Konfiguration Board
 #define BOARD_STANDARD		200
@@ -43,6 +45,7 @@
 #define I2C_ADDR		0	// Eigene I2C Adresse - muss pro I2C Board angepasst werden! - Master = 0
 #define I2C_OFFSET		16	// Offset, d.h. wieviele Adressen pro Board reserviert werden
 #define I2C_ENABLED		1
+#define I2C_MAX_SLAVES	10	// Maximale Anzahl I2C Slave Boards am Master
 #define ADDR(x)			((I2C_ADDR * I2C_OFFSET) + x)	// Berechnung effektive Adresse
 
 #include <Arduino.h>
@@ -137,7 +140,7 @@ void setup()
 
 #if	( SRCP_PROTOCOL != SRCP_I2C && I2C_ENABLED )
 	// initialize I2C - Master braucht keine Adresse
-	i2c::I2CDeviceManager::begin();		// weitere Boards am I2C Bus, beginnend mit Adressen (I2C_ADDR * I2C_OFFSET) + x).
+	i2c::I2CDeviceManager::begin( I2C_MAX_SLAVES );		// weitere Boards am I2C Bus, beginnend mit Adressen (I2C_ADDR * I2C_OFFSET) + x).
 #endif
 
 #if	( DEBUG_SCOPE > 2 )
@@ -169,7 +172,7 @@ void setup()
 void loop()
 {
 	// Host Meldungen verarbeiten
-	server.dispatch();
+	server.dispatch( SENSOR_POLLING );
 
 	// Refresh der Sensoren bzw. Abfragen ob Aenderungen stattgefunden haben
 	DeviceManager.refresh();

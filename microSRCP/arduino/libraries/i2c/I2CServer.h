@@ -46,7 +46,7 @@ public:
 
 	void begin( int addr = 1 );
 	// ohne Funktion, send/receive erfolgt via Events
-	void dispatch() {};
+	void dispatch( int fbDelay = 500 ) {};
 };
 
 }

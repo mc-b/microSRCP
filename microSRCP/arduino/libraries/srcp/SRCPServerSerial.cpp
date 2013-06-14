@@ -55,7 +55,7 @@ void SRCPServerSerial::begin(unsigned long speed)
  * Prueft ob Daten am Seriellen Port anliegt und wenn ja werden diese
  * Verarbeitet.
  */
-command_t* SRCPServerSerial::dispatch(void)
+command_t* SRCPServerSerial::dispatch( int fbDelay )
 {
 	// keine Daten vorhanden - exit
 	if	( ! Serial.available() )
@@ -63,7 +63,7 @@ command_t* SRCPServerSerial::dispatch(void)
 		// Info Server
 		if	( session->getStatus() != srcp::UNDEFINED && session->isPowerOn() )
 		{
-			if	( lasts+500 < millis() )
+			if	( lasts+fbDelay < millis() )
 			{
 				session->infoFeedback( &Serial );
 				lasts = millis();

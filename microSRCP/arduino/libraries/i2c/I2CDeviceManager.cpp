@@ -34,7 +34,7 @@
 namespace i2c
 {
 
-void I2CDeviceManager::begin()
+void I2CDeviceManager::begin( int devices )
 {
 	// I2C Master
 	Wire.begin();
@@ -50,7 +50,7 @@ void I2CDeviceManager::begin()
 #endif
 
 	// es werden max. 10 I2C Adressen unterstuetzt, sonst wird das ganze zu langsam. Weitere Boards via USB anschliessen!!!
-	for	( int i = 1; i < 10; i++ )
+	for	( int i = 1; i < devices; i++ )
 	{
 		int board = getSM( i, 0, 0, srcp::CV, 0 );
 		// kein I2C Board auf dieser Adresse vorhanden?

@@ -23,6 +23,7 @@
 
 #include <Arduino.h>
 #include "EthernetSocket.h"
+
 #include "../srcp/SRCPCommand.h"
 #include "../srcp/SRCPMessages.h"
 #include "../srcp/SRCPParser.h"
@@ -42,10 +43,10 @@ private:
 	// ASCII SRCP Parser
 	srcp::SRCPParser* parser;
 	int status;
-	int dispatch( srcp::SRCPSession* session, lan::EthernetSocket* socket );
+	int dispatch( srcp::SRCPSession* session, lan::EthernetSocket* socket, int fbDelay );
 public:
 	void begin( byte* mac, IPAddress ip, unsigned int port );
-	int dispatch();
+	int dispatch( int fbDelay = 500 );
 };
 
 } /* namespace lan */

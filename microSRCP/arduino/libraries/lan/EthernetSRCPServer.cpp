@@ -41,14 +41,14 @@ void EthernetSRCPServer::begin( byte* mac, IPAddress ip, unsigned int port )
 	infoSocket->begin();
 }
 
-int EthernetSRCPServer::dispatch()
+int EthernetSRCPServer::dispatch( int fbDelay )
 {
-	dispatch( commandSession, commandSocket );
-	dispatch( infoSession, infoSocket );
+	dispatch( commandSession, commandSocket, fbDelay );
+	dispatch( infoSession, infoSocket, fbDelay );
 	return	( 1 );
 }
 
-int EthernetSRCPServer::dispatch( srcp::SRCPSession* session, lan::EthernetSocket* socket )
+int EthernetSRCPServer::dispatch( srcp::SRCPSession* session, lan::EthernetSocket* socket, int fbDelay )
 {
 	if ( socket->connected() )
 	{
@@ -104,7 +104,7 @@ int EthernetSRCPServer::dispatch( srcp::SRCPSession* session, lan::EthernetSocke
 			// evtl. FB Module refreshen - auch wenn noch nicht gesendet wird.
 			DeviceManager.refresh();
 
-			if	( last+500 < millis() )
+			if	( last+fbDelay < millis() )
 			{
 				session->infoFeedback( socket );
 				last = millis();

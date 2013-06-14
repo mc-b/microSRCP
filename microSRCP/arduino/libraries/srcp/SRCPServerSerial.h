@@ -40,7 +40,7 @@ private:
 	srcp::command_t cmd;
 public:
     void begin(unsigned long speed );
-    command_t* dispatch(void);
+    command_t* dispatch( int fbDelay = 500 );
     // sendet direkt an die COMMAND Session
     void sendCommand( char* message ) { Serial.println( message ); }
     // sendet direkt an die INFO Session
