@@ -28,7 +28,7 @@
 #define SRCP_SERIAL		101
 #define SRCP_I2C		102
 
-#define SRCP_PROTOCOL	SRCP_ETHERNET
+#define SRCP_PROTOCOL	SRCP_SERIAL
 
 #define SENSOR_POLLING	500			// Intervall in welcher Sensor Aenderungen an die Zentrale gemeldet werden
 
