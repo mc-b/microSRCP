@@ -13,7 +13,7 @@ Kurzinstallation:
 - microSRCP Sourcen mittels ZIP Button (oben) downloaden
 - ZIP Datei entpacken und die Dateien aus Verzeichnis microSRCP/arduino in den vorher notierten Sketchbook Speicherort kopieren.
 - Arduino Entwicklungsumgebung starten - unter -> Datei -> Sketchbook -> microSRCPServer wählen
-- PC und Aurduino mittels USB Kabel verbinden
+- PC und Aurduino mittels USB Kabel verbinden, das Betriebssystem richtet eine neue Serielle Schnittstelle ein (bei Problemen siehe www.arduino.cc)
 - Unter Tools -> entsprechendes Board und Serielle Schnittstelle einstellen
 - Compilieren und Uploaden des Sketches...
 - RocRail starten und unter -> RocRail Eigenschaften neue srcp Zentrale mit Sub Bibliothek RS232 und gleicher Serieller Schnittstelle wie bei der Arduino Entwcklungsumgebung einrichten
