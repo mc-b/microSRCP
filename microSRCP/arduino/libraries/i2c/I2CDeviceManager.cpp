@@ -22,7 +22,6 @@
 
 #if	( DEBUG_SCOPE > 0 )
 #include <HardwareSerial.h>
-#include <Streaming.h>
 #endif
 #include <Wire.h>
 #include "I2CDeviceManager.h"
@@ -63,10 +62,21 @@ void I2CDeviceManager::begin( int devices )
 			continue;
 
 #if	( DEBUG_SCOPE > 0 )
-			Serial3 << "I2C addr:id: " << i << ":" <<
-					", fb: " << buf.values[0] << "-" << buf.values[1] <<
-					", ga: " << buf.values[2] << "-" << buf.values[3] <<
-					", gl: " << buf.values[4] << "-" << buf.values[5] << endl;
+			Serial3.print( "I2C addr: ");
+			Serial3.print( i );
+			Serial3.print( ", FB ");
+			Serial3.print( buf.values[0] );
+			Serial3.print( "-" );
+			Serial3.print( buf.values[1] );
+			Serial3.print( ", GA ");
+			Serial3.print( buf.values[2] );
+			Serial3.print( "-" );
+			Serial3.print( buf.values[3] );
+			Serial3.print( ", GL ");
+			Serial3.print( buf.values[4] );
+			Serial3.print( "-" );
+			Serial3.print( buf.values[5] );
+			Serial3.println();
 #endif
 		// FB Geraete vorhanden
 		if	( buf.values[0] > 0 && buf.values[1] > 0 )
@@ -144,9 +154,13 @@ int I2CDeviceManager::getDescription( int remoteAddr, int bus, int addr, int dev
 int I2CDeviceManager::write( int addr, uint8_t *buf, int size, int wait )
 {
 #if	( DEBUG_SCOPE > 3 )
-		Serial3 << "send: " << addr;
+		Serial3.print( "send: " );
+		Serial3.print( addr );
 		for	( int i = 0; i < size; i++ )
-			Serial3 << ":" << buf[i];
+		{
+			Serial3.print( ":" );
+			Serial3.print( buf[i] );
+		}
 		Serial3.println();
 #endif
 
@@ -173,10 +187,19 @@ int I2CDeviceManager::read( int addr, uint8_t *buf, int size, int wait )
 	delay( wait );
 
 #if	( DEBUG_SCOPE > 3 )
-		Serial3 << "revc: " << addr << ", " << size << ":" << i << " ";
+		Serial3.print( "revc: " );
+		Serial3.print( addr );
+		Serial3.print( ", " );
+		Serial3.print( size );
+		Serial3.print( ":" );
+		Serial3.print( i );
 		for	( int i = 0; i < size; i++ )
-			Serial3 << ":" << buf[i];
+		{
+			Serial3.print( ":" );
+			Serial3.print( buf[i] );
+		}
 		Serial3.println();
+
 #endif
 
 	return	( 200 );

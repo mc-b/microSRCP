@@ -49,7 +49,6 @@
 
 #include <Arduino.h>
 #include <HardwareSerial.h>
-#include <Streaming.h>
 #include <srcp/SRCPCommand.h>
 #include <srcp/SRCPDeviceManager.h>
 #if	( SRCP_PROTOCOL == SRCP_SERIAL )
@@ -115,9 +114,21 @@ void setup()
 
 #if	( DEBUG_SCOPE > 1 )
 	int values[6];
-	DeviceManager.getDescription( 0, 0, srcp::LAN, values );
-	Serial3 << "Devices: fb " << values[0] << "-" << values[1] << ", ga " << values[2]
-	       << "-" << values[3] << ", gl " << values[4] << "-" << values[5] << endl;
+	DeviceManager.getDescription( 0, 0, srcp::LAN, values );	// liefert die Anzahl Geraete pro Typ.
+	Serial3.print( "Devices: ");
+	Serial3.print( "FB ");
+	Serial3.print( values[0] );
+	Serial3.print( "-" );
+	Serial3.print( values[1] );
+	Serial3.print( ", GA ");
+	Serial3.print( values[2] );
+	Serial3.print( "-" );
+	Serial3.print( values[3] );
+	Serial3.print( ", GL ");
+	Serial3.print( values[4] );
+	Serial3.print( "-" );
+	Serial3.print( values[5] );
+	Serial3.println();
 #endif
 
 	// SRCP Kommunikation oeffnen
