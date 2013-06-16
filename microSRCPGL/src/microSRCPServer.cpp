@@ -39,6 +39,7 @@
 #define BOARD_MINIMAL  		202		// Minialer Board Aufbau, nur Resonator, 10K, Atmega328P
 #define BOARD_FB			203		// Beispiel ATmega328P: nur Sensoren (Feedback)
 #define BOARD_GA			204		// Beispiel ATmega328P: nur Generic Accessoires - Geraete
+#define BOARD_GL			205		// Beispiel ATmega328P: nur Motorenansteuerung
 
 #define BOARD 	BOARD_STANDARD
 
@@ -133,6 +134,9 @@ void setup()
 	DeviceManager.addAccessoire( new dev::GASignal( ADDR(10), 6, 7 ) );
 	DeviceManager.addAccessoire( new dev::GASignal( ADDR(11), A0, A1 ) );
 	DeviceManager.addAccessoire( new dev::GASignal( ADDR(12), A2, A3 ) );
+#elif	( BOARD == BOARD_GL && __AVR_ATmega328P__ )
+	DeviceManager.addLoco( new dev::GLMotoMamaAnalog( ADDR(1), 10,  8,  9 ) ); 	// Moto Mama Shield, Pin 10 Geschwindigkeit, 8 Vor-, 9 Rueckwaerts
+	DeviceManager.addLoco( new dev::GLMotoMamaAnalog( ADDR(2), 11, 12, 13 ) );
 #endif
 
 #if	( SRCP_PROTOCOL != SRCP_I2C && I2C_ENABLED )
