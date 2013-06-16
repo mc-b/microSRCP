@@ -56,11 +56,36 @@ extern "C"
 #include <SRCPServerSerial.h>
 #include <SRCPSession.h>
 
+#include <Wire.h>
+#include <I2CDeviceManager.h>
+#include <I2CFBProxy.h>
+#include <I2CGAProxy.h>
+#include <I2CGLProxy.h>
+#include <I2CServer.h>
+
 #include <GAOpenDCC.h>
 #include <GLOpenDCC.h>
 
+//////////////////////////////////////////////////////////////////////////////////////////
+// Konfiguration Protokoll
+#define SRCP_SERIAL		101
+#define SRCP_I2C		102
+#define SRCP_PROTOCOL	SRCP_SERIAL
+
+#if	( SRCP_PROTOCOL == SRCP_SERIAL )
 // SRCP I/O Server
 srcp::SRCPServerSerial server;
+#elif  ( SRCP_PROTOCOL == SRCP_I2C )
+// SRCP I2C - Slave
+i2c::I2CServer server = WireServer;
+#else
+#error "kein Prokotoll definiert"
+#endif
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// Konfiguration I2C
+#define I2C_ADDR		7	// Eigene I2C Adresse - muss pro I2C Board angepasst werden! - Master = 0
+
 // DCC Status
 t_opendcc_state opendcc_state; 
 
@@ -90,7 +115,12 @@ void setup()
 	DeviceManager.addLoco( new odcc::GLOpenDCC( 1, 4096 ) ); // Loks mit Adresessen 1 - 4096 abhandeln
 
 	// SRCP Kommunikation oeffnen
+#if	( SRCP_PROTOCOL == SRCP_SERIAL )
 	server.begin( 115200 );
+#elif  ( SRCP_PROTOCOL == SRCP_I2C )
+	// initialize I2C - Slave
+	server.begin( I2C_ADDR );
+#endif
 }
 
 /**

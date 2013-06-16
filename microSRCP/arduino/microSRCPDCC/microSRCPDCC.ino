@@ -52,15 +52,6 @@
 #include <I2CGLProxy.h>
 #include <I2CServer.h>
 
-#include <Servo.h>
-#include <FBSwitchSensor.h>
-#include <GALed.h>
-#include <GAPWMServo.h>
-#include <GAServo.h>
-#include <GASignal.h>
-#include <GLArduinoMotor.h>
-#include <GLMotoMamaAnalog.h>
-
 #include <GADCCBooster.h>
 #include <GLDCCBooster.h>
 #include <DCCGenerator.h>
@@ -83,7 +74,7 @@ i2c::I2CServer server = WireServer;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // Konfiguration I2C
-#define I2C_ADDR		0	// Eigene I2C Adresse - muss pro I2C Board angepasst werden! - Master = 0
+#define I2C_ADDR		8	// Eigene I2C Adresse - muss pro I2C Board angepasst werden! - Master = 0
 
 /**
  * Initialisierung - Protokoll, Geraete etc.
