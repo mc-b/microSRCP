@@ -67,10 +67,10 @@ int FBSwitchSensor::info( int addr, srcp::feedback fb[] )
 			fb[pos].pin = i + this->addr;
 			fb[pos].value = bitRead(sensor, i);
 #if ( LOGGER_LEVEL >= TRACE_LEVEL )
-		TRACE( "Sensor" );
+		TRACE( "Sensor: " );
 		Logger.print( fb[pos].pin );
 		Logger.print( ":" );
-		Logger.println( fb[pos].value );
+		Logger.print( fb[pos].value );
 #endif
 			pos++;
 		}

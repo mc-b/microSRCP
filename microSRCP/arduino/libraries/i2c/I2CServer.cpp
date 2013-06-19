@@ -73,7 +73,7 @@ void I2CServer::slaveRxEvent( int size )
 
 
 #if ( LOGGER_LEVEL >= TRACE_LEVEL )
-	TRACE ( "recv" );
+	TRACE ( "recv: " );
 	Logger.print( global_cmd.cmd );
 	Logger.print( ":" );
 	Logger.print( global_cmd.bus );
@@ -82,14 +82,11 @@ void I2CServer::slaveRxEvent( int size )
 	Logger.print( ":" );
 	Logger.print( global_cmd.addr );
 	Logger.print( " " );
-
-	Serial3 << "recv: " << global_cmd.cmd << ":" << global_cmd.bus << ":" << global_cmd.device << ":" << global_cmd.addr << " ";
 	for	( int i = 0; i < SRCP_MAX_ARGS; i++ )
 	{
 		Logger.print( ":" );
 		Logger.print( global_cmd.values[i] );
 	}
-	Logger.println();
 #endif
 	onReceive( global_cmd );
 }
@@ -99,7 +96,7 @@ void I2CServer::slaveRxEvent( int size )
  */
 void I2CServer::slaveTxEvent()
 {
-	TRACE	( "send" );
+	TRACE	( "send: " );
 
 	int len = onRequest( global_cmd );
 
@@ -119,7 +116,6 @@ void I2CServer::slaveTxEvent()
 			Logger.print( ":" );
 			Logger.print( global_cmd.values[i] );
 		}
-		Logger.println();
 #endif
 		Wire.write( (uint8_t*) global_cmd.args, len );
 	}

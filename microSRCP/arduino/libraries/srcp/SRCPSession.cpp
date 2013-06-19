@@ -117,7 +117,7 @@ void SRCPSession::infoFeedback( Print* out )
 		for	( int i = 0; fb[i].pin != 0; i++ )
 		{
 			char* m = Messages.info( 0, "FB", fb[i].pin, fb[i].value );
-			DEBUG3( "send fb", getStatus(), m );
+			DEBUG3( "send fb: ", getStatus(), m );
 			// Rueckmeldung an Host, mit \r\n aber ohne flush()!
 			out->println( m );
 		}

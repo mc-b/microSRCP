@@ -45,7 +45,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/microSRCPCore/src}&quot;"/>
 								</option>
 								<option id="de.innot.avreclipse.compiler.option.def.1858098124" name="Define Syms (-D)" superClass="de.innot.avreclipse.compiler.option.def" valueType="definedSymbols">
-									<listOptionValue builtIn="false" value="DEBUG_SCOPE=3"/>
+									<listOptionValue builtIn="false" value="LOGGER_LEVEL=INFO_LEVEL"/>
 								</option>
 								<inputType id="de.innot.avreclipse.compiler.winavr.input.1086833275" name="C Source Files" superClass="de.innot.avreclipse.compiler.winavr.input"/>
 							</tool>
@@ -58,7 +58,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/microSRCPCore/src}&quot;"/>
 								</option>
 								<option id="de.innot.avreclipse.cppcompiler.option.def.640769977" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols">
-									<listOptionValue builtIn="false" value="DEBUG_SCOPE=3"/>
+									<listOptionValue builtIn="false" value="LOGGER_LEVEL=INFO_LEVEL"/>
 								</option>
 								<inputType id="de.innot.avreclipse.cppcompiler.input.117188369" superClass="de.innot.avreclipse.cppcompiler.input"/>
 							</tool>
@@ -132,9 +132,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/arduinoCore/include/standard}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/microSRCPCore/src}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.compiler.option.def.1263576286" name="Define Syms (-D)" superClass="de.innot.avreclipse.compiler.option.def" valueType="definedSymbols">
-									<listOptionValue builtIn="false" value="DEBUG_SCOPE=0"/>
-								</option>
+								<option id="de.innot.avreclipse.compiler.option.def.1263576286" name="Define Syms (-D)" superClass="de.innot.avreclipse.compiler.option.def" valueType="definedSymbols"/>
 								<inputType id="de.innot.avreclipse.compiler.winavr.input.1000853375" name="C Source Files" superClass="de.innot.avreclipse.compiler.winavr.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.cppcompiler.lib.release.1960906004" name="AVR C++ Compiler" superClass="de.innot.avreclipse.tool.cppcompiler.lib.release">
@@ -145,9 +143,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/arduinoCore/include/standard}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/microSRCPCore/src}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.def.198334297" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols">
-									<listOptionValue builtIn="false" value="DEBUG_SCOPE=0"/>
-								</option>
+								<option id="de.innot.avreclipse.cppcompiler.option.def.198334297" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols"/>
 								<inputType id="de.innot.avreclipse.cppcompiler.input.223397255" superClass="de.innot.avreclipse.cppcompiler.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.linker.winavr.base.328199305" name="AVR C Linker" superClass="de.innot.avreclipse.tool.linker.winavr.base"/>

@@ -59,7 +59,7 @@ void I2CDeviceManager::begin( int devices )
 			continue;
 
 #if ( LOGGER_LEVEL >= INFO_LEVEL )
-			INFO( "I2C addr");
+			INFO( "I2C addr: ");
 			Logger.print ( i );
 			Logger.print( ", FB ");
 			Logger.print( buf.values[0] );
@@ -73,7 +73,6 @@ void I2CDeviceManager::begin( int devices )
 			Logger.print( buf.values[4] );
 			Logger.print( "-" );
 			Logger.print( buf.values[5] );
-			Logger.println();
 #endif
 		// FB Geraete vorhanden
 		if	( buf.values[0] > 0 && buf.values[1] > 0 )
@@ -151,14 +150,13 @@ int I2CDeviceManager::getDescription( int remoteAddr, int bus, int addr, int dev
 int I2CDeviceManager::write( int addr, uint8_t *buf, int size, int wait )
 {
 #if ( LOGGER_LEVEL >= TRACE_LEVEL )
-		TRACE ( "send" );
+		TRACE ( "send: " );
 		Logger.print( addr );
 		for	( int i = 0; i < size; i++ )
 		{
 			Logger.print( ":" );
 			Logger.print( buf[i] );
 		}
-		Logger.println();
 #endif
 
 	Wire.beginTransmission( addr );
@@ -184,7 +182,7 @@ int I2CDeviceManager::read( int addr, uint8_t *buf, int size, int wait )
 	delay( wait );
 
 #if ( LOGGER_LEVEL >= TRACE_LEVEL )
-		TRACE( "revc" );
+		TRACE( "revc: " );
 		Logger.print( addr );
 		Logger.print( ", " );
 		Logger.print( size );
@@ -195,8 +193,6 @@ int I2CDeviceManager::read( int addr, uint8_t *buf, int size, int wait )
 			Logger.print( ":" );
 			Logger.print( buf[i] );
 		}
-		Logger.println();
-
 #endif
 
 	return	( 200 );

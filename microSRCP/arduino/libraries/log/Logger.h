@@ -35,10 +35,12 @@
 #define	DEBUG_LEVEL		4		// Allgemeine Debug Infos
 #define	TRACE_LEVEL		5		// Fein Detalierte Meldungen, nur in Ausnahmefaellen zu aktivieren
 
+#ifndef	LOGGER_LEVEL			// Eclipse kann Symbols Global setzen = 1. Prioritaet
 #if ( __AVR_ATmega1280__ || __AVR_ATmega2560__ )
 #define	LOGGER_LEVEL	INFO_LEVEL
 #else
 #define LOGGER_LEVEL 	OFF_LEVEL
+#endif
 #endif
 
 /**
@@ -62,6 +64,7 @@ extern	SoftwareSerial Logger;
  */
 #if ( LOGGER_LEVEL >= ERROR_LEVEL )
 #define ERROR(str) \
+		Logger.println(); \
 		Logger.print(millis());     \
 		Logger.print(": ");    \
 		Logger.print(__PRETTY_FUNCTION__); \
@@ -71,7 +74,7 @@ extern	SoftwareSerial Logger;
 		Logger.print(__LINE__);     \
 		Logger.print(" \"");      \
 		Logger.print(str); \
-		Logger.println('\"');
+		Logger.print('\"');
 #else
 #define ERROR(str)
 #endif
@@ -81,16 +84,15 @@ extern	SoftwareSerial Logger;
  */
 #if ( LOGGER_LEVEL >= WARN_LEVEL )
 #define WARN(str) \
+		Logger.println(); \
 		Logger.print(millis());     \
 		Logger.print(": ");    \
 		Logger.print(__PRETTY_FUNCTION__); \
-		Logger.print(' ');      \
-		Logger.print(__FILE__);     \
 		Logger.print(':');      \
 		Logger.print(__LINE__);     \
 		Logger.print(" \"");      \
 		Logger.print(str); \
-		Logger.println('\"');
+		Logger.print('\"');
 #else
 #define WARN(str)
 #endif
@@ -100,54 +102,51 @@ extern	SoftwareSerial Logger;
  */
 #if ( LOGGER_LEVEL >= INFO_LEVEL )
 #define INFO(str) \
+		Logger.println(); \
 		Logger.print(millis());     \
 		Logger.print(": ");    \
 		Logger.print(__PRETTY_FUNCTION__); \
-		Logger.print(' ');      \
-		Logger.print(__FILE__);     \
 		Logger.print(':');      \
 		Logger.print(__LINE__);     \
 		Logger.print(" \"");      \
 		Logger.print(str); \
-		Logger.println('\"');
+		Logger.print('\"');
 #else
 #define INFO(str)
 #endif
 
 #if ( LOGGER_LEVEL >= INFO_LEVEL )
 #define INFO2(str, v) \
+		Logger.println(); \
 		Logger.print(millis());     \
 		Logger.print(": ");    \
 		Logger.print(__PRETTY_FUNCTION__); \
-		Logger.print(' ');      \
-		Logger.print(__FILE__);     \
 		Logger.print(':');      \
 		Logger.print(__LINE__);     \
 		Logger.print(" \"");      \
 		Logger.print(str); \
 		Logger.print('\"'); \
 		Logger.print( ":" ); \
-		Logger.println( v );
+		Logger.print( v );
 #else
 #define INFO2(str, v)
 #endif
 
 #if ( LOGGER_LEVEL >= INFO_LEVEL )
 #define INFO3(str, v, x ) \
+		Logger.println(); \
 		Logger.print(millis());     \
 		Logger.print(": ");    \
 		Logger.print(__PRETTY_FUNCTION__); \
-		Logger.print(' ');      \
-		Logger.print(__FILE__);     \
 		Logger.print(':');      \
 		Logger.print(__LINE__);     \
 		Logger.print(" \"");      \
 		Logger.print(str); \
 		Logger.print('\"'); \
 		Logger.print( ":" ); \
-		Logger.println( v ); \
+		Logger.print( v ); \
 		Logger.print( ", " ); \
-		Logger.println( x );
+		Logger.print( x );
 #else
 #define INFO3(str, v, x)
 #endif
@@ -157,54 +156,51 @@ extern	SoftwareSerial Logger;
  */
 #if ( LOGGER_LEVEL >= DEBUG_LEVEL )
 #define DEBUG(str) \
+		Logger.println(); \
 		Logger.print(millis());     \
 		Logger.print(": ");    \
 		Logger.print(__PRETTY_FUNCTION__); \
-		Logger.print(' ');      \
-		Logger.print(__FILE__);     \
 		Logger.print(':');      \
 		Logger.print(__LINE__);     \
 		Logger.print(" \"");      \
 		Logger.print(str); \
-		Logger.println('\"');
+		Logger.print('\"');
 #else
 #define DEBUG(str)
 #endif
 
 #if ( LOGGER_LEVEL >= DEBUG_LEVEL )
 #define DEBUG2(str, v) \
+		Logger.println(); \
 		Logger.print(millis());     \
 		Logger.print(": ");    \
 		Logger.print(__PRETTY_FUNCTION__); \
-		Logger.print(' ');      \
-		Logger.print(__FILE__);     \
 		Logger.print(':');      \
 		Logger.print(__LINE__);     \
 		Logger.print(" \"");      \
 		Logger.print(str); \
 		Logger.print('\"'); \
 		Logger.print( ":" ); \
-		Logger.println( v );
+		Logger.print( v );
 #else
 #define DEBUG2(str, v)
 #endif
 
 #if ( LOGGER_LEVEL >= DEBUG_LEVEL )
 #define DEBUG3(str, v, x ) \
+		Logger.println(); \
 		Logger.print(millis());     \
 		Logger.print(": ");    \
 		Logger.print(__PRETTY_FUNCTION__); \
-		Logger.print(' ');      \
-		Logger.print(__FILE__);     \
 		Logger.print(':');      \
 		Logger.print(__LINE__);     \
 		Logger.print(" \"");      \
 		Logger.print(str); \
 		Logger.print('\"'); \
 		Logger.print( ":" ); \
-		Logger.println( v ); \
+		Logger.print( v ); \
 		Logger.print( ", " ); \
-		Logger.println( x );
+		Logger.print( x );
 #else
 #define DEBUG3(str, v, x)
 #endif
@@ -214,16 +210,15 @@ extern	SoftwareSerial Logger;
  */
 #if ( LOGGER_LEVEL >= TRACE_LEVEL )
 #define TRACE(str) \
+		Logger.println(); \
 		Logger.print(millis());     \
 		Logger.print(": ");    \
 		Logger.print(__PRETTY_FUNCTION__); \
-		Logger.print(' ');      \
-		Logger.print(__FILE__);     \
 		Logger.print(':');      \
 		Logger.print(__LINE__);     \
 		Logger.print(" \"");      \
 		Logger.print(str); \
-		Logger.println('\"');
+		Logger.print('\"');
 #else
 #define TRACE(str)
 #endif

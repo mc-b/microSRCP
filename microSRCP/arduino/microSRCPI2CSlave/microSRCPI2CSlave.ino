@@ -186,7 +186,6 @@ void setup()
 	Logger.print( values[4] );
 	Logger.print( "-" );
 	Logger.print( values[5] );
-	Logger.println();
 #endif
 
 	// SRCP Kommunikation oeffnen
@@ -199,7 +198,7 @@ void setup()
 	WireServer.begin( I2C_ADDR );
 #endif
 
-	INFO ( "Server listen " );
+	INFO2 ( "I2C Slave listen on addr ", I2C_ADDR );
 }
 
 /**

@@ -75,11 +75,11 @@ int EthernetSRCPServer::dispatch( srcp::SRCPSession* session, lan::EthernetSocke
 				continue;
 			command[pos] = '\0';
 
-			DEBUG3( "recv", session->getStatus(), command );
+			DEBUG3( "recv: ", session->getStatus(), command );
 			parser->parse( cmd, command );
 			char* rc = session->dispatch( cmd );
 
-			DEBUG3( "send", session->getStatus(), rc );
+			DEBUG3( "send: ", session->getStatus(), rc );
 			socket->println( rc );
 			pos = 0;
 			break;

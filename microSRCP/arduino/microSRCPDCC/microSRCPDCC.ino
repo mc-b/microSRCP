@@ -108,7 +108,6 @@ void setup()
 	Logger.print( values[4] );
 	Logger.print( "-" );
 	Logger.print( values[5] );
-	Logger.println();
 #endif
 
 	// SRCP Kommunikation oeffnen

@@ -38,7 +38,7 @@ unsigned long lasts = millis();
  */
 void SRCPServerSerial::begin(unsigned long speed)
 {
-	INFO2( "open port", speed );
+	INFO2( "open port ", speed );
 	Serial.begin( speed );
 
 	session = new SRCPSession();
@@ -90,7 +90,7 @@ command_t* SRCPServerSerial::dispatch( int fbDelay )
 	}
 	buf[count] = '\0';
 
-	DEBUG3( "recv", session->getStatus(), buf );
+	DEBUG3( "recv: ", session->getStatus(), buf );
 
 	// ASCII SRCP Commands parsen und abstellen in cmd
 	parser->parse( cmd, buf );
@@ -98,7 +98,7 @@ command_t* SRCPServerSerial::dispatch( int fbDelay )
 	char* rc = session->dispatch( cmd );
 
 	// Rueckmeldung an Host, mit \r\n aber ohne flush()!
-	DEBUG3( "send", session->getStatus(), rc );
+	DEBUG3( "send: ", session->getStatus(), rc );
 	Serial.println( rc );
 
 	return	( &cmd );
