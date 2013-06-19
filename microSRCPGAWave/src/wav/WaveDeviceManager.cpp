@@ -21,10 +21,8 @@
  */
 
 #include <Arduino.h>
-#if	( DEBUG_SCOPE > 0 )
-#include <HardwareSerial.h>
-#include <Streaming.h>
-#endif
+#include <SoftwareSerial.h>
+#include <log/Logger.h>			// in dieser Datei kann das Logging an/abgeschaltet werden
 #include "WaveDeviceManager.h"
 #include "GAWave.h"
 
@@ -55,7 +53,7 @@ int WaveDeviceManager::init()
 	if ( !root.openRoot( vol ) )
 		return	( 3 );
 
-#if	( DEBUG_SCOPE > 0 )
+#if ( LOGGER_LEVEL >= DEBUG_LEVEL )
 	ls();
 #endif
 	return	( 0 );
@@ -63,7 +61,7 @@ int WaveDeviceManager::init()
 
 int WaveDeviceManager::ls()
 {
-#if	( DEBUG_SCOPE > 0 )
+#if ( LOGGER_LEVEL >= DEBUG_LEVEL )
 	// Try to open the root directory
 	if ( !root.openRoot( vol ) )
 		return	( 1 );

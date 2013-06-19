@@ -43,7 +43,7 @@ private:
 	// ASCII SRCP Parser
 	srcp::SRCPParser* parser;
 	int status;
-	int dispatch( srcp::SRCPSession* session, lan::EthernetSocket* socket, int fbDelay );
+	int dispatch( srcp::SRCPSession* session, lan::EthernetSocket* socket, unsigned int fbDelay );
 public:
 	void begin( byte* mac, IPAddress ip, unsigned int port );
 	int dispatch( int fbDelay = 500 );

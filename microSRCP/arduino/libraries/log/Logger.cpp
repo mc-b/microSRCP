@@ -1,7 +1,8 @@
 /*
-	GAWave - Abspielen einer Wave Datei.
+	Logger - der Apache Library Log4j nachempfunden. Verschiedene
+	LogLevel definieren, welche Meldungen angezeigt werden sollen.
 
-	Copyright (c) 2010 Marcel Bernet.  All right reserved.
+	Copyright (c) 2013 Marcel Bernet.  All right reserved.
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
@@ -18,32 +19,14 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include <Arduino.h>
 #include <SoftwareSerial.h>
-#include <log/Logger.h>			// in dieser Datei kann das Logging an/abgeschaltet werden
-#include "WaveHC.h"
+#include "Logger.h"
 
-#include "GAWave.h"
-#include "WaveDeviceManager.h"
+#if ( LOGGER_LEVEL > OFF_LEVEL)
 
-namespace wav
-{
+#if ( __AVR_ATmega328P__ )
+SoftwareSerial	Logger( 2, 3 );
+#endif
 
-GAWave::GAWave( int addr, char* file)
-{
-	this->addr = addr;
+#endif
 
-	strcpy( this->file, file );
-	strcat( this->file, ".WAV" );
-}
-
-int GAWave::set( int addr, int port, int value, int delay )
-{
-	DEBUG2( "play", file );
-
-	// nur Namen setzen, noch nicht abspielen, weil in Interrupt-Routine!
-	WaveDevManager.setSound( file );
-	return	( 200 );
-}
-
-}

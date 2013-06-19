@@ -25,9 +25,7 @@
  */
 
 #include "FBSwitchSensor.h"
-#if	( DEBUG_SCOPE > 1 )
-#include <Streaming.h>
-#endif
+#include "../log/Logger.h"
 
 namespace dev
 {
@@ -68,8 +66,11 @@ int FBSwitchSensor::info( int addr, srcp::feedback fb[] )
 		{
 			fb[pos].pin = i + this->addr;
 			fb[pos].value = bitRead(sensor, i);
-#if	( DEBUG_SCOPE > 3 )
-			Serial << "sensor " << fb[pos].pin << ":" << fb[pos].value << endl;
+#if ( LOGGER_LEVEL >= TRACE_LEVEL )
+		TRACE( "Sensor" );
+		Logger.print( fb[pos].pin );
+		Logger.print( ":" );
+		Logger.println( fb[pos].value );
 #endif
 			pos++;
 		}

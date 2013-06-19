@@ -22,9 +22,7 @@
 #include <Arduino.h>
 #include "GLDCCBooster.h"
 #include "../dccgen/DCCGenerator.h"
-#if	( DEBUG_SCOPE > 10 )
-#include <Streaming.h>
-#endif
+#include "../log/Logger.h"
 
 namespace dcc
 {
@@ -48,9 +46,8 @@ int GLDCCBooster::set( int addr, int drivemode, int v, int v_max, int fn[] )
 	if	( drivemode )
 		v = (127 - v) * -1;
 
-#if	( DEBUG_SCOPE > 10 )
-	Serial3 << "setGL addr=" << addr << ", v=" << v << ", f0=" << fn[0] << ", f1-f4=" << fn[1] << endl;
-#endif
+	DEBUG3( "setGL addr ", addr, v );
+
 	DCC.setSpeed( addr, (char) v );
 	DCC.setFunction( addr, 1, fn[0] );
 	return	( 200 );
@@ -62,9 +59,7 @@ void GLDCCBooster::setPower( int on )
 
 int GLDCCBooster::setSM( int bus, int addr, int device, int cv, int value )
 {
-#if	( DEBUG_SCOPE > 10 )
-	Serial3 << "write CV: " << (int) addr << " " << (int) cv << " " << (int) value << endl;
-#endif
+	DEBUG3( "write CV ", addr, cv );
 
 	DCC.directModeWriteByte( cv, value );
 	return( 200 );

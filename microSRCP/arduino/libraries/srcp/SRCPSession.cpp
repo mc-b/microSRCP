@@ -24,6 +24,7 @@
 
 #include "SRCPSession.h"
 #include "SRCPMessages.h"
+#include "../log/Logger.h"
 
 namespace srcp
 {
@@ -116,12 +117,7 @@ void SRCPSession::infoFeedback( Print* out )
 		for	( int i = 0; fb[i].pin != 0; i++ )
 		{
 			char* m = Messages.info( 0, "FB", fb[i].pin, fb[i].value );
-#if	( DEBUG_SCOPE > 1 )
-			Serial3.print("send: ");
-			Serial3.print( getStatus( ));
-			Serial3.print( ", " );
-			Serial3.println( m );
-#endif
+			DEBUG3( "send fb", getStatus(), m );
 			// Rueckmeldung an Host, mit \r\n aber ohne flush()!
 			out->println( m );
 		}

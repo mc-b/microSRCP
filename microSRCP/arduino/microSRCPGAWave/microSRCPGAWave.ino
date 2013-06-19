@@ -22,10 +22,9 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-// Debugging > 0 == ON
-#define DEBUG_SCOPE 0
-
 #include <Arduino.h>
+#include <SoftwareSerial.h>
+#include <Logger.h>			// in dieser Datei kann das Logging an/abgeschaltet werden
 
 #include <SRCPCommand.h>
 #include <SRCPDevice.h>
@@ -73,10 +72,8 @@ i2c::I2CServer server = WireServer;
  */
 void setup()
 {
-#if	( DEBUG_SCOPE > 1 )
-	// Start each software serial port
-	Serial.begin( 9600 );
-#endif
+	BEGIN( 9600 );
+	INFO( "Logger ready" );
 
 	WaveDevManager.init();
 
@@ -91,10 +88,7 @@ void setup()
 	// initialize I2C - Slave
 	WireServer.begin( I2C_ADDR );
 
-#if	( DEBUG_SCOPE > 1 )
-	Serial.print ( "Server listen " );
-	Serial.println( FreeRam() );
-#endif
+	INFO2( "Server listen ", FreeRam() );
 }
 
 /**

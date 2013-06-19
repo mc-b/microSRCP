@@ -20,12 +20,13 @@
 
 #include <Ethernet.h>
 #include "EthernetSRCPServer.h"
+#include "../log/Logger.h"
 
 namespace lan
 {
 char command[64];
 int pos = 0;
-long last = millis();
+unsigned long last = millis();
 
 void EthernetSRCPServer::begin( byte* mac, IPAddress ip, unsigned int port )
 {
@@ -48,17 +49,14 @@ int EthernetSRCPServer::dispatch( int fbDelay )
 	return	( 1 );
 }
 
-int EthernetSRCPServer::dispatch( srcp::SRCPSession* session, lan::EthernetSocket* socket, int fbDelay )
+int EthernetSRCPServer::dispatch( srcp::SRCPSession* session, lan::EthernetSocket* socket, unsigned int fbDelay )
 {
 	if ( socket->connected() )
 	{
 		// noch nicht verbunden - zuerst Versioninfo senden
 		if	( session->getStatus() == srcp::UNDEFINED )
 		{
-#if	( DEBUG_SCOPE > 0 )
-			Serial3.print( "conn : " );
-			Serial3.println( session->getStatus() );
-#endif
+			INFO2 ( "conn", session->getStatus() );
 			socket->println( session->version() );
 			session->setStatus( srcp::HANDSHAKE );
 		}
@@ -77,22 +75,11 @@ int EthernetSRCPServer::dispatch( srcp::SRCPSession* session, lan::EthernetSocke
 				continue;
 			command[pos] = '\0';
 
-#if	( DEBUG_SCOPE > 0 )
-			Serial3.print("recv: ");
-			Serial3.print( session->getStatus( ));
-			Serial3.print( ", " );
-			Serial3.println( command );
-#endif
+			DEBUG3( "recv", session->getStatus(), command );
 			parser->parse( cmd, command );
 			char* rc = session->dispatch( cmd );
 
-#if	( DEBUG_SCOPE > 0 )
-			Serial3.print("send: ");
-			Serial3.print( session->getStatus( ));
-			Serial3.print( ", " );
-			Serial3.print( rc );
-			Serial3.println();
-#endif
+			DEBUG3( "send", session->getStatus(), rc );
 			socket->println( rc );
 			pos = 0;
 			break;
@@ -115,15 +102,14 @@ int EthernetSRCPServer::dispatch( srcp::SRCPSession* session, lan::EthernetSocke
 	{
 		if	( session->getStatus() != srcp::UNDEFINED )
 		{
-#if	( DEBUG_SCOPE > 0 )
-			Serial3.println( "disconnect" );
-#endif
+			INFO	( "disconnect" );
 			session->disconnect();
 			socket->stop();
 			// auf ein neues!
 			socket->begin();
 		}
 	}
+	return	( 1 );
 }
 
 } /* namespace lan */

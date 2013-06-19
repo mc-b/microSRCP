@@ -41,9 +41,6 @@ extern "C"
 #include "organizer.h"             // manage commands
 }
 #include "GLOpenDCC.h"
-#if	( DEBUG_SCOPE > 1 )
-#include <Streaming.h>
-#endif
 
 namespace odcc
 {
@@ -66,10 +63,6 @@ int GLOpenDCC::set( int addr, int drivemode, int v, int v_max, int fn[] )
 
 	if	( drivemode )
 		v |= 0x80;
-
-#if	( DEBUG_SCOPE > 1 )
-	Serial3 << "setGL addr=" << addr << ", v=" << v << endl;
-#endif
 
 	int f = bitRead( fn[3], 0 );
 	do_loco_func_grp0( addr, f );	// Licht

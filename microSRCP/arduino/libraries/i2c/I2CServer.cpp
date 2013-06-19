@@ -27,9 +27,7 @@
  */
 
 #include <Arduino.h>
-#if	( DEBUG_SCOPE > 0 )
-#include <Streaming.h>
-#endif
+#include "../log/Logger.h"
 #include <Wire.h>
 #include "I2CServer.h"
 #include "../srcp/SRCPDeviceManager.h"
@@ -65,9 +63,7 @@ void I2CServer::slaveRxEvent( int size )
 		for	( int i = 0; i < size; i++ )
 		{
 			int d = Wire.read();
-#if	( DEBUG_SCOPE > 3 )
-	Serial3 << "unknown: " << d << endl;
-#endif
+			WARN( d );
 			return;
 		}
 
@@ -76,11 +72,24 @@ void I2CServer::slaveRxEvent( int size )
 		global_cmd.values[i-4] = Wire.read();
 
 
-#if	( DEBUG_SCOPE > 3 )
+#if ( LOGGER_LEVEL >= TRACE_LEVEL )
+	TRACE ( "recv" );
+	Logger.print( global_cmd.cmd );
+	Logger.print( ":" );
+	Logger.print( global_cmd.bus );
+	Logger.print( ":" );
+	Logger.print( global_cmd.device );
+	Logger.print( ":" );
+	Logger.print( global_cmd.addr );
+	Logger.print( " " );
+
 	Serial3 << "recv: " << global_cmd.cmd << ":" << global_cmd.bus << ":" << global_cmd.device << ":" << global_cmd.addr << " ";
 	for	( int i = 0; i < SRCP_MAX_ARGS; i++ )
-		Serial3 << ":" << global_cmd.values[i];
-	Serial3.println();
+	{
+		Logger.print( ":" );
+		Logger.print( global_cmd.values[i] );
+	}
+	Logger.println();
 #endif
 	onReceive( global_cmd );
 }
@@ -90,28 +99,34 @@ void I2CServer::slaveRxEvent( int size )
  */
 void I2CServer::slaveTxEvent()
 {
-#if	( DEBUG_SCOPE > 3 )
-		Serial3 << "send: ";
-#endif
+	TRACE	( "send" );
 
 	int len = onRequest( global_cmd );
 
 	if	( len > 0 )
 	{
-#if	( DEBUG_SCOPE > 3 )
-		Serial3 << global_cmd.cmd << ", addr " << global_cmd.addr << ", dev " << global_cmd.device << ",size " << len;
-		for	( int i = 0; i < len; i++ )
-			Serial3 << ":" << (int) global_cmd.args[i];
-		Serial3.println();
+#if ( LOGGER_LEVEL >= TRACE_LEVEL )
+		Logger.print( "\taddr " );
+		Logger.print( global_cmd.addr );
+		Logger.print( ", dev" );
+		Logger.print( global_cmd.device );
+		Logger.print( ", size" );
+		Logger.print( len );
+		Logger.print( " " );
+
+		for	( int i = 0; i < SRCP_MAX_ARGS; i++ )
+		{
+			Logger.print( ":" );
+			Logger.print( global_cmd.values[i] );
+		}
+		Logger.println();
 #endif
 		Wire.write( (uint8_t*) global_cmd.args, len );
 	}
 	// Error
 	else
 	{
-#if	( DEBUG_SCOPE > 3 )
-		Serial3.println( "error");
-#endif
+		ERROR( "wrong data" );
 		Wire.write( -1 );
 	}
 

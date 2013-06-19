@@ -23,6 +23,8 @@
  */
 
 #include <Arduino.h>
+#include <SoftwareSerial.h>
+#include <Logger.h>			// in dieser Datei kann das Logging an/abgeschaltet werden
 
 #include <SPI.h>
 #include <Ethernet.h>
@@ -32,8 +34,6 @@
 #include <SRCPMessages.h>
 #include <SRCPParser.h>
 #include <Servo.h>
-
-#define  DEBUG_SCOPE  0
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // Konfiguration I2C
@@ -133,11 +133,8 @@ void onRequest()
  */
 void setup()
 {
-#if	( DEBUG_SCOPE > 1 )
-	// Start each software serial port
-	Serial3.begin( 9600 );
-	Serial3.println ( "debug ready ..." );
-#endif
+	BEGIN( 9600 );
+	INFO( "Logger ready" );
 
 	// I2C Bus mit eigener Adresse initialisieren
 	Wire.begin( I2C_ADDR );

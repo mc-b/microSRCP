@@ -20,9 +20,7 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#if	( DEBUG_SCOPE > 0 )
-#include <HardwareSerial.h>
-#endif
+#include "../log/Logger.h"
 #include <Wire.h>
 #include "I2CDeviceManager.h"
 #include "I2CFBProxy.h"
@@ -44,9 +42,8 @@ void I2CDeviceManager::begin( int devices )
 		int values[6];
 	} buf;
 
-#if	( DEBUG_SCOPE > 0 )
-	Serial3.println( "search I2C bus" );
-#endif
+	INFO( "search I2C bus" );
+
 
 	// es werden max. 10 I2C Adressen unterstuetzt, sonst wird das ganze zu langsam. Weitere Boards via USB anschliessen!!!
 	for	( int i = 1; i < devices; i++ )
@@ -61,22 +58,22 @@ void I2CDeviceManager::begin( int devices )
 		if	( rc == -1 )
 			continue;
 
-#if	( DEBUG_SCOPE > 0 )
-			Serial3.print( "I2C addr: ");
-			Serial3.print( i );
-			Serial3.print( ", FB ");
-			Serial3.print( buf.values[0] );
-			Serial3.print( "-" );
-			Serial3.print( buf.values[1] );
-			Serial3.print( ", GA ");
-			Serial3.print( buf.values[2] );
-			Serial3.print( "-" );
-			Serial3.print( buf.values[3] );
-			Serial3.print( ", GL ");
-			Serial3.print( buf.values[4] );
-			Serial3.print( "-" );
-			Serial3.print( buf.values[5] );
-			Serial3.println();
+#if ( LOGGER_LEVEL >= INFO_LEVEL )
+			INFO( "I2C addr");
+			Logger.print ( i );
+			Logger.print( ", FB ");
+			Logger.print( buf.values[0] );
+			Logger.print( "-" );
+			Logger.print( buf.values[1] );
+			Logger.print( ", GA ");
+			Logger.print( buf.values[2] );
+			Logger.print( "-" );
+			Logger.print( buf.values[3] );
+			Logger.print( ", GL ");
+			Logger.print( buf.values[4] );
+			Logger.print( "-" );
+			Logger.print( buf.values[5] );
+			Logger.println();
 #endif
 		// FB Geraete vorhanden
 		if	( buf.values[0] > 0 && buf.values[1] > 0 )
@@ -153,15 +150,15 @@ int I2CDeviceManager::getDescription( int remoteAddr, int bus, int addr, int dev
 
 int I2CDeviceManager::write( int addr, uint8_t *buf, int size, int wait )
 {
-#if	( DEBUG_SCOPE > 3 )
-		Serial3.print( "send: " );
-		Serial3.print( addr );
+#if ( LOGGER_LEVEL >= TRACE_LEVEL )
+		TRACE ( "send" );
+		Logger.print( addr );
 		for	( int i = 0; i < size; i++ )
 		{
-			Serial3.print( ":" );
-			Serial3.print( buf[i] );
+			Logger.print( ":" );
+			Logger.print( buf[i] );
 		}
-		Serial3.println();
+		Logger.println();
 #endif
 
 	Wire.beginTransmission( addr );
@@ -186,19 +183,19 @@ int I2CDeviceManager::read( int addr, uint8_t *buf, int size, int wait )
 		buf[i] = Wire.read();
 	delay( wait );
 
-#if	( DEBUG_SCOPE > 3 )
-		Serial3.print( "revc: " );
-		Serial3.print( addr );
-		Serial3.print( ", " );
-		Serial3.print( size );
-		Serial3.print( ":" );
-		Serial3.print( i );
+#if ( LOGGER_LEVEL >= TRACE_LEVEL )
+		TRACE( "revc" );
+		Logger.print( addr );
+		Logger.print( ", " );
+		Logger.print( size );
+		Logger.print( ":" );
+		Logger.print( i );
 		for	( int i = 0; i < size; i++ )
 		{
-			Serial3.print( ":" );
-			Serial3.print( buf[i] );
+			Logger.print( ":" );
+			Logger.print( buf[i] );
 		}
-		Serial3.println();
+		Logger.println();
 
 #endif
 

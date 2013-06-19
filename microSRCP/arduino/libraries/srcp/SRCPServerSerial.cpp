@@ -23,10 +23,7 @@
  */
 
 #include "SRCPServerSerial.h"
-#if	( DEBUG_SCOPE > 0 )
-#include <Streaming.h>
-#endif
-#include "SRCPMessages.h"
+#include "../log/Logger.h"
 
 namespace srcp
 {
@@ -41,10 +38,7 @@ unsigned long lasts = millis();
  */
 void SRCPServerSerial::begin(unsigned long speed)
 {
-#if	( DEBUG_SCOPE > 1 )
-	Serial3.print( "open port 1: " );
-	Serial3.println( speed );
-#endif
+	INFO2( "open port", speed );
 	Serial.begin( speed );
 
 	session = new SRCPSession();
@@ -96,26 +90,15 @@ command_t* SRCPServerSerial::dispatch( int fbDelay )
 	}
 	buf[count] = '\0';
 
-#if	( DEBUG_SCOPE > 0 )
-	Serial3.print("recv: ");
-	Serial3.print( session->getStatus( ));
-	Serial3.print( ", " );
-	Serial3.println( buf );
-#endif
+	DEBUG3( "recv", session->getStatus(), buf );
 
 	// ASCII SRCP Commands parsen und abstellen in cmd
 	parser->parse( cmd, buf );
 	// SRCP Commands verarbeiten, in rc steht die SRCP Rueckmeldung
 	char* rc = session->dispatch( cmd );
 
-#if	( DEBUG_SCOPE > 0 )
-	Serial3.print("send: ");
-	Serial3.print( session->getStatus( ));
-	Serial3.print( ", " );
-	Serial3.println( rc );
-#endif
-
 	// Rueckmeldung an Host, mit \r\n aber ohne flush()!
+	DEBUG3( "send", session->getStatus(), rc );
 	Serial.println( rc );
 
 	return	( &cmd );

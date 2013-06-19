@@ -23,6 +23,8 @@
  */
 
 #include <Arduino.h>
+#include <SoftwareSerial.h>
+#include <Logger.h>			// in dieser Datei kann das Logging an/abgeschaltet werden
 
 #include <SPI.h>
 #include <Ethernet.h>
@@ -31,8 +33,6 @@
 #include <SRCPMessages.h>
 #include <SRCPParser.h>
 #include <Servo.h>
-
-#define  DEBUG_SCOPE  0
 
 // SRCP Kommando Struktur
 srcp::command_t cmd;
@@ -52,11 +52,8 @@ void setup()
 {
 	Serial.begin( 115200 );
 
-#if	( DEBUG_SCOPE > 1 )
-	// Start each software serial port
-	Serial3.begin( 9600 );
-	Serial3.println ( "debug ready ..." );
-#endif
+	BEGIN( 9600 );
+	INFO( "Logger ready" );
 
 	// Geraete initialisieren
 	pinMode( 4, OUTPUT );		// Signal 1
@@ -90,10 +87,7 @@ int receive()
 		}
 		buf[count] = '\0';
 
-#if	( DEBUG_SCOPE > 1 )
-		Serial3.print( "recv: " );
-		Serial3.println( buf );
-#endif
+		DEBUG2( "recv", buf )
 
 		// SRCP ASCII parsen und in command_t abstellen
 		parser.parse( cmd, buf );
@@ -155,10 +149,7 @@ void loop()
 	if	( receive() )
 	{
 		char* rc = dispatch();
-#if	( DEBUG_SCOPE > 1 )
-		Serial3.print( "send: " );
-		Serial3.println( rc );
-#endif
+		DEBUG2( "send", rc );
 		Serial.println( rc );
 	}
 	// andere Arbeiten erledigen, z.B. Sensoren refreshen etc.

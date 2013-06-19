@@ -19,17 +19,13 @@
  */
 
 #include <Arduino.h>
-#if	( DEBUG_SCOPE > 0 )
-#include <HardwareSerial.h>
-#include <Streaming.h>
-#endif
+#include <SoftwareSerial.h>
+#include "../log/Logger.h"			// in dieser Datei kann das Logging an/abgeschaltet werden
+
 #include "WaveHC.h"
 
 #include "GAWave.h"
 #include "WaveDeviceManager.h"
-
-// Debugging > 0 == ON
-#define DEBUG_SCOPE 0
 
 namespace wav
 {
@@ -44,10 +40,7 @@ GAWave::GAWave( int addr, char* file)
 
 int GAWave::set( int addr, int port, int value, int delay )
 {
-#if	( DEBUG_SCOPE > 0 )
-	Serial.print( "play" );
-	Serial.println( file );
-#endif
+	DEBUG2( "play", file );
 
 	// nur Namen setzen, noch nicht abspielen, weil in Interrupt-Routine!
 	WaveDevManager.setSound( file );

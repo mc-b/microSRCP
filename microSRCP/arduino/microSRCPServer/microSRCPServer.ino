@@ -21,9 +21,6 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-// Debugging > 0 == ON
-#define DEBUG_SCOPE 0
-
 //////////////////////////////////////////////////////////////////////////////////////////
 // Konfiguration Protokoll
 #define SRCP_ETHERNET	100
@@ -52,9 +49,8 @@
 #define ADDR(x)			((I2C_ADDR * I2C_OFFSET) + x)	// Berechnung effektive Adresse
 
 #include <Arduino.h>
-#if	( DEBUG_SCOPE > 1 )
-#include <HardwareSerial.h>
-#endif
+#include <SoftwareSerial.h>
+#include <Logger.h>			// in dieser Datei kann das Logging an/abgeschaltet werden
 
 #include <SRCPCommand.h>
 #include <SRCPDevice.h>
@@ -120,11 +116,8 @@ i2c::I2CServer server = WireServer;
  */
 void setup()
 {
-#if	( DEBUG_SCOPE > 1 )
-	// Start each software serial port
-	Serial3.begin( 9600 );
-	Serial3.println ( "debug ready ..." );
-#endif
+	BEGIN( 9600 );
+	INFO( "Logger ready" );
 
 #if	( BOARD == BOARD_STANDARD )
 	// Geraete initialisieren, je nach Board und Verwendung
@@ -174,23 +167,23 @@ void setup()
 	i2c::I2CDeviceManager::begin( I2C_MAX_SLAVES );		// weitere Boards am I2C Bus, beginnend mit Adressen (I2C_ADDR * I2C_OFFSET) + x).
 #endif
 
-#if	( DEBUG_SCOPE > 1 )
+#if ( LOGGER_LEVEL >= INFO_LEVEL )
 	int values[6];
 	DeviceManager.getDescription( 0, 0, srcp::LAN, values );	// liefert die Anzahl Geraete pro Typ.
-	Serial3.print( "Devices: ");
-	Serial3.print( "FB ");
-	Serial3.print( values[0] );
-	Serial3.print( "-" );
-	Serial3.print( values[1] );
-	Serial3.print( ", GA ");
-	Serial3.print( values[2] );
-	Serial3.print( "-" );
-	Serial3.print( values[3] );
-	Serial3.print( ", GL ");
-	Serial3.print( values[4] );
-	Serial3.print( "-" );
-	Serial3.print( values[5] );
-	Serial3.println();
+	INFO( "Devices");
+	Logger.print( "\tFB ");
+	Logger.print( values[0] );
+	Logger.print( "-" );
+	Logger.print( values[1] );
+	Logger.print( ", GA ");
+	Logger.print( values[2] );
+	Logger.print( "-" );
+	Logger.print( values[3] );
+	Logger.print( ", GL ");
+	Logger.print( values[4] );
+	Logger.print( "-" );
+	Logger.print( values[5] );
+	Logger.println();
 #endif
 
 	// SRCP Kommunikation oeffnen
@@ -203,10 +196,7 @@ void setup()
 	server.begin( I2C_ADDR );
 #endif
 
-#if	( DEBUG_SCOPE > 1 )
-	Serial3.print ( "Server listen " );
-	Serial3.println();
-#endif
+	INFO ( "Server listen " );
 }
 
 /**

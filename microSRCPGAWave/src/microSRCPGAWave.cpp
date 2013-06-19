@@ -23,7 +23,7 @@
 
 #include <Arduino.h>
 #include <HardwareSerial.h>
-#include <Streaming.h>
+#include <log/Logger.h>			// in dieser Datei kann das Logging an/abgeschaltet werden
 #include <srcp/SRCPCommand.h>
 #include <srcp/SRCPDeviceManager.h>
 #include <srcp/SRCPServerSerial.h>
@@ -74,11 +74,8 @@ i2c::I2CServer server = WireServer;
  */
 void setup()
 {
-#if	( DEBUG_SCOPE > 1 )
-	// Start each software serial port
-	Serial.begin( 9600 );
-	Serial.println ( "debug ready ..." );
-#endif
+	BEGIN( 9600 );
+	INFO( "Logger ready" );
 
 #if	( BOARD == BOARD_STANDARD )
 	// Geraete initialisieren, je nach Board und Verwendung
@@ -102,11 +99,23 @@ void setup()
 	i2c::I2CDeviceManager::begin();		// weitere Boards am I2C Bus, beginnend mit Adressen (I2C_ADDR * I2C_OFFSET) + x).
 #endif
 
-#if	( DEBUG_SCOPE > 1 )
+#if ( LOGGER_LEVEL >= INFO_LEVEL )
 	int values[6];
-	DeviceManager.getDescription( 0, 0, srcp::LAN, values );
-	Serial << "Devices: fb " << values[0] << "-" << values[1] << ", ga " << values[2]
-	       << "-" << values[3] << ", gl " << values[4] << "-" << values[5] << endl;
+	DeviceManager.getDescription( 0, 0, srcp::LAN, values );	// liefert die Anzahl Geraete pro Typ.
+	INFO( "Devices");
+	Logger.print( "\tFB ");
+	Logger.print( values[0] );
+	Logger.print( "-" );
+	Logger.print( values[1] );
+	Logger.print( ", GA ");
+	Logger.print( values[2] );
+	Logger.print( "-" );
+	Logger.print( values[3] );
+	Logger.print( ", GL ");
+	Logger.print( values[4] );
+	Logger.print( "-" );
+	Logger.print( values[5] );
+	Logger.println();
 #endif
 
 	// SRCP Kommunikation oeffnen
@@ -119,9 +128,7 @@ void setup()
 	WireServer.begin( I2C_ADDR );
 #endif
 
-#if	( DEBUG_SCOPE > 1 )
-	Serial.println ( "Server listen " );
-#endif
+	INFO( "Server listen " );
 }
 
 /**

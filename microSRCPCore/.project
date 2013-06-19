@@ -105,6 +105,11 @@
             <name>src/srcp</name>
             <type>2</type>
             <location>D:/Sourcen/git/microSRCP/microSRCP/arduino/libraries/srcp</location>
-        </link>                		
+        </link>   
+        <link>
+            <name>src/log</name>
+            <type>2</type>
+            <location>D:/Sourcen/git/microSRCP/microSRCP/arduino/libraries/log</location>
+        </link>                    		
 	</linkedResources>
 </projectDescription>
