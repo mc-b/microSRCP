@@ -1,8 +1,13 @@
 /*
 	microSRCPServer - Arduino Standardboard fungiert als Zentrale
-	fuer eine Modelleisenbahn wird mittels USB Kabel an den PC angeschlossen
+	fuer eine Modelleisenbahn wird mittels USB Kabel an den PC angeschlossen.
+	
+	Zusaetzlich wird einen Modelleisenbahnsteuerungssoftware z.B.
+	RocRail, benoetigt, welche das SRCP Protokoll beherscht.
 
-	Fuer weitere Details siehe https://github.com/mc-b/microSRCP/wiki
+	Fuer benoetigte Shields und Details siehe: 
+	- https://github.com/mc-b/microSRCP/wiki/Steuerungkonfiguration
+	- https://github.com/mc-b/microSRCP/wiki
 
 	Copyright (c) 2010 - 2013 Marcel Bernet.  All right reserved.
 

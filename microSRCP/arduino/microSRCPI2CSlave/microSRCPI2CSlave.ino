@@ -1,8 +1,13 @@
 /*
 	microSRCPI2CSlave - Arduino Standardboard fungiert als Slave zur
 	(Arduino) Zentrale und wir mittels I2C Bus mit diesem Verbunden.
+	
+	Abgeleitet von microSRCPServer, aber mit aktiviertem SRCP_I2C
+	Protokoll und eigener I2C Slave Adresse.
 
-	Fuer weitere Details siehe https://github.com/mc-b/microSRCP/wiki
+	Fuer benoetigte Shields und Details siehe: 
+	- https://github.com/mc-b/microSRCP/wiki/Steuerungkonfiguration
+	- https://github.com/mc-b/microSRCP/wiki
 
 	Copyright (c) 2010 - 2013 Marcel Bernet.  All right reserved.
 

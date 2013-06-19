@@ -7,7 +7,9 @@
 	die Zurverfuegungstellung der Sourcen von Wolfgang Kufer.
 	Besten Dank!
 
-	Fuer weitere Details siehe https://github.com/mc-b/microSRCP/wiki
+	Fuer benoetigte Shields und Details siehe: 
+	- https://github.com/mc-b/microSRCP/wiki/Steuerungdigital
+	- https://github.com/mc-b/microSRCP/wiki
 
 	Copyright (c) 2010 - 2013 Marcel Bernet.  All right reserved.
 

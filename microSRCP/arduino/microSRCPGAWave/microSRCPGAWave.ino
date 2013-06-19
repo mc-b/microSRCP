@@ -2,8 +2,10 @@
 /*
 	microSRCPGL - Arduino Wave mit Adafruit Wave Shield
 
-	Fuer weitere Details siehe https://github.com/mc-b/microSRCP/wiki
-	und http://www.ladyada.net/make/waveshield/
+	Fuer weitere benoetigte Shields und Details siehe:
+	- https://github.com/mc-b/microSRCP/wiki/Waveshield
+	- https://github.com/mc-b/microSRCP/wiki
+	- http://www.ladyada.net/make/waveshield/
 
 	Copyright (c) 2010 - 2013 Marcel Bernet.  All right reserved.
 

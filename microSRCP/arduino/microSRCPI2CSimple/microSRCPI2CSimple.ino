@@ -1,9 +1,11 @@
 /*
-	microSRCPSimple - einfaches SRCP Server Beispiel mit minimalen
- 	Klassen. Soll die Verwendung des SRCP Protokoll mit den LowLevel
- 	Arduino API Demonstrieren.
+	microSRCPI2CSimple - einfaches I2C Slave Beispiel mit minimalen
+ 	Klassen. Soll die Verwendung des SRCP Protokolls ueber den I2C Bus
+ 	mit den LowLevel Arduino API Demonstrieren.
  
- 	Fuer weitere Details siehe https://github.com/mc-b/microSRCP/wiki
+ 	Fuer weitere Details siehe:
+ 	- https://github.com/mc-b/microSRCP/wiki/I2c-bus
+ 	- https://github.com/mc-b/microSRCP/wiki
  
  	Copyright (c) 2010 - 2013 Marcel Bernet.  All right reserved.
  

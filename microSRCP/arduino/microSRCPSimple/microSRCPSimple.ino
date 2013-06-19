@@ -3,7 +3,9 @@
  	Klassen. Soll die Verwendung des SRCP Protokoll mit den LowLevel
  	Arduino API Demonstrieren.
  
- 	Fuer weitere Details siehe https://github.com/mc-b/microSRCP/wiki
+ 	Fuer weitere Details siehe:
+ 	- https://github.com/mc-b/microSRCP/wiki/Srcp-protokoll 
+ 	- https://github.com/mc-b/microSRCP/wiki 	
  
  	Copyright (c) 2010 - 2013 Marcel Bernet.  All right reserved.
  
