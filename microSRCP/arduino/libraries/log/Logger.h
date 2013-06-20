@@ -151,6 +151,34 @@ extern	SoftwareSerial Logger;
 #define INFO3(str, v, x)
 #endif
 
+#if ( LOGGER_LEVEL >= INFO_LEVEL )
+#define INFO_DEVICES() \
+		int values[6]; \
+		DeviceManager.getDescription( 0, 0, srcp::LAN, values ); \
+		Logger.println(); \
+		Logger.print(millis());     \
+		Logger.print(": ");    \
+		Logger.print(__PRETTY_FUNCTION__); \
+		Logger.print(':');      \
+		Logger.print(__LINE__);     \
+		Logger.print(" \"");      \
+		Logger.print("Devices: "); \
+		Logger.print('\"'); \
+		Logger.print( "FB "); \
+		Logger.print( values[0] ); \
+		Logger.print( "-" ); \
+		Logger.print( values[1] ); \
+		Logger.print( ", GA "); \
+		Logger.print( values[2] ); \
+		Logger.print( "-" ); \
+		Logger.print( values[3] ); \
+		Logger.print( ", GL "); \
+		Logger.print( values[4] ); \
+		Logger.print( "-" ); \
+		Logger.print( values[5] );
+#else
+#define INFO_DEVICES(str)
+#endif
 /**
  * Debug
  */

@@ -146,24 +146,7 @@ void setup()
 	i2c::I2CDeviceManager::begin( I2C_MAX_SLAVES );	 // weitere Boards am I2C Bus, beginnend mit Adressen (I2C_ADDR * I2C_OFFSET) + x).
 #endif
 
-#if ( LOGGER_LEVEL >= INFO_LEVEL )
-	int values[6];
-	DeviceManager.getDescription( 0, 0, srcp::LAN, values );	// liefert die Anzahl Geraete pro Typ.
-	INFO( "Devices: ");
-	Logger.print( "\tFB ");
-	Logger.print( values[0] );
-	Logger.print( "-" );
-	Logger.print( values[1] );
-	Logger.print( ", GA ");
-	Logger.print( values[2] );
-	Logger.print( "-" );
-	Logger.print( values[3] );
-	Logger.print( ", GL ");
-	Logger.print( values[4] );
-	Logger.print( "-" );
-	Logger.print( values[5] );
-	Logger.println();
-#endif
+	INFO_DEVICES();									// Ausgabe der installierten Geraete
 
 	// SRCP Kommunikation oeffnen
 #if	( SRCP_PROTOCOL == SRCP_SERIAL )

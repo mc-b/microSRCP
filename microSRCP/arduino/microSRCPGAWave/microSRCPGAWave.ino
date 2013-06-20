@@ -89,7 +89,8 @@ void setup()
 
 	// initialize I2C - Slave
 	WireServer.begin( I2C_ADDR );
-
+	
+	INFO_DEVICES();									// Ausgabe der installierten Geraete
 	INFO2( "Server listen ", FreeRam() );
 }
 
