@@ -98,6 +98,7 @@ void setup()
 	BEGIN( 9600 );
 	INFO( "Logger ready" );
 
+#if	( SRCP_PROTOCOL != SRCP_ETHERNET )											// Board mit Ethernet Shield hat keine Geraete um Konflikte mit Shield zu vermeiden!
 #if	( BOARD == BOARD_STANDARD )
 	// Geraete initialisieren, je nach Board und Verwendung
 	DeviceManager.addAccessoire( new dev::GASignal( ADDR(1), 4, 5 ) ); 			// 2 Signale mit 2 LED an Ports 4 - 7.
@@ -140,11 +141,13 @@ void setup()
 	DeviceManager.addLoco( new dev::GLMotoMamaAnalog( ADDR(1), 10,  8,  9 ) ); 	// Moto Mama Shield, Pin 10 Geschwindigkeit, 8 Vor-, 9 Rueckwaerts
 	DeviceManager.addLoco( new dev::GLMotoMamaAnalog( ADDR(2), 11, 12, 13 ) );
 #endif
+#endif
 
 #if	( SRCP_PROTOCOL != SRCP_I2C && I2C_ENABLED )
 	// initialize I2C - Master braucht keine Adresse
 	i2c::I2CDeviceManager::begin( I2C_MAX_SLAVES );	 // weitere Boards am I2C Bus, beginnend mit Adressen (I2C_ADDR * I2C_OFFSET) + x).
 #endif
+
 
 	INFO_DEVICES();									// Ausgabe der installierten Geraete
 
