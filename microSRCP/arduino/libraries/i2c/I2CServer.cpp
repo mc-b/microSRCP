@@ -72,8 +72,10 @@ void I2CServer::slaveRxEvent( int size )
 		global_cmd.values[i-4] = Wire.read();
 
 
+// Deaktiviert - blockiert den I2C Bus
 #if ( LOGGER_LEVEL >= TRACE_LEVEL )
-	TRACE ( "recv: " );
+	Logger.println();
+	Logger.print( "recv: ");
 	Logger.print( global_cmd.cmd );
 	Logger.print( ":" );
 	Logger.print( global_cmd.bus );
@@ -82,10 +84,10 @@ void I2CServer::slaveRxEvent( int size )
 	Logger.print( ":" );
 	Logger.print( global_cmd.addr );
 	Logger.print( " " );
-	for	( int i = 0; i < SRCP_MAX_ARGS; i++ )
+	for	( int i = 0; i < SRCP_MAX_ARGS/2; i++ )  // nur Haelfte der Argumente ausgeben um I2C Bus nicht zu blockieren
 	{
-		Logger.print( ":" );
 		Logger.print( global_cmd.values[i] );
+		Logger.print( ":" );
 	}
 #endif
 	onReceive( global_cmd );
@@ -96,25 +98,24 @@ void I2CServer::slaveRxEvent( int size )
  */
 void I2CServer::slaveTxEvent()
 {
-	TRACE	( "send: " );
-
 	int len = onRequest( global_cmd );
 
 	if	( len > 0 )
 	{
+  // Deaktiviert - blockiert den I2C Bus
 #if ( LOGGER_LEVEL >= TRACE_LEVEL )
-		Logger.print( "\taddr " );
+		Logger.println();
+		Logger.print( "send: " );
 		Logger.print( global_cmd.addr );
-		Logger.print( ", dev" );
+		Logger.print( ":" );
 		Logger.print( global_cmd.device );
-		Logger.print( ", size" );
+		Logger.print( ":" );
 		Logger.print( len );
 		Logger.print( " " );
-
-		for	( int i = 0; i < SRCP_MAX_ARGS; i++ )
+		for	( int i = 0; i < SRCP_MAX_ARGS/2; i++ )	// nur Haelfte der Argumente ausgeben um I2C Bus nicht zu blockieren
 		{
-			Logger.print( ":" );
 			Logger.print( global_cmd.values[i] );
+			Logger.print( ":" );
 		}
 #endif
 		Wire.write( (uint8_t*) global_cmd.args, len );

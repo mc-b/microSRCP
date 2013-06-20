@@ -151,15 +151,16 @@ int I2CDeviceManager::getDescription( int remoteAddr, int bus, int addr, int dev
 int I2CDeviceManager::write( int addr, uint8_t *buf, int size, int wait )
 {
 #if ( LOGGER_LEVEL >= TRACE_LEVEL )
-		TRACE ( "send: " );
-		Logger.print( ", addr: " );
-		Logger.print( addr );
-		Logger.print( ", " );
-		for	( int i = 0; i < size; i++ )
-		{
-			Logger.print( buf[i] );
-			Logger.print( ":" );
-		}
+
+	TRACE ( "send: " );
+	Logger.print( ", addr: " );
+	Logger.print( addr );
+	Logger.print( ", " );
+	for	( int i = 0; i < size; i++ )
+	{
+		Logger.print( buf[i] );
+		Logger.print( ":" );
+	}
 #endif
 
 	Wire.beginTransmission( addr );
@@ -185,17 +186,17 @@ int I2CDeviceManager::read( int addr, uint8_t *buf, int size, int wait )
 	delay( wait );
 
 #if ( LOGGER_LEVEL >= TRACE_LEVEL )
-		TRACE( "revc: " );
-		Logger.print( ", addr: " );
-		Logger.print( addr );
-		Logger.print( ", size: " );
-		Logger.print( size );
-		Logger.print( ", " );
-		for	( int i = 0; i < size; i++ )
-		{
-			Logger.print( buf[i] );
-			Logger.print( ":" );
-		}
+	TRACE( "revc: " );
+	Logger.print( ", addr: " );
+	Logger.print( addr );
+	Logger.print( ", size: " );
+	Logger.print( size );
+	Logger.print( ", " );
+	for	( int i = 0; i < size; i++ )
+	{
+		Logger.print( buf[i] );
+		Logger.print( ":" );
+	}
 #endif
 
 	return	( 200 );
