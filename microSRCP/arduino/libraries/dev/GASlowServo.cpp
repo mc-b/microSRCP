@@ -1,6 +1,9 @@
 /*
-	GASlowServo - Einfache Servo Ansteuerung mittels der Arduino
-	Servo Library.
+	GASlowServo - Servo Ansteuerung mittels der Arduino
+	Servo Library. Dabei bewegt sich der Anker des Servo's
+	in der eingestellten Zeit und Schritten von der einen
+	zur anderen Stellung. Nach Erreichen der gewuenschten
+	Stellung wird die Stromzufuhr zum Servo abgeschaltet.
 
 	Copyright (c) 2010 Marcel Bernet.  All right reserved.
 

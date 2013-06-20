@@ -1,6 +1,9 @@
 /*
-	GASlowServo - Einfache Servo Ansteuerung mittels der Arduino
-	Servo Library.
+	GASlowServo - Servo Ansteuerung mittels der Arduino
+	Servo Library. Dabei bewegt sich der Anker des Servo's
+	in der eingestellten Zeit und Schritten von der einen
+	zur anderen Stellung. Nach Erreichen der gewuenschten
+	Stellung wird die Stromzufuhr zum Servo abgeschaltet.
 
 	Copyright (c) 2010 Marcel Bernet.  All right reserved.
 
@@ -41,7 +44,7 @@ private:
 	int delay;		// Pausen zwischen der Weiterschaltung
 	unsigned long last;
 public:
-	GASlowServo( int addr, uint8_t pin, uint8_t min, uint8_t max, uint8_t step = 1, int delay = 100 );
+	GASlowServo( int addr, uint8_t pin, uint8_t min, uint8_t max, uint8_t step = 1, int delay = 50 );
 	int get( int addr, int port ) { return ( 200 ); }
 	int set( int addr, int port, int value, int delay );
 	void refresh();

@@ -68,7 +68,6 @@
 #endif
 #include <i2c/I2CDeviceManager.h>
 #include <dev/GASignal.h>
-#include <dev/GAServo.h>
 #include <dev/GASlowServo.h>
 #include <dev/GABlinkLed2.h>
 #include <dev/GLMotoMamaAnalog.h>
@@ -103,7 +102,7 @@ void setup()
 	// Geraete initialisieren, je nach Board und Verwendung
 	DeviceManager.addAccessoire( new dev::GASignal( ADDR(1), 4, 5 ) ); 			// 2 Signale mit 2 LED an Ports 4 - 7.
 	DeviceManager.addAccessoire( new dev::GASignal( ADDR(2), 6, 7 ) );
-	DeviceManager.addAccessoire( new dev::GASlowServo( ADDR(3), 2, 60, 90, 1, 5 ) );  	// Servo mit Addr 3 an Pin 2, min. Stellung 60, max. Stellung 90 von 180
+	DeviceManager.addAccessoire( new dev::GASlowServo( ADDR(3), 2, 60, 90 ) );  	// Servo mit Addr 3 an Pin 2, min. Stellung 60, max. Stellung 90 von 180
 	DeviceManager.addAccessoire( new dev::GASlowServo( ADDR(4), 3, 60, 90 ) );			// und Weiterschalten um 1ne Position alle 5 Millisekunden
 	DeviceManager.addFeedback( new dev::FBSwitchSensor( ADDR(1), A0, A3 ) ); 	// Sensoren, jeweils in Gruppen von 8 (auch wenn nicht 8 Pins belegt). A4+A5 = I2C Bus
 #if ( __AVR_ATmega1280__ || __AVR_ATmega2560__ )
@@ -112,12 +111,12 @@ void setup()
 #endif
 	DeviceManager.addLoco( new dev::GLMotoMamaAnalog( ADDR(2), 11, 12, 13 ) );
 #elif	( BOARD == BOARD_MINIMAL )
-	DeviceManager.addAccessoire( new dev::GAServo( ADDR(1), 9, 60, 90 ) ); 		// 6 x Servo's an Pins 0 - 4 und 9
-	DeviceManager.addAccessoire( new dev::GAServo( ADDR(2), 0, 60, 90 ) );
-	DeviceManager.addAccessoire( new dev::GAServo( ADDR(3), 1, 60, 90 ) );
-	DeviceManager.addAccessoire( new dev::GAServo( ADDR(4), 2, 60, 90 ) );
-	DeviceManager.addAccessoire( new dev::GAServo( ADDR(5), 3, 60, 90 ) );
-	DeviceManager.addAccessoire( new dev::GAServo( ADDR(6), 4, 60, 90 ) );
+	DeviceManager.addAccessoire( new dev::GASlowServo( ADDR(1), 9, 60, 90 ) ); 		// 6 x Servo's an Pins 0 - 4 und 9
+	DeviceManager.addAccessoire( new dev::GASlowServo( ADDR(2), 0, 60, 90 ) );
+	DeviceManager.addAccessoire( new dev::GASlowServo( ADDR(3), 1, 60, 90 ) );
+	DeviceManager.addAccessoire( new dev::GASlowServo( ADDR(4), 2, 60, 90 ) );
+	DeviceManager.addAccessoire( new dev::GASlowServo( ADDR(5), 3, 60, 90 ) );
+	DeviceManager.addAccessoire( new dev::GASlowServo( ADDR(6), 4, 60, 90 ) );
 	DeviceManager.addAccessoire( new dev::GASignal( ADDR(7), 5, 6 ) ); 			// 2 x Signal mit 2 LED an Pins 5 - 8
 	DeviceManager.addAccessoire( new dev::GASignal( ADDR(8), 7, 8 ) );
 	DeviceManager.addFeedback( new dev::FBSwitchSensor( ADDR(1), 10, 17 ) );	// 1 x Sensorblock mit 8 x Sensor an Pin D10 - D13 und C0 - C3
