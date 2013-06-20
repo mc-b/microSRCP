@@ -60,6 +60,7 @@ void I2CDeviceManager::begin( int devices )
 
 #if ( LOGGER_LEVEL >= INFO_LEVEL )
 			INFO( "I2C addr: ");
+			Logger.print ( ", " );
 			Logger.print ( i );
 			Logger.print( ", FB ");
 			Logger.print( buf.values[0] );
@@ -151,11 +152,13 @@ int I2CDeviceManager::write( int addr, uint8_t *buf, int size, int wait )
 {
 #if ( LOGGER_LEVEL >= TRACE_LEVEL )
 		TRACE ( "send: " );
+		Logger.print( ", addr: " );
 		Logger.print( addr );
+		Logger.print( ", " );
 		for	( int i = 0; i < size; i++ )
 		{
-			Logger.print( ":" );
 			Logger.print( buf[i] );
+			Logger.print( ":" );
 		}
 #endif
 
@@ -183,15 +186,15 @@ int I2CDeviceManager::read( int addr, uint8_t *buf, int size, int wait )
 
 #if ( LOGGER_LEVEL >= TRACE_LEVEL )
 		TRACE( "revc: " );
+		Logger.print( ", addr: " );
 		Logger.print( addr );
-		Logger.print( ", " );
+		Logger.print( ", size: " );
 		Logger.print( size );
-		Logger.print( ":" );
-		Logger.print( i );
+		Logger.print( ", " );
 		for	( int i = 0; i < size; i++ )
 		{
-			Logger.print( ":" );
 			Logger.print( buf[i] );
+			Logger.print( ":" );
 		}
 #endif
 

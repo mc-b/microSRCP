@@ -66,7 +66,7 @@ extern	SoftwareSerial Logger;
 #define ERROR(str) \
 		Logger.println(); \
 		Logger.print(millis());     \
-		Logger.print(": ");    \
+		Logger.print("E: ");    \
 		Logger.print(__PRETTY_FUNCTION__); \
 		Logger.print(' ');      \
 		Logger.print(__FILE__);     \
@@ -86,7 +86,7 @@ extern	SoftwareSerial Logger;
 #define WARN(str) \
 		Logger.println(); \
 		Logger.print(millis());     \
-		Logger.print(": ");    \
+		Logger.print("W: ");    \
 		Logger.print(__PRETTY_FUNCTION__); \
 		Logger.print(':');      \
 		Logger.print(__LINE__);     \
@@ -104,7 +104,7 @@ extern	SoftwareSerial Logger;
 #define INFO(str) \
 		Logger.println(); \
 		Logger.print(millis());     \
-		Logger.print(": ");    \
+		Logger.print("I: ");    \
 		Logger.print(__PRETTY_FUNCTION__); \
 		Logger.print(':');      \
 		Logger.print(__LINE__);     \
@@ -119,14 +119,14 @@ extern	SoftwareSerial Logger;
 #define INFO2(str, v) \
 		Logger.println(); \
 		Logger.print(millis());     \
-		Logger.print(": ");    \
+		Logger.print("I: ");    \
 		Logger.print(__PRETTY_FUNCTION__); \
 		Logger.print(':');      \
 		Logger.print(__LINE__);     \
 		Logger.print(" \"");      \
 		Logger.print(str); \
 		Logger.print('\"'); \
-		Logger.print( ":" ); \
+		Logger.print( ", " ); \
 		Logger.print( v );
 #else
 #define INFO2(str, v)
@@ -136,14 +136,14 @@ extern	SoftwareSerial Logger;
 #define INFO3(str, v, x ) \
 		Logger.println(); \
 		Logger.print(millis());     \
-		Logger.print(": ");    \
+		Logger.print("I: ");    \
 		Logger.print(__PRETTY_FUNCTION__); \
 		Logger.print(':');      \
 		Logger.print(__LINE__);     \
 		Logger.print(" \"");      \
 		Logger.print(str); \
 		Logger.print('\"'); \
-		Logger.print( ":" ); \
+		Logger.print( ", " ); \
 		Logger.print( v ); \
 		Logger.print( ", " ); \
 		Logger.print( x );
@@ -157,14 +157,14 @@ extern	SoftwareSerial Logger;
 		DeviceManager.getDescription( 0, 0, srcp::LAN, values ); \
 		Logger.println(); \
 		Logger.print(millis());     \
-		Logger.print(": ");    \
+		Logger.print("I: ");    \
 		Logger.print(__PRETTY_FUNCTION__); \
 		Logger.print(':');      \
 		Logger.print(__LINE__);     \
 		Logger.print(" \"");      \
 		Logger.print("Devices: "); \
 		Logger.print('\"'); \
-		Logger.print( "FB "); \
+		Logger.print( ", FB "); \
 		Logger.print( values[0] ); \
 		Logger.print( "-" ); \
 		Logger.print( values[1] ); \
@@ -186,7 +186,7 @@ extern	SoftwareSerial Logger;
 #define DEBUG(str) \
 		Logger.println(); \
 		Logger.print(millis());     \
-		Logger.print(": ");    \
+		Logger.print("D: ");    \
 		Logger.print(__PRETTY_FUNCTION__); \
 		Logger.print(':');      \
 		Logger.print(__LINE__);     \
@@ -201,14 +201,14 @@ extern	SoftwareSerial Logger;
 #define DEBUG2(str, v) \
 		Logger.println(); \
 		Logger.print(millis());     \
-		Logger.print(": ");    \
+		Logger.print("D: ");    \
 		Logger.print(__PRETTY_FUNCTION__); \
 		Logger.print(':');      \
 		Logger.print(__LINE__);     \
 		Logger.print(" \"");      \
 		Logger.print(str); \
 		Logger.print('\"'); \
-		Logger.print( ":" ); \
+		Logger.print( ", " ); \
 		Logger.print( v );
 #else
 #define DEBUG2(str, v)
@@ -218,14 +218,14 @@ extern	SoftwareSerial Logger;
 #define DEBUG3(str, v, x ) \
 		Logger.println(); \
 		Logger.print(millis());     \
-		Logger.print(": ");    \
+		Logger.print("D: ");    \
 		Logger.print(__PRETTY_FUNCTION__); \
 		Logger.print(':');      \
 		Logger.print(__LINE__);     \
 		Logger.print(" \"");      \
 		Logger.print(str); \
 		Logger.print('\"'); \
-		Logger.print( ":" ); \
+		Logger.print( ", " ); \
 		Logger.print( v ); \
 		Logger.print( ", " ); \
 		Logger.print( x );
@@ -234,13 +234,13 @@ extern	SoftwareSerial Logger;
 #endif
 
 /**
- * Trage
+ * Trace
  */
 #if ( LOGGER_LEVEL >= TRACE_LEVEL )
 #define TRACE(str) \
 		Logger.println(); \
 		Logger.print(millis());     \
-		Logger.print(": ");    \
+		Logger.print("T: ");    \
 		Logger.print(__PRETTY_FUNCTION__); \
 		Logger.print(':');      \
 		Logger.print(__LINE__);     \

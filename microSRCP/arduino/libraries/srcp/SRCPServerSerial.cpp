@@ -38,7 +38,7 @@ unsigned long lasts = millis();
  */
 void SRCPServerSerial::begin(unsigned long speed)
 {
-	INFO2( "open port ", speed );
+	INFO2( "open Serial with baud ", speed );
 	Serial.begin( speed );
 
 	session = new SRCPSession();
