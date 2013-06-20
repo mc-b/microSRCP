@@ -10,8 +10,8 @@ Kurzinstallation:
 - RocRail - http://wiki.rocrail.net/doku.php, zur Ansteuerung der Modelleisenbahn und der Arduino's, installieren
 - Arduino Entwicklungsumgebung starten und Verzeichnis aus Menu -> Datei -> Einstellungen -> Sketchbook Speicherort notieren
 - Entwicklungsumgebung beenden
-- microSRCP Sourcen mittels ZIP Button (oben) downloaden
-- ZIP Datei entpacken und die Dateien aus Verzeichnis microSRCP/arduino in den vorher notierten Sketchbook Speicherort kopieren.
+- gewünschte ZIP-Datei von https://github.com/mc-b/microSRCP/tags auswählen und downloaden
+- ZIP Datei entpacken und die Dateien aus Verzeichnis .../microSRCP/arduino in den vorher notierten Sketchbook Speicherort kopieren.
 - Arduino Entwicklungsumgebung starten - unter -> Datei -> Sketchbook -> microSRCPServer wählen
 - PC und Aurduino mittels USB Kabel verbinden, das Betriebssystem richtet eine neue Serielle Schnittstelle ein (bei Problemen siehe www.arduino.cc)
 - Unter Tools -> entsprechendes Board und Serielle Schnittstelle einstellen
@@ -20,7 +20,7 @@ Kurzinstallation:
 
 Welche Arduino Boards und Shields benötigt werden steht in den entsprechenden Sketches. 
 
-Für eine Detailierte Beschreibung siehe der Wiki Button (oben).
+Für eine Detailierte Beschreibung, siehe Wiki Button auf dieser Seite.
 
 Copyright
 ---------
