@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=RocRail
+Comment=RocRail Server
+Exec=lxterminal --command "/opt/rocrail/rocrail"
+Icon=/opt/rocrail/rocrail.xpm
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=RocRail;
+StartupNotify=true
+Path=/home/pi/microSRCP/microSRCP/RocRail/RaspBerryPi
+

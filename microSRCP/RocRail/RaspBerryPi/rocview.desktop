@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=RocView
+Comment=RocRail UI
+Exec=/opt/rocrail/rocview
+Icon=/opt/rocrail/rocrail.xpm
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=RocRail;
+StartupNotify=true
+Path=/home/pi/microSRCP/microSRCP/RocRail/RaspBerryPi
+
