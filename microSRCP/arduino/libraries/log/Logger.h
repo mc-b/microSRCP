@@ -36,7 +36,7 @@
 #define	TRACE_LEVEL		5		// Fein Detalierte Meldungen, nur in Ausnahmefaellen zu aktivieren
 
 #ifndef	LOGGER_LEVEL			// Eclipse kann Symbols Global setzen = 1. Prioritaet
-#if ( __AVR_ATmega1280__ || __AVR_ATmega2560__ )
+#if ( __AVR_ATmega2560__ )
 #define	LOGGER_LEVEL	INFO_LEVEL
 #else
 #define LOGGER_LEVEL 	OFF_LEVEL
@@ -48,7 +48,7 @@
  */
 #if ( LOGGER_LEVEL > OFF_LEVEL)
 
-#if ( __AVR_ATmega1280__ || __AVR_ATmega2560__ )
+#if ( __AVR_ATmega2560__ )
 #define Logger	Serial3
 #elif ( __AVR_ATmega328P__ )
 extern	SoftwareSerial Logger;
