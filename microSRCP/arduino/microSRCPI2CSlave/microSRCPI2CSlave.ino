@@ -144,10 +144,10 @@ void setup()
 	DeviceManager.addAccessoire( new dev::GASlowServo( ADDR(6), 4, 60, 90 ) );
 	DeviceManager.addAccessoire( new dev::GASignal( ADDR(7), 5, 6 ) ); 			// 2 x Signal mit 2 LED an Pins 5 - 8
 	DeviceManager.addAccessoire( new dev::GASignal( ADDR(8), 7, 8 ) );
-	DeviceManager.addFeedback( new dev::FBSwitchSensor( ADDR(1), 10, 17 ) );	// 1 x Sensorblock mit 8 x Sensor an Pin D10 - D13 und C0 - C3	
+	DeviceManager.addFeedback( new dev::FBSwitchSensor( ADDR(1), 10, 17 ) );	// 1 x Sensorblock mit 8 x Sensor an Pin 10 - 13 und A0 - A3	
 #elif	( BOARD == BOARD_FB && __AVR_ATmega328P__ )
-	DeviceManager.addFeedback( new dev::FBSwitchSensor( ADDR(1),  2,  9 ) );	// 1 x Sensorblock mit 8 x Sensor an Pin D2 - D9
-	DeviceManager.addFeedback( new dev::FBSwitchSensor( ADDR(9), 10, 17 ) );	// 1 x Sensorblock mit 7 x Sensor an Pin D10 - A4 (A0 = 14), Pin 13 ohne Funktion wegen LED
+	DeviceManager.addFeedback( new dev::FBSwitchSensor( ADDR(1),  2,  9 ) );	// 1 x Sensorblock mit 8 x Sensor an Pin 2 - 9
+	DeviceManager.addFeedback( new dev::FBSwitchSensor( ADDR(9), 10, 17 ) );	// 1 x Sensorblock mit 7 x Sensor an Pin 10 - A4 (A0 = 14), Pin 13 ohne Funktion wegen LED
 #elif	( BOARD == BOARD_GA && __AVR_ATmega328P__ )
 	DeviceManager.addAccessoire( new dev::GASlowServo( ADDR(1),  2, 60, 90 ) );	// 8 x Servo (max. fuer ATmega328P)
 	DeviceManager.addAccessoire( new dev::GASlowServo( ADDR(2),  3, 60, 90 ) );
