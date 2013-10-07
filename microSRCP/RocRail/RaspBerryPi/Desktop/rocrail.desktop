@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=RocRail
 Comment=RocRail Server
-Exec=lxterminal --command "/opt/rocrail/rocrail"
+Exec=lxterminal --geometry=132x48 --command "/opt/rocrail/rocrail -console"
 Icon=/opt/rocrail/rocrail.xpm
 Terminal=false
 MultipleArgs=false

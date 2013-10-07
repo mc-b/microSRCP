@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone='no'?>
+<!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+<service-group>
+  <name replace-wildcards="yes">Rocrail on %h</name>
+  <service>
+    <type>_rocrail._tcp</type>
+    <port>8051</port>
+  </service>
+</service-group>
+

@@ -1,0 +1,8 @@
+#!/bin/bash
+# Streamt WebCam auf http://localhost:8080
+#
+HIGH="-f 10 -r 1280x960"
+LOW="-f 5 -r 544x288"
+
+mjpg_streamer 	-i "/usr/local/lib/input_uvc.so -n $LOW" \
+		-o "/usr/local/lib/output_http.so -n -w /usr/local/www"

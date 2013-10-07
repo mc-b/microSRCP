@@ -1,0 +1,4 @@
+#!/bin/bash
+#	Shutdown
+#
+sudo shutdown -h now

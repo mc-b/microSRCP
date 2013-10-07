@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo -n "Temparator: "
+vcgencmd measure_temp
+echo -n "Speed     : "
+vcgencmd measure_clock arm
+echo -n "Volt      : " 
+vcgencmd measure_volts core

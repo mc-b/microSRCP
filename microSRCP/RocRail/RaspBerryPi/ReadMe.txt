@@ -19,17 +19,16 @@ Installation
 - RocRail installieren (beim ersten Befehl kommt Fehlermeldung, ignorieren)
     sudo dpkg -i rocrail-XXXX-wheezy-armhf.deb
     sudo apt-get -f install 
-- WICHTIG: Device vom Arduino auf 666 setzen, z.B. sudo chmod 666 /dev/ttyUSB0, sonst kann RocRail sich nicht verbinden.   
     
 - microSRCP Sourcen clonen oder ab https://github.com/mc-b/microSRCP/tags downloaden und entpacken
     git clone https://github.com/mc-b/microSRCP.git
     
 - Dateien aus microSRCP/microSRCP/RocRail wie folgt kopieren:
-    *.desktop nach ~/Desktop
+    Desktop/* nach ~/Desktop
     smb.conf nach /etc/samba
+- Weitere Dateien in etc/ sind Vorlagen fuer WLAN Access Point, VNCServer starten beim Systemstart etc.    
     
-- microSRCP Verzeichnis öffnen für Zugriff, z.B. von Windows, via \\raspberrypi
-\microSRCP
+- microSRCP Verzeichnis öffnen für Zugriff, z.B. von Windows, via \\raspberrypi\microSRCP
     chmod -R g=u,o=u microSRCP    
     
 - RaspBerryPI neu starten    
@@ -37,6 +36,6 @@ Installation
 - X-Windows local mittels startx, oder Remote mittels vncserver und vncviewer starten
 - RocRail Server und RocView starten
   
-Juni 2013 / Marcel Bernet
+Oktober 2013 / Marcel Bernet
 
       

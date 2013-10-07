@@ -1,0 +1,17 @@
+auto lo
+
+iface lo inet loopback
+
+#iface eth0 inet dhcp
+# eth0 - Static IP mit DHCP Server um jederzeit einen PC verbinden zu koennen
+iface eth0 inet static
+	address 192.168.1.1
+	netmask 255.255.255.0
+	network 192.168.1.0
+	broadcast 192.168.1.255
+
+# WLAN 
+allow-hotplug wlan0
+iface wlan0 inet manual
+wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+iface default inet dhcp

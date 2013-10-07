@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone='no'?>
+<!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+<service-group>
+  <name replace-wildcards="yes">FHEM on %h</name>
+  <service>
+    <type>_http._tcp</type>
+    <port>8083</port>
+  </service>
+</service-group>
+

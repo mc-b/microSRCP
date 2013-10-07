@@ -1,0 +1,5 @@
+#!/bin/bash
+#	RocRail starten
+#
+cd $HOME/microSRCP/microSRCP/RocRail/RaspBerryPi/
+/opt/rocrail/rocrail -console
