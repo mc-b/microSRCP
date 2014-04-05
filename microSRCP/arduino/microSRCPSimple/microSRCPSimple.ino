@@ -53,6 +53,10 @@ Servo s3;
 void setup()
 {
 	Serial.begin( 115200 );
+	while ( !Serial )
+	{
+		; // wait for serial port to connect. Needed for Leonardo only
+	}
 
 	BEGIN( 9600 );
 	INFO( "Logger ready" );

@@ -40,6 +40,10 @@ void SRCPServerSerial::begin(unsigned long speed)
 {
 	INFO2( "open Serial with baud ", speed );
 	Serial.begin( speed );
+	while ( !Serial )
+	{
+		; // wait for serial port to connect. Needed for Leonardo only
+	}
 
 	session = new SRCPSession();
 	parser = new SRCPParser();
