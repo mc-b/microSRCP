@@ -1,0 +1,39 @@
+[Eagle]
+Version="06 05 00"
+Platform="Windows"
+Serial="62191E841E-LSR-WLM-1EL"
+Globals="Globals"
+Desktop="Desktop"
+
+[Globals]
+AutoSaveProject=1
+UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/SparkFun-AnalogIC.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/SparkFun-Boards.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/SparkFun-Capacitors.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/SparkFun-Connectors.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/SparkFun-DigitalIC.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/SparkFun-DiscreteSemi.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/SparkFun-Displays.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/SparkFun-Electromechanical.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/SparkFun-FreqCtrl.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/SparkFun-LED.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/SparkFun-Passives.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/SparkFun-PowerIC.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/SparkFun-RF.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/SparkFun-Resistors.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/SparkFun-Retired.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/SparkFun-Sensors.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/pot-vitrohm.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/pot-xicor.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/pot.lbr"
+UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/st-microelectronics.lbr"
+
+[Win_1]
+Type="Control Panel"
+Loc="656 384 1255 783"
+State=1
+Number=0
+
+[Desktop]
+Screen="3840 1200"
+Window="Win_1"
