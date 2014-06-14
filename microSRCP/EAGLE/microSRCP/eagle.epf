@@ -7,6 +7,7 @@ Desktop="Desktop"
 
 [Globals]
 AutoSaveProject=1
+UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/SparkFun-Aesthetics.lbr"
 UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/SparkFun-AnalogIC.lbr"
 UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/SparkFun-Boards.lbr"
 UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/SparkFun-Capacitors.lbr"
@@ -30,7 +31,7 @@ UsedLibrary="C:/Program Files (x86)/EAGLE/lbr/st-microelectronics.lbr"
 
 [Win_1]
 Type="Control Panel"
-Loc="656 384 1255 783"
+Loc="651 378 1250 777"
 State=1
 Number=0
 
