@@ -791,19 +791,19 @@ design rules under a new name.</description>
 <attribute name="NAME" x="52.451" y="52.451" size="1.27" layer="25" ratio="10"/>
 <attribute name="VALUE" x="69.723" y="60.325" size="1.27" layer="27" ratio="10" rot="R180"/>
 </element>
-<element name="W17" library="SparkFun-LED" package="LED3MM" value="" x="62.23" y="24.13" smashed="yes" rot="R90">
+<element name="W18" library="SparkFun-LED" package="LED3MM" value="" x="62.23" y="24.13" smashed="yes" rot="R90">
 <attribute name="NAME" x="63.119" y="28.575" size="1.27" layer="25" ratio="10" rot="R180"/>
 <attribute name="VALUE" x="63.881" y="26.035" size="1.27" layer="27" ratio="10" rot="R90"/>
 </element>
-<element name="W18" library="SparkFun-LED" package="LED3MM" value="" x="57.15" y="24.13" smashed="yes" rot="R90">
+<element name="W17" library="SparkFun-LED" package="LED3MM" value="" x="57.15" y="24.13" smashed="yes" rot="R90">
 <attribute name="NAME" x="58.039" y="28.575" size="1.27" layer="25" ratio="10" rot="R180"/>
 <attribute name="VALUE" x="58.801" y="26.035" size="1.27" layer="27" ratio="10" rot="R90"/>
 </element>
-<element name="W19" library="SparkFun-LED" package="LED3MM" value="" x="52.07" y="24.13" smashed="yes" rot="R90">
+<element name="W20" library="SparkFun-LED" package="LED3MM" value="" x="52.07" y="24.13" smashed="yes" rot="R90">
 <attribute name="NAME" x="52.959" y="28.575" size="1.27" layer="25" ratio="10" rot="R180"/>
 <attribute name="VALUE" x="53.721" y="26.035" size="1.27" layer="27" ratio="10" rot="R90"/>
 </element>
-<element name="W20" library="SparkFun-LED" package="LED3MM" value="" x="46.99" y="24.13" smashed="yes" rot="R90">
+<element name="W19" library="SparkFun-LED" package="LED3MM" value="" x="46.99" y="24.13" smashed="yes" rot="R90">
 <attribute name="NAME" x="47.879" y="28.575" size="1.27" layer="25" ratio="10" rot="R180"/>
 <attribute name="VALUE" x="48.641" y="26.035" size="1.27" layer="27" ratio="10" rot="R90"/>
 </element>
@@ -940,12 +940,12 @@ design rules under a new name.</description>
 <wire x1="53.34" y1="39.37" x2="45.72" y2="39.37" width="0.254" layer="1"/>
 <wire x1="45.72" y1="39.37" x2="45.72" y2="38.1" width="0.254" layer="1"/>
 <wire x1="69.85" y1="31.75" x2="72.39" y2="31.75" width="0.254" layer="1"/>
-<contactref element="W17" pad="K"/>
 <contactref element="W18" pad="K"/>
+<contactref element="W17" pad="K"/>
 <wire x1="57.15" y1="25.4" x2="62.23" y2="25.4" width="0.254" layer="1"/>
-<contactref element="W19" pad="K"/>
-<wire x1="52.07" y1="25.4" x2="57.15" y2="25.4" width="0.254" layer="1"/>
 <contactref element="W20" pad="K"/>
+<wire x1="52.07" y1="25.4" x2="57.15" y2="25.4" width="0.254" layer="1"/>
+<contactref element="W19" pad="K"/>
 <wire x1="46.99" y1="25.4" x2="52.07" y2="25.4" width="0.254" layer="1"/>
 <wire x1="62.23" y1="25.4" x2="69.85" y2="31.75" width="0.254" layer="1"/>
 <polygon width="0.254" layer="1">
@@ -1019,27 +1019,27 @@ design rules under a new name.</description>
 </signal>
 <signal name="S17">
 <contactref element="P5" pad="3"/>
-<contactref element="W17" pad="A"/>
+<contactref element="W18" pad="A"/>
 <wire x1="62.23" y1="17.78" x2="62.23" y2="22.86" width="0.254" layer="1"/>
 </signal>
 <signal name="S18">
 <contactref element="E$3" pad="3"/>
 <wire x1="62.23" y1="15.24" x2="60.96" y2="16.51" width="0.254" layer="1"/>
 <wire x1="60.96" y1="16.51" x2="60.96" y2="20.32" width="0.254" layer="1"/>
-<contactref element="W18" pad="A"/>
+<contactref element="W17" pad="A"/>
 <wire x1="60.96" y1="20.32" x2="57.15" y2="22.86" width="0.254" layer="1"/>
 </signal>
 <signal name="S19">
 <contactref element="P5" pad="2"/>
 <wire x1="59.69" y1="17.78" x2="59.69" y2="19.05" width="0.254" layer="1"/>
-<contactref element="W19" pad="A"/>
+<contactref element="W20" pad="A"/>
 <wire x1="59.69" y1="19.05" x2="52.07" y2="22.86" width="0.254" layer="1"/>
 </signal>
 <signal name="S20">
 <contactref element="E$3" pad="2"/>
 <wire x1="59.69" y1="15.24" x2="58.42" y2="16.51" width="0.254" layer="1"/>
 <wire x1="58.42" y1="16.51" x2="46.99" y2="16.51" width="0.254" layer="1"/>
-<contactref element="W20" pad="A"/>
+<contactref element="W19" pad="A"/>
 <wire x1="46.99" y1="16.51" x2="46.99" y2="22.86" width="0.254" layer="1"/>
 </signal>
 <signal name="S5">
