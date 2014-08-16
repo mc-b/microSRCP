@@ -68,8 +68,12 @@ void loop()
     delay( 10 );
   
   analogWrite(3, 0); // Stop 
+  digitalWrite( 4, HIGH );
   delay(1000); // 1 Sekunden Wartezeit
-  
+  digitalWrite( 4, LOW );
+  sensorValue = analogRead(A3);
+  analogWrite( 5, sensorValue / 4 );  
+    
   // rueckwaerts fahren
   digitalWrite(8, LOW);
   digitalWrite(9, HIGH);
@@ -81,8 +85,12 @@ void loop()
     delay( 10 );  
   
   analogWrite(3, 0); // Stop 
+  digitalWrite( 4, HIGH );
   delay(1000); // 1 Sekunden Wartezeit
-
+  digitalWrite( 4, LOW ); 
+  sensorValue = analogRead(A3);
+  analogWrite( 5, sensorValue / 4 );  
+  
     // vorwaerts fahren
   digitalWrite(8, HIGH);
   digitalWrite(9, LOW);
@@ -95,7 +103,11 @@ void loop()
     delay( 10 );
   
   analogWrite(3, 0); // Stop 
+  digitalWrite( 4, HIGH );
   delay(1000); // 1 Sekunden Wartezeit
+  digitalWrite( 4, LOW ); 
+  sensorValue = analogRead(A3);
+  analogWrite( 5, sensorValue / 4 ); 
   
   // rueckwaerts fahren
   digitalWrite(8, LOW);
@@ -108,7 +120,11 @@ void loop()
     delay( 10 );  
  
   analogWrite(3, 0); // Stop 
+  digitalWrite( 4, HIGH );
   delay(1000); // 1 Sekunden Wartezeit
+  digitalWrite( 4, LOW ); 
+  sensorValue = analogRead(A3);
+  analogWrite( 5, sensorValue / 4 );  
 }
 
 
