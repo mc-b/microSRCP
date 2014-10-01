@@ -347,7 +347,7 @@ extern unsigned char invert_accessory;
 // TWDR, TWAR, TWBR, SPDR, ADMUX
 //
 
-#define DCCOUT_STATE_REG    ADMUX      // if nothing defined, dccout will use a global var. in sram
+#define DCCOUT_STATE_REG    TWBR      // if nothing defined, dccout will use a global var. in sram
 
 
 //------------------------------------------------------------------------
