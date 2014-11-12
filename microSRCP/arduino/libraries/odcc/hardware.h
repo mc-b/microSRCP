@@ -37,7 +37,7 @@
 //========================================================================
 //
 
-#if (__AVR_ATmega32__ || __AVR_ATmega328P__)
+#if (__AVR_ATmega32__ || __AVR_ATmega328P__ || __AVR_ATmega32U4__)
   // atmega32:   2kByte SRAM, 1kByte EEPROM
   #define SRAM_SIZE    2048
   #define EEPROM_SIZE  1024
@@ -72,7 +72,7 @@
 //#define SHORT_MAIN 0     // in
 //#define SHORT_PROG 1     // in
 
-#if (__AVR_ATmega328P__)
+#if (__AVR_ATmega328P__ || __AVR_ATmega32U4__)
 	// Port B
 	#define NDCC       2     // out
 	#define DCC        1     // out
@@ -98,7 +98,7 @@
 
 // this results after compile: sbi(PORTB,MY_CTS)
 
-#if (__AVR_ATmega328P__ || __AVR_ATmega1280__ || __AVR_ATmega2560__)
+#if (__AVR_ATmega328P__ || __AVR_ATmega1280__ || __AVR_ATmega2560__ || __AVR_ATmega32U4__)
 	#define MAIN_TRACK_ON    PORTB |= (1<<ENA_MAIN)
 	#define MAIN_TRACK_OFF   PORTB &= ~(1<<ENA_MAIN)
 	#define MAIN_TRACK_STATE (PINB & (1<<ENA_MAIN)))

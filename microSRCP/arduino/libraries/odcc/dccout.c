@@ -364,7 +364,7 @@ ISR(TIMER1_COMPA_vect)
     // two phases: phase 0: just repeat same duration, but invert output.
     //             phase 1: create new bit.
 	// we use back read of PIND instead of phase
-#if (__AVR_ATmega328P__ || __AVR_ATmega1280__ || __AVR_ATmega2560__)
+#if (__AVR_ATmega328P__ || __AVR_ATmega1280__ || __AVR_ATmega2560__ || __AVR_ATmega32U4__)
     if (!(PINB & (1<<DCC)))  //was: (doi.phase == 0)
 #else
     if (!(PIND & (1<<DCC)))  //was: (doi.phase == 0)
@@ -570,7 +570,7 @@ void init_dccout(void)
            | (0<<CS12)   | (0<<CS11) | (1<<CS10);  // no prescaler, source = sys_clk
 
 
-    #if (__AVR_ATmega644P__ || __AVR_ATmega328P__ || __AVR_ATmega1280__ || __AVR_ATmega2560__)
+    #if (__AVR_ATmega644P__ || __AVR_ATmega328P__ || __AVR_ATmega1280__ || __AVR_ATmega2560__ || __AVR_ATmega32U4__ )
         TIMSK1 |= (1<<OCIE1A);          // Output Compare A
     #elif (__AVR_ATmega644__)
         #error:  undefinded - read manual!

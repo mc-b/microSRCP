@@ -38,7 +38,7 @@
 void init_main( void )
 {
 
-#if (__AVR_ATmega328P__ || __AVR_ATmega1280__ || __AVR_ATmega2560__)
+#if (__AVR_ATmega328P__ || __AVR_ATmega1280__ || __AVR_ATmega2560__ || __AVR_ATmega32U4__)
 	PORTB = (0 << NDCC) // out
 			| (1 << DCC) // out
 			| (0 << ENA_PROG) // out, disabled
