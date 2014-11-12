@@ -79,7 +79,7 @@ int GLOpenDCC::set( int addr, int drivemode, int v, int v_max, int fn[] )
 
 void GLOpenDCC::setPower( int on )
 {
-	if	( on == 1 )
+	if	( on == 0 )
 	{
 		// TODO warum funktioniert On/Off via Pin nicht?
 		MAIN_TRACK_ON;
