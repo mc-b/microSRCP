@@ -104,13 +104,22 @@ void setup()
 	init_organizer(); // engine for command repetition, memory of loco speeds and types
 	opendcc_state = RUN_OKAY;
 
+#if (__AVR_ATmega328P__)	// Arduino UNO - DCC Signal an Pin 9 + 10, Enable 11 + 12
 	// Port A Enable an L298N - MotoMama, DCC Signal an Input 1 + 2
 	pinMode( 11, OUTPUT);
 	digitalWrite( 11, HIGH );
 	// Port B Enable an L298N - MotoMama, DCC Signal an Input 3 + 4
 	pinMode( 12, OUTPUT);
 	digitalWrite( 12, HIGH );
-
+#elif (__AVR_ATmega1280__ || __AVR_ATmega2560__) // Arduino Mega - DCC Signal an Pin 11 + 12, Enable 9 + 10
+	// Port A Enable an L298N - MotoMama, DCC Signal an Input 1 + 2
+	pinMode( 9, OUTPUT);
+	digitalWrite( 9, HIGH );
+	// Port B Enable an L298N - MotoMama, DCC Signal an Input 3 + 4
+	pinMode( 10, OUTPUT);
+	digitalWrite( 10, HIGH );	
+#endif
+	
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Definition DCC Geraete
 	DeviceManager.addAccessoire( new odcc::GAOpenDCC( 1, 2048 ) ); // Weichen, Signale Adressen 1 - 2048 abhandeln
