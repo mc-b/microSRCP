@@ -97,6 +97,8 @@ char* SRCPSession::dispatch( command_t& cmd )
 			return	( Messages.ok201() );
 
 		default:
+			if	( getStatus() != srcp::COMMAND )
+				return (Messages.ok201());
 			return (Messages.ok());
 	}
 	//return (Messages.error(500));
